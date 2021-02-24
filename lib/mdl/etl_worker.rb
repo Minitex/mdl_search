@@ -11,6 +11,9 @@ module MDL
     TRANSC_FIELD_MAPPING = MDL::Transformer.field_mappings.find do |m|
       m[:dest_path] == 'transcription_tesi'
     end.transform_values(&:dup) # Dup the values so we don't have frozen strings
+    RESOUR_FIELD_MAPPING = MDL::Transformer.field_mappings.find do |m|
+      m[:dest_path] == 'identifier_ssi'
+    end.transform_values(&:dup)
 
     attr_reader :record
 
@@ -36,18 +39,32 @@ module MDL
         # hsh.merge!(child_field_2)
         # hsh.merge!(child_field_3)
         hsh.merge!(transcriptions)
+        hsh.merge!(mdl_identifiers)
       end.select { |_, v| v.present? }
     end
 
     def transcriptions
       transcription_pages = Array(record['page']).select { |p| p['transc'] }
       transcriptions = transcription_pages.flat_map do |page|
-        transc_transformer = self.class.superclass.new(
+        self.class.superclass.new(
           record: page,
           field_mapping: CDMBL::FieldMapping.new(config: TRANSC_FIELD_MAPPING)
         ).reduce.values
       end
       { 'transcription_tesim' => transcriptions }
+    end
+
+    def mdl_identifiers
+      identifiers = Array(record['page'])
+        .select { |p| p['resour'] }
+        .flat_map do |page|
+          self.class.superclass.new(
+            record: page,
+            field_mapping: CDMBL::FieldMapping.new(config: RESOUR_FIELD_MAPPING)
+          ).reduce.values
+        end
+
+      { 'identifier_ssim' => identifiers }
     end
   end
 

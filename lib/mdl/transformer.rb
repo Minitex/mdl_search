@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './multi_date_formatter'
+
 module MDL
   # CDMBL field mappings
   class Transformer
