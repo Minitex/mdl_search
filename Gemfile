@@ -75,7 +75,7 @@ gem 'globalid', '0.4.2'
 gem 'webpacker', '2.0'
 
 # # CONTENTdm ETL
-gem 'devise', '4.6.2'
+gem 'devise', '4.7.1'
 gem 'devise-guests', '0.6.0'
 gem 'hash_at_path', '0.1.6'
 gem 'cdmbl', '0.17.1'
