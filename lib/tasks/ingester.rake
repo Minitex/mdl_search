@@ -15,12 +15,14 @@ namespace :mdl_ingester do
     run_etl!(etl.set_specs)
   end
 
-  desc "delete batches of unpublished records"
+  desc "Delete records from Solr that are no longer in CONTENTdm"
   ##
   # e.g. rake mdl_ingester:delete
-  task :delete do
+  task delete: [:environment] do
+    Raven.send_event(Raven::Event.new(message: 'Batch delete job started'))
     CDMBL::BatchDeleterWorker.perform_async(
       0,
+      50,
       'oai:cdm16022.contentdm.oclc.org:',
       config[:oai_endpoint],
       config[:solr_config][:url]
