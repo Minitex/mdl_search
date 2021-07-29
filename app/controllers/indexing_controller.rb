@@ -25,7 +25,11 @@ class IndexingController < ApplicationController
   end
 
   def create
-    MDL::ETLWorker.perform_async(etl_config)
+    args = { set_specs: [params.require(:collection)] }
+    if params[:date].present?
+      args[:from] = Date.parse(params[:date]).iso8601
+    end
+    MDL::ETL.new.run(args)
     redirect_to indexing_path, flash: { notice: 'Queued collection for indexing' }
   end
 
@@ -38,17 +42,6 @@ class IndexingController < ApplicationController
       set_spec, collection_name, _ = item.value.split(MDL::OaiSetFormatter.delimiter)
       [collection_name, set_spec]
     end.sort_by(&:first)
-  end
-
-  def etl_config
-    collection = params.require(:collection)
-    MDL::ETL.new.config.merge(set_spec: collection).tap do |config|
-      if params[:date].empty?
-        config.delete(:from)
-      else
-        config[:from] = Date.parse(params[:date]).iso8601
-      end
-    end
   end
 
   def check_authorization

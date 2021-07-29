@@ -17,6 +17,19 @@ module MDL
       @set_spec_filter  = set_spec_filter
     end
 
+    def run(set_specs: [], from: nil)
+      IndexingRun.create!
+      msg_which = set_specs.size > 1 ? "#{set_specs.size} collections" : set_specs.first
+      msg_from = from ? "from #{from}" : ''
+      message = "ETL Started for #{msg_which} #{msg_from}".rstrip
+      Raven.send_event(Raven::Event.new(message: message))
+      CDMBL::ETLBySetSpecs.new(
+        set_specs: set_specs,
+        etl_config: config.tap { |c| c.merge!(from: from) if from },
+        etl_worker_klass: MDL::ETLWorker
+      ).run!
+    end
+
     def config
       {
         oai_endpoint: oai_endpoint,
