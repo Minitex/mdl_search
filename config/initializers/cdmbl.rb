@@ -28,6 +28,19 @@ module CDMBL
     end
   end
 
+  class BatchDeletedCallback
+    def self.call!(deleter)
+      Rails.logger.info "CDMBL: Deleted #{deleter.deletables.size} records in batch of #{deleter.batch_size}, beginning at offset #{deleter.start}"
+    end
+  end
+
+  class BatchDeleteJobCompletedCallback
+    def self.call!
+      Rails.logger.info "CDMBL: Batch delete job complete"
+      Raven.send_event(Raven::Event.new(message: 'Batch delete job complete'))
+    end
+  end
+
   LoadWorker.prepend(MDL::EtlAuditing)
 end
 
