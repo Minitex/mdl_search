@@ -1,1 +1,3 @@
-export { default as uv } from "universalviewer/dist/uv";
+import 'script-loader!universalviewer/dist/helpers';
+import 'script-loader!universalviewer/dist/lib/offline';
+
