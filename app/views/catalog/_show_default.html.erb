@@ -1,61 +1,61 @@
-<%
-    borealis_doc = MDL::BorealisDocument.new(document: document)
-    config = []
-    config << MDL::CiteDetails.new(solr_doc: document).to_hash
-    config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
-    config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
-    config << MDL::CiteTranscript.new(solr_doc: document).to_hash
-    config = config.map { |item| (!item.empty?) ? item : nil }.compact
-    viewer = borealis_doc.to_viewer
+<% borealis_doc = MDL::BorealisDocument.new(document: document) %>
 
-    if viewer.fetch('image', false) && current_search_session != nil
-      initial_path = "image/0?searchText=#{search_text}&redirect=true"
-    else
-      initial_path = ''
-    end
-  %>
+<div class="row">
+  <div class="col-md-12">
+    <div id="uv" class="uv"></div>
+  </div>
+</div>
 
-  <div class="metadata" data-metadata='<%= viewer.to_json %>' ></div>
+<div class="row">
+  <div class="col-md-9">
 
-  <%= content_tag :div,
-    id: "viewer_data",
-    initialPath: "#{initial_path}",
-    viewerConfig: viewer.to_json,
-    citationConfig: config.to_json do %>
-  <% end %>
-
-  <div class="row">
-    <div class="col-md-12">
-      <% content_for(:webpack_bundles) do %>
-        <%= javascript_pack_tag 'viewer' %>
-      <% end %>
-      <div id="react-borealis-viewer" ></div>
+    <%= render 'rights_statement', config: MDL::RightsConfig.new(url: document['rights_uri_ssi']) %>
+    <% content_for(:webpack_bundles) do %>
+      <%= javascript_pack_tag 'citation' %>
+    <% end %>
+    <div id="react-citation-viewer" ></div>
+  </div>
+  <div class="col-md-3">
+    <div id="sidebar">
+        <%= render_document_sidebar_partial %>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-md-9">
+<% content_for(:webpack_bundles) do %>
+  <%= javascript_pack_tag 'drawMap' %>
+<% end %>
+<%= render partial: 'map_view',
+  locals: {
+    coordinates: @document['coordinates_llsi'],
+    map_id: 'full_record_map',
+    with_popup: true
+  }
+%>
+<% content_for(:head) do %>
+  <link rel="stylesheet" href="/uv/uv.css">
+  <%= javascript_pack_tag 'universalviewer' %>
+<% end %>
 
-      <%= render 'rights_statement', config: MDL::RightsConfig.new(url: document['rights_uri_ssi']) %>
-      <% content_for(:webpack_bundles) do %>
-        <%= javascript_pack_tag 'citation' %>
-      <% end %>
-      <div id="react-citation-viewer" ></div>
-    </div>
-    <div class="col-md-3">
-      <div id="sidebar">
-         <%= render_document_sidebar_partial %>
-      </div>
-    </div>
-  </div>
+<% content_for(:blocking_javascript) do %>
+  <script type="text/javascript">
+    window.addEventListener('uvLoaded', function (e) {
+      const urlDataProvider = new UV.URLDataProvider();
+      const collectionIndex = urlDataProvider.get('c');
 
-  <% content_for(:webpack_bundles) do %>
-    <%= javascript_pack_tag 'drawMap' %>
-  <% end %>
-  <%= render partial: 'map_view',
-    locals: {
-      coordinates: @document['coordinates_llsi'],
-      map_id: 'full_record_map',
-      with_popup: true
-    }
-  %>
+      createUV('#uv', {
+        iiifResourceUri: '<%= borealis_doc.manifest_url %>',
+        root: '../uv/',
+        configUri: '../uv/config.json',
+        collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
+        manifestIndex: Number(urlDataProvider.get('m', 0)),
+        sequenceIndex: Number(urlDataProvider.get('s', 0)),
+        canvasIndex: Number(urlDataProvider.get('cv', 0)),
+        rotation: Number(urlDataProvider.get('r', 0)),
+        rangeId: urlDataProvider.get('rid', ''),
+        xywh: urlDataProvider.get('xywh', '')
+      }, urlDataProvider);
+    }, false);
+  </script>
+  <%= javascript_pack_tag 'universalviewer_lib' %>
+<% end %>

@@ -27,4 +27,5 @@ RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 RUN gem update --system ; gem install bundler:1.17.3; bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install --without production
+RUN yarn install
 

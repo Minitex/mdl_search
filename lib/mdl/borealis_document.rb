@@ -26,6 +26,10 @@ module MDL
       @assets ||= to_assets
     end
 
+    def manifest_url
+      "https://cdm16022.contentdm.oclc.org/iiif/info/#{collection}/#{id}/manifest.json"
+    end
+
     private
 
     # Return a list of assets (all subclasses of BorealisAsset)
@@ -97,8 +101,6 @@ module MDL
     def format_field
       document.fetch('format_tesi', 'jp2').gsub(/;/, '')
     end
-
-    private
 
     def bad_compound?(compound)
       compound['pagefile'].is_a?(Hash)

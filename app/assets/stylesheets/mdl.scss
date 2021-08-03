@@ -83,7 +83,7 @@ body {
 }
 
 @media (max-width: 767px) {
-	
+
 
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
 		text-align: center !important;
@@ -1139,6 +1139,14 @@ a.view-text:hover {
 	background-color: $orange;
 	font-weight: bold !important;
 	padding: 3px;
+}
+
+.uv {
+	height: 768px;
+
+	.autocompleteText {
+		color: rgb(0, 0, 0);
+	}
 }
 /* End item page styles */
 
