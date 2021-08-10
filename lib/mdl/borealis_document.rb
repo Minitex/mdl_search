@@ -27,7 +27,12 @@ module MDL
     end
 
     def manifest_url
-      "https://cdm16022.contentdm.oclc.org/iiif/info/#{collection}/#{id}/manifest.json"
+      case assets.first
+      when BorealisVideo, BorealisAudio
+        assets.first.manifest_url
+      else
+        "https://cdm16022.contentdm.oclc.org/iiif/info/#{collection}/#{id}/manifest.json"
+      end
     end
 
     private
