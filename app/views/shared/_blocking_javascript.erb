@@ -1,10 +1,6 @@
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ee581682f74148"></script>
-<script src="https://cdnapisec.kaltura.com/p/1369852/sp/136985200/embedIframeJs/uiconf_id/38708801/partner_id/1369852"></script>
-<script src="https://cdnapisec.kaltura.com/p/1369852/sp/136985200/embedIframeJs/uiconf_id/38683631/partner_id/1369852"></script>
-<script src="https://cdnapisec.kaltura.com/p/1369852/sp/136985200/embedIframeJs/uiconf_id/38719361/partner_id/1369852"></script>
-
 <%= content_for(:blocking_javascript) %>
-
+<% if Rails.env.production? %>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ee581682f74148"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -15,3 +11,4 @@
   ga('send', 'pageview');
 
 </script>
+<% end %>
