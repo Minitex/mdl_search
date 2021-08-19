@@ -2,8 +2,9 @@ class IiifController < ApplicationController
   include Blacklight::SearchHelper
 
   def manifest
-    response, document = fetch(params[:id])
-    asset = MDL::BorealisDocument.new(document: document).assets[0]
-    render json: asset.to_manifest_json
+    _response, document = fetch(params[:id])
+    doc = MDL::BorealisDocument.new(document: document)
+    manifest = IiifManifest.new(doc)
+    render json: manifest
   end
 end
