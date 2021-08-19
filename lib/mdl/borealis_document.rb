@@ -2,17 +2,27 @@ require 'json'
 
 module MDL
   class BorealisDocument
-    attr_reader :document, :asset_map_klass, :to_viewers_klass
+    attr_reader :document,
+                :asset_map_klass,
+                :to_viewers_klass,
+                :collection,
+                :id
+
     def initialize(document: {},
                    asset_map_klass: BorealisAssetMap,
                    to_viewers_klass: MDL::BorealisAssetsToViewers)
       @document         = document
+      @collection, @id  = document['id'].split(':')
       @asset_map_klass  = asset_map_klass
       @to_viewers_klass = to_viewers_klass
     end
 
     def first_key
       to_viewer.keys.first
+    end
+
+    def initial_viewer_type
+      assets.first.type
     end
 
     # Output a viewer configuration hash
@@ -29,10 +39,27 @@ module MDL
     def manifest_url
       case assets.first
       when BorealisVideo, BorealisAudio
-        assets.first.manifest_url
+        "/iiif/#{document['id']}/manifest.json"
       else
         "https://cdm16022.contentdm.oclc.org/iiif/info/#{collection}/#{id}/manifest.json"
       end
+    end
+
+    def title
+      document.fetch('title_ssi', '')
+    end
+
+    def duration
+      hours, minutes, seconds = document
+        .fetch('dimensions_ssi') { return }
+        .split(':')
+        .map(&:to_i)
+      minutes += hours * 60
+      seconds += minutes * 60
+    end
+
+    def rights_uri
+      document['rights_uri_ssi']
     end
 
     private
@@ -89,18 +116,6 @@ module MDL
 
     def compounds
       JSON.parse(document.fetch('compound_objects_ts', '[]'))
-    end
-
-    def id
-      document['id'].split(':').last
-    end
-
-    def collection
-      @collection ||= document['id'].split(':').first
-    end
-
-    def title
-      document.fetch('title_ssi', '')
     end
 
     def format_field

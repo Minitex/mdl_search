@@ -1,5 +1,5 @@
 module MDL
-  class BorealisPDF <  BorealisAsset
+  class BorealisPDF < BorealisAsset
      def src
       if is_child?
         "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
