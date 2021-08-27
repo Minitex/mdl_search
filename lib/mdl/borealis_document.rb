@@ -59,7 +59,7 @@ module MDL
     end
 
     def rights_uri
-      document['rights_uri_ssi']
+      document['rights_uri_ssi'] || document['rights_ssi']
     end
 
     private
