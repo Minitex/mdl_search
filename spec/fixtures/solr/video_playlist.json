@@ -68,6 +68,7 @@
   "record_type_ssi": "primary",
   "kaltura_audio_playlist_ssi": "1_4d569qcy",
   "kaltura_video_ssi": "1_or91f5dp; 1_nfct7x5c; 1_0wmrqvpc; 1_ivkawv6u",
+  "kaltura_video_playlist_entry_data_ts": "[{\"entry_id\":\"1_or91f5dp\",\"name\":\"Interview with Chamreun Tan, Part 1\",\"duration\":387},{\"entry_id\":\"1_nfct7x5c\",\"name\":\"Interview with Chamreun Tan, Part 2\",\"duration\":1876},{\"entry_id\":\"1_0wmrqvpc\",\"name\":\"Interview with Chamreun Tan, Part 3\",\"duration\":1699},{\"entry_id\":\"1_ivkawv6u\",\"name\":\"Interview with Chamreun Tan, Part 4\",\"duration\":228}]",
   "borealis_fragment_ssi": "/kaltura_video",
   "_version_": 1706219374000472064,
   "timestamp": "2021-07-25T01:46:35.135Z",

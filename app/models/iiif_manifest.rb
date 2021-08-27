@@ -10,7 +10,7 @@ class IiifManifest
       type: 'Sound',
       format: 'audio/mp4'
     }
-  }
+  }.freeze
 
   delegate :collection,
            :id,
@@ -50,10 +50,15 @@ class IiifManifest
           }
         }
       end,
-      'items' => canvasable_assets.map.with_index { |a, idx| canvas(a, idx) }
+      'items' => canvasable_assets.map { |a| canvas(a) }
     }.tap do |hsh|
       if renderable_assets.any?
         hsh['rendering'] = renderable_assets.map { |a| rendering(a) }
+      end
+      if rangeable_assets.any?
+        hsh['structures'] = rangeable_assets
+          .map
+          .with_index { |a, idx| structure(a, idx) }
       end
     end
   end
@@ -70,44 +75,85 @@ class IiifManifest
     "https://collection.mndigital.org/iiif/info/#{collection}/#{id}"
   end
 
-  def canvas(asset, canvas_num)
-    canvas_id = "#{base_identifier}/canvas/#{canvas_num}"
+  def canvas(asset)
+    id = canvas_id(asset)
     {
-      'id' => canvas_id,
+      'id' => id,
       'type' => 'Canvas',
       'items' => [
         {
-          'id' => "#{canvas_id}/page",
+          'id' => "#{id}/page",
           'type' => 'AnnotationPage',
-          'items' => [
-            {
-              'id' => "#{canvas_id}/page/annotation",
-              'type' => 'Annotation',
-              'motivation' => 'painting',
-              'body' => {
-                'id' => asset.src,
-                'type' => annotation_body_type(asset),
-                'duration' => borealis_document.duration,
-                'format' => annotation_body_format(asset)
-              },
-              'target' => canvas_id
-            }
-          ]
+          'items' => annotation_items(asset, id)
         }
       ]
     }.tap do |hsh|
       if single_av_media?
         hsh['duration'] = borealis_document.duration
-        width, height = annotation_aspect(asset)
-
-        if width && heigth
-          hsh['height'] = height
-          hsh['width'] = width
-
-          hsh['items'][0]['items'][0]['body']['height'] = height
-          hsh['items'][0]['items'][0]['body']['width'] = width
-        end
+      else
+        hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
       end
+      width, height = annotation_aspect(asset)
+
+      if width && height
+        hsh['height'] = height
+        hsh['width'] = width
+
+        hsh['items'][0]['items'][0]['body']['height'] = height
+        hsh['items'][0]['items'][0]['body']['width'] = width
+      end
+    end
+  end
+
+  def annotation_items(asset, canvas_id)
+    if asset.playlist?
+      playlist_annotation_items(asset, canvas_id)
+    else
+      single_annotation_item(asset, canvas_id)
+    end
+  end
+
+  def single_annotation_item(asset, canvas_id)
+    [
+      {
+        'id' => "#{canvas_id}/page/annotation",
+        'type' => 'Annotation',
+        'motivation' => 'painting',
+        'body' => {
+          'id' => asset.src,
+          'type' => annotation_body_type(asset),
+          'duration' => borealis_document.duration,
+          'format' => annotation_body_format(asset)
+        },
+        'target' => canvas_id
+      }
+    ]
+  end
+
+  def playlist_annotation_items(asset, canvas_id)
+    width, height = annotation_aspect(asset)
+    type = annotation_body_type(asset)
+    body_format = annotation_body_format(asset)
+    start = 0
+    asset.playlist_data.map.with_index do |data, idx|
+      finish = start + data['duration']
+      target = "#{canvas_id}#t=#{start},#{finish}"
+      start = finish
+      {
+        'id' => "#{canvas_id}/page/annotation/#{idx}",
+        'type' => 'Annotation',
+        'motivation' => 'painting',
+        'body' => {
+          'id' => asset.src(data['entry_id']),
+          'type' => type,
+          'format' => body_format,
+          'duration' => data['duration']
+        }.tap do |hsh|
+          hsh['width'] = width if width
+          hsh['height'] = height if height
+        end,
+        'target' => target
+      }
     end
   end
 
@@ -122,6 +168,41 @@ class IiifManifest
     }
   end
 
+  def structure(asset, range_index)
+    range_id = "#{base_identifier}/range/#{range_index}"
+    canvas_id = canvas_id(asset)
+    start = 0
+    {
+      'type' => 'Range',
+      'id' => range_id,
+      'label' => {
+        'en' => [title]
+      },
+      'items' => asset.playlist_data.map.with_index do |data, idx|
+        finish = start + data['duration']
+        target = "#{canvas_id}#t=#{start},#{finish}"
+        start = finish
+        {
+          'type' => 'Range',
+          'id' => "#{range_id}.#{idx}",
+          'label' => {
+            'en' => [data['name']]
+          },
+          'items' => [
+            {
+              'type' => 'Canvas',
+              'id' => target
+            }
+          ]
+        }
+      end
+    }
+  end
+
+  def canvas_id(asset)
+    "#{base_identifier}/canvas/#{canvasable_assets.index(asset)}"
+  end
+
   def canvasable_assets
     assets.select do |a|
       [MDL::BorealisVideo, MDL::BorealisAudio].include?(a.class)
@@ -130,6 +211,10 @@ class IiifManifest
 
   def renderable_assets
     assets.select { |a| a.is_a?(MDL::BorealisPDF) }
+  end
+
+  def rangeable_assets
+    canvasable_assets.select { |a| a.playlist_data.any? }
   end
 
   ###

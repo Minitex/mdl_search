@@ -68,6 +68,7 @@
   "record_type_ssi": "primary",
   "kaltura_audio_ssi": "1_m9tvjl6o; 1_vpgan6fg; 1_zz7vf4az",
   "kaltura_audio_playlist_ssi": "1_bvlzc447",
+  "kaltura_audio_playlist_entry_data_ts": "[{\"entry_id\":\"1_m9tvjl6o\",\"name\":\"Interview with John Choi, Part 1\",\"duration\":1812},{\"entry_id\":\"1_vpgan6fg\",\"name\":\"Interview with John Choi, Part 2\",\"duration\":1898},{\"entry_id\":\"1_zz7vf4az\",\"name\":\"Interview with John Choi, Part 3\",\"duration\":471}]",
   "borealis_fragment_ssi": "/kaltura_audio",
   "_version_": 1706219373981597696,
   "timestamp": "2021-07-25T01:46:35.115Z",
