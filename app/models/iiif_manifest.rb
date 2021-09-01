@@ -86,6 +86,15 @@ class IiifManifest
           'type' => 'AnnotationPage',
           'items' => annotation_items(asset, id)
         }
+      ],
+      'thumbnail' => [
+        {
+          'id' => asset.thumbnail_url,
+          'type' => 'Image',
+          'format' => 'image/png',
+          'width' => 160,
+          'height' => 160
+        }
       ]
     }.tap do |hsh|
       if single_av_media?

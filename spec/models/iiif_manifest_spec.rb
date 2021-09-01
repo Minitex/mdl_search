@@ -51,6 +51,15 @@ describe IiifManifest do
                   }
                 ]
               }
+            ],
+            'thumbnail' => [
+              {
+                'id' => '/images/video-1.png',
+                'type' => 'Image',
+                'format' => 'image/png',
+                'width' => 160,
+                'height' => 160
+              }
             ]
           }
         ])
@@ -102,6 +111,15 @@ describe IiifManifest do
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1194/canvas/0'
                   }
                 ]
+              }
+            ],
+            'thumbnail' => [
+              {
+                'id' => '/images/audio-3.png',
+                'type' => 'Image',
+                'format' => 'image/png',
+                'width' => 160,
+                'height' => 160
               }
             ]
           }
@@ -204,6 +222,15 @@ describe IiifManifest do
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0#t=3962,4190'
                   }
                 ]
+              }
+            ],
+            'thumbnail' => [
+              {
+                'id' => '/images/video-1.png',
+                'type' => 'Image',
+                'format' => 'image/png',
+                'width' => 160,
+                'height' => 160
               }
             ]
           }
@@ -343,6 +370,15 @@ describe IiifManifest do
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1013/canvas/0#t=3710,4181'
                   }
                 ]
+              }
+            ],
+            'thumbnail' => [
+              {
+                'id' => '/images/audio-3.png',
+                'type' => 'Image',
+                'format' => 'image/png',
+                'width' => 160,
+                'height' => 160
               }
             ]
           }
