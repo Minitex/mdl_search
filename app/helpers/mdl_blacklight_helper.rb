@@ -22,15 +22,18 @@ module MdlBlacklightHelper
   end
 
   def record_count(q: '*:*')
-    number_with_delimiter(Blacklight.default_index.connection.get('select',
-      :params => { :q => q,
-        :defType => 'edismax',
-        :fl => '',
-        :rows => 1
-      })['response']['numFound'])
+    number_with_delimiter(Blacklight.default_index.connection.get(
+      'select',
+      params: {
+        q: q,
+        defType: 'edismax',
+        fl: '',
+        rows: 1
+      }
+    )['response']['numFound'])
   end
 
- ##
+  ##
   # Classes used for sizing the sidebar content of a Blacklight page
   # @return [String]
   def sidebar_classes
@@ -61,29 +64,10 @@ module MdlBlacklightHelper
       url_for(
         controller: 'catalog',
         action: 'show',
-        id: document.id,
-        anchor: build_anchor(document)
+        id: document.id
       ),
       document_link_params(document, opts)
         .merge(data: { turbolinks: false })
     )
-  end
-
-  private
-
-  def build_anchor(doc)
-    anchor = doc['borealis_fragment_ssi']
-    if anchor == '/kaltura_audio' && doc['kaltura_audio_playlist_ssi']
-      anchor = '/kaltura_audio_playlist'
-    end
-
-    if anchor == '/kaltura_video' && (doc['kaltura_video_playlist_ssi'] || doc['kaltura_audio_playlist_ssi'])
-      anchor = '/kaltura_video_playlist'
-    end
-
-    if sought_child_index = Array(doc['identifier_ssim']).index(params[:q])
-      anchor = "/image/#{sought_child_index}" if anchor.match(/^\/image\/\d+/)
-    end
-    anchor
   end
 end
