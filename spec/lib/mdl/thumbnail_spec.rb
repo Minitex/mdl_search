@@ -16,12 +16,12 @@ describe MDL::Thumbnail do
 
   it 'returns an audio thumbnail url' do
     thumb = MDL::Thumbnail.new(collection:'mpls', id: '13128', cache_dir: tmpdir, type: 'Sound Recording Nonmusical')
-    expect(thumb.thumbnail_url).to eq 'https://d1kue88aredzk1.cloudfront.net/audio-3.png'
+    expect(thumb.thumbnail_url).to eq '/images/audio-3.png'
   end
 
   it 'returns a video thumbnail url' do
     thumb = MDL::Thumbnail.new(collection:'mpls', id: '13128', cache_dir: tmpdir, type: 'Moving Image')
-    expect(thumb.thumbnail_url).to eq 'https://d1kue88aredzk1.cloudfront.net/video-1.png'
+    expect(thumb.thumbnail_url).to eq '/images/video-1.png'
   end
 
   it 'returns a filepath' do
@@ -51,6 +51,60 @@ describe MDL::Thumbnail do
       expect(File.exist?(tmpfilepath)).to eq true
       expect(subject.cached?).to eq true
       expect(subject.cached_file).to eq File.read(tmpfilepath)
+    end
+  end
+
+  describe '#url' do
+    context 'when representing an audio doc (default image)' do
+      subject(:instance) do
+        MDL::Thumbnail.new(
+          type: 'Sound Recording Nonmusical'
+        ).url
+      end
+
+      it { is_expected.to eq('/images/audio-3.png') }
+    end
+
+    context 'when representing a video doc (default image)' do
+      subject(:instance) do
+        MDL::Thumbnail.new(
+          type: 'Moving Image'
+        ).url
+      end
+
+      it { is_expected.to eq('/images/video-1.png') }
+    end
+
+    context 'when representing an uncached image doc (from contentdm)' do
+      subject(:instance) do
+        MDL::Thumbnail.new(
+          collection: 'foo',
+          id: '123',
+          type: 'Still Image'
+        ).url
+      end
+
+      it { is_expected.to eq('/thumbnails/foo:123/Still%20Image') }
+    end
+
+    context 'when representing a cached image doc (from contentdm)' do
+      subject(:instance) do
+        MDL::Thumbnail.new(
+          collection: 'foo',
+          id: '123',
+          type: 'Still Image'
+        ).url
+      end
+
+      before do
+        FileUtils.touch(Rails.root.join('public', 'assets', 'thumbnails', 'foo_123.jpg'))
+      end
+
+      after do
+        FileUtils.rm(Rails.root.join('public', 'assets', 'thumbnails', 'foo_123.jpg'))
+      end
+
+      it { is_expected.to eq('/assets/thumbnails/foo_123.jpg') }
     end
   end
 end

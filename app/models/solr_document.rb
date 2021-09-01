@@ -76,15 +76,15 @@ class SolrDocument
   def mlt_assets(mlt)
     mlt.inject([]) do |sum, v|
       collection, id = v['id'].split(':')
-      sum <<  {
-                solr_doc: v,
-                id: id,
-                borealis_fragment: v['borealis_fragment_ssi'],
-                item_id: v['id'],
-                collection: collection,
-                title: v['title_ssi'],
-                type: v['type_ssi']
-              }
+      sum << {
+        solr_doc: v,
+        id: id,
+        borealis_fragment: v['borealis_fragment_ssi'],
+        item_id: v['id'],
+        collection: collection,
+        title: v['title_ssi'],
+        type: v['type_ssi']
+      }
     end
   end
 end

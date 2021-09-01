@@ -162,7 +162,7 @@ module MDL
               "entry_id"=>false,
               "wrapper_height"=>"100%",
               "wrapper_width"=>"100%",
-              "thumbnail"=>"https://d1kue88aredzk1.cloudfront.net/video-1.png"
+              "thumbnail"=>"/images/video-1.png"
             }
           }
         )

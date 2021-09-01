@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/Minitex/cdmbl.git
+  revision: 2d655e72ebcbb439c9cb8f22e550c2037b178b8d
+  tag: v0.19.0
+  specs:
+    cdmbl (0.19.0)
+      activesupport (>= 4.2)
+      contentdm_api (~> 0.5.0)
+      hash_at_path (~> 0.1)
+      rsolr (~> 2.0)
+      sidekiq (>= 3.5)
+      titleize (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -103,13 +116,6 @@ GEM
       regexp_parser (~> 1.2)
       uglifier
       xpath (~> 3.2)
-    cdmbl (0.18.0)
-      activesupport (>= 4.2)
-      contentdm_api (~> 0.5.0)
-      hash_at_path (~> 0.1)
-      rsolr (~> 2.0)
-      sidekiq (>= 3.5)
-      titleize (~> 1.4)
     childprocess (1.0.1)
       rake (< 13.0)
     chosen-rails (1.9.0)
@@ -472,7 +478,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-sidekiq
   capybara
-  cdmbl (= 0.18.0)
+  cdmbl!
   chosen-rails (~> 1.9)
   coffee-rails (~> 4.2)
   coveralls

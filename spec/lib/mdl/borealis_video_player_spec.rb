@@ -15,7 +15,6 @@ module MDL
             'BorealisVideo',
             type: 'kaltura_video',
             transcripts: ['A brief history of cat costumes'],
-            thumbnail: 'https://d1kue88aredzk1.cloudfront.net/video-3.png',
             video_id: 'v568',
             playlist_id: nil
           )
@@ -33,7 +32,7 @@ module MDL
           )
           expect(viewer_config['wrapper_height']).to eq '100%'
           expect(viewer_config['wrapper_width']).to eq '100%'
-          expect(viewer_config['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/video-1.png'
+          expect(viewer_config['thumbnail']).to eq '/images/video-1.png'
         end
       end
 
@@ -44,7 +43,6 @@ module MDL
             type: 'kaltura_video_playlist',
             playlist_id: 'video123',
             transcripts: ['A brief history of cat costumes'],
-            thumbnail: 'https://d1kue88aredzk1.cloudfront.net/video-3.png',
             video_id: 'v568'
           )
         end
@@ -64,7 +62,7 @@ module MDL
           )
           expect(viewer_config['wrapper_height']).to eq '100%'
           expect(viewer_config['wrapper_width']).to eq '100%'
-          expect(viewer_config['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/video-1.png'
+          expect(viewer_config['thumbnail']).to eq '/images/video-1.png'
         end
       end
     end
