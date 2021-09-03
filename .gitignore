@@ -29,6 +29,7 @@ data.tar
 /public/uploads
 /node_modules
 public/assets/**
+public/uv
 
 mdl-solr-core/
 .env
