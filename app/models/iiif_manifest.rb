@@ -97,10 +97,10 @@ class IiifManifest
         }
       ]
     }.tap do |hsh|
-      if single_av_media?
-        hsh['duration'] = borealis_document.duration
-      else
+      if asset.playlist?
         hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
+      else
+        hsh['duration'] = borealis_document.duration
       end
       width, height = annotation_aspect(asset)
 
@@ -224,18 +224,6 @@ class IiifManifest
 
   def rangeable_assets
     canvasable_assets.select { |a| a.playlist_data.any? }
-  end
-
-  ###
-  # Until we can get playlist components' duration values indexed,
-  # we have to consider only single audio and video documents to
-  # be valid A/V media. UniversalViewer will require a more complex
-  # manifest for a playlist
-  def single_av_media?
-    [
-      'kaltura_audio',
-      'kaltura_video'
-    ].include?(borealis_document.initial_viewer_type)
   end
 
   def annotation_body_type(asset)

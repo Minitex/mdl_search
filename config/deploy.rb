@@ -45,6 +45,13 @@ set :passenger_restart_with_touch, true
 
 # Restart all sidekiq instances so they can pick up the new code
 namespace :deploy do
+  task :prep_uv do
+    on roles(:all) do |host|
+      within release_path do
+        execute './prep_uv.sh'
+      end
+    end
+  end
   ###
   # Called by capistrano-sidekiq
   task :restart_sidekiq do
@@ -55,3 +62,5 @@ namespace :deploy do
     end
   end
 end
+
+after 'deploy:updated', 'deploy:prep_uv'
