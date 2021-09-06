@@ -28,7 +28,10 @@ module MDL
       super
 
       job.update(completed_at: Time.current)
-      notify_complete if indexing_finished?(indexing_run)
+      if indexing_finished?(indexing_run)
+        notify_complete
+        SolrClient.new.commit
+      end
     end
 
     private
