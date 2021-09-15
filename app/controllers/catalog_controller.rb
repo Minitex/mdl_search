@@ -13,6 +13,8 @@ class CatalogController < ApplicationController
   end
 
   include Blacklight::Catalog
+  include BlacklightOaiProvider::Controller
+
   include BlacklightRangeLimit::ControllerOverride
   include BlacklightAdvancedSearch::Controller
 
@@ -386,5 +388,23 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    ###
+    # OAI
+    config.oai = {
+      provider: {
+        repository_name: 'Minnesota Digital Library',
+        repository_url: 'https://reflections.mndigital.org/catalog/oai',
+        record_prefix: 'oai:reflections.mndigital.org',
+        admin_email: 'swans062@umn.edu',
+        sample_id: 'sll:22470'
+      },
+      document: OpenStruct.new(
+        set_model: OaiSet,
+        set_fields: [
+          { solr_field: 'oai_set_ssi' }
+        ]
+      )
+    }
   end
 end

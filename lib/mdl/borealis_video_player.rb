@@ -1,7 +1,7 @@
 module MDL
   class BorealisVideoPlayer < BorealisAssetsViewer
     def to_viewer
-      (asset.video_playlist_id) ? playlist : player
+      (asset.playlist_id) ? playlist : player
     end
 
     def player
@@ -17,7 +17,7 @@ module MDL
         'entry_id' => asset.video_id,
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/video-1.png"
+        'thumbnail' => '/images/video-1.png'
       }
     end
 
@@ -29,7 +29,7 @@ module MDL
         'uiconf_id' => 38719361,
         'flashvars' => {
           'streamerType' => 'auto',
-          'playlistAPI.kpl0Id' => asset.video_playlist_id,
+          'playlistAPI.kpl0Id' => asset.playlist_id,
         },
         'transcript' => {
           'texts' => asset.transcripts,
@@ -37,7 +37,7 @@ module MDL
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/video-1.png"
+        'thumbnail' => '/images/video-1.png'
       }
     end
   end

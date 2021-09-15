@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_015120) do
+ActiveRecord::Schema.define(version: 2021_04_11_202118) do
 
   create_table "bookmarks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_01_22_015120) do
   create_table "indexing_runs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "indexing_run_id"
+    t.string "job_id", null: false
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["completed_at"], name: "index_jobs_on_completed_at"
+    t.index ["indexing_run_id"], name: "index_jobs_on_indexing_run_id"
+    t.index ["job_id"], name: "index_jobs_on_job_id"
   end
 
   create_table "searches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  concern :oai_provider, BlacklightOaiProvider::Routes.new
+
 
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
   get 'thumbnail_link/:id' => 'thumbnail_links#show'
 
   get ":page" => "pages#show", constraints: lambda { |request|
-    request.params[:page] != 'catalog' && request.params[:page] != 'sidekiq'
+    %w(catalog sidekiq indexing).exclude?(request.params[:page])
   }
 
   require 'sidekiq/web'
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+    concerns :oai_provider
+
     concerns :searchable
     concerns :range_searchable
   end
@@ -60,6 +64,8 @@ Rails.application.routes.draw do
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'
 
+  get 'indexing' => 'indexing#index', as: 'indexing'
+  post 'indexing' => 'indexing#create'
 
   devise_for :users, skip: [:logout]
   devise_scope :user do

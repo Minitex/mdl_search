@@ -20,4 +20,4 @@ set :sidekiq_processes, 2
 
 set :keep_releases, 2
 
-set :branch, 'develop'
+set :branch, 'main'

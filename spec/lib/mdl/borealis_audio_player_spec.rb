@@ -36,7 +36,7 @@ module MDL
       expect(viewer(audio)['transcript']).to eq( { "texts"=>["Audio One blah"], "label"=>"Audio" })
       expect(viewer(audio)['wrapper_height']).to eq '100%'
       expect(viewer(audio)['wrapper_width']).to eq '100%'
-      expect(viewer(audio)['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/audio-3.png'
+      expect(viewer(audio)['thumbnail']).to eq '/images/audio-3.png'
     end
 
     it 'produces a configuration for an Audio playlist' do
@@ -51,7 +51,7 @@ module MDL
       expect(viewer(audio_playlist)['transcript']).to eq( { "texts"=>["Audio One blah"], "label"=>"Audio Playlist" })
       expect(viewer(audio_playlist)['wrapper_height']).to eq '100%'
       expect(viewer(audio_playlist)['wrapper_width']).to eq '100%'
-      expect(viewer(audio_playlist)['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/audio-3.png'
+      expect(viewer(audio_playlist)['thumbnail']).to eq '/images/audio-3.png'
     end
 
     def viewer(asset)

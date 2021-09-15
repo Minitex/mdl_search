@@ -4,33 +4,67 @@ require_relative '../../../lib/mdl/borealis_video_player.rb'
 require_relative '../../../lib/mdl/borealis_video.rb'
 module MDL
   describe BorealisVideoPlayer do
-    let(:video) do
-      instance_double('BorealisVideo',
-                      type: 'kaltura_video',
-                      transcripts: ['A brief history of cat costumes'],
-                      thumbnail: 'https://d1kue88aredzk1.cloudfront.net/video-3.png',
-                      video_id: 'v568')
-    end
+    describe '#to_viewer' do
+      subject(:viewer_config) do
+        BorealisVideoPlayer.new(assets: [video]).to_viewer
+      end
 
-    it 'produces a configuration for Videos' do
-      expect(video).to receive(:transcripts)
-      expect(video).to receive(:video_playlist_id)
-      expect(viewer(video)).to be_kind_of(Hash)
-      expect(viewer(video)['type']).to eq 'kaltura_video'
-      expect(viewer(video)['targetId']).to eq 'kaltura_player_video'
-      expect(viewer(video)['wid']).to eq '_1369852'
-      expect(viewer(video)['uiconf_id']).to eq 38683631
-      expect(viewer(video)['entry_id']).to eq 'v568'
-      expect(viewer(video)['transcript']).to eq(
-        'texts' => ['A brief history of cat costumes'], 'label' => 'Video'
-      )
-      expect(viewer(video)['wrapper_height']).to eq '100%'
-      expect(viewer(video)['wrapper_width']).to eq '100%'
-      expect(viewer(video)['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/video-1.png'
-    end
+      context 'when the asset type is "kaltura_video"' do
+        let(:video) do
+          instance_double(
+            'BorealisVideo',
+            type: 'kaltura_video',
+            transcripts: ['A brief history of cat costumes'],
+            video_id: 'v568',
+            playlist_id: nil
+          )
+        end
 
-    def viewer(asset)
-      @viewer ||= BorealisVideoPlayer.new(assets: [asset]).to_viewer
+        it 'produces a video configuration' do
+          expect(viewer_config['type']).to eq 'kaltura_video'
+          expect(viewer_config['targetId']).to eq 'kaltura_player_video'
+          expect(viewer_config['wid']).to eq '_1369852'
+          expect(viewer_config['uiconf_id']).to eq 38683631
+          expect(viewer_config['entry_id']).to eq 'v568'
+          expect(viewer_config['transcript']).to eq(
+            'texts' => ['A brief history of cat costumes'],
+            'label' => 'Video'
+          )
+          expect(viewer_config['wrapper_height']).to eq '100%'
+          expect(viewer_config['wrapper_width']).to eq '100%'
+          expect(viewer_config['thumbnail']).to eq '/images/video-1.png'
+        end
+      end
+
+      context 'when the asset type is "kaltura_video_playlist"' do
+        let(:video) do
+          instance_double(
+            'BorealisVideo',
+            type: 'kaltura_video_playlist',
+            playlist_id: 'video123',
+            transcripts: ['A brief history of cat costumes'],
+            video_id: 'v568'
+          )
+        end
+
+        it 'produces a video playlist configuration' do
+          expect(viewer_config['type']).to eq 'kaltura_video_playlist'
+          expect(viewer_config['targetId']).to eq 'kaltura_player_playlist'
+          expect(viewer_config['wid']).to eq '_1369852'
+          expect(viewer_config['uiconf_id']).to eq 38719361
+          expect(viewer_config['flashvars']).to eq(
+            'streamerType' => 'auto',
+            'playlistAPI.kpl0Id' => 'video123'
+          )
+          expect(viewer_config['transcript']).to eq(
+            'texts' => ['A brief history of cat costumes'],
+            'label' => 'Video Playlist'
+          )
+          expect(viewer_config['wrapper_height']).to eq '100%'
+          expect(viewer_config['wrapper_width']).to eq '100%'
+          expect(viewer_config['thumbnail']).to eq '/images/video-1.png'
+        end
+      end
     end
   end
 end

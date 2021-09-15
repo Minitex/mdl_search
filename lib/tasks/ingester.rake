@@ -15,12 +15,14 @@ namespace :mdl_ingester do
     run_etl!(etl.set_specs)
   end
 
-  desc "delete batches of unpublished records"
+  desc "Delete records from Solr that are no longer in CONTENTdm"
   ##
   # e.g. rake mdl_ingester:delete
-  task :delete do
+  task delete: [:environment] do
+    Raven.send_event(Raven::Event.new(message: 'Batch delete job started'))
     CDMBL::BatchDeleterWorker.perform_async(
       0,
+      50,
       'oai:cdm16022.contentdm.oclc.org:',
       config[:oai_endpoint],
       config[:solr_config][:url]
@@ -29,15 +31,14 @@ namespace :mdl_ingester do
 
   def run_etl!(set_specs = [])
     puts "Indexing Sets: '#{set_specs.join(', ')}'"
-    CDMBL::ETLBySetSpecs.new(
-      set_specs: set_specs,
-      etl_config: config,
-      etl_worker_klass: MDL::ETLWorker
-    ).run!
+    args = { set_specs: set_specs }
+    args[:from] = 8.days.ago.to_date.iso8601 unless ENV['INGEST_ALL']
+    etl.run(args)
   end
 
   desc 'Launch a background job to index a single record.'
   task :record, [:id] => :environment  do |t, args|
+    IndexingRun.create!
     MDL::TransformWorker.perform_async(
       [args[:id].split(':')],
       { url: config[:solr_config][:url]},

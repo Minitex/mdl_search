@@ -39,7 +39,7 @@
     "prop-types": "^15.6.0",
     "rails-erb-loader": "^5.2.1",
     "react": "15.4.1",
-    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#cd3aa11a017c",
+    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#439996cb",
     "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#52091d617b5d",
     "react-dom": "15.4.1",
     "react-spinkit": "^3.0.0",

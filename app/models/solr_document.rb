@@ -7,6 +7,7 @@ class SolrDocument
   include Spotlight::SolrDocument
 
   include Spotlight::SolrDocument::AtomicUpdates
+  include BlacklightOaiProvider::SolrDocument
 
 
   # self.unique_key = 'id'
@@ -24,7 +25,23 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension( Blacklight::Document::DublinCore)
 
-
+  ###
+  # These define the metadata that's returned for each record
+  # when calling the OAI GetRecord verb
+  field_semantics.merge!(
+    creator: 'creator_tesi',
+    date: 'dat_ssi',
+    subject: 'subject_ssim',
+    title: 'title_ssi',
+    language: 'language_ssi',
+    format: 'physical_format_tesi',
+    type: 'type_ssi',
+    description: 'description_ts',
+    source: 'publishing_agency_ssi',
+    relation: 'topic_ssim',
+    publisher: 'contributing_organization_ssi',
+    rights: 'rights_ssi'
+  )
 
   def more_like_this
     mlt_assets solr.more_like_this(query)['response']['docs']
@@ -38,6 +55,9 @@ class SolrDocument
     "(#{mlt_values}) AND -#{self.id}"
   end
 
+  def sets
+    OaiSet.sets_for(self)
+  end
 
   private
 
@@ -61,15 +81,15 @@ class SolrDocument
   def mlt_assets(mlt)
     mlt.inject([]) do |sum, v|
       collection, id = v['id'].split(':')
-      sum <<  {
-                solr_doc: v,
-                id: id,
-                borealis_fragment: v['borealis_fragment_ssi'],
-                item_id: v['id'],
-                collection: collection,
-                title: v['title_ssi'],
-                type: v['type_ssi']
-              }
+      sum << {
+        solr_doc: v,
+        id: id,
+        borealis_fragment: v['borealis_fragment_ssi'],
+        item_id: v['id'],
+        collection: collection,
+        title: v['title_ssi'],
+        type: v['type_ssi']
+      }
     end
   end
 end

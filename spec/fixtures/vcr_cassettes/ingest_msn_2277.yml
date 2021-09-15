@@ -1,0 +1,214 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://server16022.contentdm.oclc.org/dmwebservices/index.php?q=dmGetItemInfo/msn/2277/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - server16022.contentdm.oclc.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 16 Jan 2021 03:10:49 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1078'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"title":"Streetcar at Mahtomedi wye, Mahtomedi, Minnesota","photog":{},"contri":{},"descri":"A
+        streetcar on the wye track at the end of the line in Mahtomedi.","dat":"1940''s","publia":{},"dimens":{},"genera":"Transportation","type":"Still
+        Image","physic":"Black-and-white photographs","specif":"Street-railroads;
+        Transportation;","subjec":"Streetcar","city":"Mahtomedi","county":"Hennepin","state":"Minnesota","countr":"United
+        States","geogra":{},"geonam":"https:\/\/sws.geonames.org\/5036296\/","langua":{},"par":{},"contra":"Minnesota
+        Streetcar Museum","contac":"Minnesota Streetcar Museum, P. O. Box 16509, Minneapolis,
+        MN 55416-0509, www.trolleyride.org","righta":"http:\/\/rightsstatements.org\/vocab\/InC\/1.0\/","rights":"In
+        Copyright","use":"http:\/\/rightsstatements.org\/vocab\/InC\/1.0\/","rightb":"This
+        Item is protected by copyright and\/or related rights. You are free to use
+        this Item in any way that is permitted by the copyright and related rights
+        legislation that applies to your use. For other uses you need to obtain permission
+        from the rights-holder(s).","expect":{},"identi":"msm_246","resour":"umn385473","projec":"Minnesota
+        Reflections 2018-19;","fiscal":"Funding provided to the Minnesota Digital
+        Library through the Minnesota Arts and Cultural Heritage Fund, a component
+        of the Minnesota Clean Water, Land and Legacy constitutional amendment, ratified
+        by Minnesota voters in 2008.","publis":"University of Minnesota","date":"11\/27\/2018
+        15:15","format":"image\/jp2","digspe":"image\/tiff","digspa":"37359612","digspb":"24","digspc":"800","digspd":"none","digspf":"4200","digspg":"2963","digsph":"Epson
+        11000XL scanner","digspi":"Adobe Photoshop CS","digspj":"Windows XP","digspk":"faf39dcf36c20bdc6864b6645fbfb0c8","transc":{},"transl":{},"fullrs":"Volume19\/umn385473.tif","find":"2115.jp2","dmaccess":{},"dmimage":{},"dmcreated":"2019-06-14","dmmodified":"2019-11-08","dmoclcno":{},"dmrecord":"2277","restrictionCode":"1","cdmfilesize":"1318891","cdmfilesizeformatted":"1.26
+        MB","cdmprintpdf":"0","cdmhasocr":"0","cdmisnewspaper":"0"}'
+    http_version:
+  recorded_at: Sat, 16 Jan 2021 03:10:49 GMT
+- request:
+    method: get
+    uri: https://server16022.contentdm.oclc.org/dmwebservices/index.php?q=dmGetCompoundObjectInfo/msn/2277/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - server16022.contentdm.oclc.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 16 Jan 2021 03:10:50 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '56'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"message":"Requested item is not compound","code":"-2"}'
+    http_version:
+  recorded_at: Sat, 16 Jan 2021 03:10:50 GMT
+- request:
+    method: get
+    uri: http://ws.geonames.net/getJSON?geonameId=5036296&token=&username=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ws.geonames.net
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sat, 16 Jan 2021 03:10:50 GMT
+      Server:
+      - Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":{"message":"Please provide a valid username for the GeoNames
+        Premium Web Service or use the free api.geonames.org server. Thank you for
+        your understanding.","value":10}}'
+    http_version:
+  recorded_at: Sat, 16 Jan 2021 03:10:50 GMT
+- request:
+    method: get
+    uri: http://ws.geonames.net/getJSON?geonameId=5036296&token=&username=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ws.geonames.net
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sat, 16 Jan 2021 03:10:50 GMT
+      Server:
+      - Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":{"message":"Please provide a valid username for the GeoNames
+        Premium Web Service or use the free api.geonames.org server. Thank you for
+        your understanding.","value":10}}'
+    http_version:
+  recorded_at: Sat, 16 Jan 2021 03:10:50 GMT
+- request:
+    method: get
+    uri: http://ws.geonames.net/getJSON?geonameId=5036296&token=&username=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ws.geonames.net
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sat, 16 Jan 2021 03:10:50 GMT
+      Server:
+      - Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"status":{"message":"Please provide a valid username for the GeoNames
+        Premium Web Service or use the free api.geonames.org server. Thank you for
+        your understanding.","value":10}}'
+    http_version:
+  recorded_at: Sat, 16 Jan 2021 03:10:50 GMT
+recorded_with: VCR 3.0.3

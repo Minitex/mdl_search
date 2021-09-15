@@ -27,7 +27,7 @@ end
 # Pick up new CDM records daily
 every :friday, at: '11pm' do
   runner 'Index All Items (from all collections)'
-  rake 'ingest:collections'
+  rake 'mdl_ingester:collections'
 end
 
 every 1.day, at: '12:00am' do

@@ -5,12 +5,14 @@ require_relative '../../../lib/mdl/borealis_ppt.rb'
 module MDL
   describe BorealisPPTViewer do
     let(:ppt) do
-      instance_double('BorealisPPT',
-                      collection: 'ppts',
-                      id: 33,
-                      type: 'ppt',
-                      text: '(Download)',
-                      thumbnail: 'https://d1kue88aredzk1.cloudfront.net/audio-3.png')
+      instance_double(
+        'BorealisPPT',
+        collection: 'ppts',
+        id: 33,
+        type: 'ppt',
+        text: '(Download)',
+        thumbnail: '/images/audio-3.png'
+      )
     end
 
     it 'produces a configuration for Audios' do
@@ -22,7 +24,7 @@ module MDL
       expect(viewer(ppt)['text']).to eq '(Download)'
       expect(viewer(ppt)['transcript']).to eq('texts' => [],
                                               'label' => 'PowerPoint')
-      expect(viewer(ppt)['thumbnail']).to eq 'https://d1kue88aredzk1.cloudfront.net/audio-3.png'
+      expect(viewer(ppt)['thumbnail']).to eq '/images/audio-3.png'
     end
 
     def viewer(asset)

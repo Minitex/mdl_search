@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './multi_date_formatter'
+
 module MDL
   # CDMBL field mappings
   class Transformer
@@ -30,6 +32,7 @@ module MDL
       [
         {dest_path: 'location_llsi', origin_path: '/', formatters: [CDMBL::LocationFormatter]},
         {dest_path: 'id', origin_path: 'id', formatters: [CDMBL::StripFormatter, CDMBL::IDFormatter]},
+        {dest_path: 'oai_set_ssi', origin_path: '/', formatters: [CDMBL::AddSetSpecFormatter, MDL::OaiSetFormatter]},
         {dest_path: 'setspec_ssi', origin_path: '/', formatters: [CDMBL::AddSetSpecFormatter, CDMBL::SetSpecFormatter]},
         {dest_path: 'collection_name_ssi', origin_path: '/', formatters: [CDMBL::AddSetSpecFormatter, CDMBL::CollectionNameFormatter]},
         {dest_path: 'collection_name_tei', origin_path: '/', formatters: [CDMBL::AddSetSpecFormatter, CDMBL::CollectionNameFormatter]},

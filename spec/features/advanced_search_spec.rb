@@ -12,6 +12,7 @@ describe 'advanced search' do
     end
 
     it 'can find a record by text contained in its transcript' do
+      pending 'Transcript is temporarily excluded from advanced search'
       visit '/'
       click_link 'Advanced Search'
       fill_in 'Transcript', with: '"fifty percent cut"'

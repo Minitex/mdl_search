@@ -22,6 +22,7 @@ module MDL
         collection: collection,
         transcripts: transcripts,
         transcript: "#{title} \n #{transcripts.join("\n")}",
+        subtitle: subtitle,
         title: title,
         assets: assets,
         thumbnail: thumbnail
@@ -41,6 +42,10 @@ module MDL
     end
 
     private
+
+    def subtitle
+      Array(document['identifier_ssim'])[id.to_i]
+    end
 
     def sanitize_field(field)
       (field == {} || field == false || field == '') ? nil : field

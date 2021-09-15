@@ -98,7 +98,7 @@ http_interactions:
   recorded_at: Mon, 04 Jan 2021 01:51:33 GMT
 - request:
     method: get
-    uri: http://cdm16022.contentdm.oclc.org/oai/oai.php?verb=ListSets
+    uri: https://cdm16022.contentdm.oclc.org/oai/oai.php?verb=ListSets
     body:
       encoding: US-ASCII
       string: ''

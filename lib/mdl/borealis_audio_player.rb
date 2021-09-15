@@ -18,7 +18,7 @@ module MDL
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/audio-3.png"
+        'thumbnail' => "/images/audio-3.png"
       }
     end
 
@@ -38,7 +38,7 @@ module MDL
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/audio-3.png"
+        'thumbnail' => "/images/audio-3.png"
       }
     end
   end

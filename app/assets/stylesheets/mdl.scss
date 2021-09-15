@@ -725,10 +725,12 @@ form.range_limit .btn-default {
 .panel-title > a {
 	text-decoration: none !important;
 	text-transform: none !important;
-}
-
-.panel-title > a:hover {
-	color: $black !important;
+	&:hover {
+		color: $black !important;
+	}
+	&:focus {
+		color: $white !important;
+	}
 }
 
 .constraints-container {

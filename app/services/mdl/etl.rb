@@ -5,7 +5,7 @@ module MDL
                 :field_mappings,
                 :filter_callback,
                 :set_spec_filter
-    def initialize(oai_endpoint: 'http://cdm16022.contentdm.oclc.org/oai/oai.php',
+    def initialize(oai_endpoint: 'https://cdm16022.contentdm.oclc.org/oai/oai.php',
                   set_spec_pattern: /^ul_([a-zA-Z0-9])*\s-\s/,
                   field_mappings:  Transformer.field_mappings,
                   filter_callback: CDMBL::RegexFilterCallback,
@@ -17,6 +17,19 @@ module MDL
       @set_spec_filter  = set_spec_filter
     end
 
+    def run(set_specs: [], from: nil)
+      IndexingRun.create!
+      msg_which = set_specs.size > 1 ? "#{set_specs.size} collections" : set_specs.first
+      msg_from = from ? "from #{from}" : ''
+      message = "ETL Started for #{msg_which} #{msg_from}".rstrip
+      Raven.send_event(Raven::Event.new(message: message))
+      CDMBL::ETLBySetSpecs.new(
+        set_specs: set_specs,
+        etl_config: config.tap { |c| c.merge!(from: from) if from },
+        etl_worker_klass: MDL::ETLWorker
+      ).run!
+    end
+
     def config
       {
         oai_endpoint: oai_endpoint,
@@ -26,7 +39,9 @@ module MDL
         max_compounds: 1,
         batch_size: 5,
         solr_config: solr_config
-      }
+      }.tap do |hsh|
+        hsh[:from] = 8.days.ago.to_date.iso8601 unless ENV['INGEST_ALL']
+      end
     end
 
     def set_specs

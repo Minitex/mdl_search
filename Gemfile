@@ -8,7 +8,7 @@ end
 gem 'mysql2', '~> 0.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.5'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -70,20 +70,23 @@ gem 'blacklight', '~> 6.20'
 gem 'blacklight_advanced_search', '~> 6.4'
 gem 'blacklight_range_limit', '~> 6.5'
 gem 'blacklight-spotlight', '~> 2.13'
+gem 'blacklight_oai_provider', '~> 6.0'
 gem 'chosen-rails', '~> 1.9'
 gem 'rsolr', '2.3.0'
 gem 'globalid', '0.4.2'
 gem 'webpacker', '2.0'
+gem 'cancancan', '~> 3.2.1'
 
 # # CONTENTdm ETL
 gem 'devise', '4.6.2'
 gem 'devise-guests', '0.6.0'
-gem 'hash_at_path', '0.1.6'
-gem 'cdmbl', '0.17.1'
+gem 'hash_at_path', github: 'UMNLibraries/hash_at_path', ref: '92dafd3b06de2cbc861b9ad80dcadb3ed7274597'
+gem 'contentdm_api', github: 'UMNLibraries/contentdm_api', ref: '847a70689813c03990db2ebb622d0beee7657688'
+gem 'cdmbl', github: 'Minitex/cdmbl', tag: 'v0.19.0'
 gem 'sidekiq', '5.2.7'
 gem 'sinatra', '2.0.4', require: false
 gem 'sidekiq-failures', '1.0.0'
-gem 'whenever', '0.9.7', :require => false
+gem 'whenever', '0.9.7', require: false
 
 # Autmatically link URLs in citation details
 gem 'rinku', '2.0.2'
@@ -95,3 +98,4 @@ gem 'blacklight-gallery', '>= 0.3.0'
 gem 'blacklight-oembed', '~> 0.3'
 
 gem 'autoprefixer-rails', '< 10.0' # Constraint to accommodate Node 8 on QA/Prod
+gem 'sentry-raven'

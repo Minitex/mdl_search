@@ -52,13 +52,38 @@ module MdlBlacklightHelper
       label = index_presenter(doc).label field
     end
 
+    document_show_link(document: doc, label: label, **opts)
+  end
+
+  def document_show_link(document:, label:, **opts)
+    link_to(
+      raw(label),
+      url_for(
+        controller: 'catalog',
+        action: 'show',
+        id: document.id,
+        anchor: build_anchor(document)
+      ),
+      document_link_params(document, opts)
+        .merge(data: { turbolinks: false })
+    )
+  end
+
+  private
+
+  def build_anchor(doc)
     anchor = doc['borealis_fragment_ssi']
-    if anchor == '/kaltura_video' && doc['kaltura_video_playlist_ssi']
+    if anchor == '/kaltura_audio' && doc['kaltura_audio_playlist_ssi']
+      anchor = '/kaltura_audio_playlist'
+    end
+
+    if anchor == '/kaltura_video' && (doc['kaltura_video_playlist_ssi'] || doc['kaltura_audio_playlist_ssi'])
       anchor = '/kaltura_video_playlist'
     end
 
-    link_to raw(label),
-            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: anchor),
-            document_link_params(doc, opts).merge(data: { turbolinks: false })
+    if sought_child_index = Array(doc['identifier_ssim']).index(params[:q])
+      anchor = "/image/#{sought_child_index}" if anchor.match(/^\/image\/\d+/)
+    end
+    anchor
   end
 end
