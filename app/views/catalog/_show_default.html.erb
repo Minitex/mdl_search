@@ -1,4 +1,17 @@
-<% borealis_doc = MDL::BorealisDocument.new(document: document) %>
+<%
+  borealis_doc = MDL::BorealisDocument.new(document: document)
+  config = []
+  config << MDL::CiteDetails.new(solr_doc: document).to_hash
+  config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
+  config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
+  config << MDL::CiteTranscript.new(solr_doc: document).to_hash
+  config = config.map(&:presence).compact
+%>
+
+<%= content_tag :div,
+  id: "viewer_data",
+  citationConfig: config.to_json do %>
+<% end %>
 
 <div class="row">
   <div class="col-md-12">
@@ -17,7 +30,7 @@
   </div>
   <div class="col-md-3">
     <div id="sidebar">
-        <%= render_document_sidebar_partial %>
+       <%= render_document_sidebar_partial %>
     </div>
   </div>
 </div>
@@ -32,6 +45,7 @@
     with_popup: true
   }
 %>
+
 <% content_for(:head) do %>
   <link rel="stylesheet" href="/uv/uv.css">
   <%= javascript_pack_tag 'universalviewer' %>
