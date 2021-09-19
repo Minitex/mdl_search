@@ -4,15 +4,14 @@ Rails.application.routes.draw do
 
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
-  root to: 'spotlight/exhibits#index'
-  mount Spotlight::Engine, at: 'spotlight'
+  mount Spotlight::Engine, at: '/exhibits'
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
 
   get "nearbys/:coordinates/(:distance)" => "nearbys#show"
-#  root to: "catalog#index" # replaced by spotlight root path
+  root to: "catalog#index" # replaced by spotlight root path
 
   get 'thumbnail_link/:id' => 'thumbnail_links#show'
 
