@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'mysql2', '~> 0.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -98,4 +100,6 @@ gem 'blacklight-gallery', '>= 0.3.0'
 gem 'blacklight-oembed', '~> 0.3'
 
 gem 'autoprefixer-rails', '< 10.0' # Constraint to accommodate Node 8 on QA/Prod
+gem 'kaltura-client', '17.5.0'
+
 gem 'sentry-raven'
