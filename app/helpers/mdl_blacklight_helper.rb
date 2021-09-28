@@ -52,9 +52,21 @@ module MdlBlacklightHelper
       label = index_presenter(doc).label field
     end
 
-    link_to raw(label),
-            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: build_anchor(doc)),
-            document_link_params(doc, opts).merge(data: { turbolinks: false })
+    document_show_link(document: doc, label: label, **opts)
+  end
+
+  def document_show_link(document:, label:, **opts)
+    link_to(
+      raw(label),
+      url_for(
+        controller: 'catalog',
+        action: 'show',
+        id: document.id,
+        anchor: build_anchor(document)
+      ),
+      document_link_params(document, opts)
+        .merge(data: { turbolinks: false })
+    )
   end
 
   private

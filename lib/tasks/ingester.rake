@@ -19,14 +19,8 @@ namespace :mdl_ingester do
   ##
   # e.g. rake mdl_ingester:delete
   task delete: [:environment] do
-    Raven.send_event(Raven::Event.new(message: 'Batch delete job started'))
-    CDMBL::BatchDeleterWorker.perform_async(
-      0,
-      50,
-      'oai:cdm16022.contentdm.oclc.org:',
-      config[:oai_endpoint],
-      config[:solr_config][:url]
-    )
+    puts '[DEPRECATED] please switch to `rake prune:all`'
+    Rake::Task['prune:all'].invoke
   end
 
   def run_etl!(set_specs = [])
