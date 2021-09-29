@@ -8,6 +8,8 @@
   config = config.map(&:presence).compact
 %>
 
+<div class="metadata" data-metadata='<%= document_metadata(document).to_json %>'></div>
+
 <%= content_tag :div,
   id: "viewer_data",
   citationConfig: config.to_json do %>
