@@ -70,4 +70,13 @@ module MdlBlacklightHelper
         .merge(data: { turbolinks: false })
     )
   end
+
+  def document_metadata(document)
+    document.slice(
+      'id',
+      'contributing_organization_ssi',
+      'type_ssi',
+      'collection_name_ssi'
+    )
+  end
 end
