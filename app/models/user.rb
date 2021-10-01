@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  include Spotlight::User
   if Blacklight::Utils.needs_attr_accessible?
     attr_accessible :email, :password, :password_confirmation
   end
@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ###
+  # Normally, this would be provided by device_invitable via
+  # `devise :invitable`. However, since we're not doing that
+  # yet, this will have to do.
+  def invited_to_sign_up?
+    false
+  end
 
   # Bitwise comparison e.g.:
   # NOTE: "**" = exponent syntax (^) in Ruby
@@ -26,23 +33,23 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin]
 
-  def roles=(roles)
+  def user_roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def admin?
-    roles.include? 'admin'
+    has_role? 'admin'
   end
 
-  def roles
+  def user_roles
     ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
   end
 
   def has_role?(role)
-    roles.include? role.to_s
+    user_roles.include? role.to_s
   end
 
   def has_one_of_these_roles?(check_roles)
-    check_roles.map {|role| roles.include? role.to_s }.include?(true)
+    check_roles.any? { |role| has_role?(role.to_s) }
   end
 end

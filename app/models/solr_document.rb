@@ -2,6 +2,11 @@
 class SolrDocument
 
   include Blacklight::Solr::Document
+  include Blacklight::Gallery::OpenseadragonSolrDocument
+
+  include Spotlight::SolrDocument
+
+  include Spotlight::SolrDocument::AtomicUpdates
   include BlacklightOaiProvider::SolrDocument
 
 

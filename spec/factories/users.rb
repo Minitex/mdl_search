@@ -5,7 +5,13 @@ FactoryGirl.define do
 
     trait :admin do
       after(:build) do |user|
-        user.roles = ['admin']
+        user.user_roles = ['admin']
+      end
+    end
+
+    trait :visitor do
+      after(:create) do |user|
+        user.roles.delete_all
       end
     end
   end

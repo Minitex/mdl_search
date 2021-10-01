@@ -26,16 +26,20 @@
 
   <div class="row">
     <div class="col-md-12">
-      <%= javascript_pack_tag 'viewer' %>
+      <% content_for(:webpack_bundles) do %>
+        <%= javascript_pack_tag 'viewer' %>
+      <% end %>
       <div id="react-borealis-viewer" ></div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-9">
-      
+
       <%= render 'rights_statement', config: MDL::RightsConfig.new(url: document['rights_uri_ssi']) %>
-      <%= javascript_pack_tag 'citation' %>
+      <% content_for(:webpack_bundles) do %>
+        <%= javascript_pack_tag 'citation' %>
+      <% end %>
       <div id="react-citation-viewer" ></div>
     </div>
     <div class="col-md-3">
@@ -45,7 +49,9 @@
     </div>
   </div>
 
-  <%= javascript_pack_tag 'drawMap' %>
+  <% content_for(:webpack_bundles) do %>
+    <%= javascript_pack_tag 'drawMap' %>
+  <% end %>
   <%= render partial: 'map_view',
     locals: {
       coordinates: @document['coordinates_llsi'],

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Ability
-  include CanCan::Ability
+  include Spotlight::Ability
 
   def initialize(user)
     user ||= User.new
@@ -9,6 +9,7 @@ class Ability
     if user.admin?
       can :manage, :all
     end
+    super(user)
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

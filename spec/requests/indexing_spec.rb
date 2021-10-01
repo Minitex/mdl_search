@@ -10,7 +10,7 @@ describe 'self-service indexing' do
   end
 
   it 'is not available to non-admins' do
-    user = create(:user)
+    user = create(:user, :visitor)
     sign_in(user)
     get '/indexing'
 

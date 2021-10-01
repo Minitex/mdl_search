@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module MdlSearch
   class Application < Rails::Application
+    config.action_mailer.default_url_options = { host: "locahost:3000", from: "noreply@example.com" }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -37,5 +38,11 @@ module MdlSearch
 
     # Compress pages
     config.middleware.use Rack::Deflater
+
+    config.to_prepare do
+      Dir.glob("#{Rails.root}/app/overrides/**/*_override.rb").each do |override|
+        require_dependency override
+      end
+    end
   end
 end
