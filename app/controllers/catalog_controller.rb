@@ -68,6 +68,16 @@ class CatalogController < ApplicationController
     super
   end
 
+  def search_facet_url(*args)
+    if current_exhibit
+      exhibit_search_facet_url(*args)
+    else
+      ###
+      # Defined as an alias in ApplicationController
+      blacklight_search_facet_url(*args)
+    end
+  end
+
   # overrides /blacklight/controllers/concerns/blacklight/catalog
   # add a param to allow the search history to be cleared on an item click
   # get a single document from the index
@@ -125,6 +135,18 @@ class CatalogController < ApplicationController
     config.view.gallery.default = false
     config.view.gallery.partials = [:index]
     config.view.gallery.icon_class = "glyphicon-th"
+
+    ###
+    # Spotlight additions
+    config.view.gallery.partials += [:index_header]
+    config.view.masonry.partials = [:index]
+    config.view.slideshow.partials = [:index]
+    config.show.oembed_field = :oembed_url_ssm
+    config.show.partials.insert(1, :oembed)
+    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
+    config.show.partials.insert(1, :openseadragon)
+    config.document_solr_path = 'get'
+    config.document_unique_id_param = 'ids'
 
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'

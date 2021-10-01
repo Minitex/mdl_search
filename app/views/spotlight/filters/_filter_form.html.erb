@@ -1,0 +1,16 @@
+<div class="filter-form">
+<%= bootstrap_form_for [exhibit, filter], layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10', html: {class: "row"} do |f| %>
+  <%= f.text_field :field %>
+  <%= f.text_field :value %>
+  <%= hidden_field_tag :tab, 'filter' %>
+
+  <div class="form-actions">
+    <div class="primary-actions">
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
+      <% if filter.persisted? %>
+        <%= link_to 'Delete', spotlight_exhibit_filter_path(exhibit, filter), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

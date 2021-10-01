@@ -2,14 +2,16 @@ Rails.application.routes.draw do
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
 
+  mount Blacklight::Oembed::Engine, at: 'oembed'
+  mount Riiif::Engine => '/images', as: 'riiif'
+  mount Spotlight::Engine, at: '/exhibits'
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
 
   get "nearbys/:coordinates/(:distance)" => "nearbys#show"
-
-  root to: "catalog#index"
+  root to: "catalog#index" # replaced by spotlight root path
 
   get 'thumbnail_link/:id' => 'thumbnail_links#show'
 
@@ -45,6 +47,15 @@ Rails.application.routes.draw do
 
     collection do
       delete 'clear'
+    end
+  end
+
+  namespace :spotlight do
+    resources :exhibit do
+      ###
+      # Wires up to our app/overrides/spotlight/filters_controller_override.rb
+      # extension
+      resources :filters, only: [:destroy]
     end
   end
 

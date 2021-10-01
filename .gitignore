@@ -26,6 +26,7 @@
 cores/
 data.tar
 /public/packs
+/public/uploads
 /node_modules
 public/assets/**
 

@@ -16,7 +16,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer'
+gem 'execjs'
+# gem 'mini_racer', '~> 0.3.1'
 # # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.2'
@@ -65,12 +66,13 @@ group :test do
   gem 'webmock'
 end
 
-gem 'blacklight', '~> 6.10.1'
+gem 'blacklight', '~> 6.20'
 gem 'blacklight_advanced_search', '~> 6.4'
 gem 'blacklight_range_limit', '~> 6.5'
+gem 'blacklight-spotlight', '~> 2.13'
 gem 'blacklight_oai_provider', '~> 6.0'
 gem 'chosen-rails', '~> 1.9'
-gem 'rsolr', '2.0.2'
+gem 'rsolr', '2.3.0'
 gem 'globalid', '0.4.2'
 gem 'webpacker', '2.0'
 gem 'cancancan', '~> 3.2.1'
@@ -90,4 +92,10 @@ gem 'whenever', '0.9.7', require: false
 gem 'rinku', '2.0.2'
 gem 'redis-rails', '5.0.2'
 
+gem 'friendly_id'
+gem 'sitemap_generator'
+gem 'blacklight-gallery', '>= 0.3.0'
+gem 'blacklight-oembed', '~> 0.3'
+
+gem 'autoprefixer-rails', '< 10.0' # Constraint to accommodate Node 8 on QA/Prod
 gem 'sentry-raven'

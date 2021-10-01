@@ -12,7 +12,7 @@ describe User do
 
     context 'with admin role' do
       let(:user) do
-        User.new.tap { |u| u.roles = ['admin'] }
+        User.new.tap { |u| u.user_roles = ['admin'] }
       end
 
       it { is_expected.to be_able_to(:index, :collections) }

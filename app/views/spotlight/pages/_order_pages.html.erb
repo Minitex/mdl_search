@@ -1,0 +1,33 @@
+<%= curation_page_title t(:"spotlight.pages.index.#{page_collection_name}.header") %>
+<%= bootstrap_form_for @exhibit, url: polymorphic_path([:update_all, @exhibit, page_collection_name.to_sym]), layout: :horizontal, control_col: 'col-sm-10', html: {:'data-form-observer' => true} do |f| %>
+
+    <%= render partial: 'header', locals: {f: f} %>
+    <h3><%= t :'.pages_header' %></h3>
+    <p class="instructions"><%= t :'.instructions' %></p>
+    <div class="panel-group dd <%= page_collection_name %>_admin" id="nested-pages" data-behavior="nestable" <%= nestable_data_attributes(page_collection_name).html_safe %> >
+      <ol class="dd-list">
+        <%= f.fields_for page_collection_name do |p| %>
+          <%- if p.object.about_page? || p.object.top_level_page? -%>
+            <%= render partial: 'page', locals: {f: p, parent_form: f} %>
+          <%- end -%>
+        <% end %>
+      </ol>
+    </div>
+    <div class="form-actions pull-right">
+      <div class="primary-actions">
+        <%= button_tag action_label(page_collection_name, :update_all), class: "btn btn-primary", disabled: disable_save_pages_button? %>
+      </div>
+    </div>
+<%- end -%>
+<div>
+  <%= form_for @page, url: spotlight.polymorphic_path([@exhibit, page_collection_name.to_sym]), html: {class: "expanded-add-button"} do |f|%>
+    <a href='#add-new' class="btn btn-primary" data-turbolinks="false" data-expanded-add-button="true" data-field-target="[data-title-field]">
+      <%= t(:'.new_page') %> <span class="glyphicon glyphicon-chevron-right"></span>
+      <span data-title-field="true" class="input-field">
+        <%= f.text_field(:title) %>
+        <%= f.submit t(:'.save'), data: {behavior: "save"} %>
+        <%= f.submit t(:'.cancel'), data: {behavior: "cancel"} %>
+      </span>
+    </a>
+  <%- end -%>
+</div>

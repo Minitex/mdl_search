@@ -5,3 +5,10 @@ $grid-float-breakpoint: 992px;
 @import 'bootstrap';
 
 @import 'blacklight/blacklight';
+/*
+*= require bootstrap-tagsinput
+*/
+@import 'spotlight/variables_bootstrap';
+@import 'sir-trevor/main';
+@import 'leaflet';
+@import 'spotlight/spotlight';
