@@ -8,5 +8,11 @@ FactoryGirl.define do
         user.user_roles = ['admin']
       end
     end
+
+    trait :visitor do
+      after(:create) do |user|
+        user.roles.delete_all
+      end
+    end
   end
 end
