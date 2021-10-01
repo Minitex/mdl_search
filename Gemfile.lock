@@ -345,7 +345,7 @@ GEM
       rake
     mini_magick (4.11.0)
     mini_mime (1.1.1)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.6.1)
     minitest (5.14.4)
     multi_json (1.12.1)
     multi_xml (0.6.0)
@@ -357,8 +357,9 @@ GEM
     net-ssh (4.1.0)
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     oai (1.1.0)
       builder (>= 3.1.0)
       faraday
@@ -383,6 +384,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.9.1)
+    racc (1.5.2)
     rack (2.2.3)
     rack-contrib (2.3.0)
       rack (~> 2.0)
