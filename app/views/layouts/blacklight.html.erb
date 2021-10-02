@@ -37,6 +37,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
+    <%= content_for(:webpack_bundles) %>
 </head>
 
   <body class="<%= render_body_class %>">
