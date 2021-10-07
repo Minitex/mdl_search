@@ -139,8 +139,6 @@ class CatalogController < ApplicationController
     ###
     # Spotlight additions
     config.view.gallery.partials += [:index_header]
-    config.view.masonry.partials = [:index]
-    config.view.slideshow.partials = [:index]
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
