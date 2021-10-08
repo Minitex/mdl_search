@@ -43,6 +43,31 @@ namespace :mdl_ingester do
     )
   end
 
+  desc 'Index playlist data for A/V playlist documents'
+  task backfill_playlist_data: [:environment]  do |t, args|
+    client = SolrClient.new
+    response = client.connect.get('select', params: {
+      defType: 'edismax',
+      fq: 'kaltura_video_ssi:* | kaltura_audio_ssi:*',
+      qt: 'search',
+      rows: 1_000_000,
+      q: '*:*',
+      wt: 'json'
+    })
+    puts "Backfilling #{response['response']['numFound']} records..."
+
+    response['response']['docs'].each do |doc|
+       MDL::TransformWorker.perform_async(
+        [doc['id'].split(':')],
+        { url: config[:solr_config][:url]},
+        config[:cdm_endpoint],
+        config[:oai_endpoint],
+        config[:field_mappings],
+        false
+      )
+    end
+  end
+
   def config
     etl.config
   end
