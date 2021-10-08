@@ -80,7 +80,7 @@ gem 'webpacker', '2.0'
 gem 'cancancan', '~> 3.2.1'
 
 # # CONTENTdm ETL
-gem 'devise', '4.6.2'
+gem 'devise', '4.8.0'
 gem 'devise-guests', '0.6.0'
 gem 'hash_at_path', github: 'UMNLibraries/hash_at_path', ref: '92dafd3b06de2cbc861b9ad80dcadb3ed7274597'
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api', ref: '847a70689813c03990db2ebb622d0beee7657688'
