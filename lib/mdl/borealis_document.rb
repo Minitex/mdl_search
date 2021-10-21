@@ -36,12 +36,20 @@ module MDL
       @assets ||= to_assets
     end
 
+    ###
+    # TODO: clean this up. We're now indexing the manifest URL
+    # on the document, so this could probably just reference that
+    # field. Furthermore, since we're going to be indexing the
+    # entire manifest itself, we could stop with this entirely,
+    # and refer the UV to our iiif manifest route to return it.
     def manifest_url
       case assets.first
-      when BorealisVideo, BorealisAudio
+      when BorealisVideo, BorealisAudio, BorealisImage
         "/iiif/#{document['id']}/manifest.json"
       else
-        "https://cdm16022.contentdm.oclc.org/iiif/info/#{collection}/#{id}/manifest.json"
+        document.fetch('iiif_manifest_url_ssi') do
+          "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
+        end
       end
     end
 

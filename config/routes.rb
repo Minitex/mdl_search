@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   resources :iiif, only: [] do
     member do
       get :manifest
+      get :search
     end
   end
 
