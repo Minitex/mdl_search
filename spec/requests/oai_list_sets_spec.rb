@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'OAI ListSets verb' do
   before do
+    allow(MDL::Transformer::KalturaPlaylistDataFormatter).to receive(:format)
+      .and_return('{}')
     VCR.use_cassette('ingest_sll:22470') do
       Ingestion.ingest_record('sll:22470')
     end
