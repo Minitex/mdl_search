@@ -31,11 +31,11 @@ class IiifSearchResponse
     end
 
     def text_before
-      line_match[:before].strip
+      line_match && line_match[:before].strip
     end
 
     def text_after
-      line_match[:after].strip
+      line_match && line_match[:after].strip
     end
 
     def line_match
@@ -68,21 +68,37 @@ class IiifSearchResponse
   end
 
   def as_json(*)
+    base_response.tap do |hash|
+      hash['within']['total'] = response['numFound']
+      hash['resources'] = build_resources
+      hash['hits'] = build_hits
+    end
+  rescue => e
+    ###
+    # If something goes wrong, fall back to an empty response
+    # so the UI doesn't get stuck. If we were to just return a
+    # 500, UniversalViewer would get into an unrecoverable
+    # error state that would require a page refresh to fix.
+    Rails.logger.error("#{e.message}\n#{e.backtrace.take(5).join("\n")}")
+    base_response
+  end
+
+  private
+
+  def base_response
     {
       '@context' => CONTEXT,
       '@id' => id,
       '@type' => 'sc:AnnotationList',
       'within' => {
         '@type' => 'sc:Layer',
-        'total' => response['numFound']
+        'total' => 0
       },
       'startIndex' => 0, # Pagination not yet supported
-      'resources' => build_resources,
-      'hits' => build_hits,
+      'resources' => [],
+      'hits' => [],
     }
   end
-
-  private
 
   def build_resources
     matches.map do |match|
