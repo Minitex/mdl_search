@@ -43,14 +43,16 @@
 
   </head>
   <body class="<%= render_body_class %>">
-  <%= render partial: 'shared/header_navbar' %>
-  <%= render partial: 'shared/masthead' %>
+  <%= render :partial => 'shared/header_navbar' %>
+  <%= render :partial => 'shared/search_block' %>
+  <%= render :partial => 'shared/masthead' unless current_page?('/exhibits') or current_page?('/exhibits/new') or current_page?('/exhibits/site/edit') or current_page?('/exhibits/exhibits/edit') %>
   <%= content_for?(:header_content) ? yield(:header_content) : "" %>
 
   <%= render partial: 'shared/ajax_modal' %>
 
   <div id="main-container" class="container">
     <%= render partial: '/flash_msg', layout: 'shared/flash_messages' %>
+    <% if !current_exhibit %><h1 style="margin-top:15px;margin-left:15px;">Exhibits</h1><% end %>
 
     <div class="row">
       <%= content_for?(:content) ? yield(:content) : yield %>
