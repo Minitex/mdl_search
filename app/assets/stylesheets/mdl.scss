@@ -438,6 +438,7 @@ input.range_begin, input.range_end {
 .btn-primary {
 	background-color: $dark-blue;
 	border-color: $dark-blue;
+	text-decoration: none !important;
 	&:hover {
 		background-color: $dark-green;
 		border-color: $dark-green;
@@ -1141,6 +1142,154 @@ a.view-text:hover {
 	padding: 3px;
 }
 /* End item page styles */
+
+/* Spotlight styles */
+
+.card-back .description {
+	font-size: 14px;
+}
+
+#exhibit-navbar {
+	.search-query-form {
+		display: none;
+	}
+}
+
+.nav-heading {
+	padding: 0;
+}
+
+.blacklight-exhibits-index, .blacklight-sites-edit, .blacklight-sites-edit_exhibits, .blacklight-exhibits-new, .blacklight-home_pages-edit, .blacklight-exhibits-edit, .blacklight-appearances-edit, .blacklight-roles-index, .blacklight-metadata_configurations-edit, .blacklight-search_configurations-edit, .blacklight-catalog-admin, .blacklight-tags-index, .blacklight-searches-index, .blacklight-feature_pages-index, .blacklight-about_pages-index {
+	.nav-tabs {
+		border-bottom: 1px solid $light-gray !important;
+		li {
+			margin-bottom: 0;
+			a {
+				background-color: $light-gray;
+
+			}
+		}
+		li.active {
+			a { 
+				background-color: $white;
+				color: $black;
+				font-weight: bold; 
+			}
+		}
+	}
+
+	aside {
+		h4 {
+			font-size: 20px;
+			margin-bottom: 1rem;
+		}
+		.nav-pills {
+			.btn-default {
+				@extend .btn-primary;
+			}
+			.btn-nav {
+				color: $white;
+				margin: 10px 0;
+				&:hover {
+					background-color: $dark-green !important;
+					border: 1px solid transparent !important;
+				}
+			}
+		}
+	}
+}
+
+.blacklight-sites-edit, .blacklight-exhibits-new, .blacklight-home_pages-edit, .blacklight-exhibits-edit, .blacklight-appearances-edit, .blacklight-roles-index, .blacklight-metadata_configurations-edit, .blacklight-search_configurations-edit, .blacklight-catalog-admin, .blacklight-tags-index, .blacklight-searches-index, .blacklight-feature_pages-index, .blacklight-about_pages-index {
+	.form-control {
+		border: 1px solid $light-gray;
+	}
+}
+
+.blacklight-feature_pages-show, .blacklight-about_pages-show, .blacklight-dashboards, .blacklight-exhibits-edit, .blacklight-appearances-edit, .blacklight-roles-index, .blacklight-metadata_configurations-edit, .blacklight-search_configurations-edit, .blacklight-catalog-admin, .blacklight-tags-index, .blacklight-searches-index, .blacklight-feature_pages-index, .blacklight-about_pages-index {
+	.breadcrumbs-container {
+		display: none;
+	}
+	#sidebar {
+		h4.nav-heading, h4.contacts-header {
+				font-size: 18px;
+				font-family: 'Roboto', helvetica, arial, sans-serif;
+				margin-top: 0;
+			}
+		.sidenav {
+			h4 {
+				font-size: 18px;
+				font-family: 'Roboto', helvetica, arial, sans-serif;
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+#sidebar ol.sidenav li {
+	color: $black;
+	margin-bottom: 2rem;
+}
+
+#sidebar ol.sidenav ol.subsection li {
+	list-style: disc;
+}
+
+#sidebar ol.sidenav li > h4 > a, #sidebar ol.sidenav .facets li > .facets-heading > a, .facets #sidebar ol.sidenav li > .facets-heading > a, #sidebar ol.sidenav ol.subsection li > a {
+	color: $dark-blue;
+}
+
+#sidebar ol.sidenav li a:hover, #sidebar ol.sidenav li a:focus, #sidebar ul.sidenav li a:hover, #sidebar ul.sidenav li a:focus {
+	background-color: $white !important;
+	color: $dark-green !important;
+	text-decoration: underline;
+}
+
+blockquote {
+	font-size: 16px;
+}
+
+.new_user {
+	background-color: $lightest-gray;
+	border: 1px solid $light-gray;
+	border-radius: 4px;
+	margin-bottom: 1.5rem;
+	padding: 1.5rem;
+	
+	.field {
+		padding: 1rem 0;
+
+		input {
+			border: 1px solid $light-gray;
+			padding: .5rem;
+		}
+	}
+
+	.actions {
+		input {
+			@extend .btn;
+			@extend .btn-primary;
+			border: none;
+			border-radius: 4px;
+			color: $white;
+			padding: .5rem 1rem;
+		}
+	}
+}
+
+.carousel-block .carousel-caption h3 {
+    padding: 16px 32px;
+    font-family: 'Roboto', helvetica, arial, sans-serif;
+    background: $black;
+    opacity: 80%;
+    color: $white;
+}
+
+.spotlight-flexbox {
+	.thumbnail {
+		border: none !important;
+	}
+}
+/* End Spotlight styles */
 
 /* Footer styles */
 .footer {

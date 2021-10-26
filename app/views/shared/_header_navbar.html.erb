@@ -1,4 +1,4 @@
-<% if !current_exhibit %>
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to application_name, "https://mndigital.org/", class: "navbar-brand" %>
+      <%= link_to "Minnesota Digital Library", "https://mndigital.org/", class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,6 +37,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li><a href="https://collection.mndigital.org/exhibits/" class="dropdown-item">Exhibits</a></li>
             <li><a href="https://mndigital.org/projects/primary-source-sets" class="dropdown-item">Primary Source Sets</a></li>
             <li><a href="https://mndigital.org/projects/digital-public-library-america-collaboration" class="dropdown-item">Digital Public Library of America Collaboration</a></li>
             <li><a href="https://mndigital.org/projects/scan-keeps" class="dropdown-item">Scan for Keeps</a></li>
@@ -57,4 +58,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<% end %>
+
