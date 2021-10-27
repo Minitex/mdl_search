@@ -52,4 +52,8 @@ class User < ActiveRecord::Base
   def has_one_of_these_roles?(check_roles)
     check_roles.any? { |role| has_role?(role.to_s) }
   end
+
+  def guest?
+    false
+  end
 end
