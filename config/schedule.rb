@@ -24,19 +24,18 @@ every 1.day, at: '12:15am' do
   rake "blacklight_maintenance:truncate_searches"
 end
 
-# Pick up new CDM records daily
+# Pick up new CDM records daily - Index All Items (from all collections)
 every :friday, at: '11pm' do
-  runner 'Index All Items (from all collections)'
   rake 'mdl_ingester:collections'
 end
 
+# Ensure content is commited daily (e.g. one-off indexn runs)
 every 1.day, at: '12:00am' do
-  runner 'Ensure content is commited daily (e.g. one-off indexn runs)'
   rake 'solr:commit'
 end
 
+# Optimize index daily
 every 1.day, at: '12:30am' do
-  runner 'Optimize index daily'
   rake 'solr:optimize'
 end
 
