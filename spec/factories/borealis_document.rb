@@ -17,6 +17,12 @@ FactoryGirl.define do
       new(document: document)
     end
 
+    trait :image do
+      transient do
+        fixture_filename { 'image.json' }
+      end
+    end
+
     trait :video do
       transient do
         fixture_filename { 'video.json' }

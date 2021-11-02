@@ -1,5 +1,4 @@
 namespace :mdl_ingester do
-  desc "ingest batches of records"
   desc 'Index a single collection'
   task :collection, [:set_spec] => :environment  do |t, args|
     run_etl!([args[:set_spec]])
@@ -31,7 +30,7 @@ namespace :mdl_ingester do
   end
 
   desc 'Launch a background job to index a single record.'
-  task :record, [:id] => :environment  do |t, args|
+  task :record, [:id] => :environment do |t, args|
     IndexingRun.create!
     MDL::TransformWorker.perform_async(
       [args[:id].split(':')],
@@ -44,22 +43,37 @@ namespace :mdl_ingester do
   end
 
   desc 'Index playlist data for A/V playlist documents'
-  task backfill_playlist_data: [:environment]  do |t, args|
+  task backfill_playlist_data: [:environment] do
+    Rake::Task['mdl_ingester:ingest_by_query'].invoke(
+      'kaltura_video_ssi:* | kaltura_audio_ssi:*'
+    )
+  end
+
+  desc 'Index IIIF search data for existing transcriptions'
+  task backfill_iiif_search_data: [:environment] do
+    Rake::Task['mdl_ingester:ingest_by_query'].invoke('type_ssi:Text')
+  end
+
+  desc 'Ingest records returned by the provided Solr query (fq)'
+  task :ingest_by_query, [:query] => :environment do |t, args|
+    puts "Querying Solr for fq: '#{args[:query]}'"
     client = SolrClient.new
     response = client.connect.get('select', params: {
       defType: 'edismax',
-      fq: 'kaltura_video_ssi:* | kaltura_audio_ssi:*',
+      fq: args[:query],
       qt: 'search',
       rows: 1_000_000,
       q: '*:*',
       wt: 'json'
     })
-    puts "Backfilling #{response['response']['numFound']} records..."
+    count = response['response']['numFound']
+    puts "Backfilling #{count} records..."
+    IndexingRun.create! unless count.zero?
 
     response['response']['docs'].each do |doc|
-       MDL::TransformWorker.perform_async(
+      MDL::TransformWorker.perform_async(
         [doc['id'].split(':')],
-        { url: config[:solr_config][:url]},
+        { url: config[:solr_config][:url] },
         config[:cdm_endpoint],
         config[:oai_endpoint],
         config[:field_mappings],

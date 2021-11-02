@@ -26,6 +26,12 @@ module MDL
       end
     end
 
+    class << self
+      def call(identifier)
+        new(identifier).call
+      end
+    end
+
     attr_reader :identifier, :logger
     attr_accessor :ocr_candidates
 
@@ -39,6 +45,7 @@ module MDL
       run_ocr
       lines = parse_ocr
       write(lines)
+      log('Finished')
     ensure
       cleanup_tempfiles
     end
