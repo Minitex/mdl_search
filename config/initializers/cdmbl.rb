@@ -37,7 +37,7 @@ module CDMBL
   class BatchDeleteJobCompletedCallback
     def self.call!
       Rails.logger.info "CDMBL: Batch delete job complete"
-      Raven.send_event(Raven::Event.new(message: 'Batch delete job complete'))
+      Raven.capture_event('Batch delete job complete')
     end
   end
 
