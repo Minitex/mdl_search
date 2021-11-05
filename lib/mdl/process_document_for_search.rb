@@ -196,8 +196,9 @@ module MDL
 
     def run_ocr_on(candidate)
       log("Running OCR for canvas #{candidate.canvas_id}")
+      env = { 'OMP_THREAD_LIMIT' => '1' }
       command = "tesseract #{candidate.image_file.path} #{candidate.ocr_temp_file_path} -l eng hocr"
-      _output, error, status = Open3.capture3(command)
+      _output, error, status = Open3.capture3(env, command)
       if status.success?
         log("OCR successful for image on canvas #{candidate.canvas_id}")
       else
