@@ -1,11 +1,47 @@
 class IiifSearchResponse
   class Match
-    ATTRIBUTES = %w(id item_id line canvas_id word_boundaries highlights)
-    attr_accessor *ATTRIBUTES.map(&:to_sym)
+    DOCUMENT_ATTRIBUTES = %w(item_id line canvas_id word_boundaries)
+    HIGHLIGHT = /<em>(.*?)<\/em>/.freeze
+
+    class << self
+      def expand(doc, highlights)
+        match_indices = highlighted_line(doc['line'], highlights).split(' ')
+          .each_with_object([])
+          .with_index do |(word, acc), idx|
+            acc << idx if word.match?(HIGHLIGHT)
+          end
+
+        match_indices.chunk_while { |i1, i2| i1 + 1 == i2 }.map do |index_group|
+          new(doc).tap { |m|
+            m.match_index = index_group.first
+            m.word_count = index_group.size
+            m.text_match = doc['line'].split(' ').values_at(*index_group).join(' ')
+          }
+        end
+      end
+
+      private
+
+      ###
+      # The highlight we get from Solr may be only a subset
+      # of the line. This will combine the highlight with the line
+      # so that we can get an accurate index of the highlighted
+      # words within the it.
+      def highlighted_line(line, highlights)
+        cleaned_hl = highlights.gsub(/<\/?em>/, '')
+        line_parts = line.partition(cleaned_hl)
+        hl_idx = line_parts.index(cleaned_hl)
+        line_parts[hl_idx] = highlights
+        line_parts.map(&:strip).join(' ')
+      end
+    end
+
+    attr_accessor *DOCUMENT_ATTRIBUTES.map(&:to_sym)
+    attr_accessor :match_index, :text_match, :word_count
     attr_reader :words
 
     def initialize(args)
-      ATTRIBUTES.each do |attr|
+      DOCUMENT_ATTRIBUTES.each do |attr|
         self.send("#{attr}=", args[attr])
       end
       @words = line.split(' ')
@@ -26,34 +62,20 @@ class IiifSearchResponse
       end
     end
 
-    def text_match
-      matching_words.join(' ')
-    end
-
     def text_before
-      line_match && line_match[:before].strip
+      words[0...match_index].join(' ')
     end
 
     def text_after
-      line_match && line_match[:after].strip
-    end
-
-    def line_match
-      @line_match ||= line.match(%r{(?<before>.*)#{text_match}(?<after>.*)})
+      words[(match_index + word_count)..-1].join(' ')
     end
 
     def text_match_coords
-      first_idx = words.find_index.with_index do |word, i|
-        word.include?(matching_words.first) && words[i + matching_words.size - 1].include?(matching_words.last)
-      end
-      last_idx = first_idx + matching_words.size - 1
-      word_boundaries[first_idx.to_s].slice('x0', 'y0').merge(
-        word_boundaries[last_idx.to_s].slice('x1', 'y1')
+      first_idx = match_index.to_s
+      last_idx = (match_index + word_count - 1).to_s
+      word_boundaries[first_idx].slice('x0', 'y0').merge(
+        word_boundaries[last_idx].slice('x1', 'y1')
       )
-    end
-
-    def matching_words
-      @matching_words ||= highlights[0].scan(/<em>(.*?)<\/em>/).map(&:first)
     end
   end
 
@@ -69,7 +91,7 @@ class IiifSearchResponse
 
   def as_json(*)
     base_response.tap do |hash|
-      hash['within']['total'] = response['numFound']
+      hash['within']['total'] = matches.size
       hash['resources'] = build_resources
       hash['hits'] = build_hits
     end
@@ -146,10 +168,9 @@ class IiifSearchResponse
   end
 
   def matches
-    @matches ||= docs.map do |doc|
-      Match.new(doc).tap do |m|
-        m.highlights = highlighting[m.id]['line']
-      end
+    @matches ||= docs.flat_map do |doc|
+      highlights = highlighting[doc['id']]['line'].first
+      Match.expand(doc, highlights)
     end
   end
 end
