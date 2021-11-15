@@ -10,6 +10,12 @@ class Ability
       can :manage, :all
     end
     super(user)
+
+    if user.has_role?('reviewer')
+      can :read, Spotlight::Exhibit, published: false
+      can :read, Spotlight::Page, published: false
+      can :read, Spotlight::Search, published: false
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
