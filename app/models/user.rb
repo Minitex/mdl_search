@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   # http://asilia.herokuapp.com/2011/04/06/bitmask-attributes-on-a-rails-application
   scope :with_role, lambda { |role| where('roles_mask & ? > 0 ', (2**ROLES.index(role.to_s))) }
 
-  ROLES = %w[admin]
+  ROLES = %w[admin reviewer]
 
   def user_roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
