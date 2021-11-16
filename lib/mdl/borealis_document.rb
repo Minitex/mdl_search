@@ -37,14 +37,14 @@ module MDL
     end
 
     ###
-    # TODO: clean this up. We're now indexing the manifest URL
-    # on the document, so this could probably just reference that
-    # field. Furthermore, since we're going to be indexing the
-    # entire manifest itself, we could stop with this entirely,
-    # and refer the UV to our iiif manifest route to return it.
+    # TODO: clean this up. For some documents (images, mainly),
+    # we're now indexing the manifest URL directly on the document,
+    # so if we have a value in that field, we'll use it. If the
+    # we're dealing with A/V content, we will use our own manifest
+    # endpoint, and we'll fall back to ContentDM in all other cases.
     def manifest_url
       case assets.first
-      when BorealisVideo, BorealisAudio, BorealisImage
+      when BorealisVideo, BorealisAudio
         "/iiif/#{document['id']}/manifest.json"
       else
         document.fetch('iiif_manifest_url_ssi') do
