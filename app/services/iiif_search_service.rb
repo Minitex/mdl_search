@@ -1,7 +1,7 @@
 class IiifSearchService
   class SearchClient
     def initialize
-      @solr = RSolr.connect(url: 'http://localhost:8983/solr/mdl-iiif-search')
+      @solr = RSolr.connect(url: IIIF_SEARCH_SOLR_URL)
     end
 
     def search(query:, item_id:)
@@ -45,7 +45,8 @@ class IiifSearchService
 
     private
 
-    # TODO: delete, probably
+    # TODO: delete, probably. This was an attempt to provide results that
+    # span multiple Solr records. Could it work with wildcarding?
     def expanded_query(query)
       words = query.split(' ').map { |w| w.downcase.strip }
       splits = words.map.with_index do |w, i|
@@ -53,7 +54,8 @@ class IiifSearchService
         after = words[(i + 1)..-1]
         [before, after]
       end
-      template = '("%s")'
+      end_of_line_template = '("*%s")'
+      beginning_of_link_template = '("%s*")'
       splits.map do |first, last|
         parts = []
         parts << template % first.join(' ') if first.any?

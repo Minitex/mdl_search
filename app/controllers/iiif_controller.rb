@@ -24,4 +24,12 @@ class IiifController < ApplicationController
     )
     render json: response
   end
+
+  def autocomplete
+    response = IiifSearchAutocompleteService.call(
+      query: params[:q],
+      item_id: params[:id]
+    )
+    render json: response
+  end
 end

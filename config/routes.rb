@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     member do
       get :manifest
       get :search
+      get :autocomplete
     end
   end
 
