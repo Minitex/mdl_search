@@ -17,6 +17,11 @@
         "localeToggleEnabled": false
       }
     },
+    "moreInfoRightPanel": {
+      "options": {
+        "manifestDisplayOrder": "Contributing Organization,Title,Creator,Contributor,Description,Date of Creation,Dimensions,Minnesota Reflections Topic,Item Type,Item Physical Format,Formal Subject Headings,Locally Assigned Subject Headings,Minnesota City or Township,Minnesota County,State or Province,Country,GeoNames URI,Language,Local Identifier,Fiscal Sponsor,Rights Management,Contact Information"
+      }
+    },
     "seadragonCenterPanel": {
       "options": {
         "autoHideControls": false,
