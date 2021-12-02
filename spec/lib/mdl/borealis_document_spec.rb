@@ -55,141 +55,179 @@ module MDL
       )
     end
 
-    context 'when the document is a single item' do
-      it 'correctly serializes the document' do
-        expect(BorealisDocument.new(document: document).to_viewer).to eq (
-          {
-            "image"=>{
-              "viewerColumnsSmall"=>"col-xs-12 col-sm-8",
-              "sidebarColumnsLarge"=>"col-xs-12 col-sm-4",
-              "viewerColumnsLarge"=>"col-xs-12 col-sm-9",
-              "sidebarColumnsSmall"=>"col-xs-12 col-sm-3",
-              "type"=>"image",
-              "basename"=>"image",
-              "thumbnail"=>"/thumbnails/foo:123",
-              "label"=>"Image",
-              "transcripts"=>[],
-              "osdConfig"=>{
-                "setStrings"=>[{:name=>"Tooltips.Home", :value=>"Reset"}],
-                "include_controls"=>true,
-                "sequenceMode"=>true,
-                "showReferenceStrip"=>false,
-                "defaultZoomLevel"=>0,
-                :minZoomLevel=>0,
-                "tileSources"=>["/contentdm-images/info?id=foo:123"]
-              },
-              "getImageURL"=>"https://cdm16022.contentdm.oclc.org/utils/ajaxhelper",
-              "pages"=>[
-                {
-                  :id=>"123",
-                  :collection=>"foo",
-                  :transcripts=>[],
-                  :transcript=>"blerg \n ",
-                  :title=>"blerg",
-                  :subtitle=>nil,
-                  :assets=>[],
-                  :thumbnail=>"/thumbnails/foo:123",
-                  "id"=>0,
-                  "viewer"=>"OSD_VIEWER",
-                  "cdmCollection"=>"foo",
-                  "cdmIdentifier"=>"123",
-                  "sidebarThumbnail"=>"/thumbnails/foo:123",
-                  "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/123/info.json"
+    describe '#to_viewer' do
+      context 'when the document is a single item' do
+        it 'correctly serializes the document' do
+          expect(BorealisDocument.new(document: document).to_viewer).to eq (
+            {
+              "image"=>{
+                "viewerColumnsSmall"=>"col-xs-12 col-sm-8",
+                "sidebarColumnsLarge"=>"col-xs-12 col-sm-4",
+                "viewerColumnsLarge"=>"col-xs-12 col-sm-9",
+                "sidebarColumnsSmall"=>"col-xs-12 col-sm-3",
+                "type"=>"image",
+                "basename"=>"image",
+                "thumbnail"=>"/thumbnails/foo:123",
+                "label"=>"Image",
+                "transcripts"=>[],
+                "osdConfig"=>{
+                  "setStrings"=>[{:name=>"Tooltips.Home", :value=>"Reset"}],
+                  "include_controls"=>true,
+                  "sequenceMode"=>true,
+                  "showReferenceStrip"=>false,
+                  "defaultZoomLevel"=>0,
+                  :minZoomLevel=>0,
+                  "tileSources"=>["/contentdm-images/info?id=foo:123"]
+                },
+                "getImageURL"=>"https://cdm16022.contentdm.oclc.org/utils/ajaxhelper",
+                "pages"=>[
+                  {
+                    :id=>"123",
+                    :collection=>"foo",
+                    :transcripts=>[],
+                    :transcript=>"blerg \n ",
+                    :title=>"blerg",
+                    :subtitle=>nil,
+                    :assets=>[],
+                    :thumbnail=>"/thumbnails/foo:123",
+                    "id"=>0,
+                    "viewer"=>"OSD_VIEWER",
+                    "cdmCollection"=>"foo",
+                    "cdmIdentifier"=>"123",
+                    "sidebarThumbnail"=>"/thumbnails/foo:123",
+                    "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/123/info.json"
+                  }
+                ],
+                "transcript"=>{
+                  "texts"=>[],
+                  "label"=>"Image"
                 }
-              ],
-              "transcript"=>{
-                "texts"=>[],
-                "label"=>"Image"
               }
             }
-          }
-        )
+          )
+        end
+      end
+
+      context 'when the document is a compound item' do
+        it 'serializes the documents' do
+          expect(BorealisDocument.new(document: compound_document).to_viewer).to eq (
+            {
+              "image"=> {
+                "viewerColumnsSmall"=>"col-xs-12 col-sm-8",
+                "sidebarColumnsLarge"=>"col-xs-12 col-sm-4",
+                "viewerColumnsLarge"=>"col-xs-12 col-sm-9",
+                "sidebarColumnsSmall"=>"col-xs-12 col-sm-3",
+                "type"=>"image",
+                "basename"=>"image",
+                "thumbnail"=>"/thumbnails/foo:123",
+                "label"=>"Image",
+                "transcripts"=>["blah"],
+                "osdConfig"=>{
+                  "setStrings"=>[{:name=>"Tooltips.Home", :value=>"Reset"}],
+                  "include_controls"=>true,
+                  "sequenceMode"=>true,
+                  "showReferenceStrip"=>false,
+                  "defaultZoomLevel"=>0,
+                  :minZoomLevel=>0,
+                  "tileSources"=>["/contentdm-images/info?id=foo:123"]
+                },
+                "getImageURL"=>"https://cdm16022.contentdm.oclc.org/utils/ajaxhelper",
+                "pages"=>[
+                  {
+                    :id=>123,
+                    :collection=>"foo",
+                    :transcripts=>["blah"],
+                    :transcript=>"Some thing \n blah",
+                    :title=>"Some thing",
+                    :subtitle=>nil,
+                    :assets=>[],
+                    :thumbnail=>"/thumbnails/foo:123",
+                    "id"=>0,
+                    "viewer"=>"OSD_VIEWER",
+                    "cdmCollection"=>"foo",
+                    "cdmIdentifier"=>123,
+                    "sidebarThumbnail"=>"/thumbnails/foo:123",
+                    "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/123/info.json"
+                  }
+                ],
+                "transcript"=>{"texts"=>["blah"],
+                "label"=>"Image"}
+              },
+              "kaltura_video"=> {
+                "type"=>"kaltura_video",
+                "targetId"=>"kaltura_player_video",
+                "wid"=>"_1369852",
+                "uiconf_id"=>38683631,
+                "transcript"=>{"texts"=>["The text"],
+                "label"=>"Video"},
+                "entry_id"=>false,
+                "wrapper_height"=>"100%",
+                "wrapper_width"=>"100%",
+                "thumbnail"=>"/images/video-1.png"
+              }
+            }
+          )
+        end
+
+        it 'rejects bad page page file data' do
+          pages = BorealisDocument.new(document: bogus_pagefile).to_viewer['image']['pages']
+          expect(pages).to eq(
+            [
+              {
+                :id=>321,
+                :collection=>"foo",
+                :transcripts=>["The text"],
+                :transcript=>"Another Thing \n The text",
+                :title=>"Another Thing",
+                :subtitle=>nil,
+                :assets=>[],
+                :thumbnail=>"/thumbnails/foo:321",
+                "id"=>0,
+                "viewer"=>"OSD_VIEWER",
+                "cdmCollection"=>"foo",
+                "cdmIdentifier"=>321,
+                "sidebarThumbnail"=>"/thumbnails/foo:321",
+                "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/321/info.json"
+              }
+            ]
+          )
+        end
       end
     end
 
-    context 'when the document is a compound item' do
-      it 'serializes the documents' do
-        expect(BorealisDocument.new(document: compound_document).to_viewer).to eq (
-          {
-            "image"=> {
-              "viewerColumnsSmall"=>"col-xs-12 col-sm-8",
-              "sidebarColumnsLarge"=>"col-xs-12 col-sm-4",
-              "viewerColumnsLarge"=>"col-xs-12 col-sm-9",
-              "sidebarColumnsSmall"=>"col-xs-12 col-sm-3",
-              "type"=>"image",
-              "basename"=>"image",
-              "thumbnail"=>"/thumbnails/foo:123",
-              "label"=>"Image",
-              "transcripts"=>["blah"],
-              "osdConfig"=>{
-                "setStrings"=>[{:name=>"Tooltips.Home", :value=>"Reset"}],
-                "include_controls"=>true,
-                "sequenceMode"=>true,
-                "showReferenceStrip"=>false,
-                "defaultZoomLevel"=>0,
-                :minZoomLevel=>0,
-                "tileSources"=>["/contentdm-images/info?id=foo:123"]
-              },
-              "getImageURL"=>"https://cdm16022.contentdm.oclc.org/utils/ajaxhelper",
-              "pages"=>[
-                {
-                  :id=>123,
-                  :collection=>"foo",
-                  :transcripts=>["blah"],
-                  :transcript=>"Some thing \n blah",
-                  :title=>"Some thing",
-                  :subtitle=>nil,
-                  :assets=>[],
-                  :thumbnail=>"/thumbnails/foo:123",
-                  "id"=>0,
-                  "viewer"=>"OSD_VIEWER",
-                  "cdmCollection"=>"foo",
-                  "cdmIdentifier"=>123,
-                  "sidebarThumbnail"=>"/thumbnails/foo:123",
-                  "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/123/info.json"
-                }
-              ],
-              "transcript"=>{"texts"=>["blah"],
-              "label"=>"Image"}
-            },
-            "kaltura_video"=> {
-              "type"=>"kaltura_video",
-              "targetId"=>"kaltura_player_video",
-              "wid"=>"_1369852",
-              "uiconf_id"=>38683631,
-              "transcript"=>{"texts"=>["The text"],
-              "label"=>"Video"},
-              "entry_id"=>false,
-              "wrapper_height"=>"100%",
-              "wrapper_width"=>"100%",
-              "thumbnail"=>"/images/video-1.png"
-            }
-          }
-        )
+    describe '#manifest_url' do
+      subject do
+        BorealisDocument.new(document: document).manifest_url
       end
 
-      it 'rejects bad page page file data' do
-        pages = BorealisDocument.new(document: bogus_pagefile).to_viewer['image']['pages']
-        expect(pages).to eq(
-          [
-            {
-              :id=>321,
-              :collection=>"foo",
-              :transcripts=>["The text"],
-              :transcript=>"Another Thing \n The text",
-              :title=>"Another Thing",
-              :subtitle=>nil,
-              :assets=>[],
-              :thumbnail=>"/thumbnails/foo:321",
-              "id"=>0,
-              "viewer"=>"OSD_VIEWER",
-              "cdmCollection"=>"foo",
-              "cdmIdentifier"=>321,
-              "sidebarThumbnail"=>"/thumbnails/foo:321",
-              "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/321/info.json"
-            }
-          ]
-        )
+      it do
+        contentdm_url = 'https://cdm16022.contentdm.oclc.org/iiif/2/foo:123/manifest.json'
+        is_expected.to eq(contentdm_url)
+      end
+
+      context 'when we have a manifest URL index in Solr' do
+        let(:document) do
+          super().merge('iiif_manifest_url_ssi' => '/test/manifest.json')
+        end
+
+        it { is_expected.to eq('/test/manifest.json') }
+      end
+
+      context 'when the document represents A/V media' do
+        let(:document) do
+          super().merge(
+            'compound_objects_ts' => <<~JSON
+              [{
+                "pageptr": 321,
+                "title": "Video Thing",
+                "transc": "The text",
+                "pagefile": "foo.mp4"
+              }]
+            JSON
+          )
+        end
+
+        it { is_expected.to eq('/iiif/foo:123/manifest.json') }
       end
     end
   end

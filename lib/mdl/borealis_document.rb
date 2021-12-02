@@ -1,5 +1,9 @@
 require 'json'
 
+###
+# Careful with this... looks half of the code here expects
+# a document from Solr, and the other half expects one from
+# ContentDM. We should get that sorted out.
 module MDL
   class BorealisDocument
     attr_reader :document,
@@ -36,18 +40,12 @@ module MDL
       @assets ||= to_assets
     end
 
-    ###
-    # TODO: clean this up. For some documents (images, mainly),
-    # we're now indexing the manifest URL directly on the document,
-    # so if we have a value in that field, we'll use it. If the
-    # we're dealing with A/V content, we will use our own manifest
-    # endpoint, and we'll fall back to ContentDM in all other cases.
     def manifest_url
-      case assets.first
-      when BorealisVideo, BorealisAudio
-        "/iiif/#{document['id']}/manifest.json"
-      else
-        document.fetch('iiif_manifest_url_ssi') do
+      document.fetch('iiif_manifest_url_ssi') do
+        case assets.first
+        when BorealisVideo, BorealisAudio
+          "/iiif/#{document['id']}/manifest.json"
+        else
           "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
         end
       end
