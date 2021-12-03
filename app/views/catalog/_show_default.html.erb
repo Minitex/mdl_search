@@ -57,6 +57,14 @@
       const urlDataProvider = new UV.URLDataProvider();
       const collectionIndex = urlDataProvider.get('c');
 
+      // If we were given a legacy anchor, such as #/image/4, parse
+      // out the 4 and use it as the canvasIndex in the UV config.
+      const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
+      let canvasIndexFallback = legacyAnchorMatch.pop();
+      if (legacyAnchorMatch.length) {
+        window.location.hash = '';
+      }
+
       createUV('#uv', {
         iiifResourceUri: '<%= borealis_doc.manifest_url %>',
         root: '../../../uv/',
@@ -64,7 +72,7 @@
         collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
         manifestIndex: Number(urlDataProvider.get('m', 0)),
         sequenceIndex: Number(urlDataProvider.get('s', 0)),
-        canvasIndex: Number(urlDataProvider.get('cv', 0)),
+        canvasIndex: Number(urlDataProvider.get('cv', canvasIndexFallback)),
         rotation: Number(urlDataProvider.get('r', 0)),
         rangeId: urlDataProvider.get('rid', ''),
         xywh: urlDataProvider.get('xywh', '')
