@@ -13,6 +13,13 @@ module MDL
           label: 'Transcript',
           transcript: solr_doc['transcription_tesi']
         }
+      elsif solr_doc['transcription_tesim']
+        {
+          focus: false,
+          type: 'transcript',
+          label: 'Transcript',
+          transcript: solr_doc['transcription_tesim'].join("\n\n")
+        }
       else
         {}
       end
