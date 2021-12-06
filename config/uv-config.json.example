@@ -28,6 +28,12 @@
         "requiredStatementEnabled": false
       }
     },
+    "searchFooterPanel": {
+      "options": {
+        "positionMarkerEnabled": true,
+        "pageModeEnabled": false
+      }
+    },
     "footerPanel": {
       "options": {
         "downloadEnabled": true
