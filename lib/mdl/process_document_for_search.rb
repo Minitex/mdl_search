@@ -1,5 +1,6 @@
 module MDL
   class ProcessDocumentForSearch
+    TMP_DIR = File.exists?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
     ###
     # Glue that connects an IIIF canvas, the image it represents,
     # and the OCR process we need to perform.
@@ -13,7 +14,7 @@ module MDL
 
       def ocr_temp_file_path
         @ocr_temp_file_path ||= begin
-          Pathname.new(Dir.tmpdir).join("mdl_tesseract_#{uuid}").to_s
+          Pathname.new(TMP_DIR).join("mdl_tesseract_#{uuid}").to_s
         end
       end
 
@@ -135,7 +136,7 @@ module MDL
 
     def write(docs)
       log("Adding #{docs.size} docs to Solr")
-      solr_client = RSolr.connect(url: 'http://localhost:8983/solr/mdl-iiif-search')
+      solr_client = RSolr.connect(url: IIIF_SEARCH_SOLR_URL)
       solr_client.delete_by_query("item_id:\"#{identifier}\"")
       solr_client.add(docs)
       solr_client.commit
@@ -157,6 +158,7 @@ module MDL
       if response.code == '200'
         Tempfile.new(
           candidate.image_filename_parts,
+          TMP_DIR,
           mode: File::Constants::BINARY,
           encoding: 'ascii-8bit'
         ).tap do |file|
