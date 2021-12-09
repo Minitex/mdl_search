@@ -9,6 +9,10 @@ class IiifManifest
     MDL::BorealisAudio => {
       type: 'Sound',
       format: 'audio/mp4'
+    },
+    MDL::BorealisPDF => {
+      type: 'Text',
+      format: 'application/pdf'
     }
   }.freeze
 
@@ -52,8 +56,14 @@ class IiifManifest
       end,
       'items' => canvasable_assets.map { |a| canvas(a) }
     }.tap do |hsh|
+      if borealis_document.document['rights_statement_ssi']
+        hsh['requiredStatement'] = {
+          'label' => 'Attribution',
+          'value' => borealis_document.document['rights_statement_ssi']
+          }
+      end
       if renderable_assets.any?
-        hsh['rendering'] = renderable_assets.map { |a| rendering(a) }
+        hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
       end
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
@@ -167,14 +177,27 @@ class IiifManifest
   end
 
   def rendering(asset)
-    {
-      'id' => asset.src,
-      'type' => 'Text',
-      'label' => {
-        'en' => ['PDF Transcript']
-      },
-      'format' => 'application/pdf'
-    }
+    if asset.playlist?
+      asset.playlist_data.map.with_index do |data, idx|
+        {
+          'id' => asset.src(data['entry_id']),
+          'type' => annotation_body_type(asset),
+          'label' => {
+            'en' => ["#{asset.title} Part #{idx + 1}"]
+          },
+          'format' => annotation_body_format(asset)
+        }
+      end
+    else
+      {
+        'id' => asset.src,
+        'type' => annotation_body_type(asset),
+        'label' => {
+          'en' => [asset.title]
+        },
+        'format' => annotation_body_format(asset)
+      }
+    end
   end
 
   def structure(asset, range_index)
@@ -219,7 +242,13 @@ class IiifManifest
   end
 
   def renderable_assets
-    assets.select { |a| a.is_a?(MDL::BorealisPDF) }
+    assets.select do |a|
+      [
+        MDL::BorealisVideo,
+        MDL::BorealisAudio,
+        MDL::BorealisPDF
+      ].include?(a.class)
+    end
   end
 
   def rangeable_assets

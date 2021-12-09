@@ -14,6 +14,8 @@ describe IiifManifest do
         expect(result['type']).to eq('Manifest')
         expect(result['label']['en']).to eq(['Interview with Alan Page, Minnesota Supreme Court Historical Society Oral History Project, St. Paul, Minnesota'])
         expect(result['rights']).to eq('http://rightsstatements.org/vocab/InC/1.0/')
+        expect(result['requiredStatement']['label']).to eq('Attribution')
+        expect(result['requiredStatement']['value']).to eq('This Item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyrightand related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).')
         expect(result['provider'][0]['id']).to eq('https://mn.gov/law-library/')
         expect(result['provider'][0]['type']).to eq('Agent')
         expect(result['provider'][0]['label']['en']).to eq([
@@ -63,10 +65,16 @@ describe IiifManifest do
             ]
           }
         ])
-        expect(result['rendering'][0]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
-        expect(result['rendering'][0]['type']).to eq('Text')
-        expect(result['rendering'][0]['label']['en']).to eq(['PDF Transcript'])
-        expect(result['rendering'][0]['format']).to eq('application/pdf')
+
+        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['type']).to eq('Video')
+        expect(result['rendering'][0]['label']['en']).to eq(['Video'])
+        expect(result['rendering'][0]['format']).to eq('video/mp4')
+
+        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
+        expect(result['rendering'][1]['type']).to eq('Text')
+        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][1]['format']).to eq('application/pdf')
       end
     end
 
@@ -124,10 +132,15 @@ describe IiifManifest do
             ]
           }
         ])
-        expect(result['rendering'][0]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
-        expect(result['rendering'][0]['type']).to eq('Text')
-        expect(result['rendering'][0]['label']['en']).to eq(['PDF Transcript'])
-        expect(result['rendering'][0]['format']).to eq('application/pdf')
+        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['type']).to eq('Sound')
+        expect(result['rendering'][0]['label']['en']).to eq(['Audio'])
+        expect(result['rendering'][0]['format']).to eq('audio/mp4')
+
+        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
+        expect(result['rendering'][1]['type']).to eq('Text')
+        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][1]['format']).to eq('application/pdf')
       end
     end
 
@@ -149,10 +162,30 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
-        expect(result['rendering'][0]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1120/filename')
-        expect(result['rendering'][0]['type']).to eq('Text')
-        expect(result['rendering'][0]['label']['en']).to eq(['PDF Transcript'])
-        expect(result['rendering'][0]['format']).to eq('application/pdf')
+        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['type']).to eq('Video')
+        expect(result['rendering'][0]['label']['en']).to eq(['Video Part 1'])
+        expect(result['rendering'][0]['format']).to eq('video/mp4')
+
+        expect(result['rendering'][1]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][1]['type']).to eq('Video')
+        expect(result['rendering'][1]['label']['en']).to eq(['Video Part 2'])
+        expect(result['rendering'][1]['format']).to eq('video/mp4')
+
+        expect(result['rendering'][2]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][2]['type']).to eq('Video')
+        expect(result['rendering'][2]['label']['en']).to eq(['Video Part 3'])
+        expect(result['rendering'][2]['format']).to eq('video/mp4')
+
+        expect(result['rendering'][3]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][3]['type']).to eq('Video')
+        expect(result['rendering'][3]['label']['en']).to eq(['Video Part 4'])
+        expect(result['rendering'][3]['format']).to eq('video/mp4')
+
+        expect(result['rendering'][4]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1120/filename')
+        expect(result['rendering'][4]['type']).to eq('Text')
+        expect(result['rendering'][4]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][4]['format']).to eq('application/pdf')
         expect(result['items']).to eq([
           {
             'id' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0',
@@ -319,10 +352,25 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
-        expect(result['rendering'][0]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1012/filename')
-        expect(result['rendering'][0]['type']).to eq('Text')
-        expect(result['rendering'][0]['label']['en']).to eq(['PDF Transcript'])
-        expect(result['rendering'][0]['format']).to eq('application/pdf')
+        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['type']).to eq('Sound')
+        expect(result['rendering'][0]['label']['en']).to eq(['Audio Part 1'])
+        expect(result['rendering'][0]['format']).to eq('audio/mp4')
+
+        expect(result['rendering'][1]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][1]['type']).to eq('Sound')
+        expect(result['rendering'][1]['label']['en']).to eq(['Audio Part 2'])
+        expect(result['rendering'][1]['format']).to eq('audio/mp4')
+
+        expect(result['rendering'][2]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][2]['type']).to eq('Sound')
+        expect(result['rendering'][2]['label']['en']).to eq(['Audio Part 3'])
+        expect(result['rendering'][2]['format']).to eq('audio/mp4')
+
+        expect(result['rendering'][3]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1012/filename')
+        expect(result['rendering'][3]['type']).to eq('Text')
+        expect(result['rendering'][3]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][3]['format']).to eq('application/pdf')
         expect(result['items']).to eq([
           {
             'id' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1013/canvas/0',

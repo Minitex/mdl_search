@@ -6,8 +6,9 @@
     "leftPanelEnabled": true,
     "limitLocales": false,
     "overrideFullScreen": false,
-    "pagingEnabled": true,
+    "pagingEnabled": false,
     "rightPanelEnabled": true,
+    "termsOfUseEnabled": true,
     "zoomToSearchResultEnabled": true,
     "zoomToBoundsEnabled": false
   },
@@ -25,6 +26,11 @@
     "seadragonCenterPanel": {
       "options": {
         "autoHideControls": false,
+        "requiredStatementEnabled": false
+      }
+    },
+    "avCenterPanel": {
+      "options": {
         "requiredStatementEnabled": false
       }
     },
