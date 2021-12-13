@@ -77,6 +77,11 @@
         rangeId: urlDataProvider.get('rid', ''),
         xywh: urlDataProvider.get('xywh', '')
       }, urlDataProvider);
+
+      $(document).on('click', 'button.download', function () {
+        // We don't want to offer the full-size image download option
+        $('#wholeImageHighRes, #wholeImageHighReslabel').remove();
+      })
     }, false);
   </script>
   <%= javascript_pack_tag 'universalviewer_lib' %>
