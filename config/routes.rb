@@ -59,6 +59,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :iiif, only: [] do
+    member do
+      get :manifest
+      get :search
+      get :autocomplete
+    end
+  end
+
   get 'contentdm-images' => 'contentdm_images#show'
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'

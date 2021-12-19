@@ -1,0 +1,49 @@
+{
+  "options": {
+    "dropEnabled": true,
+    "footerPanelEnabled": true,
+    "headerPanelEnabled": true,
+    "leftPanelEnabled": true,
+    "limitLocales": false,
+    "overrideFullScreen": false,
+    "pagingEnabled": false,
+    "rightPanelEnabled": true,
+    "termsOfUseEnabled": true,
+    "zoomToSearchResultEnabled": true,
+    "zoomToBoundsEnabled": false
+  },
+  "modules": {
+    "headerPanel": {
+      "options": {
+        "localeToggleEnabled": false
+      }
+    },
+    "moreInfoRightPanel": {
+      "options": {
+        "manifestDisplayOrder": "Contributing Organization,Title,Creator,Contributor,Description,Date of Creation,Dimensions,Minnesota Reflections Topic,Item Type,Item Physical Format,Formal Subject Headings,Locally Assigned Subject Headings,Minnesota City or Township,Minnesota County,State or Province,Country,GeoNames URI,Language,Local Identifier,Fiscal Sponsor,Rights Management,Contact Information"
+      }
+    },
+    "seadragonCenterPanel": {
+      "options": {
+        "autoHideControls": false,
+        "requiredStatementEnabled": false
+      }
+    },
+    "avCenterPanel": {
+      "options": {
+        "requiredStatementEnabled": false
+      }
+    },
+    "searchFooterPanel": {
+      "options": {
+        "positionMarkerEnabled": true,
+        "pageModeEnabled": false
+      }
+    },
+    "footerPanel": {
+      "options": {
+        "downloadEnabled": true
+      }
+    }
+  }
+}

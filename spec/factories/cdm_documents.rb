@@ -8,7 +8,4 @@ FactoryGirl.define do
       compound_objects [{pagefile: '13096.jp2', pageptr: '13096', pagetitle: 'Front Cover'}]
     end
   end
-
-
-
 end

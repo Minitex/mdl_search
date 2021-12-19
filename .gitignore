@@ -16,6 +16,8 @@
 !/log/.keep
 /tmp
 
+.vscode
+
 /coverage/*
 
 .DS_STORE
@@ -29,6 +31,7 @@ data.tar
 /public/uploads
 /node_modules
 public/assets/**
+public/uv
 
-mdl-solr-core/
+mdl-solr-core
 .env

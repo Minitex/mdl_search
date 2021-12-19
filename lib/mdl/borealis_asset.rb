@@ -41,6 +41,10 @@ module MDL
       :missing_type
     end
 
+    def playlist?
+      false
+    end
+
     private
 
     def subtitle
