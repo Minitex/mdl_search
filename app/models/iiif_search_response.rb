@@ -26,7 +26,7 @@ class IiifSearchResponse
       # The highlight we get from Solr may be only a subset
       # of the line. This will combine the highlight with the line
       # so that we can get an accurate index of the highlighted
-      # words within the it.
+      # words within it.
       def highlighted_line(line, highlights)
         cleaned_hl = highlights.gsub(/<\/?em>/, '')
         line_parts = line.partition(cleaned_hl)
