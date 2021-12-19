@@ -261,4 +261,92 @@ http_interactions:
         your understanding.","value":10}}'
     http_version:
   recorded_at: Sat, 16 Jan 2021 03:10:49 GMT
+- request:
+    method: get
+    uri: https://cdm16022.contentdm.oclc.org/iiif/2/msn:2680/manifest.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - cdm16022.contentdm.oclc.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Oct 2021 01:42:22 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Link:
+      - <http://iiif.io/api/presentation/2/context.json>; rel="http://www.w3.org/ns/json-ld#context";
+        type="application/ld+json"
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept-Encoding,User-Agent
+      Content-Type:
+      - application/json
+      Etag:
+      - '"0f9c651292bd34edb674cdd55ee803e05--gzip"'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '1484'
+      Set-Cookie:
+      - JSESSIONID=ZjYxODY3NjgtYjhjNC00NzAwLWIwOWYtN2Y2ZWY1NDJhYWYy; Path=/; HttpOnly;
+        SameSite=Lax
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Thu, 21 Oct 2021 01:42:21 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@context":"http://iiif.io/api/presentation/2/context.json","@type":"sc:Manifest","@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/manifest.json","label":"Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota","metadata":[{"label":"City
+        or Township","value":"Minneapolis"},{"label":"Contact Information","value":"Minnesota
+        Streetcar Museum, P. O. Box 16509, Minneapolis, MN 55416-0509, www.trolleyride.org"},{"label":"Contributing
+        Organization","value":"Minnesota Streetcar Museum"},{"label":"Country","value":"United
+        States"},{"label":"County","value":"Hennepin"},{"label":"Date Created","value":"1950''s"},{"label":"Description","value":"A
+        wintry view of a southbound Oak-Harriet streetcar 1238 at the Lake Harriet
+        station at 42nd Street and Queen Avenue. This section of the streetcar line
+        has been preserved by the Minnesota Streecar Museum."},{"label":"Fiscal Sponsor","value":"Funding
+        provided to the Minnesota Digital Library through the Minnesota Arts and Cultural
+        Heritage Fund, a component of the Minnesota Clean Water, Land and Legacy constitutional
+        amendment, ratified by Minnesota voters in 2008."},{"label":"Minnesota Reflections
+        Topic","value":"Transportation"},{"label":"Geographic Feature","value":"Harriet
+        Lake;"},{"label":"GeoNames URI","value":"https://sws.geonames.org/5037657/"},{"label":"Local
+        Identifier","value":"msm_238"},{"label":"Creator","value":"Olsen, Bill"},{"label":"Format","value":"Black-and-white
+        photographs"},{"label":"MDL Identifier","value":"umn385469"},{"label":"Rights
+        Management","value":"http://rightsstatements.org/vocab/InC/1.0/"},{"label":"Rights
+        Statement","value":"This Item is protected by copyright and/or related rights.
+        You are free to use this Item in any way that is permitted by the copyright
+        and related rights legislation that applies to your use. For other uses you
+        need to obtain permission from the rights-holder(s)."},{"label":"Rights Status","value":"In
+        Copyright"},{"label":"Library of Congress Subject Headings","value":"Street-railroads;
+        Transportation;"},{"label":"State or Province","value":"Minnesota"},{"label":"Keywords","value":"Streetcar"},{"label":"Title","value":"Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota"},{"label":"Type","value":"Still
+        Image"},{"label":"Use Determination URI","value":"http://rightsstatements.org/vocab/InC/1.0/"},{"label":"Repository","value":"Minnesota
+        Digital Library"},{"label":"Source","value":"<span>From: <a href=\"https://cdm16022.contentdm.oclc.org/digital/collection/msn/id/2680\">Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota</a></span>"}],"attribution":["","http://rightsstatements.org/vocab/InC/1.0/"],"seeAlso":{"@id":"https://cdm16022.contentdm.oclc.org/oai/oai.php?verb=GetRecord&identifier=oai:cdm16022.contentdm.oclc.org:msn/2680&metadataPrefix=oai_qdc","format":"application/xml","profile":"http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"},"within":"https://cdm16022.contentdm.oclc.org/iiif/msn/manifest.json","sequences":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/sequence/s0","@type":"sc:Sequence","label":"Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota","canvases":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0","@type":"sc:Canvas","label":"Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota","images":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/annotation/a0","@type":"oa:Annotation","motivation":"sc:painting","resource":{"@id":"https://cdm16022.contentdm.oclc.org/iiif/2/msn:2680/full/full/0/default.jpg","@type":"dctypes:Image","service":{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://cdm16022.contentdm.oclc.org/iiif/2/msn:2680","width":4316,"height":3116,"tiles":[{"width":4316,"scaleFactors":[1,2,4,8,16]}],"profile":"http://iiif.io/api/image/2/level1.json","protocol":"http://iiif.io/api/image"},"format":"image/jpeg","width":4316,"height":3116},"on":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0"}],"width":4316,"height":3116}]}],"structures":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/range/r0","@type":"sc:Range","label":"Streetcar
+        at Lake Harriet station, Minneapolis, Minnesota","ranges":[],"canvases":["https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0"]}]}'
+    http_version:
+  recorded_at: Thu, 21 Oct 2021 01:42:22 GMT
 recorded_with: VCR 3.0.3

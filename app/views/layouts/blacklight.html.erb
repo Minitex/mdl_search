@@ -41,24 +41,24 @@
 </head>
 
   <body class="<%= render_body_class %>">
-  <%= render :partial => 'shared/header_navbar' %>
+  <%= render partial: 'shared/header_navbar' %>
 
   <%= render partial: 'shared/ajax_modal' %>
 
-  <%= render :partial => 'shared/search_block' unless current_page?('/advanced') %>
+  <%= render partial: 'shared/search_block' unless current_page?('/advanced') %>
 
   <div id="main-container" class="<%= container_classes %>">
 
     <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
-    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+    <%= render partial: '/flash_msg', layout: 'shared/flash_messages' %>
 
     <div class="row">
       <%= yield %>
     </div>
   </div>
 
-  <%= render :partial => 'shared/footer' %>
-  <%= render :partial => 'shared/blocking_javascript' %>
+  <%= render partial: 'shared/footer' %>
+  <%= render partial: 'shared/blocking_javascript' %>
   </body>
 </html>

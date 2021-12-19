@@ -43,15 +43,25 @@ set :rails_env, "production"
 
 set :passenger_restart_with_touch, true
 
-# Restart all sidekiq instances so they can pick up the new code
 namespace :deploy do
+  task :prep_uv do
+    on roles(:all) do |host|
+      within release_path do
+        execute './prep_uv.sh'
+      end
+    end
+  end
+
   ###
   # Called by capistrano-sidekiq
+  # Restart all sidekiq instances so they can pick up the new code
   task :restart_sidekiq do
     on roles(:all) do |host|
-      (0..2).map do |pid|
+      (0..3).map do |pid|
         execute "sudo systemctl restart sidekiq-#{pid}"
       end
     end
   end
 end
+
+after 'deploy:updated', 'deploy:prep_uv'
