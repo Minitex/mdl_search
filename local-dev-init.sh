@@ -13,7 +13,7 @@ do
   echo "Waiting for MySQL to start..."
   sleep 1
 done
-bundle exec rake db:migrate db:test:prepare
+bundle exec rake db:migrate db:test:prepare db:seed
 yarn install
 
 # Copy UV assets to their expected locations in public/
