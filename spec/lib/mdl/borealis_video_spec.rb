@@ -20,7 +20,7 @@ module MDL
     end
 
     it 'knows its src' do
-      expect(video.src).to eq 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1234/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4'
+      expect(video.src).to eq 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1234/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4'
     end
 
     it 'knows its player' do

@@ -2,7 +2,7 @@ module MDL
   class BorealisVideo < BorealisAsset
     def src(entry_id = nil)
       entry_id ||= (playlist_id || video_id)
-      "http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4"
+      "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4"
     end
 
     def thumbnail_url
