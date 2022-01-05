@@ -1,7 +1,7 @@
 module MDL
   class BorealisAudio < BorealisAsset
     def src(entry_id = audio_id)
-      "http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4"
+      "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4"
     end
 
     def thumbnail_url

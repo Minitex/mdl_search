@@ -48,6 +48,12 @@ Run the setup script (builds Docker images for dependencies)
 ./local-dev-init.sh
 ```
 
+Start Sidekiq
+
+```bash
+./start_sidekiq.sh 'default -q iiif_search -q critical,2'
+```
+
 [Ingest some content](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup#ingest-some-content)
 
 ## Interacting with the App on the Command Line
@@ -121,7 +127,7 @@ $ docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {print $1;
 $ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
 
-## Usefull Tools
+## Useful Tools
 
 * [Docker Dive](https://github.com/wagoodman/dive)
 
