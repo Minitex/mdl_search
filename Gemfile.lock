@@ -264,7 +264,7 @@ GEM
     faraday-net_http (1.0.1)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
-    ffi (1.9.25)
+    ffi (1.15.5)
     fontello_rails_converter (0.4.6)
       activesupport
       launchy
@@ -297,7 +297,7 @@ GEM
       json
     iiif_manifest (1.1.0)
       activesupport (>= 4)
-    image_processing (1.12.1)
+    image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.7.0)
@@ -494,8 +494,8 @@ GEM
     rspec-support (3.6.0)
     ruby-oembed (0.15.0)
     ruby-progressbar (1.8.1)
-    ruby-vips (2.0.17)
-      ffi (~> 1.9)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.4)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
