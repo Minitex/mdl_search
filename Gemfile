@@ -86,7 +86,7 @@ gem 'hash_at_path', github: 'UMNLibraries/hash_at_path', ref: '92dafd3b06de2cbc8
 gem 'contentdm_api', github: 'UMNLibraries/contentdm_api', ref: '847a70689813c03990db2ebb622d0beee7657688'
 gem 'cdmbl', github: 'Minitex/cdmbl', tag: 'v0.20.0'
 gem 'sidekiq', '5.2.7'
-gem 'sinatra', '2.0.4', require: false
+gem 'sinatra', '2.2.0', require: false
 gem 'sidekiq-failures', '1.0.0'
 gem 'whenever', '0.9.7', require: false
 
