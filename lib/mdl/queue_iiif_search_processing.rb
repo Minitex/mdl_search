@@ -9,10 +9,28 @@ module MDL
   class QueueIiifSearchProcessing
     class << self
       def format(doc)
-        if [doc, *Array(doc['page'])].any? { |p| p['transc'].present? }
+        if iiif_search_candidate?(doc)
           IiifSearchProcessingWorker.perform_async(doc['id'].sub('/', ':'))
         end
         nil
+      end
+
+      private
+
+      def iiif_search_candidate?(doc)
+        has_ocr?(doc) || text_type?(doc) || ocr_candidate?(doc)
+      end
+
+      def has_ocr?(doc)
+        [doc, *Array(doc['page'])].any? { |p| p['cdmhasocr'] == '1' }
+      end
+
+      def text_type?(doc)
+        doc['type'] == 'Text'
+      end
+
+      def ocr_candidate?(doc)
+        doc['format'] == 'image/jp2' && (doc['transc'].present? || doc['transl'].present?)
       end
     end
   end
