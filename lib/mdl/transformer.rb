@@ -28,22 +28,6 @@ module MDL
       end
     end
 
-    class KalturaPlaylistDataFormatter
-      def self.format(value)
-        data = value.split(';').map do |playlist_entry_id|
-          id = playlist_entry_id.strip
-          entry = KalturaMediaEntryService.get(id)
-          {
-            entry_id: playlist_entry_id,
-            duration: entry.duration,
-            name: entry.name
-          }
-        end
-
-        JSON.generate(data)
-      end
-    end
-
     def self.field_mappings
       [
         {dest_path: 'location_llsi', origin_path: '/', formatters: [CDMBL::LocationFormatter]},
@@ -151,10 +135,10 @@ module MDL
         {dest_path: 'compound_objects_ts', origin_path: 'page', formatters: [CDMBL::ToJsonFormatter]},
         {dest_path: 'geonam_ssi', origin_path: 'geonam', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'kaltura_audio_ssi', origin_path: 'audio', formatters: [CDMBL::StripFormatter]},
-        {dest_path: 'kaltura_audio_playlist_entry_data_ts', origin_path: 'audio', formatters: [CDMBL::StripFormatter, KalturaPlaylistDataFormatter]},
+        {dest_path: 'kaltura_audio_playlist_entry_data_ts', origin_path: '/', formatters: [MDL::KalturaPlaylistDataFormatter]},
         {dest_path: 'kaltura_audio_playlist_ssi', origin_path: 'audioa', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'kaltura_video_ssi', origin_path: 'video', formatters: [CDMBL::StripFormatter]},
-        {dest_path: 'kaltura_video_playlist_entry_data_ts', origin_path: 'video', formatters: [CDMBL::StripFormatter, KalturaPlaylistDataFormatter]},
+        {dest_path: 'kaltura_video_playlist_entry_data_ts', origin_path: '/', formatters: [MDL::KalturaPlaylistDataFormatter]},
         {dest_path: 'kaltura_video_playlist_ssi', origin_path: 'videoa', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'coordinates_llsi', origin_path: 'geonam', formatters: [CDMBL::GeoNameID, CDMBL::GeoNameIDToJson, CDMBL::GeoNameToLocation]},
         {dest_path: 'placename_ssim', origin_path: 'geonam', formatters: [CDMBL::GeoNameID, CDMBL::GeoNameIDToJson, CDMBL::GeoNameToPlaceName]},

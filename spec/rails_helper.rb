@@ -22,6 +22,7 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
   config.default_cassette_options = { record: :once }
   config.ignore_localhost = true
+  config.filter_sensitive_data('<KS>') { |int| JSON.parse(int.request.body)['ks'] }
 end
 
 # Add additional requires below this line. Rails is not loaded until this point!
