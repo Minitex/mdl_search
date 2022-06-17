@@ -37,15 +37,31 @@ set :default_environment, {
   'PATH' => "/swadm/bin/ruby:$PATH"
 }
 
+set :deploy_to, '/swadm/var/www/mdl'
+
+set :ssh_options, { user: 'swadm', forward_agent: true }
+
 append :linked_dirs, "log"
 
 set :rails_env, "production"
 
+set :use_sudo, false
+
+set :bundle_flags, '--deployment'
+
+set :keep_releases, 2
+
+###
+# Run migrations only on :app, since that's where we have
+# our database. No need to run from the indexing server (:job)
+set :migration_role, [:app]
+
 set :passenger_restart_with_touch, true
 
 namespace :deploy do
+  desc 'prepare UniversalViewer assets'
   task :prep_uv do
-    on roles(:all) do |host|
+    on roles(:web) do |host|
       within release_path do
         execute './prep_uv.sh'
       end
@@ -53,10 +69,10 @@ namespace :deploy do
   end
 
   ###
-  # Called by capistrano-sidekiq
   # Restart all sidekiq instances so they can pick up the new code
+  desc 'Restart sidekiq processes'
   task :restart_sidekiq do
-    on roles(:all) do |host|
+    on roles(:job) do |host|
       (0..3).map do |pid|
         execute "sudo systemctl restart sidekiq-#{pid}"
       end
@@ -65,3 +81,4 @@ namespace :deploy do
 end
 
 after 'deploy:updated', 'deploy:prep_uv'
+after 'deploy:publishing', 'deploy:restart_sidekiq'
