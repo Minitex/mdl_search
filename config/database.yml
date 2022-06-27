@@ -11,10 +11,10 @@ default: &default
   database: mdl
   username: mdl
   password: mdl
+  host: <%= ENV.fetch('MDL_DB_HOST', '127.0.0.1') %>
 
 development: &development
   <<: *default
-  host: 127.0.0.1
   port: 3306
 
 # Warning: The database defined as "test" will be erased and
