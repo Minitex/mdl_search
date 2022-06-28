@@ -89,3 +89,7 @@
   <% end %>
 </div>
 
+<% content_for(:head) do %>
+  <!-- turbolinks' cache doesn't work with the Flot chart -->
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>

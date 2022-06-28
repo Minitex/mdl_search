@@ -41,7 +41,6 @@ group :development do
   gem 'meta_request', '~> 0.7.2'
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails'
-  gem 'capistrano-sidekiq'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-passenger'
   gem 'fontello_rails_converter'
