@@ -25,7 +25,7 @@ class IndexingController < ApplicationController
   end
 
   def create
-    args = { set_specs: [params.require(:collection)] }
+    args = { set_specs: [params.require(:collection)], from: '1970-01-01' }
     if params[:date].present?
       args[:from] = Date.parse(params[:date]).iso8601
     end
