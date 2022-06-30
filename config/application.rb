@@ -29,6 +29,7 @@ module MdlSearch
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.precompile += %w(catalog_show)
 
 
     unless Rails.env.production?

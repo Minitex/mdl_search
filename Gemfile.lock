@@ -674,6 +674,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaltura-client (= 17.5.0)
+  leaflet-rails
   listen (>= 3.0.5, < 3.2)
   meta_request (~> 0.7.2)
   mysql2 (~> 0.4.4)
