@@ -1,9 +1,9 @@
 require 'json'
 
 ###
-# Careful with this... looks half of the code here expects
-# a document from Solr, and the other half expects one from
-# ContentDM. We should get that sorted out.
+# Wraps a Solr document hash. Accessing values of the document
+# itself use the Solr fields, whereas accessing attributes of a
+# compound document's pages uses the ContentDM attribute names.
 module MDL
   class BorealisDocument
     attr_reader :document,
@@ -12,6 +12,7 @@ module MDL
                 :collection,
                 :id
 
+    # @param document [Hash] Solr document
     def initialize(document: {},
                    asset_map_klass: BorealisAssetMap,
                    to_viewers_klass: MDL::BorealisAssetsToViewers)

@@ -1,0 +1,846 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_h3dokqpd","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"b5cbb98168d4d01faaadc1bb0c113dbc"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:09 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1075'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-b6d9
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1061888752, 1654044489
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5cxw
+      X-Proxy-Session:
+      - 0fbff920708c94b40cad84dc835a464f
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA41WbW/bNhD+K0KA7NNm6qV25I1R5zUpEHRdg8YN0E8CJdIWbUlU+WI7xX78jhRty44RLAjg5547knfHu6Pw+11TBxsmFRft7VU0Cq8C1paC8nZ5e2X04rf06n2GwSjDkilT6wyLYsVKPX/pWPaJ1NpI8liTl5orjdFAhzvPfhCtZq3OopwIWrzsDPk1ytM0/HnzrpgAbAz9sQvlEqBpXjbFikwBFttGrXbEGiSrstyY5QZg+a6K1YobgD9lMU5qqQBONoqKRbkCuOLbmKfhFmA4bmPCygTgpukaEU42GJ07hRe81hB+htEBaaFJ/dVFa/lTcb+BizE5bniMWWVhT4P1hrOtk3uAKWRLQ6otdcCY7VhpNPsm62ydd3Ue5i1p2O0DuCjtwmDLdRU8c1WRVgdPFal+IU33h7c1sr6ttO6uk9l1/BH+t9vtaN3fzKgUDTC8pWw36qoOcEekbiFOu3XJVAyUP38fynXy0XB6ndxdxxNvnTs5SibTdAwrJsoUXc+FIC2EbAgsu0tBWCu78uYv+L1xO/hd/RZ5lVCx/tFRjAZhY06zoQpEbHOQvZEDjJwFpkyVknculbPnaDqd5u/yaJx/hhQPVNiH8gAn9XHALR0obJT7LUjVsjCM/zRNO2LUYOQVuJSMaHHZ5qjDmixV1vC2ZQrqJuBNw5cSXFZQSFaFCQXt3EE0wCXRbCkkZ5YfCkf8QE91TlaaaKMyCMYj3AjK+sp66pkJRq+4gdUHYaARwqFRT2Fta3oMjrvadkEyOoNOnkRROg4n6cSH7lhsOnrB4MhiyMPaHuR+fZt56ijgjdCs7xkH8FIK09nUogPy93ZHNMkOt9hLVGzbWhBqq8p2xe8IlbQtyLrhw6ZAHfJVgFSHQnBpi2AeyBcoU3SsRORHI4pC+IugogbbY8WILKs52+ksf5x9zb/88/f3PMj9xoA+3989zPL598f7PPk3CN4o5uBSyQQn5RzAFR8PxDV0b6tYP3fQieSdzvZO72WsK9MULeH1MDuLjaBvpeaw6H8l6OQITEoYMcoOWylq23lxGk9CKNZzha1jqeEKbTADzFrqyQOSbMEkPFLM1cSJJO0MK+Htureeev051TOMntsMGE80ELDvl/BgNSD3dfgkpH4mtWFu8p9zuBStz9KjFPDK9I5fZCWjXMILOvTtjJFCHIThyBzy1jFw87jLmSw63+gzrSUvjOszdJGFZVzXjH6DMajuKdfuKl5xJ9SjKWDiV+eWB/qEfYZ+OLfsuZJ0pOA11/uhOBQ1a+A6NDvG+IqhXNnH56F9cm2T2fY9ozDpOmgd/w6jE2kgPO8bCF0ii1qU65nRYg5d2z84thAu0XDB1kX6xX0nKXe/r4j+M6t/HeGAOYdXLhxFYTxNp9MoDpMkTPev516Pkf1G+w+4YHi7zwkAAA==
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:09 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_aodbyxua","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"223ab940a431475f798f65bd1333714d"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:10 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1084'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-d08c
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 2144859079, 1654044490
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-829860a8f178447e2b0f2e044846aa32
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5cxw
+      X-Proxy-Session:
+      - 58b9610855d4e5fab41c5c121ac6921d
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSgptmIvWHWN2gdjm9bbeAP0JNAibbORRIEcOTGwP36HlKyXfehlT5r5ZqjhvEk/v+eZdxLaSFV8ugvu/TtPFKnisjh8uqtg/3F29zmmqBRTLUyVQUzV7pdIYXsuRfwXy6DS7ElwyVYF6DMlPSnNLe7IKSUdQ1NVNCb/rlgm4RxPgih88ENKrkXUqEqn4vKbHtdIXmr9+CJreSOYTo8brU6SC10fIbfAIbbmV2oWSjU6AP8Yob+x3P5pDDS8zjqZpZ3fSwb2SI/mDJiVHwHKPwhJecFKef9aB/Q+VTkpSfAQzWfTkJiW9H1SZuz8xAq5FwaIsEFfcxIkTPHd+b1iZK90zoBUOiOlVqBSlRFrhJKLSbrP2EnpDdMsN2tuYv/DZPboTwL3eQwoGStQabZa5ktp2C4TNj5jwIAWqGwjd6HsRU2Mf6sJepLizcQRJTVBM2ZggyLBFxBj/kPf+udTMhDQN8nhiP9tvkchD0eEyYXgGC+w+Y4iLI+Wo7lZdpLJPJph+DuoPdaUxZCVPO4iis6ig4XN8boAoe31vTcJR+9FmiMrwHs+suMHD8MFHrrrNCkXJtWydMYWL8F8Pk8mSTBNntBWT0RLPFW4CmtSjPFqIVoZ9/3FjCq0Ov9Z5cW94BUljcAWHQN1W6eTUWAHE+eyKIRRwDyZ5/Kg8eqGEieijKN060jSo1Os1YPSUpj4qT29lAcJLPO+yp1mtud7Wr0TtnCi6TwMnFNDHOuFQWXi0NaLo2iusNFcDp5rBCvlCutpfVFVAbHfV6ohCjaHmAioh42NQlNjgR9NJpO538SmLrCq5AOFWTDHQupQioF6tYbclwKGIPvRQB1DTwrQf8Rqgh60qko3S1qqSSwOABa3aa45rt6KTDH+f46Ei43hXOg3O6aGoAf9yzTDcSveIU42ix/J929ffyZe0lhH6mm1XC+S7c/NKpn+63m/0SPerUr0Bl3iXUawM0wzmYrC1GP/I6a2z9NmYbjYX2Y/HKt8VzCZ9QO6Pyn+O/FsD9fBTOQgmo0NG6iBFcrSVBjzReEZldmGDmdhZJfaWGCrX0OzE3q0KHgDtpQWe6FxIwtXSQNOC8x7iot6VWfcycdQjQg+1ukhDZCjr02X+a1WD7xU77PS8MKySli1K6y323F57mVmr3pju3dCalelxjdD/4ojRCvVMv3B3Mft/fC23V9GvCqbKbEA0HJXuSYlN1E8JgHXmt3tZoWL3GXkChtAm2qXYamPNVt4gL5ge4w1ayxlJdtJfPi4YUqGLIgcswKi8/EK4dLYabAunl332DE4higrS+yfZg+SAddjumfVLXCXqfR1UYHaYvPW68zWwy0YE2yvyL+7l6Fx+b0C6qeleBdp5dawxB3q3/thOI1CP4zmj4/ThzlGbKBAiX2Y/gcSf1y4xAoAAA==
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:10 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_880z74b6","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"4882146562748ce41917c8f3e5d0fdee"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:10 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1083'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-b6d9
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1089774510, 1654044490
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-bb8c03df44d3f5119941618e1be7181c
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5jsq
+      X-Proxy-Session:
+      - b36e7bd0be9ce499e23724af21608833
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWzW7bOBB+FSHnNpQc27EXrLpGk4OxTett3AA9CbRI22wkUSBHTlLsw++QomVK9qGXnjTzzVDD+Sf9+FoW0UFoI1X14Sq5jq8iUeWKy2r34aqB7fvZ1ceUolJKtTBNASlVm58ih/VbLdJ/WAGNZg+CS3ZfgX6jJJDS0uKOnFByYmiuKm/y34YVEt7ScTId3cQjSs5F1KhG5+L4m4DzkqdWPz3KOt4IpvP9SquD5EK3R8glsI8t+ZmahXKNDsB3I/QXVto/DQHP6+Iks7Tz+46BPRLQnAGz8j1A/RchOa9YLa+f24Be56okNUlupvPZZERMR8YxqQv29sAquRUGiLBBX3KSZLNZ/Ot2vJmSrdIlA9LogtRagcpVQawRSo4m6bZgB6VXTLPSLLlJ43fj2W08TtznNqFkqEClWWtZ3knDNoWw8RkCBrRAZRu5I2UvalL8W0vQgxQvjm8JWjADKxQJvoAU8z+KrX8xJT0BfZEc9vhf/90LudsjTI4Ex3iBzfc0nqGPR46W5i6QjOdoOIC6Y74s+qzk6Smi6Cw6WNkcLysQ2l4/epGwj56k2bMKosc927+LMFwQYQk7TcqFybWsnbHFUzKfz7NxlkyyB7QViGiNpypXYT7FGK8Ooo1x35/MqEqrt7+bsroWvKHEC2zRMVCXdU4yCmxn0lJWlTAKWCTLUu40Xt1Q4kSUcZSuHUkCOsda3SkthUkfutN3cieBFdFnudHM9nygFZywhTOdzEeJc6qPY70waEw6svXiKFoqbDSXg8cWwcCfYYHWJ9VUkMahUgtRsDnEdEM7bGwUfI0l8XQ8Hs9jH5u2wJqa9xRmye0NBrhDKQbq2RpyXwoYguKbh04MPShA/xFrCbrTqqndLOkon1gcACzt0txyXL1UhWL8T46Eo43+XAibHVND0IPwMn44rsUrpNlq8S37+uXzjyzKvHWkHu7vlots/WN1n03+i6Lf6JHoUiVGvS6JjiPYGaaFzEVl2rH/HlMb8tQvDBf74+yHfVNuKiaLMKDbg+K/E8/ucBvMTPai6W3YQPWsUJbnwphPCs+owjb0aDaa2qU2FNjq1+B3QkCLinuwo7TYCo0bWbhK6nFaYN5zXNT3bcadfAi1iOBDnQDxQIm++i6LO60APFbvo9LwxIpGWLUzLNjtuDy3srBXvbDdT0JqV6XGN0N4xQGileqYcDCHuL0f3vb0lwGvaj8lFgBabhrXpOQiisck4Fqzu93c4yJ3GTnDetCq2RRY6kPNDu6hT9geQ80Wy1nNNhIfPm6Ykj4LosSsgDj5eIZwaew0WFaPrnvsGBxClNU19o/fg6THBczpWXUJ3BQqf140oNbYvO06s/VwCcYE2yvyr+5laFx+z4D2aSleRd64NSxxh8bXcZLczG7iyXQ6jqcjfP31FSixD9P/ASoJI7TECgAA
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:10 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_mudqx0rg","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"62ad51b55bd5582df1333b08acacb7ef"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:10 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1084'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-4c9e
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1102292364, 1654044490
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-bbda0ebb79d7898e6b240bd8e29dbf2f
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-mk97g
+      X-Proxy-Session:
+      - 201a453c86b8cceb31ebc53ae1cbfd35
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSg5fi5YtUaTg7FN6228AXoSaJG22Uiilhw5MdAfv0NKlijZh1560sw3Qw3nTfrxLc+Co9BGquLDTXQb3gSiSBWXxf7DTQW79/ObjzFFpZhqYaoMYqq2P0UKm1Mp4r9ZBpVmj4JL9lCAPlHiSWlucUdOKOkYmqqiMflPxTIJp3gcTUd34YiSSxE1qtKpOP/G4xrJc60fn2UtbwTT6WGt1VFyoesj5BrYx1b8Qs1CqUYH4F8j9FeW2z8NgYbXWSeztPP7noE94tGcAbPyA0D5FyEpL1gpb1/qgN6mKiclie6mi/lkRExLhiEpM3Z6ZIXcCQNE2KCvOImSvOL/vYV6T3ZK5wxIpTNSagUqVRmxRig5m6S7jB2VXjPNcrPiJg7fjeezcBy5zyyiZKhApdlomd9Lw7aZsPEZAga0QGUbuTNlL2pi/FtN0KMUr46vCZoxA2sUCb6EGPM/Cq1/ISU9AX2VHA743+Z7EHJ/QJicCY7xApvvaTRHH88czc19J5ktZncY/g5qjzVl0Wclj7uIorPoYGFzvCpAaHv94FXCIXiW5sAKCJ4O7PAuwHBBgFacJuXCpFqWztjyOVosFsk4iSbJI9ryRLTEU4WrsCbFGK8WopVx35/MqEKr06cqL24FryhpBLboGKjrOp2MAtubOJdFIYwCFsg8l3uNVzeUOBFlHKUbRxKPTrFW90pLYeLH9vS93EtgWfBFbjWzPe9peSds4Uwni1HknOrjWC8MKhOPbL04iuYKG83l4KlGppiwIeZpfVZVAXHoK9UQBZtDrDOoh42NQlNjUTgdj8eLsIlNXWBVyXsK82iOhdShFAP1Yg25LwUMQfa9gTqGHhWg/4jVBN1rVZVulrRUk1gcACxu01xzXL0WmWL8T46Es43+XPCbHVND0AP/Ms1w3Ig3iJP18nvy7euXH0mQNNaReny4Xy2TzY/1QzL5FQS/0SPBtUoMel0SnEewM0wzmYrC1GP/PabW52mzMFzsz7MfDlW+LZjM/IDujor/Tjzbw3UwE9mLZmPDBqpnhbI0FcZ8VnhGZbahR/PR1C61ocBWv4ZmJ3i0KHgDtpQWO6FxIwtXST1OC8x7iov6oc64kw+hGhF8qOMhDZCjr02Xha2WB56r90lpeGZZJazaBebtdlyeO5nZq17Z7p2Q2lWp8c3gX3GAaKVaxh/MPm7vh7ft/jLgVdlMiSWAltvKNSm5iuIxCbjW7G43D7jIXUYusB60rrYZlvpQs4V76DO2x1CzxlJWsq3Eh48bpqTPgsgxKyA6Hy8QLo2dBqviyXWPHYNDiLKyxP5p9iDpcR7TPauugdtMpS/LCtQGm7deZ7YersGYYHtF/s29DI3L7wVQPy3Fm0grt4Yl7tDwNozuRovJfD5fhOFsMsOI9RQosQ/T/wFkmTmxxAoAAA==
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:10 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_umyvbja9","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"10fae51147702369dda9db79e6bedd72"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:10 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1083'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-0d1d
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 715792993, 1654044490
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-d096185f6bd5bff80465e302848569e9
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5jsq
+      X-Proxy-Session:
+      - 64d599f85cfcff0363e5da1f70e37696
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWzW7bOBB+FSHnNpQU27EXrLpGk4OxTettXAM9CbRI20wkUSBHTgzsw++QkmVK9qGXnjTzzYyGnF/Sz+9FHhyENlKVn26i2/AmEGWmuCx3n25q2H6c3nxOKColVAtT55BQtXkRGayOlUj+YTnUmj0JLtljCfpIiSelhcUdOabkzNBMla3Lf2uWSzgmo2gS34UxJZcialStM3H6jce1knWjn5xkHW8E09l+qdVBcqEbE3IN7GMLfqFmoUzjBeCnEfobK+yfhkDL6/wss7S79wMDa+LRnAGz8j1A9RchGS9ZJW9fm4DeZqogFYnuJrPpOCamI8OQVDk7PrFSboUBImzQF5xEaV0cD5sXNiNbpQsGpNY5qbQClamcWCeUnFzSbc4OSi+ZZoVZcJOEH0bT+3AUuc99RMlQgUqz0rJ4kIZtcmHjMwQMaIHKNnInyh7UJPi3hqAHKd4c3xA0ZwaWKBJ8DgnmPw7t/UJKegL6Jjns8b/tdy/kbo8wOREc4wU235MYbTuOFuahk0Sz+zEKPagza8uiz0qenCOKl8ULljbHixKEtscP3iTsg7U0e1ZC8Lxn+w8BhguCESVOk3JhMi0r52y+jmazWTpKo3H6hL48Ea3QqnQV1qYY49VBtDbu+8KMKrU6/l0X5a3gNSWtwBYdA3Vd5yyjwHYmKWRZCqOABbIo5E7j0Q0lTkQZR+nKkcSjM6zVndJSmOSps36QOwksD77KjWa25z0tz8IWzmQ8iyN3qT6O9cKgNkls68VRtFDYaC4Hzw0ywYQNMU/ri6pLSEJfqYEo2BxinUEzbGwU2hqLwsloNJpFbWyaAqsr3lOYxuE9BrhDKQbq1TpyXwoYgvxHC50ZelCA90esIehOq7pys6Sj2sTiAGBJl+aG4+qtzBXjf3IknHz054Lf7JgaYpvIO0w7HFfiHZJ0Of+Rfv/29VcapK13pJ4eHxbzdPVr+ZiO/wuC3+iR4FolBr0uCU4j2DmmucxEaZqx/xHT5/O0XRgu9qfZD/u62JRM5n5AtwfFfyeenXETzFT2otn6sIHqeaEsy4QxXxTaqNw2dDyNJ3apDQW2+jW0O8GjRclbsKO02AqNG1m4SupxWmDeM1zUj03GnXwINYjgQx0PaYEC79p2WdhpeeCpep+VhjXLa2HVLjBvt+Py3MrcHvXKdj8LqV2VGt8M/hEHiFaqY/zB7OP2fHja818GvKraKTEH0HJTuyYlV1E0k4Brze5284iL3GXkAutBy3qTY6kPNTu4h66xPYaaDZaxim0kPnzcMCV9FkSBWQFxvuMFwqWx02BRPrvusWNwCFFWVdg/7R4kPc5jzs+qa+AmV9nrvAa1wuZt1pmth2swJtgekX93L0Pj8nsBNE9L8S6y2q1hiTs0vA3jeBZPZ+O7CN8l97gQ+gqU2Ifp/43YNRzECgAA
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:10 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_bwmsjxa6","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"a37bc3a0c954d42665dc379b3adaa2c1"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:10 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1075'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-b6d9
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1819017683, 1654044490
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-44f497774954fb7af891d8aa91e5b2bd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-wcg4j
+      X-Proxy-Session:
+      - '0725658d662100e1ff3a40f121b9a2f6'
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LOrWk5tmMtWHWNOgdjm9bbuAF6EmiRtplQokCOnATYH79DStbLPvTSE2e+GXLIeZJ+fstUcBLGSp1/uglH45tA5KnmMj98uilh/3Fx8zmmqBRTI2ypIKZ69yxS2L4XIv6HKSgNexBcsvsczDslHSnNHO7JGSUtQ1Od1yb/LZmS8B5Pw/nkdjyh5FJErS5NKs7HdLha8lTpx2dZw1vBTHrcGH2SXJhqC7kG9rE1v1BzUGrwAfDTCvONZe6kIVDzRrUyR/t3rxi4LR2aM2BOfgQo/iIk5Tkr5Oilcugo1RkpSHg7jxazCbENOR6TQrH3B5bLvbBAhHP6mpMw2b1m9vmNzclem4wBKY0ihdGgU62IM0LJ2STdK3bSZsMMy+ya23j8Ybq4G09Dv9yFlAwVqLRbI7OVtGynhPPPELBgBCo7z50pd1E8m5KKoCcpXj1fEVQxCxsUCb7ErCJ99lVyOCJar0chD0endSY4eglclGcLPLHhaGZXjeQuiuYu8Vqo2VYnQ5+VPG79iE/EZ+UususchHGXDl4lHIMnaY8sh+DxyI4fAnQSBGjFa1IubGpk4Y0tn8IoipJpEs6SB7TVEdECd+U+r+rAopcaiJbWr8/M6tzo97/LLB8JXlJSC1yqMdDXdVoZBXawcSbzXFgNLJBZJg8Gr24p8SLKOEq3niQdOsUMPWgjhY0fmt0reZDAVPBV7gxzld7R6uxw6TKfRZPQP6qPY5YwKG08cVniKZppLC8fg8cKQcdfYB2tL7rMwSXREKLgYoi5C1WLcV7wqRTOw/F8Op1GYe2bKsHKgvcUFpMJKrQoRUe9OEN+pYAuUD9qqGXoSYOoktoT9GB0WfgO0lB1YLHsWdyEueK4fs2VZvxPNoKzjX436JY4hoa4Iupcpm6JW/EGcbJZ/ki+f/v6KwmS2jpSD/er9TLZ/trcJ7P/guA3aiS4lolBr0qCc+P1hqmSqcht1ew/YnS6PK3HhPf9uePDscx2OZOq69D9SfPf8WezuXJmInverG04R/WsUJamwtovGvdo5Qp6spjM3SgbClz2G6gnQYcWOa/BhjJiLwzOYeEzqccZgXFPcTzfVxH38iFUIYIPdTpIDWT41rrKxo1WBzxn76M28MRUKXxDH2KdiY4jcy+Vu+qVmd4KqRuQBn8K3SsOEKN1w3Qbcxd398PbtqcMeF3UXWIJYOSu9EVKrqK4TQIOMzfR7T2Obx+RC6wHbcqdwlQfajZwD33C8hhqVljKCraT+N3xzZT0WRAZRgVE+8YLhEvrusE6f/TV49rgEKKsKLB+6jlIelyHaT9T18Cd0unLsgS9xeKtxpnLh2swBthdkX/3/0Hr43sBVB9K8SbS0o9hiTN0PBqHYbiIotu7WRTOZrfosZ4CJe47+j9TVrTHugoAAA==
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:10 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_3jccvugv","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"30cd2cb7922b0430eef88df72d336e32"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:11 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1074'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-f47b
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 243851863, 1654044491
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-e98a320b043c51a0c069fd370f4dbd09
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-45lm5
+      X-Proxy-Session:
+      - bab56f9dca539f2f1dfeb70b3e694513
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWTW/bOBD9K0LOrSk5thMvWHWNJgdjm9bbuAF6EmiRtplIpECOnATYH79DSpYp2Yde6otn3gxF8s0X6ee3sogOwlip1aerZBRfRULlmku1+3RVw/bj7dXnlKJTSo2wdQEp1ZtnkcP6vRLpP6yA2rAHwSW7V2DeKQmstHS4F6eUnBSaa9Vu+W/NCgnv6SSZja/jMSXnJmp1bXJx/EygtZanxj892jrdCmby/crog+TCNEvIJbCPLfmZm4NygxeAn1aYb6x0XxoCrW6Kk83J/t53DNySQOYMmLPvAaq/CMm5YpUcvTSEjnJdkook17P57XRMbCfGMakK9v7AlNwKC0Q40pecJNn1c54f6t2BbLUpGZDaFKQyGnSuC+I2oeS4Jd0W7KDNihlW2iW3afxhcnsTTxL/d5NQMnSg0q6NLO+kZZtCOH6GgAUj0Nkxd5TcQfHblDQCPUjx6vVGoAWzsEKT4AvMKtJXXyWHPaLt/17I3d55HQWOLIGL8izGpOg0Wtq7wIJ8IeknqFvWJkNflTw98YhXxGspF9mlAmHcoaNXCfvoSdo9UxA97tn+Q4QkQTSjxHtSLmxuZOU3Wzwl8/k8m2TJNHvAvQITrXCV8nnVBhZZ6iBaW///zKxWRr//XZdqJHhNSWtwqcZAX/Y52SiwnU1LqZSwGlgky1LuDB7dUuJNlHG0rr1IAjnHDN1pI4VNH7rVd3IngRXRV7kxzFV64BWscOkym87Hib9UH8csYVDbdOyyxEu01FhePgaPDYJUnmGB1xddK3BJNIQouBhi7kLTYhwLPpWSWRLPJpPJPGm5aRKsrnjP4Ta5mSPBHUqRqBe3kf+ngBQUP1ropNCDBtEktRfozui68h2kk9rAYtmztAtzo3H9qgrN+J9sBMc9+t0gLHEMDcEbhIdpW+JavEGarRY/su/fvv7KoqzdHaWH+7vlIlv/Wt1n0/+i6DdqJLqUiVGvSqJj4/Ub00LmQtmm2X/E8IU6bceE5/7Y8WFflxvFZBESuj1o/jt8dosbMjPZY7PdwxHV24WyPBfWftG4RheuoMe345kbZUODy34D7SQIZKF4C3aSEVthcA4Ln0k9zQiMe47j+b6JuLcPoQYRfOgTIC1Q4l3bKos7rwA8Zu+jNvDEilr4hj7EgomOI3MrC3fUCzP9ZKRuQBp8KYRHHCBG604JG3OIu/PhaU9fGei6arvEAsDITe2LlFxEcZkEHGZuott7HN8+ImdYD1rVmwJTfejZwT30Cctj6NlgOavYRuJzxzdT0ldBlBgVEKc7niFcWtcNlurRV49rg0OIsqrC+mnnIOlpgXJ6TF0CN4XOXxY16DUWbzPOXD5cgjHA7oj8u38PWh/fM6B5UIo3kdd+DEucofEoxrRxv2Qe31xPsCv3HShxz9H/AcOcwca6CgAA
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:11 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_c4h2sjiu","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"0cbad1f746ff330c2d60e504089f6f58"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:11 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1077'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-4313
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1159956537, 1654044491
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-2a39023a31841144cfcb3d587dfc9fb0
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-xzbxx
+      X-Proxy-Session:
+      - e77caa813e2b5007bde58b31bd347363
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LOrWnJtmIvWHWNJgdjm9bbuAF6EmiRtphQpEBSTgLsj98hJetlH3rpSTPfDDXDeRJ/fitEcGLacCU/3YST6U3AZKYol8dPN5U9fFzefE4wKCVYM1MJm2C1f2aZ3b2XLPmHCFtp8sAoJ/fS6neMelJcONyTC4w6BmdKNib/rYjg9j2Zh3E0m0YYXYqwUZXO2Pk3Pa6RPNX6yVnW8oYRneVbrU6cMl0fQdfAIbahF2oOyjRcwP40TH8jhfvTGGh4LTqZo/2974h1R3o0JZY4eW5t+RdCGZWk5JOXOqCTTBWoROEsXi0XETItOZ2iUpD3ByL5gRmLmAv6hqIwzeZ5ZJ55hQ5KF8SiSgtUamVVpgRyRjA6m8QHQU5Kb4kmhdlQk0w/zJe303noP7chRmMFzM1O8+KOG7IXzMVnDBirGSi7yJ0p5yj8G6OawCfOXj1fE1gQY7cgYnQNVYWG7CunNge0+eaMH3OndSYoRMm6LMfxDG525nBh7jpJtJgtIegd1B5rimHIcpp0cYQrwrWky+xGWqad08Ert3nwxE1OpA0ec5J/CCBINrjFyGtiykymeemNrZ/C1WqVztNwkT6ArZ4Il3BK+rpqEgtRaiFcGf99JkZJrd7/rgo5YRRcagSu1IhV13U6GbbkaJKCS8mMsiTgRcGPGlw3GHkRJhSkO0+iHp1BhR6V5swkD+3pO37klojgK99r4jq9p9U74colXqyi0F9qiEOVEFuZJHJV4ilcKGgvn4PHGokhYWOsp/VFVdK6IhpD2LocQu3aesS4KPhSCuNwGs/n81XYxKYusKqkA4VleLuCALcohkC9OEP+iy2EQPxooI7BJ2VZXdSewEetqtJPkJZqEgttT5I2zTVH1asUitA/OQjONobToN/ikBoEN+g704zEHXuzSbpd/0i/f/v6Kw3SxjpQD/d3m3W6+7W9Txf/BcFv9EhwrRKDQZcE58HrDWPBMyZNPew/Qvr6PG7WhI/9eeLbvCr2knDRD+jhpOjvxLM9XAcz5YNoNjZcoAZWMMkyZswXBWeUcA0dLaPYrbKxwFW/ts0m6NFM0gZsKc0OTMMeZr6SBpxmkPcM1vN9nXEvH0M1wuhYp4c0QAF3bbps2mr1wHP1Piptn4iomB/oY6y30WFlHrhwrl7Z6Z0QuwWp4aXQd3GEaKVapj+Y+7jzD7zt/jLiVdlMibW1mu8r36ToKgrHuIVl5ja6uYf17TNygQ2gbbUXUOpjzRYeoE/QHmPNGstISfYcnjt+mKIha1kBWbGsu+MFQrlx02AjH333uDE4hjApS+ifZg+iAddjusfUNXAvVPayrqzaQfPW68zVwzUYEuxcpN/9e9D4/F4A9YOSvbGs8muYww6dTqbRPJ6twmgVz5bxLRTQUAEj9xz9H3tRcMK6CgAA
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:11 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_zrb53lrs","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"c3bbac59d0039fbebdc1352456a7c824"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:11 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1076'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-bf3b
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 739085943, 1654044491
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-5d33a678fe0394245c54b2ac8385b52c
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-n9mcs
+      X-Proxy-Session:
+      - 500592fb5f74b8c3453993755c4b3c50
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSg5tmIvWHWNJgdjm9bbuAF6EmiRttlQokCOnLjYH79DStYrPvTSk2a+GWo4b9KPr7kKjsJYqYsPV9F1eBWIItNcFvsPVxXs3s+vPiYUlRJqhK0UJFRvf4oMNqdSJP8wBZVhD4JLdl+AOVHSk9Lc4Z6cUdIxNNNFY/LfiikJp2QaxZObcELJWxG1ujKZOP+mxzWSp1o/Octa3gpmssPa6KPkwtRHyCVwiK34GzUHZQYdgO9WmC8sd38aAw1vVCdztPf7joE70qM5A+bkB4DyL0IyXrBSXj/XAb3OdE5KEt3Ei/lsQmxLhiEpFTs9sELuhAUiXNBXnETpL7Od3ShjyU6bnAGpjCKl0aAzrYgzQsnZJN0pdtRmzQzL7YrbJHw3nd+G08h/biNKxgpU2o2R+Z20bKuEi88YsGAEKrvInSl3Ufw3JTVBj1K8eL4mqGIW1igSfIlVRYbsi+RwQLT5HoTcH5zWmeAYJXBZjqNb9OzM0dzedZL4djHHoHdQe6wphiEredLFEV1EtwqX2VUBwrhLBy8SDsGTtAdWQPB4YId3AQYJArTiNSkXNjOy9MaWT9FisUinaTRLH9BWT0RLPFX4umoSi1FqIVpZ//3JrC6MPv1d5cW14BUljcCVGgN9WaeTUWB7m+SyKITVwAKZ53Jv8OronBdRxlG68STp0RlW6F4bKWzy0J6+k3sJTAWf5dYw1+k9rd4JVy7xbDGJvFNDHKuEQWWTiasST9FcY3v5HDzWSIwJG2M9rU+6KsAV0Rii4HKItQv1iHFR8KUUxVEYT6fTRdTEpi6wquQDhXk0n2KAW5RioJ6dIf+lgCFQ3xqoY+hRg6iL2hN0b3RV+gnSUk1ise1Z0qa55rh+KZRm/E8OgrON4TTotzimhqAH/cs0I3EjXiFJ18tv6dcvn3+kQdpYR+rh/m61TDc/1vfp7L8g+I0eCS5VYjDokuA8eL1hqmQmClsP+/eYvj5PmzXhY3+e+HCo8m3BpOoHdHfU/Hfi2R6ug5nKQTQbGy5QAyuUZZmw9pPGM1q5hp7MJ7FbZWOBq34DzSbo0aLgDdhSRuyEwT0sfCUNOCMw7xmu5/s6414+hmpE8LFOD2mAHH1tuixstXrguXoftYEnpirhB/oY6210XJk7qdxVL+z0TkjdgjT4UuhfcYQYrVumP5j7uLsf3rb7y4jXZTMllgBGbivfpOQiisck4DJzG93e4/r2GXmDDaB1tVVY6mPNFh6gT9geY80ay1jJthKfO36YkiELIsesgOh8fINwad00WBWPvnvcGBxDlJUl9k+zB8mA6zHdY+oSuFU6e15WoDfYvPU6c/VwCcYEuyvyr/49aH1+3wD1g1K8iqzya1jiDg2vw2hxczOfT+NJGMcxvvmGCpS45+j/MxVmLroKAAA=
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:11 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_6vsdofcj","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"2ba452938c455e3975e2e83b0026b0b8"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:11 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1075'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-4869
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 119792713, 1654044491
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-36f409ab59bed657d45f3334edaee2a5
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-phlwq
+      X-Proxy-Session:
+      - 60b986bb77904ea4b5aaa98869054782
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSg5tmMvWHWNJgdjm9bbeAP0JNAibTOlSIEcOQmwP36HlKxXfOhlT5r5ZqgZzpP082uhopOwThr96Sq5jq8ioXPDpT58uqpg/3Fx9TmlqJRSK1ylIKVm9yxy2L6VIv2LKagsexBcsnsN9o2SnpQWHg/kjJKOobnRjcm/K6YkvKXTZD65iSeUvBdRZyqbi/Nvelwjear107Os5Z1gNj9urDlJLmx9hFwCh9iav1PzUG7xAvCPE/YbK/yfxkDDW9XJPB3ufcfAH+nRnAHz8iNA+QchOdeslNe/6oBe56YgJUlu5svFbEJcS8YxKRV7e2Ba7oUDInzQ15wk2fzkuNnnz2RvbMGAVFaR0howuVHEG6HkbJLuFTsZu2GWFW7NXRp/mC5u42kSPrcJJWMFKt3WyuJOOrZTwsdnDDiwApV95M6UdxT/TUlN0JMUL4GvCaqYgw2KBF9hVZEh+yI5HBFtvkchD0evdSY4Rgl8lrFu8GZnjhburpNMbhdorge1x5piGLKSp10c8Yp4Le0zu9YgrHc6epFwjJ6kOzIN0eORHT9EGCSIlpQETcqFy60sg7HVU7JcLrNplsyyB7TVE9EST+lQV01iMUotRCsXvs/MGW3N259Voa8FryhpBL7UGJjLOp2MAju4tJBaC2eARbIo5MGi646SIKKMo3QbSNKjc6zQg7FSuPShPX0nDxKYir7KnWW+03tavRO+XOaz5SQJlxriWCUMKpdOfJUEihYG2yvk4LFG5piwMdbT+mIqDb6IxhAFn0OsXahHjI9CKKVknsTz6XS6TJrY1AVWlXygsJjEmMUOpRioX95Q+FLAEKgfDdQx9GRA1EUdCHqwpirDBGmpJrHY9ixt01xz3LxoZRj/PwfB2cZwGvRbHFND8AZ9Z5qRuBWvkGab1Y/s+7evP7Moa6wj9XB/t15l25+b+2z2bxT9Ro9ElyoxGnRJdB68wTBVMhfa1cP+I6avz9NmTYTYnyc+HKtip5lU/YDuT4b/Tjzbw3UwMzmIZmPDB2pghbI8F859MXjGKN/Qk8Vk7lfZWOCr30KzCXq00LwBW8qKvbC4h0WopAFnBeY9x/V8X2c8yMdQjQg+1ukhDVDgXZsui1utHniu3kdj4YmpSoSBPsZ6Gx1X5l4q7+qFnd4JqV+QFl8KfRdHiDWmZfqDuY97/9Db7i8j3pTNlFgBWLmrQpOSiygek4DLzG90d4/rO2TkHTaANtVOYamPNVt4gD5he4w1ayxnJdtJfO6EYUqGLIgCswKiu+M7hEvnp8FaP4bu8WNwDFFWltg/zR4kA67HdI+pS+BOmfzXqgKzxeat15mvh0swJti7yL+H96AL+X0H1A9K8SryKqxhiTs0vo4ncZLMsClvZrPl7BYjNlCgxD9H/wPWoi8rugoAAA==
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:11 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_jiw2i80w","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"b75298d8cb5dd0fb5dbb526d4403702d"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:12 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1076'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-9975
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 1400677703, 1654044492
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-3adbf1fb4e6c3920f18988699ab712af
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-272kz
+      X-Proxy-Session:
+      - 5319c576d266bdb952063fd0d412ba9c
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSjJj9gLVl2jycHYpvU2boCeBFqkbSYUKZCUHQP743dIyTKl+NBLT5r5ZqjhvIk/v5UiOjBtuJKfbpLb+CZislCUy92nm9puP85uPmcYlDKsmamFzbDavLDCrk8Vy/4hwtaaPDLKyYO0+oRRIMWlwz05wejC4ELJ1uS/NRHcnrJxMk1HcYrRexE2qtYFO/8m4FrJc6OfnWUdbxjRxX6l1YFTppsj6BrYx5b0nZqDCg0O2J+G6W+kdH8aAi2vxUXmaO/3PbHuSEBTYomT762t/kKooJJU/Pa1CehtoUpUoWQ0nc8mKTIdGceoEuT0SCTfMmMRc0FfUpTkL/yY8ll8RFulS2JRrQWqtLKqUAI5IxidTeKtIAelV0ST0iypyeIP49ldPE785y7BaKiAuVlrXt5zQzaCufgMAWM1A2UXuTPlLgr/xqgh8IGzo+cbAgti7ApEjC6gqlCfPXJq94C23z3ju73TOhMUomRdlqfJHDw7c7g094FkNJlB0C9Qd6wthj7LaXaJI7gIbkmX2aW0TLtLR0du99EzN3sibfS0J/sPEQTJRgl45VUxZabQvPLWFs/JfD7Px3kyyR/BWCDCFRyTvrDazEKYOgjXxn9fiFFSq9PfdSlvGa0xagWu1ohV13UuMmzJzmQll5IZZUnEy5LvNNzdYORFmFCQrj2JArqAEt0pzZnJHrvT93zHLRHRV77RxLV6oBWccPUynczTxDvVx6FMiK1Nlroy8RQuFfSXT8JTg0whY0Ms0PqiamldFQ0hbF0SoXhtM2NcFHwtJdMkno7H43nSxqapsLqiPYVZGo8gwB2KIVCvzpD/YgshED9a6MLgg7KsqWpP4J1WdeVHSEe1iYW+J1mX5oaj6iiFIvRPToKzjf44CHscUoPAg/Ay7Uxcszeb5avFj/z7t6+/8ihvrQP1+HC/XOTrX6uHfPJfFP1Ok0TXSjHqtUl0Hr3eMha8YNI04/4j5C/kcbsofPDPM9/u63IjCRdhRLcHRX8noN3hJpo574WzteEi1bOCSVEwY74oOKOE6+h0lk7dMhsKXPlr2+6CgGaStmBHabZlGjYx86XU4zSDxBewoB+alHv5EGoQRoc6AdICJfjatlncaQXguXyflLbPRNTMj/QhFux0WJpbLtxVr2z1ixC7FanhrRBecYBopTomHM0h7u4Ht738ZcCrqh0TC2s139S+S9FVFI5xC+vM7XTzAAvcZ+Qd1oNW9UZArQ81O7iHPkN/DDUbrCAV2XB48PhpivqsZSVkxbKLj+8Qyo0bB0v55LvHzcEhhElVQf+0mxD1uIC5PKeugRuhitdFbdUamrfZZ64ersGQYHdF+t2/CI3P7zugeVKyN1bUfhFzWKLxbTxKxqNpGsPMjtM72OF9BYzcg/R/nHs5VLwKAAA=
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:12 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_05n2aec3","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"bad76206c0ba007f2bd8326f2543f84a"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:12 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1077'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-ddc9
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 289293124, 1654044492
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-96e2e7e7b64a3a3684027ac0d3c69827
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5cxw
+      X-Proxy-Session:
+      - d3c0b998f552c0b3bb93748683f8ac6a
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWS2/bOBD+K0LObSg5fsQLVl2jycHYpvU23gA9CbRI22woUiBHTgLsj98hJesVH3rZk2a+GWqG8yT9/Fqo6CSsk0Z/ukqu46tI6NxwqQ+frirYf7y9+pxSVEqpFa5SkFKz+yVy2L6VIv2LKagsexBcsnsN9o2SnpQWHg/kjJKOobnRjcm/K6YkvKXTZD65iSeUvBdRZyqbi/Nvelwjear107Os5Z1gNj9urDlJLmx9hFwCh9iav1PzUG7xAvCPE/YbK/yfxkDDW9XJPB3ufcfAH+nRnAHz8iNA+QchOdeslNfPdUCvc1OQkiQ38+XtbEJcS8YxKRV7e2Ba7oUDInzQ15wkWTzTEybyG7I3tmBAKqtIaQ2Y3CjijVByNkn3ip2M3TDLCrfmLo0/TG8X8TQJn0VCyViBSre1sriTju2U8PEZAw6sQGUfuTPlHcV/U1IT9CTFS+BrgirmYIMiwVdYVWTIvkgOR0Sb71HIw9FrnQmOUQKf5dligTc7c7Rwd51kPpveYNA7qD3WFMOQlTzt4ohXxGtpn9m1BmG909GLhGP0JN2RaYgej+z4IcIgQZRgzIIq5cLlVpbB2uopWS6X2TRLZtkDGuuJaInHdCisJrMYphailQvfX8wZbc3bn1WhrwWvKGkEvtYYmMs6nYwCO7i0kFoLZ4BFsijkwaLvjpIgooyjdBtI0qNzLNGDsVK49KE9fScPEpiKvsqdZb7Ve1q9E75e5rPlJAmXGuJYJgwql058mQSKFgb7KyThsUbmmLEx1tP6YioNvorGEAWfREwE1DPGRyHUUjJP4vl0Ol0mTWzqCqtKPlC4TRY4XjqUYqCevaHwpYAhUD8aqGPoyYCoqzoQ9GBNVYYR0lJNYrHvWdqmuea4edHKMP5/ToKzjeE46Pc4pobgDfrONDNxK14hzTarH9n3b19/ZlHWWEfq4f5uvcq2Pzf32ezfKPqdJokulWI0aJPoPHqDZapkLrSrx/1HzF+fp82iCME/z3w4VsVOM6n6Ed2fDP+dgLaH62hmchDOxoaP1MAKZXkunPti8IxRvqMnt5O5X2ZjgS9/C80u6NFC8wZsKSv2wuImFqGUBpwVmPgcF/R9nfIgH0M1IvhYp4c0QIF3bdosbrV64Ll8H42FJ6YqEUb6GOvtdFyae6m8qxe2eiekfkVafCv0XRwh1piW6Y/mPu79Q2+7v4x4UzZjYgVg5a4KXUouonhMAq4zv9PdPS7wkJF32ADaVDuFtT7WbOEB+oT9MdassZyVbCfxwROmKRmyIArMCojuju8QLp0fB2v9GLrHz8ExRFlZYv80m5AMuB7TPacugTtl8udVBWaLzVvvM18Pl2BMsHeRfw8vQhfy+w6on5TiVeRVWMQSl2h8HU+mk5tZnMTJdBEvcSwPFSjxD9L/AEfZDZ+8CgAA
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:12 GMT
+- request:
+    method: post
+    uri: http://www.kaltura.com/api_v3/service/baseentry/action/get
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"1_vmpmo06v","version":-1,"ks":"<KS>","format":2,"clientTag":"ruby:21-07-08","apiVersion":"17.5.0","kalsig":"dc04737e5efa5f0b69f68ba619195e69"}'
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.4.9p362
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '274'
+      Host:
+      - www.kaltura.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Jun 2022 00:48:12 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1082'
+      Connection:
+      - keep-alive
+      X-Me:
+      - ny-nvp1-fapi-fcb8
+      Access-Control-Expose-Headers:
+      - Server, Content-Length, Content-Range, Date, X-Kaltura, X-Kaltura-Session,
+        X-Me
+      X-Kaltura-Session:
+      - 576378813, 1654044492
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 19 Nov 2000 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Kaltura:
+      - cache-key,cache_v3-1aaa7c0e4c19e11b9a422c26dacc768c
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      X-Proxy-Me:
+      - nvp1-front-proxy-blue-75b6988ddf-j5jsq
+      X-Proxy-Session:
+      - 1bcef3ef710e3e9599f537e12ae51158
+      Server:
+      - Kaltura
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7VWzW7bOBB+FSHnNpQc27UXrLpGk4OxTettvAF6EmiRttlKokCOnATYh98hRUuU7EMve9LMN0MN55/002tZRCehjVTVx5vkNr6JRJUrLqvDx5sG9u8XN59Sikop1cI0BaRU7X6KHLZvtUj/YgU0mj0KLtlDBfqNkkBKS4s7ckZJz9BcVd7k3w0rJLyl02Q+uYsnlFyKqFGNzsX5NwHnJc+tfnqWdbwRTOfHjVYnyYVuj5Br4BBb8ws1C+UaHYB/jNBfWWn/NAY8r4teZmnn9z0DeySgOQNm5UeA+g9Ccl6xWt7+agN6m6uS1CS5my8XswkxHRnHpC7Y2yOr5F4YIMIGfc1Jkp3KulTx/ET2SpcMSKMLUmsFKlcFsUYoOZuk+4KdlN4wzUqz5iaN300XH+Jp4j4fEkrGClSarZblvTRsVwgbnzFgQAtUtpE7U/aiJsW/tQQ9SfHi+JagBTOwQZHgK0gx/5PY+hdTMhDQF8nhiP/136OQhyPC5ExwjBfYfM+TKfp45mhp7gPJ5G6B4e+h7pgviyEredpHFJ1FByub43UFQtvrRy8SjtGzNEdWQfR0ZMd3EYYLogRr2KlSLkyuZe2srZ6T5XKZTbNklj2isUBEazxWuRLzOcaAdRBtjPv+ZEZVWr392ZTVreANJV5gq46Buq7Tyyiwg0lLWVXCKGCRLEt50Hh3Q4kTUcZRunUkCegci/WgtBQmfexO38uDBFZEX+ROM9v0gVZwwlbOfLacJM6pIY4Fw6Ax6cQWjKNoqbDTXBKeWmSOGRtjgdZn1VSQxqFSC1GwScRCg3ba2Cj4Ikvi+XQ6XSY+Nm2FNTUfKCySJVZSj1IM1C9ryH0pYAiK7x7qGXpSgP4j1hL0oFVTu2HSUT6xOAFY2qW55bh6qQrF+P85E842hoMh7HZMDUEPwsv46bgVr5Bmm9X37NvXLz+yKPPWkXp8uF+vsu2PzUM2+zeKfqdJomulGA3aJDoPYWeZFjIXlWkH/3vMX8hTvzJc8M/TH45NuauYLMKI7k+K/05Au8NtNDM5CKe3YSM1sEJZngtjPis8owrb0ZPFZG7X2lhgy1+D3woBLSruwY7SYi807mThSmnAaYGJz3FVP7Qpd/Ix1CKCj3UCxAMl+urbLO60AvBcvk9KwzMrGmHVLrBgu+P63MvCXvXKfu+F1C5Lja+G8IojRCvVMeFoDnF7P7xt/5cRr2o/JlYAWu4a16XkKorHJOBis9vdPOAqdxm5wAbQptkVWOtjzQ4eoM/YH2PNFstZzXYSnz5umpIhC6LErIDofbxAuDR2HKyrJ9c9dg6OIcrqGvvHb0Iy4AKmf1hdA3eFyn+tGlBbbN52n9l6uAZjgu0V+Tf3NjQuvxdA+7gUryJv3CKWuETj23hyN4sX+ChZLJdTu+CHCpTYp+l/egA4wcYKAAA=
+    http_version:
+  recorded_at: Wed, 01 Jun 2022 00:48:12 GMT
+recorded_with: VCR 3.0.3
