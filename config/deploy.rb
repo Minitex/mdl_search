@@ -56,6 +56,8 @@ set :keep_releases, 2
 # our database. No need to run from the indexing server (:job)
 set :migration_role, [:app]
 
+set :whenever_roles, [:job]
+
 set :passenger_restart_with_touch, true
 
 namespace :deploy do
