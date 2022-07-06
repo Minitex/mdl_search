@@ -1,0 +1,157 @@
+---
+id: msn:2680
+oai_set_ssi: msn||Minnesota Streetcar Museum||The mission of the <a href="http://www.trolleyride.org/">Minnesota
+  Streetcar Museum</a> in Minneapolis, Minnesota is to preserve and communicate to
+  the public the experience of Minnesota's electric street and interurban railway
+  history. It has restored a number of historic Minnesota streetcars and operates
+  them for the public at Lake Harriet in Minneapolis and at Excelsior. It also produces
+  a quarterly magazine on Minnesota streetcar history and maintains an archive of
+  about 10,000 photos. The photos submitted to Minnesota Reflections show all aspects
+  of the operations of streetcars in the state, with an emphasis on the Twin Cities
+  of Minneapolis and St. Paul.
+setspec_ssi: msn
+collection_name_ssi: Minnesota Streetcar Museum
+collection_name_tei: Minnesota Streetcar Museum
+collection_description_tesi: The mission of the <a href="http://www.trolleyride.org/">Minnesota
+  Streetcar Museum</a> in Minneapolis, Minnesota is to preserve and communicate to
+  the public the experience of Minnesota's electric street and interurban railway
+  history. It has restored a number of historic Minnesota streetcars and operates
+  them for the public at Lake Harriet in Minneapolis and at Excelsior. It also produces
+  a quarterly magazine on Minnesota streetcar history and maintains an archive of
+  about 10,000 photos. The photos submitted to Minnesota Reflections show all aspects
+  of the operations of streetcars in the state, with an emphasis on the Twin Cities
+  of Minneapolis and St. Paul.
+title_tesi: Streetcar at Lake Harriet station, Minneapolis, Minnesota
+title_ssi: Streetcar at Lake Harriet station, Minneapolis, Minnesota
+title_sort: Streetcar at Lake Harriet station, Minneapolis, Minnesota
+title_unstem_search: Streetcar at Lake Harriet station, Minneapolis, Minnesota
+creator_tesi: Olsen, Bill
+creator_unstem_search: Olsen, Bill
+creator_ssim:
+- Olsen, Bill
+creator_sort: Olsen, Bill
+description_tei: A wintry view of a southbound Oak-Harriet streetcar 1238 at the Lake
+  Harriet station at 42nd Street and Queen Avenue. This section of the streetcar line
+  has been preserved by the Minnesota Streecar Museum.
+description_ts: A wintry view of a southbound Oak-Harriet streetcar 1238 at the Lake
+  Harriet station at 42nd Street and Queen Avenue. This section of the streetcar line
+  has been preserved by the Minnesota Streecar Museum.
+dat_ssi: 1950's
+dat_ssim:
+- '1950'
+dat_tesi: 1950's
+dat_sort: 1950's
+topic_teim:
+- Transportation
+topic_ssim:
+- Transportation
+topic_unstem_search: Transportation
+type_ssi: Still Image
+type_tesi: Still Image
+physical_format_ssi: Black-and-white photographs
+physical_format_tesi: Black-and-white photographs
+formal_subject_unstem_search: Street-railroads; Transportation;
+formal_subject_ssim:
+- Street Railroads
+- Transportation
+formal_subject_teim:
+- Street Railroads
+- Transportation
+subject_unstem_search: Streetcar
+subject_teim:
+- Streetcar
+subject_ssim:
+- Streetcar
+keyword_unstem_search:
+- Transportation
+- Street Railroads
+- Streetcar
+keyword_tesi: Transportation; Street Railroads; Streetcar
+keyword_ssim:
+- Transportation
+- Street Railroads
+- Streetcar
+city_ssim:
+- Minneapolis
+city_unstem_search: Minneapolis
+county_ssim:
+- Hennepin
+county_unstem_search: Hennepin
+state_ssi: Minnesota
+state_unstem_search: Minnesota
+country_ssi: United States
+country_unstem_search: United States
+contributing_unstem_search: Minnesota Streetcar Museum
+contributing_organization_tesi: Minnesota Streetcar Museum
+contributing_organization_ssi: Minnesota Streetcar Museum
+contact_information_ssi: Minnesota Streetcar Museum, P. O. Box 16509, Minneapolis,
+  MN 55416-0509, www.trolleyride.org
+rights_ssi: http://rightsstatements.org/vocab/InC/1.0/
+local_identifier_ssi: msm_238
+identifier_ssi: umn385469
+project_ssi: Minnesota Reflections 2018-19;
+fiscal_sponsor_ssi: Funding provided to the Minnesota Digital Library through the
+  Minnesota Arts and Cultural Heritage Fund, a component of the Minnesota Clean Water,
+  Land and Legacy constitutional amendment, ratified by Minnesota voters in 2008.
+publisher_ssi: University of Minnesota
+date_ssi: 11/27/2018 15:00
+format_tesi: image/jp2
+digspa_ssi: '40371224'
+digspb_ssi: '24'
+digspc_ssi: '600'
+digspd_ssi: none
+digspe_ssi: image/tiff
+digspf_ssi: '4316'
+digspg_ssi: '3116'
+digsph_ssi: Epson 11000XL scanner
+digspi_ssi: Adobe Photoshop CS
+digspj_ssi: Windows XP
+digspk_ssi: 957c81334f8fe4db9a624a310937e15b
+fullrs_tesi: Volume19/umn385469.tif
+find_ssi: 2229.jp2
+dmcreated_ssi: '2019-06-14'
+dmmodified_ssi: '2019-11-08'
+restriction_code_ssi: '1'
+cdmfilesize_ssi: '2125840'
+cdmfilesizeformatted_ssi: 2.03 MB
+cdmprintpdf_is: 0
+cdmhasocr_is: 0
+cdmisnewspaper_is: 0
+record_type_ssi: primary
+geographic_feature_ssim:
+- Harriet Lake
+geographic_feature_teim: Harriet Lake;
+geographic_feature_unstem_search: Harriet Lake;
+geonam_ssi: https://sws.geonames.org/5037657/
+rights_uri_ssi: http://rightsstatements.org/vocab/InC/1.0/
+rights_status_ssi: In Copyright
+rights_statement_ssi: This Item is protected by copyright and/or related rights. You
+  are free to use this Item in any way that is permitted by the copyright and related
+  rights legislation that applies to your use. For other uses you need to obtain permission
+  from the rights-holder(s).
+borealis_fragment_ssi: "/image/0"
+iiif_manifest_url_ssi: "/iiif/msn:2680/manifest.json"
+iiif_manifest_ss: '{"@context":"http://iiif.io/api/presentation/2/context.json","@type":"sc:Manifest","@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/manifest.json","label":"Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota","metadata":[{"label":"City or Township","value":"Minneapolis"},{"label":"Contact
+  Information","value":"Minnesota Streetcar Museum, P. O. Box 16509, Minneapolis,
+  MN 55416-0509, www.trolleyride.org"},{"label":"Contributing Organization","value":"Minnesota
+  Streetcar Museum"},{"label":"Country","value":"United States"},{"label":"County","value":"Hennepin"},{"label":"Date
+  Created","value":"1950''s"},{"label":"Description","value":"A wintry view of a southbound
+  Oak-Harriet streetcar 1238 at the Lake Harriet station at 42nd Street and Queen
+  Avenue. This section of the streetcar line has been preserved by the Minnesota Streecar
+  Museum."},{"label":"Fiscal Sponsor","value":"Funding provided to the Minnesota Digital
+  Library through the Minnesota Arts and Cultural Heritage Fund, a component of the
+  Minnesota Clean Water, Land and Legacy constitutional amendment, ratified by Minnesota
+  voters in 2008."},{"label":"Minnesota Reflections Topic","value":"Transportation"},{"label":"Geographic
+  Feature","value":"Harriet Lake;"},{"label":"GeoNames URI","value":"https://sws.geonames.org/5037657/"},{"label":"Local
+  Identifier","value":"msm_238"},{"label":"Creator","value":"Olsen, Bill"},{"label":"Format","value":"Black-and-white
+  photographs"},{"label":"MDL Identifier","value":"umn385469"},{"label":"Rights Management","value":"http://rightsstatements.org/vocab/InC/1.0/"},{"label":"Use
+  Determination URI","value":"In Copyright"},{"label":"Library of Congress Subject
+  Headings","value":"Street-railroads; Transportation;"},{"label":"State or Province","value":"Minnesota"},{"label":"Keywords","value":"Streetcar"},{"label":"Title","value":"Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota"},{"label":"Type","value":"Still
+  Image"},{"label":"Repository","value":"Minnesota Digital Library"},{"label":"Source","value":"<span>From:
+  <a href=\"https://cdm16022.contentdm.oclc.org/digital/collection/msn/id/2680\">Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota</a></span>"}],"attribution":["","http://rightsstatements.org/vocab/InC/1.0/"],"seeAlso":{"@id":"https://cdm16022.contentdm.oclc.org/oai/oai.php?verb=GetRecord&identifier=oai:cdm16022.contentdm.oclc.org:msn/2680&metadataPrefix=oai_qdc","format":"application/xml","profile":"http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"},"within":"https://cdm16022.contentdm.oclc.org/iiif/msn/manifest.json","sequences":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/sequence/s0","@type":"sc:Sequence","label":"Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota","canvases":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0","@type":"sc:Canvas","label":"Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota","images":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/annotation/a0","@type":"oa:Annotation","motivation":"sc:painting","resource":{"@id":"https://cdm16022.contentdm.oclc.org/iiif/2/msn:2680/full/full/0/default.jpg","@type":"dctypes:Image","service":{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://cdm16022.contentdm.oclc.org/iiif/2/msn:2680","width":4316,"height":3116,"tiles":[{"width":4316,"scaleFactors":[1,2,4,8,16]}],"profile":"http://iiif.io/api/image/2/level1.json","protocol":"http://iiif.io/api/image"},"format":"image/jpeg","width":4316,"height":3116},"on":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0"}],"width":4316,"height":3116}]}],"structures":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/msn:2680/range/r0","@type":"sc:Range","label":"Streetcar
+  at Lake Harriet station, Minneapolis, Minnesota","ranges":[],"canvases":["https://cdm16022.contentdm.oclc.org/iiif/msn:2680/canvas/c0"]}],"service":{"@context":"http://iiif.io/api/search/1/context.json","@id":"/iiif/msn:2680/search","profile":"http://iiif.io/api/search/1/search","service":{"@id":"/iiif/msn:2680/autocomplete","profile":"http://iiif.io/api/search/1/autocomplete"}}}'

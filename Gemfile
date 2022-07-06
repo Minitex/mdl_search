@@ -48,14 +48,12 @@ group :development do
 end
 
 group :test, :development do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'solr_wrapper', '>= 0.3'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'teaspoon-jasmine'
 end
 

@@ -22,7 +22,11 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
   config.default_cassette_options = { record: :once }
   config.ignore_localhost = true
-  config.filter_sensitive_data('<KS>') { |int| JSON.parse(int.request.body)['ks'] }
+  config.filter_sensitive_data('<KS>') do |int|
+    if int.request.uri.match(%r{www.kaltura.com})
+      JSON.parse(int.request.body)['ks']
+    end
+  end
 end
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -81,12 +85,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-  config.before(:each, type: :feature) do
-    SolrClient.new.delete_index
-  end
-
-  config.before(:each, type: :request) do
-    SolrClient.new.delete_index
-  end
 end

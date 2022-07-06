@@ -2,11 +2,7 @@ require 'rails_helper'
 
 describe 'OAI ListIdentifiers verb' do
   before do
-    %w(msn:2680 msn:2277 msn:2670 otter:297).each do |id|
-      VCR.use_cassette("ingest_#{id}") do
-        Ingestion.ingest_record(id)
-      end
-    end
+    solr_fixtures('msn:2680', 'msn:2277', 'msn:2670', 'otter:297')
   end
 
   context 'basic query' do
@@ -19,18 +15,18 @@ describe 'OAI ListIdentifiers verb' do
       parsed = Nokogiri::XML(response.body)
       headers = parsed.xpath('//xmlns:OAI-PMH/xmlns:ListIdentifiers/xmlns:header')
       expect(headers.size).to eq 4
-      expect(headers.xpath('//xmlns:identifier').map(&:text)).to eq [
+      expect(headers.xpath('//xmlns:identifier').map(&:text)).to contain_exactly(
         'oai:reflections.mndigital.org:msn:2680',
         'oai:reflections.mndigital.org:msn:2277',
         'oai:reflections.mndigital.org:msn:2670',
         'oai:reflections.mndigital.org:otter:297'
-      ]
-      expect(headers.xpath('//xmlns:setSpec').map(&:text)).to eq [
+      )
+      expect(headers.xpath('//xmlns:setSpec').map(&:text)).to contain_exactly(
         'msn',
         'msn',
         'msn',
         'otter',
-      ]
+      )
     end
   end
 

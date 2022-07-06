@@ -42,7 +42,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
                       'type' => 'Video',
                       'height' => 480,
                       'width' => 640,
@@ -66,7 +66,7 @@ describe IiifManifest do
           }
         ])
 
-        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Video')
         expect(result['rendering'][0]['label']['en']).to eq(['Video'])
         expect(result['rendering'][0]['format']).to eq('video/mp4')
@@ -111,7 +111,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
                       'type' => 'Sound',
                       'duration' => 3734,
                       'format' => 'audio/mp4'
@@ -132,7 +132,7 @@ describe IiifManifest do
             ]
           }
         ])
-        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Sound')
         expect(result['rendering'][0]['label']['en']).to eq(['Audio'])
         expect(result['rendering'][0]['format']).to eq('audio/mp4')
@@ -162,22 +162,22 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
-        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Video')
         expect(result['rendering'][0]['label']['en']).to eq(['Video Part 1'])
         expect(result['rendering'][0]['format']).to eq('video/mp4')
 
-        expect(result['rendering'][1]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][1]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][1]['type']).to eq('Video')
         expect(result['rendering'][1]['label']['en']).to eq(['Video Part 2'])
         expect(result['rendering'][1]['format']).to eq('video/mp4')
 
-        expect(result['rendering'][2]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][2]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][2]['type']).to eq('Video')
         expect(result['rendering'][2]['label']['en']).to eq(['Video Part 3'])
         expect(result['rendering'][2]['format']).to eq('video/mp4')
 
-        expect(result['rendering'][3]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][3]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][3]['type']).to eq('Video')
         expect(result['rendering'][3]['label']['en']).to eq(['Video Part 4'])
         expect(result['rendering'][3]['format']).to eq('video/mp4')
@@ -203,7 +203,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
                       'type' => 'Video',
                       'height' => 480,
                       'width' => 640,
@@ -217,7 +217,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
                       'type' => 'Video',
                       'height' => 480,
                       'width' => 640,
@@ -231,7 +231,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
                       'type' => 'Video',
                       'height' => 480,
                       'width' => 640,
@@ -245,7 +245,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
                       'type' => 'Video',
                       'height' => 480,
                       'width' => 640,
@@ -352,17 +352,17 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
-        expect(result['rendering'][0]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Sound')
         expect(result['rendering'][0]['label']['en']).to eq(['Audio Part 1'])
         expect(result['rendering'][0]['format']).to eq('audio/mp4')
 
-        expect(result['rendering'][1]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][1]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][1]['type']).to eq('Sound')
         expect(result['rendering'][1]['label']['en']).to eq(['Audio Part 2'])
         expect(result['rendering'][1]['format']).to eq('audio/mp4')
 
-        expect(result['rendering'][2]['id']).to eq('http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
+        expect(result['rendering'][2]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][2]['type']).to eq('Sound')
         expect(result['rendering'][2]['label']['en']).to eq(['Audio Part 3'])
         expect(result['rendering'][2]['format']).to eq('audio/mp4')
@@ -386,7 +386,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
                       'type' => 'Sound',
                       'duration' => 1812,
                       'format' => 'audio/mp4'
@@ -398,7 +398,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
                       'type' => 'Sound',
                       'duration' => 1898,
                       'format' => 'audio/mp4'
@@ -410,7 +410,7 @@ describe IiifManifest do
                     'type' => 'Annotation',
                     'motivation' => 'painting',
                     'body' => {
-                      'id' => 'http://cdnbakmi.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
                       'type' => 'Sound',
                       'duration' => 471,
                       'format' => 'audio/mp4'
