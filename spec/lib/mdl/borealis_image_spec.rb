@@ -18,8 +18,8 @@ module MDL
 
     it 'correctly identifies its downloads' do
       expect(image.downloads).to eq [
-        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/!150,150/0/default.jpg", label: '(150 x 150)' },
-        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/!800,800/0/default.jpg", label: '(800 x 800)' }
+        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/150,/0/default.jpg", label: '(150w)' },
+        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg", label: '(800w)' }
       ]
     end
 

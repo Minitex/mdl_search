@@ -29,8 +29,6 @@
     <![endif]-->
 
     <title><%= render_page_title %></title>
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => 'xml') %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
