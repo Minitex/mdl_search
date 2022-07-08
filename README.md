@@ -56,6 +56,19 @@ Start Sidekiq
 
 [Ingest some content](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup#ingest-some-content)
 
+## Logging in
+
+Start the rails server
+
+```bash
+bundle exec rails s
+```
+
+You can login by visiting http://localhost:3000/users/sign_in
+
+username: local@example.com
+password: password
+
 ## Interacting with the App on the Command Line
 
 Enter an interactive session with the application (must be running in another tab):
@@ -67,13 +80,12 @@ Enter an interactive session with the application (must be running in another ta
 * [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
   * `$ docker-compose down -v; docker-compose up`
 
-# Updating React Components
+## Updating the React Component
 
-The two React dependencies associated with this project are included in the `package.json` file and tied to specific commits:
+The React dependency associated with this project are included in the `package.json` file and tied to specific commits:
 
 ```json
   ...
-    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#e305e7fd6f4c",
     "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#52091d617b5d",
   ...
 ```
