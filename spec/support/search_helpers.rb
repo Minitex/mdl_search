@@ -1,15 +1,17 @@
 class SearchResult
-  ATTRIBUTES = %i(title description contributor type format)
+  ATTRIBUTES = %i(title creator description contributor type format)
   # @param result [Nokogiri::XML::Element]
   # @return [SearchResult]
   def self.from(result)
     title = result.css('.document-title-heading a').text
+    creator = result.css('dd.blacklight-creator_tesi').text
     description = result.css('dd.blacklight-description_ts').text
     contributor = result.css('dd.blacklight-contributing_organization_tesi').text
     type = result.css('dd.blacklight-type_tesi').text
     format = result.css('dd.blacklight-physical_format_tesi').text
     new(
       title: title,
+      creator: creator,
       description: description,
       contributor: contributor,
       type: type,
