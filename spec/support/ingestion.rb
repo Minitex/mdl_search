@@ -1,34 +1,31 @@
 module Ingestion
-  module_function
+  class SolrFixture
+    attr_reader :id, :path
 
-  def ingest_record(id)
-    worker = setup_worker
-    worker.perform(
-      [id.split(':')],
-      { url: config[:solr_config][:url] },
-      config[:cdm_endpoint],
-      config[:oai_endpoint],
-      config[:field_mappings],
-      false
-    )
-    SolrClient.new.commit
+    def initialize(id)
+      @id = id
+      @path = Rails.root.join('spec', 'fixtures', 'ingestion', "#{id}.yml")
+    end
+
+    def data
+      YAML.load_file(path)
+    end
   end
 
-  def etl
-    @etl ||= MDL::ETL.new
+  def solr_fixtures(*ids)
+    client = SolrClient.new.client
+    records = ids.map { |id| SolrFixture.new(id).data }
+    client.add(records)
+    client.commit
   end
+end
 
-  def config
-    @config ||= etl.config
-  end
+RSpec.configure do |c|
+  [:request, :feature].each do |type|
+    c.include Ingestion, type: type
 
-  def setup_worker
-    run = IndexingRun.create!
-    worker = MDL::TransformWorker.new
-    worker.jid = SecureRandom.hex
-    run.jobs.create!(
-      job_id: worker.jid
-    )
-    worker
+    c.before(:each, type: type) do
+      SolrClient.new.delete_index
+    end
   end
 end

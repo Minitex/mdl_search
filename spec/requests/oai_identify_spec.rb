@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe 'OAI Identify verb' do
   before do
-    VCR.use_cassette('ingest_otter:297') do
-      Ingestion.ingest_record('otter:297')
-    end
+    solr_fixtures('otter:297')
     get '/catalog/oai?verb=Identify'
   end
 

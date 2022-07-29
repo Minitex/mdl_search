@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe 'Some home page sanity checks' do
   before do
-    VCR.use_cassette('ingest_otter:297') do
-      Ingestion.ingest_record('otter:297')
-    end
+    solr_fixtures('otter:297')
   end
 
   it 'runs a search' do

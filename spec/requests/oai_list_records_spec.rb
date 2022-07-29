@@ -2,11 +2,7 @@ require 'rails_helper'
 
 describe 'OAI ListRecords verb' do
   before do
-    %w(msn:2680 msn:2277 msn:2670 otter:297).each do |id|
-      VCR.use_cassette("ingest_#{id}") do
-        Ingestion.ingest_record(id)
-      end
-    end
+    solr_fixtures('msn:2680', 'msn:2277', 'msn:2670', 'otter:297')
   end
 
   context 'a basic request' do

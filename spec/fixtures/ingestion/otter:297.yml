@@ -1,0 +1,141 @@
+---
+id: otter:297
+oai_set_ssi: otter||Otter Tail County Historical Society||The <a href="http://www.otchs.org/">Otter
+  Tail County Historical Society</a> in Fergus Falls, Minnesota, collects photographs,
+  printed materials and artifacts related to the history of Otter Tail County. For
+  Minnesota Reflections, the society contributed more than 130 images that show early
+  development of this west central county including, business activities, events,
+  homes and group portraits.
+setspec_ssi: otter
+collection_name_ssi: Otter Tail County Historical Society
+collection_name_tei: Otter Tail County Historical Society
+collection_description_tesi: The <a href="http://www.otchs.org/">Otter Tail County
+  Historical Society</a> in Fergus Falls, Minnesota, collects photographs, printed
+  materials and artifacts related to the history of Otter Tail County. For Minnesota
+  Reflections, the society contributed more than 130 images that show early development
+  of this west central county including, business activities, events, homes and group
+  portraits.
+title_tesi: A. Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota
+title_ssi: A. Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota
+title_sort: A. Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota
+title_unstem_search: A. Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota
+description_tei: Images includes view of brick house with windmill to right and chicken
+  wire fence in foreground. Mr. Aberle owned the Fergus Falls Brewery.
+description_ts: Images includes view of brick house with windmill to right and chicken
+  wire fence in foreground. Mr. Aberle owned the Fergus Falls Brewery.
+dat_ssi: 1895?
+dat_ssim:
+- '1895'
+dat_tesi: 1895?
+dat_sort: 1895?
+publishing_agency_tei: Fergus Printing and Publishing Company (Fergus Falls, Minnesota)
+publishing_agency_unstem_search: Fergus Printing and Publishing Company (Fergus Falls,
+  Minnesota)
+publishing_agency_ssi: Fergus Printing and Publishing Company (Fergus Falls, Minnesota)
+topic_teim:
+- Architecture
+topic_ssim:
+- Architecture
+topic_unstem_search: Architecture
+type_ssi: Still Image
+type_tesi: Still Image
+physical_format_ssi: Black-and-white photographs
+physical_format_tesi: Black-and-white photographs
+formal_subject_unstem_search: Housing, Single family
+formal_subject_ssim:
+- Housing, Single Family
+formal_subject_teim:
+- Housing, Single Family
+subject_unstem_search: Aberle, A.
+subject_teim:
+- Aberle, A.
+subject_ssim:
+- Aberle, A.
+keyword_unstem_search:
+- Aberle, A.
+- Architecture
+- Housing, Single Family
+keyword_tesi: Aberle, A.; Architecture; Housing, Single Family
+keyword_ssim:
+- Aberle, A.
+- Architecture
+- Housing, Single Family
+city_ssim:
+- Fergus Falls
+city_unstem_search: Fergus Falls
+county_ssim:
+- Otter Tail
+county_unstem_search: Otter Tail
+state_ssi: Minnesota
+state_unstem_search: Minnesota
+country_ssi: United States
+country_unstem_search: United States
+contributing_unstem_search: Otter Tail County Historical Society
+contributing_organization_tesi: Otter Tail County Historical Society
+contributing_organization_ssi: Otter Tail County Historical Society
+contact_information_ssi: Otter Tail County Historical Society, 1110 Lincoln Avenue
+  West, Fergus Falls, Minnesota 56537 http://www.otchs.org
+rights_ssi: Copyright © 2005 Otter Tail County Historical Society. Contact contributing
+  institution for reproduction.
+local_identifier_ssi: OTCHS.10488
+identifier_ssi: mhs02474
+project_ssi: Minnesota Reflections 2003-05
+fiscal_sponsor_ssi: Grant provided to the Minnesota Digital Library Coalition through
+  the Library Services and Technology Act (LSTA) and the State Library Services and
+  School Technology unit of the Minnesota Department of Education
+publisher_ssi: Minnesota Historical Society, 345 Kellogg Boulevard West, St. Paul,
+  MN 55102-1906
+date_ssi: 4/26/2005
+format_tesi: image/jp2;
+digspa_ssi: 136.6689453125 kb
+digspc_ssi: 450 PixelsPerInch
+digspd_ssi: None
+digspe_ssi: image/tiff
+digspf_ssi: '525'
+digspg_ssi: '480'
+digsph_ssi: Epson Expression 1640XL
+digspi_ssi: Epson scanning software, Adobe Photoshop 7.192
+digspj_ssi: Windows 2000
+digspk_ssi: 63d7501c6233d816534a2738ac4b9e6e
+fullrs_tesi: Volume6\mhs02474.tif
+find_ssi: 2032114152007_54616141520072.jp2
+dmcreated_ssi: '2007-05-01'
+dmmodified_ssi: '2016-10-28'
+restriction_code_ssi: '1'
+cdmfilesize_ssi: '1954132'
+cdmfilesizeformatted_ssi: 1.86 MB
+cdmprintpdf_is: 0
+cdmhasocr_is: 0
+cdmisnewspaper_is: 0
+record_type_ssi: primary
+geonam_ssi: http://sws.geonames.org/5026421/
+borealis_fragment_ssi: "/image/0"
+iiif_manifest_url_ssi: "/iiif/otter:297/manifest.json"
+iiif_manifest_ss: '{"@context":"http://iiif.io/api/presentation/2/context.json","@type":"sc:Manifest","@id":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/manifest.json","label":"A.
+  Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota","metadata":[{"label":"Minnesota
+  City or Township","value":"Fergus Falls"},{"label":"Contact Information","value":"Otter
+  Tail County Historical Society, 1110 Lincoln Avenue West, Fergus Falls, Minnesota
+  56537 http://www.otchs.org"},{"label":"Contributing Organization","value":"Otter
+  Tail County Historical Society"},{"label":"Country","value":"United States"},{"label":"Minnesota
+  County","value":"Otter Tail"},{"label":"Date of Creation","value":"1895?"},{"label":"Description","value":"Images
+  includes view of brick house with windmill to right and chicken wire fence in foreground.
+  Mr. Aberle owned the Fergus Falls Brewery."},{"label":"Fiscal Sponsor","value":"Grant
+  provided to the Minnesota Digital Library Coalition through the Library Services
+  and Technology Act (LSTA) and the State Library Services and School Technology unit
+  of the Minnesota Department of Education"},{"label":"Minnesota Reflections Topic","value":"Architecture;"},{"label":"GeoNames
+  URI","value":"http://sws.geonames.org/5026421/"},{"label":"Local Identifier","value":"OTCHS.10488"},{"label":"Item
+  Physical Format","value":"Black-and-white photographs"},{"label":"Publishing Agency","value":"Fergus
+  Printing and Publishing Company (Fergus Falls, Minnesota)"},{"label":"MDL Identifier","value":"mhs02474"},{"label":"Rights
+  Management","value":"Copyright © 2005 Otter Tail County Historical Society. Contact
+  contributing institution for reproduction."},{"label":"Formal Subject Headings","value":"Housing,
+  Single family"},{"label":"State or Province","value":"Minnesota"},{"label":"Locally
+  Assigned Subject Headings","value":"Aberle, A."},{"label":"Title","value":"A. Aberle
+  residence, 214 South Peck Street, Fergus Falls, Minnesota"},{"label":"Item Type","value":"Still
+  Image"},{"label":"Repository","value":"Minnesota Digital Library"},{"label":"Source","value":"<span>From:
+  <a href=\"https://cdm16022.contentdm.oclc.org/digital/collection/otter/id/297\">A.
+  Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota</a></span>"}],"attribution":["","Copyright
+  © 2005 Otter Tail County Historical Society. Contact contributing institution for
+  reproduction."],"seeAlso":{"@id":"https://cdm16022.contentdm.oclc.org/oai/oai.php?verb=GetRecord&identifier=oai:cdm16022.contentdm.oclc.org:otter/297&metadataPrefix=oai_qdc","format":"application/xml","profile":"http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"},"within":"https://cdm16022.contentdm.oclc.org/iiif/otter/manifest.json","sequences":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/sequence/s0","@type":"sc:Sequence","label":"A.
+  Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota","canvases":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/canvas/c0","@type":"sc:Canvas","label":"A.
+  Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota","images":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/annotation/a0","@type":"oa:Annotation","motivation":"sc:painting","resource":{"@id":"https://cdm16022.contentdm.oclc.org/iiif/2/otter:297/full/full/0/default.jpg","@type":"dctypes:Image","service":{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://cdm16022.contentdm.oclc.org/iiif/2/otter:297","width":4293,"height":3918,"tiles":[{"width":4293,"scaleFactors":[1,2,4,8,16]}],"profile":"http://iiif.io/api/image/2/level1.json","protocol":"http://iiif.io/api/image"},"format":"image/jpeg","width":4293,"height":3918},"on":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/canvas/c0"}],"width":4293,"height":3918}]}],"structures":[{"@id":"https://cdm16022.contentdm.oclc.org/iiif/otter:297/range/r0","@type":"sc:Range","label":"A.
+  Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota","ranges":[],"canvases":["https://cdm16022.contentdm.oclc.org/iiif/otter:297/canvas/c0"]}],"service":{"@context":"http://iiif.io/api/search/1/context.json","@id":"/iiif/otter:297/search","profile":"http://iiif.io/api/search/1/search","service":{"@id":"/iiif/otter:297/autocomplete","profile":"http://iiif.io/api/search/1/autocomplete"}}}'
