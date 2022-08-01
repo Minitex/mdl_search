@@ -2,15 +2,7 @@ require 'rails_helper'
 
 describe 'OAI ListSets verb' do
   before do
-    allow(MDL::Transformer::KalturaPlaylistDataFormatter).to receive(:format)
-      .and_return('{}')
-    allow(MDL::QueueIiifSearchProcessing).to receive(:format)
-    VCR.use_cassette('ingest_sll:22470') do
-      Ingestion.ingest_record('sll:22470')
-    end
-    VCR.use_cassette('ingest_otter:297') do
-      Ingestion.ingest_record('otter:297')
-    end
+    solr_fixtures('sll:22470', 'otter:297')
 
     get '/catalog/oai?verb=ListSets'
   end
