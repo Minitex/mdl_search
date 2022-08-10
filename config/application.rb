@@ -30,6 +30,9 @@ module MdlSearch
     config.eager_load_paths << Rails.root.join('lib')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += %w(catalog_show)
+    
+    # Allow iframe embedding in Tableau
+    config.action_dispatch.default_headers['X-Frame-Options'] = 'ALLOW-FROM https://tableau.umn.edu/'
 
 
     unless Rails.env.production?
