@@ -19,7 +19,7 @@
       'aria-label': t('blacklight.search.form.search.label'),
       data: {
         autocomplete_enabled: autocomplete_enabled?,
-        autocomplete_path: blacklight.suggest_index_path
+        autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
       }
     %>
 

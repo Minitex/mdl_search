@@ -150,9 +150,8 @@ class IiifSearchResponse
   end
 
   def id
-    URI.escape(
-      "https://collection.mndigital.org/iiif/#{item_id}/search?q=#{query}"
-    )
+    q = URI.encode_www_form_component(query)
+    "https://collection.mndigital.org/iiif/#{item_id}/search?q=#{q}"
   end
 
   def response

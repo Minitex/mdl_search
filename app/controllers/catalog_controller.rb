@@ -53,7 +53,7 @@ class CatalogController < ApplicationController
   end
 
   def run_search!
-    search_results(params)
+    search_service.search_results
   end
 
   # get search results from the solr index
@@ -69,13 +69,7 @@ class CatalogController < ApplicationController
   end
 
   def search_facet_url(*args)
-    if current_exhibit
-      exhibit_search_facet_url(*args)
-    else
-      ###
-      # Defined as an alias in ApplicationController
-      blacklight_search_facet_url(*args)
-    end
+    current_exhibit ? exhibit_search_facet_url(*args) : super
   end
 
   # overrides /blacklight/controllers/concerns/blacklight/catalog
@@ -83,10 +77,12 @@ class CatalogController < ApplicationController
   # get a single document from the index
   # to add responses for formats other than html or json see _Blacklight::Document::Export_
   def show
-    @response, @document = fetch params[:id]
+    deprecated_response, @document = search_service.fetch(params[:id])
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, 'The @response instance variable is deprecated; use @document.response instead.')
     @hide_previous_next = true if params[:pn] == 'false'
+
     respond_to do |format|
-      format.html { setup_next_and_previous_documents }
+      format.html { @search_context = setup_next_and_previous_documents }
       format.json { render json: { response: { document: @document } } }
       additional_export_formats(@document, format)
     end
@@ -99,6 +95,19 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
+    config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:citation)
+
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
+    config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
@@ -132,13 +141,14 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :cached_thumbnail_tag
     config.show.thumbnail_method = :cached_thumbnail_tag
 
-    config.view.gallery.default = false
-    config.view.gallery.partials = [:index]
-    config.view.gallery.icon_class = "glyphicon-th"
+    config.view.gallery(
+      default: false,
+      partials: [:index, :index_header],
+      icon_class: 'glyphicon-th'
+    )
 
     ###
     # Spotlight additions
-    config.view.gallery.partials += [:index_header]
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
@@ -397,12 +407,12 @@ class CatalogController < ApplicationController
         admin_email: 'swans062@umn.edu',
         sample_id: 'sll:22470'
       },
-      document: OpenStruct.new(
+      document: {
         set_model: OaiSet,
         set_fields: [
           { solr_field: 'oai_set_ssi' }
         ]
-      )
+      }
     }
   end
 end

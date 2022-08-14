@@ -25,7 +25,7 @@ describe MDL::CiteDetails do
   end
   describe "when transforming records" do
     it 'transforms the contributing organization field' do
-      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[contributing_organization_ssi][]=Minnesota%20Geological%20Survey"}]})
+      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[contributing_organization_ssi][]=Minnesota+Geological+Survey"}]})
     end
 
 
@@ -34,7 +34,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the creator field' do
-      expect(subject.to_hash[:fields][2]).to eq({:label=>"Creator", :delimiter=>", ", :field_values=>[{:text=>"Chandler, Val W.", :url=>"/catalog?f[creator_ssim][]=Chandler,%20Val%20W."}]})
+      expect(subject.to_hash[:fields][2]).to eq({:label=>"Creator", :delimiter=>", ", :field_values=>[{:text=>"Chandler, Val W.", :url=>"/catalog?f[creator_ssim][]=Chandler%2C+Val+W."}]})
     end
 
     it 'transforms the creator field' do
@@ -50,11 +50,11 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the publishing agency field' do
-      expect(subject.to_hash[:fields][6]).to eq({:label=>"Publishing Agency", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[publishing_agency_ssi][]=Minnesota%20Geological%20Survey"}]})
+      expect(subject.to_hash[:fields][6]).to eq({:label=>"Publishing Agency", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[publishing_agency_ssi][]=Minnesota+Geological+Survey"}]})
     end
 
     it 'transforms the dimensions field' do
-      expect(subject.to_hash[:fields][7]).to eq({:label=>"Dimensions", :field_values=>[{:text=>"64 x 93", :url=>"/catalog?f[dimensions_ssi][]=64%20x%2093"}]})
+      expect(subject.to_hash[:fields][7]).to eq({:label=>"Dimensions", :field_values=>[{:text=>"64 x 93", :url=>"/catalog?f[dimensions_ssi][]=64+x+93"}]})
     end
 
     it 'transforms the topic field' do
@@ -70,15 +70,15 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the formal subject field' do
-      expect(subject.to_hash[:fields][11]).to eq({:label=>"Library of Congress Subject Headings", :field_values=>[{:text=>"Geological Mapping", :url=>"/catalog?f[formal_subject_ssim][]=Geological%20Mapping"}, {:text=>"Geological Surveys", :url=>"/catalog?f[formal_subject_ssim][]=Geological%20Surveys"}, {:text=>"Geology Research", :url=>"/catalog?f[formal_subject_ssim][]=Geology%20Research"}]})
+      expect(subject.to_hash[:fields][11]).to eq({:label=>"Library of Congress Subject Headings", :field_values=>[{:text=>"Geological Mapping", :url=>"/catalog?f[formal_subject_ssim][]=Geological+Mapping"}, {:text=>"Geological Surveys", :url=>"/catalog?f[formal_subject_ssim][]=Geological+Surveys"}, {:text=>"Geology Research", :url=>"/catalog?f[formal_subject_ssim][]=Geology+Research"}]})
     end
 
     it 'transforms the keywords field' do
-      expect(subject.to_hash[:fields][12]).to eq({:label=>"Keywords", :field_values=>[{:text=>"Aeromagnetics", :url=>"/catalog?f[subject_ssim][]=Aeromagnetics"}, {:text=>"Minnesota geology", :url=>"/catalog?f[subject_ssim][]=Minnesota%20geology"}]})
+      expect(subject.to_hash[:fields][12]).to eq({:label=>"Keywords", :field_values=>[{:text=>"Aeromagnetics", :url=>"/catalog?f[subject_ssim][]=Aeromagnetics"}, {:text=>"Minnesota geology", :url=>"/catalog?f[subject_ssim][]=Minnesota+geology"}]})
     end
 
     it 'transforms the city field' do
-      expect(subject.to_hash[:fields][13]).to eq({:label=>"City or Township", :delimiter => ", ", :field_values =>[{:text=>"city of foo", :url=>"/catalog?f[city_ssim][]=city%20of%20foo"}]})
+      expect(subject.to_hash[:fields][13]).to eq({:label=>"City or Township", :delimiter => ", ", :field_values =>[{:text=>"city of foo", :url=>"/catalog?f[city_ssim][]=city+of+foo"}]})
     end
 
     it 'transforms the county field' do
@@ -90,7 +90,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the country field' do
-      expect(subject.to_hash[:fields][16]).to eq({:label=>"Country", :field_values => [{:text=>"United States", :url=>"/catalog?f[country_ssi][]=United%20States"}]})
+      expect(subject.to_hash[:fields][16]).to eq({:label=>"Country", :field_values => [{:text=>"United States", :url=>"/catalog?f[country_ssi][]=United+States"}]})
     end
 
     it 'transforms the geographic feature field' do
@@ -98,7 +98,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the geonames field' do
-      expect(subject.to_hash[:fields][18]).to eq({:label=>"GeoNames URI", :field_values => [{:text=>"<a href=\"http://example.com\">http://example.com</a>", :url=>"/catalog?f[geonam_ssi][]=http://example.com"}]})
+      expect(subject.to_hash[:fields][18]).to eq({:label=>"GeoNames URI", :field_values => [{:text=>"<a href=\"http://example.com\">http://example.com</a>", :url=>"/catalog?f[geonam_ssi][]=http%3A%2F%2Fexample.com"}]})
     end
 
     it 'transforms the language field' do
@@ -118,7 +118,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the parent collection field' do
-      expect(subject.to_hash[:fields][23]).to eq({:label=>"Collection Name", :field_values => [{:text=>"collection here", :url=>"/catalog?f[parent_collection_name_ssi][]=collection%20here"}]})
+      expect(subject.to_hash[:fields][23]).to eq({:label=>"Collection Name", :field_values => [{:text=>"collection here", :url=>"/catalog?f[parent_collection_name_ssi][]=collection+here"}]})
     end
 
     it 'transforms the rights field' do

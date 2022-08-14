@@ -38,14 +38,12 @@ class IiifSearchAutocompleteResponse
   end
 
   def id
-    URI.escape(
-      "https://collection.mndigital.org/iiif/#{item_id}/autocomplete?q=#{query}"
-    )
+    q = URI.encode_www_form_component(query)
+    "https://collection.mndigital.org/iiif/#{item_id}/autocomplete?q=#{q}"
   end
 
   def search_url(match)
-    URI.escape(
-      "https://collection.mndigital.org/iiif/#{item_id}/search?q=#{match}"
-    )
+    q = URI.encode_www_form_component(match)
+    "https://collection.mndigital.org/iiif/#{item_id}/search?q=#{q}"
   end
 end

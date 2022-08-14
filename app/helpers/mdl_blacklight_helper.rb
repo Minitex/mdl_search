@@ -50,9 +50,10 @@ module MdlBlacklightHelper
     field ||= document_show_link_field(doc)
 
     if field == :title_tesi
-      label = index_presenter(doc).field_value field
+      field = Blacklight::Configuration::Field.new(field: field)
+      label = document_presenter(doc).field_value field
     else
-      label = index_presenter(doc).label field
+      label = document_presenter(doc).heading
     end
 
     document_show_link(document: doc, label: label, **opts)
@@ -72,7 +73,7 @@ module MdlBlacklightHelper
   end
 
   def document_metadata(document)
-    document.slice(
+    document._source.slice(
       'id',
       'contributing_organization_ssi',
       'type_ssi',

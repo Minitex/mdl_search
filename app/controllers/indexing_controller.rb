@@ -37,7 +37,7 @@ class IndexingController < ApplicationController
 
   def collections
     facet = blacklight_config.facet_fields[FACET_FIELD]
-    response = get_facet_field_response(facet.key, {})
+    response = search_service.facet_field_response(facet.key, {})
     response.aggregations[facet.key].items.map do |item|
       set_spec, collection_name, _ = item.value.split(MDL::OaiSetFormatter.delimiter)
       [collection_name, set_spec]

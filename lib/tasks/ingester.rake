@@ -26,7 +26,7 @@ namespace :mdl_ingester do
     puts "Indexing Sets: '#{set_specs.join(', ')}'"
     args = { set_specs: set_specs }
     args[:from] = 8.days.ago.to_date.iso8601 unless ENV['INGEST_ALL']
-    etl.run(args)
+    etl.run(**args)
   end
 
   desc 'Launch a background job to index a single record.'

@@ -33,7 +33,7 @@ module FacetsHelper
   # @param [Hash] options
   # @return String
   def render_facet_partials fields = facet_field_names, options = {}
-    safe_join(facets_from_request(fields).map do |display_facet|
+    safe_join(facets_from_request(fields, options.delete(:response)).map do |display_facet|
       render_facet_limit(display_facet, options)
     end.compact, "\n")
   end

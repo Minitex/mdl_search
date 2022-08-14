@@ -14,7 +14,7 @@ FactoryGirl.define do
           )
         )
       )
-      new(document: document)
+      MDL::BorealisDocument.new(document: document)
     end
 
     trait :image do

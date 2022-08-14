@@ -3,12 +3,12 @@ class SearchResult
   # @param result [Nokogiri::XML::Element]
   # @return [SearchResult]
   def self.from(result)
-    title = result.css('.document-title-heading a').text
-    creator = result.css('dd.blacklight-creator_tesi').text
-    description = result.css('dd.blacklight-description_ts').text
-    contributor = result.css('dd.blacklight-contributing_organization_tesi').text
-    type = result.css('dd.blacklight-type_tesi').text
-    format = result.css('dd.blacklight-physical_format_tesi').text
+    title = result.css('.document-title-heading a').text.squish
+    creator = result.css('dd.blacklight-creator_tesi').text.squish
+    description = result.css('dd.blacklight-description_ts').text.squish
+    contributor = result.css('dd.blacklight-contributing_organization_tesi').text.squish
+    type = result.css('dd.blacklight-type_tesi').text.squish
+    format = result.css('dd.blacklight-physical_format_tesi').text.squish
     new(
       title: title,
       creator: creator,

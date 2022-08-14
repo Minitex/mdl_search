@@ -91,7 +91,7 @@ module MDL
 
   class OaiRequest < CDMBL::OaiRequest
     def initialize(**kwargs)
-      super(kwargs.merge(client: OAIClient))
+      super(**kwargs.merge(client: OAIClient))
     end
   end
 
@@ -119,7 +119,7 @@ module MDL
 
   class Extractor < CDMBL::Extractor
     def initialize(**kwargs)
-      super(kwargs.merge(oai_request_klass: OaiRequest))
+      super(**kwargs.merge(oai_request_klass: OaiRequest))
     end
   end
 
