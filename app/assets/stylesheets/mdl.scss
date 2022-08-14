@@ -63,7 +63,7 @@ body {
 }
 
 @media (max-width: 599px) {
-	.input-group-addon {
+	.input-group-prepend {
 		display: none !important;
 	}
 
@@ -133,7 +133,7 @@ body {
 		border-bottom-left-radius: 4px !important;
 	}
 
-	.input-group-addon:first-child {
+	.input-group-prepend:first-child {
 		display: none;
 	}
 
@@ -187,7 +187,7 @@ body {
 
 @media (min-width: 1024px) {
 	.search_q {
-		width: 36rem !important;
+		width: 22rem !important;
 	}
 }
 
@@ -261,23 +261,24 @@ a.remove:hover {
 .navbar {
 	border: none;
 	margin-bottom: 0;
+	padding: 0;
 }
 
 .navbar-nav {
 	height: 87px;
-	margin-left: 2rem;
 }
 
 .navbar-nav > li {
 	height: 87px;
 }
 
-.navbar-default .navbar-nav > li > a {
+a.dropdown-toggle {
 	color: $black;
-	font-size: 1.5rem;
 	height: 87px;
-	padding: 3.75rem 1.25rem 0 !important;
+	padding: 2rem 0.65rem 0 !important;
 	text-transform: uppercase;
+	text-decoration: none;
+	outline: none;
 
 	&:hover {
 		background-color: $lightest-gray;
@@ -285,7 +286,7 @@ a.remove:hover {
 	}
 }
 
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+.navbar-default .navbar-nav > .show > a, .navbar-default .navbar-nav > .show > a:hover, .navbar-default .navbar-nav > .show > a:focus {
 	background-color: $white;
 	color: $black;
 }
@@ -309,19 +310,12 @@ a.remove:hover {
 }
 
 #search-block {
-	margin-top: 87px;
 	background-color: $lightest-gray;
 	text-align: center;
-	padding: 1.5rem 0;
+	padding: 1rem 0;
 
 	.advanced {
 		text-align: right;
-	}
-}
-
-#search-block .search-query-form {
-	.search_field {
-		border: 0;
 	}
 }
 
@@ -393,16 +387,18 @@ h1.advanced .advanced-search-start-over {
 	padding: 0;
 }
 
-.input-group-addon {
+.input-group-prepend {
 	background-color: $white;
 	border: none;
 	color: $black;
 }
 
-.input-group-addon:first-child {
+#search_field {
 	border-right: 1px solid $lightest-gray;
-	font-size: 1.5rem;
-	padding: 0 .5rem;
+}
+
+.for-search-field {
+	padding-right: 0.2rem;
 }
 
 .form-control {
@@ -597,10 +593,10 @@ form.range_limit .btn-default {
 }
 
 .home-wrapper {
-	.search_field {
+	#search_field {
 		display: none;
 	}
-	.input-group-addon {
+	.input-group-prepend {
 		display: none;
 	}
 	.search_q {
@@ -1185,10 +1181,10 @@ a.view-text:hover {
 			}
 		}
 		li.active {
-			a { 
+			a {
 				background-color: $white;
 				color: $black;
-				font-weight: bold; 
+				font-weight: bold;
 			}
 		}
 	}
@@ -1269,7 +1265,7 @@ blockquote {
 	border-radius: 4px;
 	margin-bottom: 1.5rem;
 	padding: 1.5rem;
-	
+
 	.field {
 		padding: 1rem 0;
 

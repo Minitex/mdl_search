@@ -1,20 +1,22 @@
-<%= form_tag search_catalog_url, method: :get, class: 'search-query-form clearfix navbar-form', role: 'search' do %>
+<%= form_tag search_catalog_url, method: :get, class: 'search-query-form form-inline', role: 'search' do %>
   <% if params[:search_field] != 'advanced' %>
     <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
   <% end %>
   <div class="input-group">
     <% if search_fields.length > 1 %>
-      <span class="input-group-addon for-search-field">
-        <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), title: t('blacklight.search.form.search_field.title'), id: "search_field", class: "search_field") %>
+      <label for="search_field" class="sr-only">Search Field</label>
+      <span class="input-group-prepend for-search-field">
+        <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), title: t('blacklight.search.form.search_field.title'), id: "search_field", class: "search_field form-control") %>
       </span>
     <% elsif search_fields.length == 1 %>
       <%= hidden_field_tag :search_field, search_fields.first.last %>
     <% end %>
 
+    <label for="q" class="sr-only">Query</label>
     <%= text_field_tag :q,
       params[:q],
       placeholder: "Search the collection",
-      class: "search_q q form-control",
+      class: "search_q form-control", # q
       id: "q",
       'aria-label': t('blacklight.search.form.search.label'),
       data: {
@@ -22,13 +24,13 @@
         autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
       }
     %>
-
-    <span class="input-group-btn">
-      <label for="search" class="sr-only"><%= t('blacklight.search.form.submit') %></label>
-      <button type="submit" class="btn btn-primary search-btn" id="search">
-        <span>Search</span>
-        <span class="glyphicon glyphicon-search"></span>
-      </button>
-    </span>
   </div>
+
+  <span class="input-group input-group-btn">
+    <label for="search" class="sr-only"><%= t('blacklight.search.form.submit') %></label>
+    <button type="submit" class="btn btn-primary search-btn" id="search">
+      <span>Search</span>
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </span>
 <% end %>
