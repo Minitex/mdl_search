@@ -1,5 +1,6 @@
-<%- if has_thumbnail?(document) && tn = render_thumbnail_tag(document, {}, :counter => document_counter_with_offset(document_counter)) %>
+<%- if has_thumbnail?(document) %>
 <div class="document-thumbnail">
-  <%= tn %>
+  <% tn = render_thumbnail_tag(document, {}, counter: document_counter_with_offset(document_counter), suppress_link: true)%>
+  <%= document_show_link(document: document, label: tn) %>
 </div>
 <%- end %>

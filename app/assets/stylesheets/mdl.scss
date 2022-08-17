@@ -419,7 +419,7 @@ input.range_begin, input.range_end {
 	font-size: 16px;
 }
 
-.btn-default {
+.btn-secondary, .btn-outline-secondary {
 	border-color: $light-gray;
 	color: $black;
 	text-decoration: none !important;
@@ -443,7 +443,7 @@ input.range_begin, input.range_end {
 	}
 }
 
-form.range_limit .btn-default {
+form.range_limit .btn-secondary {
 	background-color: $dark-blue;
 	border-color: $dark-blue;
 	color: $white;
@@ -524,16 +524,41 @@ form.range_limit .btn-default {
 	border-color: $dark-green;
 }
 
-.panel-default > .panel-heading {
-	background-color: $dark-green;
-	border-color: $dark-green;
-	color: $white;
-	font-weight: bold;
-	text-transform: uppercase;
+.facet-field-heading {
+  background-color: $dark-green;
+  border-color: $dark-green;
+
+  button {
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+
+    &:focus {
+      color: inherit;
+    }
+
+    &:hover {
+      color:rgb(0, 0, 0);
+      text-decoration: none;
+    }
+  }
 }
 
-.panel-heading.collapse-toggle .panel-title::after {
+.document-counter {
+	color: $black;
+}
+
+#documents.documents-list .document-thumbnail img {
+	max-width: none;
+}
+
+.facets .card {
+	border: 1px solid $dark-green;
+}
+
+.collapse-toggle {
 	color: $white !important;
+	text-decoration: none !important;
 }
 
 .modal-dialog {
@@ -775,10 +800,6 @@ form.range_limit .btn-default {
 	margin: 0 4px !important;
 }
 
-#documents.documents-gallery .document .title {
-	overflow: auto !important;
-}
-
 #documents.documents-gallery .panel {
 	margin: 0 0 20px 0 !important;
 }
@@ -790,6 +811,7 @@ form.range_limit .btn-default {
 
 .gallery-result .panel-body {
 	height: 250px !important;
+	padding: 15px;
 }
 
 h3.document-title-heading {
@@ -819,6 +841,7 @@ h3.document-title-heading {
 
 .pagination {
 	margin: 15px 0 5px -7px;
+	float: left;
 }
 
 .pagination > li > a {
@@ -1195,7 +1218,7 @@ a.view-text:hover {
 			margin-bottom: 1rem;
 		}
 		.nav-pills {
-			.btn-default {
+			.btn-secondary {
 				@extend .btn-primary;
 			}
 			.btn-nav {

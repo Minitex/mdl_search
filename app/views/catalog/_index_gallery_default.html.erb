@@ -11,8 +11,11 @@
       %>
     </div>
     <div class="title">
-      <% document['title_ssi'] = truncate(document['title_ssi'], length: 50) %>
-      <%= link_to_document document, document_show_link_field(document), counter: counter %>
+      <%= link_to_document(
+        document,
+        document_show_link_field(document),
+        counter: counter
+      ) %>
     </div>
   </div>
 </div>

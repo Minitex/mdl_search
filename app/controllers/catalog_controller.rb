@@ -143,8 +143,9 @@ class CatalogController < ApplicationController
 
     config.view.gallery(
       default: false,
-      partials: [:index, :index_header],
-      icon_class: 'glyphicon-th'
+      partials: [:index],
+      icon_class: 'glyphicon-th',
+      classes: []
     )
 
     ###
