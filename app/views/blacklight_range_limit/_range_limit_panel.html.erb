@@ -14,7 +14,7 @@
         <span class="facet-label">
           <span class="selected"><%= range_display(field_name) %></span>
            <%= link_to remove_range_param(field_name), :class=>"remove", :title => t('blacklight.range_limit.remove_limit') do %>
-            <span class="glyphicon glyphicon-remove"></span>
+            <span aria-hidden="true">&times;</span>
             <span class="sr-only">[<%= t('blacklight.range_limit.remove_limit') %>]</span>
            <% end %>
         </span>
@@ -77,7 +77,7 @@
                    will AJAX fetch.  -->
               <% if solr_range_queries_to_a(field_name).length > 0 %>
 
-                 <%= render(:partial => "blacklight_range_limit/range_segments", :locals => {:field_name => field_name}) %>
+                 <%= render(partial: "blacklight_range_limit/range_segments", locals: {solr_field: field_name}) %>
 
               <% else %>
                 <%= link_to('View distribution', main_app.url_for(search_state.to_h.merge(controller: '/catalog', action: 'range_limit', range_field: field_name, range_start: min, range_end: max)), class: "load_distribution") %>

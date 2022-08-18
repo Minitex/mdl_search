@@ -227,9 +227,7 @@ a:hover, a:focus {
 }
 
 a.remove:hover {
-	background-color: red !important;
-	border-color: red !important;
-	color: $white !important;
+  color: red;
 }
 
 .row {
@@ -499,6 +497,19 @@ form.range_limit .btn-secondary {
 	text-decoration: none;
 }
 
+.nav-pills > li > a {
+  border-radius: 4px;
+  padding-right: 3px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.nav-pills > li + li {
+  margin-left: 2px
+}
+
 .nav-tabs, .nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
 	border: none !important;
 }
@@ -744,6 +755,11 @@ form.range_limit .btn-secondary {
 	padding-right: 0;
 }
 
+.facet-values .remove {
+  font-size: x-large;
+  line-height: initial;
+}
+
 .panel-title > a {
 	text-decoration: none !important;
 	text-transform: none !important;
@@ -802,6 +818,14 @@ form.range_limit .btn-secondary {
 
 #documents.documents-gallery .panel {
 	margin: 0 0 20px 0 !important;
+}
+
+.facet-limit-active {
+  border-color: $dark-green !important;
+
+	.card-header.facet-field-heading {
+    background-color: $dark-green !important;
+  }
 }
 
 .gallery-result {
@@ -930,10 +954,17 @@ h3.document-title-heading {
 
 .more-like-this {
 	margin-top: 20px;
-}
 
-.more-like-this .panel-body {
-	text-align: center;
+  .card-header {
+    background-color: $dark-green;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .card-body {
+    text-align: center;
+  }
 }
 
 .more-like-this ul {
@@ -1067,6 +1098,10 @@ h3.document-title-heading {
 	margin-top: 20px;
 }
 
+.cite-details .details {
+  display: block;
+}
+
 dt, dd {
 	margin: 0;
 	padding: 0;
@@ -1084,6 +1119,7 @@ dt, dd {
 
 .label-default {
 	background-color: $white;
+  margin: 0;
 }
 
 .download-source {
