@@ -1,6 +1,6 @@
 require 'cdmbl'
 require 'mdl/transformer'
-require 'mdl/job_auditing'
+require 'mdl/etl_auditing'
 
 module MDL
   ###
@@ -123,7 +123,7 @@ module MDL
     end
   end
 
-  class ETLWorker < CDMBL::ETLWorker
+  class EtlWorker < CDMBL::ETLWorker
     prepend EtlAuditing
 
     def initialize

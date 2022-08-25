@@ -23,8 +23,7 @@ module MdlSearch
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
-    config.load_defaults 5.1
-    # config.autoloader = :zeitwerk
+    config.load_defaults 6.0
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
 
 

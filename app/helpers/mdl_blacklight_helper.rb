@@ -1,4 +1,4 @@
-module MdlBlacklightHelper
+module MDLBlacklightHelper
   include Blacklight::LayoutHelperBehavior
 
   def current_search

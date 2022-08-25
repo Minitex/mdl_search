@@ -29,7 +29,7 @@ class IndexingController < ApplicationController
     if params[:date].present?
       args[:from] = Date.parse(params[:date]).iso8601
     end
-    MDL::ETL.new.run(args)
+    MDL::Etl.new.run(args)
     redirect_to indexing_path, flash: { notice: 'Queued collection for indexing' }
   end
 

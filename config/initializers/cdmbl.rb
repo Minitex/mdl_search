@@ -1,6 +1,6 @@
 require 'net/http'
 require 'uri'
-require Rails.root.join('lib', 'mdl', 'etl_worker')
+require 'mdl/etl_auditing'
 
 module CDMBL
   class CompletedCallback

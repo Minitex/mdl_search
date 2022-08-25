@@ -1,5 +1,5 @@
 module MDL
-  class ETL
+  class Etl
     attr_reader :oai_endpoint,
                 :set_spec_pattern,
                 :field_mappings,
@@ -26,7 +26,7 @@ module MDL
       CDMBL::ETLBySetSpecs.new(
         set_specs: set_specs,
         etl_config: config.tap { |c| c.merge!(from: from) if from },
-        etl_worker_klass: MDL::ETLWorker
+        etl_worker_klass: MDL::EtlWorker
       ).run!
     end
 

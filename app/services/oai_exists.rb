@@ -1,5 +1,6 @@
 require 'json'
-class OAIExists
+
+class OaiExists
   attr_reader :collection, :id, :endpoint, :prefix
   def initialize(collection: '',
                  id: '',

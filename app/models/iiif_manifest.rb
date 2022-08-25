@@ -10,7 +10,7 @@ class IiifManifest
       type: 'Sound',
       format: 'audio/mp4'
     },
-    MDL::BorealisPDF => {
+    MDL::BorealisPdf => {
       type: 'Text',
       format: 'application/pdf'
     }
@@ -246,7 +246,7 @@ class IiifManifest
       [
         MDL::BorealisVideo,
         MDL::BorealisAudio,
-        MDL::BorealisPDF
+        MDL::BorealisPdf
       ].include?(a.class)
     end
   end

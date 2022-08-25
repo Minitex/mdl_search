@@ -1,6 +1,6 @@
 require 'net/http'
 
-class ContentdmIIIF
+class ContentdmIiif
   attr_accessor :base_url, :collection, :id
   def initialize(base_url: 'https://cdm16022.contentdm.oclc.org',
                  collection: '',
