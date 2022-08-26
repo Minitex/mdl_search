@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :borealis_document, class: MDL::BorealisDocument do
     transient do
       fixture_filename { 'video.json' }
