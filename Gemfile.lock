@@ -656,7 +656,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     ssrf_filter (1.0.8)
-    strscan (3.0.4)
+    strscan (3.0.1)
     sync (0.5.0)
     teaspoon (1.2.2)
       railties (>= 3.2.5)
@@ -789,6 +789,7 @@ DEPENDENCIES
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
+  strscan (= 3.0.1)
   teaspoon-jasmine
   turbolinks
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)

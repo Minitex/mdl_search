@@ -104,3 +104,4 @@ gem 'autoprefixer-rails', '~> 10.4.7' # Constraint to accommodate Node 8 on QA/P
 gem 'kaltura-client'
 
 gem 'sentry-raven'
+gem 'strscan', '3.0.1'
