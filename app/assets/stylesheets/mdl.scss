@@ -322,11 +322,17 @@ a.dropdown-toggle {
 }
 
 h1.advanced {
-	margin-top: 12rem;
+	margin-top: 2rem;
 }
 
 h1.advanced .advanced-search-start-over {
 	display: none;
+}
+
+.query-criteria-heading {
+	select {
+		color: inherit;
+	}
 }
 
 .advanced-search-start-over, .query-criteria-heading, .limit-criteria-heading {
@@ -340,6 +346,14 @@ h1.advanced .advanced-search-start-over {
 .advanced-search-field, .sort-submit-buttons {
 	.form-control {
 		border: 1px solid $light-gray;
+	}
+}
+
+.advanced {
+	.control-label {
+		padding-top: 7px;
+		text-align: right;
+		font-weight: bold;
 	}
 }
 
@@ -427,6 +441,10 @@ input.range_begin, input.range_end {
 		color: $black !important;
 		text-decoration: none !important;
 	}
+}
+
+.advanced .btn-secondary {
+	background-color: inherit;
 }
 
 .btn-primary {
