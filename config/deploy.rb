@@ -33,10 +33,6 @@ set :repo_url, 'git@github.com:UMNLibraries/mdl_search.git'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :default_environment, {
-  'PATH' => "/swadm/bin/ruby:$PATH"
-}
-
 set :deploy_to, '/swadm/var/www/mdl'
 
 set :ssh_options, { user: 'swadm', forward_agent: true }
