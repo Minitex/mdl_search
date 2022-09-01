@@ -4,8 +4,6 @@ $stdout.sync = true
 require "shellwords"
 require "yaml"
 
-require_relative '../app/overrides/yaml_override.rb'
-
 ENV["RAILS_ENV"] ||= "development"
 RAILS_ENV = ENV["RAILS_ENV"]
 

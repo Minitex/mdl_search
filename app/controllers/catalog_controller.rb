@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  before_action :permit_search_parameters, only: [:index, :range_limit]
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -54,6 +55,10 @@ class CatalogController < ApplicationController
 
   def run_search!
     search_service.search_results
+  end
+
+  def permit_search_parameters
+    params.permit!
   end
 
   # get search results from the solr index

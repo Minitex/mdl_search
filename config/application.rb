@@ -39,10 +39,6 @@ module MdlSearch
     # Compress pages
     config.middleware.use Rack::Deflater
 
-    config.before_configuration do
-      require_dependency "#{Rails.root}/app/overrides/yaml_override.rb"
-    end
-
     config.spotlight_mount_path = '/exhibits'
 
     config.to_prepare do
