@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
-  before_action :permit_search_parameters, only: [:index, :range_limit]
+  before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -82,8 +82,7 @@ class CatalogController < ApplicationController
   # get a single document from the index
   # to add responses for formats other than html or json see _Blacklight::Document::Export_
   def show
-    deprecated_response, @document = search_service.fetch(params[:id])
-    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, 'The @response instance variable is deprecated; use @document.response instead.')
+    _, @document = search_service.fetch(params[:id])
     @hide_previous_next = true if params[:pn] == 'false'
 
     respond_to do |format|
@@ -214,12 +213,16 @@ class CatalogController < ApplicationController
     config.add_facet_field 'topic_ssim' do |field|
       field.collapse = false
       field.label = 'Topic'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
       field.collapse = false
       field.show = true
       field.limit = 10
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'physical_format_ssi' do |field|
       field.label = 'Physical Format'
@@ -228,11 +231,15 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.index = true
       field.limit = 5
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
       field.collapse = false
       field.range = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'placename_ssim' do |field|
       field.label = 'Location'
@@ -240,6 +247,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
@@ -248,6 +257,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
@@ -255,6 +266,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
 
     ###
@@ -264,6 +277,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'rights_status_ssi' do |field|
       field.include_in_simple_search = false
       field.label = 'Rights Status'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -402,6 +417,8 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    config.search_bar_component = ::SearchBarComponent
 
     ###
     # OAI

@@ -40,14 +40,14 @@ module MDLBlacklightHelper
     'col-md-12 col-sm-12 col-lg-3'
   end
 
-  def link_to_document(doc, field_or_opts = nil, opts={:counter => nil})
+  def link_to_document(doc, field_or_opts = nil, opts = { counter: nil })
     if field_or_opts.is_a? Hash
       opts = field_or_opts
     else
       field = field_or_opts
     end
 
-    field ||= document_show_link_field(doc)
+    field ||= :title_tesi
 
     if field == :title_tesi
       field = Blacklight::Configuration::Field.new(field: field)

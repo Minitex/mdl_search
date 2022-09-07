@@ -5,6 +5,7 @@ class IndexingController < ApplicationController
   FACET_FIELD = 'oai_set_ssi'.freeze
 
   include Blacklight::Catalog
+  copy_blacklight_config_from(CatalogController)
 
   blacklight_config.configure do |config|
     ###

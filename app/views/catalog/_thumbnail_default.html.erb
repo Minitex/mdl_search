@@ -1,6 +1,7 @@
-<%- if has_thumbnail?(document) %>
+<% thumbnail = document_presenter(document).thumbnail %>
+<%- if thumbnail.exists? %>
 <div class="document-thumbnail">
-  <% tn = render_thumbnail_tag(document, {}, counter: document_counter_with_offset(document_counter), suppress_link: true)%>
-  <%= document_show_link(document: document, label: tn) %>
+  <% label = thumbnail.thumbnail_tag({}, counter: document_counter_with_offset(document_counter), suppress_link: true) %>
+  <%= document_show_link(document: document, label: label) %>
 </div>
 <%- end %>

@@ -1,6 +1,6 @@
 <%= form_tag search_catalog_url, method: :get, class: 'search-query-form form-inline', role: 'search' do %>
   <% if params[:search_field] != 'advanced' %>
-    <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
+    <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
   <% end %>
   <div class="input-group">
     <% if search_fields.length > 1 %>
@@ -14,14 +14,14 @@
 
     <label for="q" class="sr-only">Query</label>
     <%= text_field_tag :q,
-      params[:q],
+      @params[:q],
       placeholder: "Search the collection",
       class: "search_q form-control", # q
       id: "q",
       'aria-label': t('blacklight.search.form.search.label'),
       data: {
-        autocomplete_enabled: autocomplete_enabled?,
-        autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
+        autocomplete_enabled: autocomplete_path.present?,
+        autocomplete_path: autocomplete_path
       }
     %>
   </div>
