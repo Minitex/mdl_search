@@ -1,5 +1,5 @@
-FactoryGirl.define do
-  factory :user do
+FactoryBot.define do
+  factory :mdl_user, class: User do
     email { Faker::Internet.email }
     password { 'password' }
 

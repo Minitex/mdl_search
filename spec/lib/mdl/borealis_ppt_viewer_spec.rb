@@ -3,14 +3,13 @@ require_relative '../../../lib/mdl/borealis_assets_viewer.rb'
 require_relative '../../../lib/mdl/borealis_ppt_viewer.rb'
 require_relative '../../../lib/mdl/borealis_ppt.rb'
 module MDL
-  describe BorealisPPTViewer do
+  describe BorealisPptViewer do
     let(:ppt) do
       instance_double(
-        'BorealisPPT',
+        BorealisPpt,
         collection: 'ppts',
         id: 33,
         type: 'ppt',
-        text: '(Download)',
         thumbnail: '/images/audio-3.png'
       )
     end
@@ -28,7 +27,7 @@ module MDL
     end
 
     def viewer(asset)
-      @viewer ||= BorealisPPTViewer.new(assets: [asset]).to_viewer
+      @viewer ||= BorealisPptViewer.new(assets: [asset]).to_viewer
     end
   end
 end

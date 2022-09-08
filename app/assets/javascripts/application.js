@@ -13,9 +13,12 @@
 //= require jquery
 //= require 'blacklight_advanced_search'
 
-
-//= require jquery_ujs
+//= require jquery3
+//= require rails-ujs
 //= require turbolinks
+//= require popper
+//= require twitter/typeahead
+//= require bootstrap
 //= require chosen-jquery
 // Required by Blacklight
 //= require blacklight/blacklight

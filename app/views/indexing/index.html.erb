@@ -12,13 +12,13 @@
 
     <div class="form-group row">
       <%= form.label 'Changed since', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-2 mx-sm-3">
+      <div class="col-sm-3 mr-sm-3">
         <%= form.date_field :date, max: Date.current, aria: { describedby: 'date-help-text' } %>
       </div>
       <small id="date-help-text" class="text-muted">
         Leave blank to index without any date restriction.
       </small>
     </div>
-    <%= form.submit 'Start', class: 'btn btn-default' %>
+    <%= form.submit 'Start', class: 'btn btn-primary' %>
   <% end %>
 </div>

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -53,7 +54,11 @@ class CatalogController < ApplicationController
   end
 
   def run_search!
-    search_results(params)
+    search_service.search_results
+  end
+
+  def permit_search_parameters
+    params.permit!
   end
 
   # get search results from the solr index
@@ -69,13 +74,7 @@ class CatalogController < ApplicationController
   end
 
   def search_facet_url(*args)
-    if current_exhibit
-      exhibit_search_facet_url(*args)
-    else
-      ###
-      # Defined as an alias in ApplicationController
-      blacklight_search_facet_url(*args)
-    end
+    current_exhibit ? exhibit_search_facet_url(*args) : super
   end
 
   # overrides /blacklight/controllers/concerns/blacklight/catalog
@@ -83,10 +82,11 @@ class CatalogController < ApplicationController
   # get a single document from the index
   # to add responses for formats other than html or json see _Blacklight::Document::Export_
   def show
-    @response, @document = fetch params[:id]
+    _, @document = search_service.fetch(params[:id])
     @hide_previous_next = true if params[:pn] == 'false'
+
     respond_to do |format|
-      format.html { setup_next_and_previous_documents }
+      format.html { @search_context = setup_next_and_previous_documents }
       format.json { render json: { response: { document: @document } } }
       additional_export_formats(@document, format)
     end
@@ -99,6 +99,19 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
+    config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:citation)
+
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
+    config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
@@ -132,13 +145,15 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :cached_thumbnail_tag
     config.show.thumbnail_method = :cached_thumbnail_tag
 
-    config.view.gallery.default = false
-    config.view.gallery.partials = [:index]
-    config.view.gallery.icon_class = "glyphicon-th"
+    config.view.gallery(
+      default: false,
+      partials: [:index],
+      icon_class: 'glyphicon-th',
+      classes: []
+    )
 
     ###
     # Spotlight additions
-    config.view.gallery.partials += [:index_header]
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
@@ -198,12 +213,16 @@ class CatalogController < ApplicationController
     config.add_facet_field 'topic_ssim' do |field|
       field.collapse = false
       field.label = 'Topic'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
       field.collapse = false
       field.show = true
       field.limit = 10
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'physical_format_ssi' do |field|
       field.label = 'Physical Format'
@@ -212,11 +231,15 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.index = true
       field.limit = 5
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
       field.collapse = false
       field.range = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'placename_ssim' do |field|
       field.label = 'Location'
@@ -224,6 +247,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
@@ -232,6 +257,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
@@ -239,6 +266,8 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.limit = 5
       field.index = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
 
     ###
@@ -248,6 +277,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'rights_status_ssi' do |field|
       field.include_in_simple_search = false
       field.label = 'Rights Status'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -387,6 +418,8 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 5
 
+    config.search_bar_component = ::SearchBarComponent
+
     ###
     # OAI
     config.oai = {
@@ -397,12 +430,12 @@ class CatalogController < ApplicationController
         admin_email: 'swans062@umn.edu',
         sample_id: 'sll:22470'
       },
-      document: OpenStruct.new(
+      document: {
         set_model: OaiSet,
         set_fields: [
           { solr_field: 'oai_set_ssi' }
         ]
-      )
+      }
     }
   end
 end

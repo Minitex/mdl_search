@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_11_202118) do
+ActiveRecord::Schema.define(version: 2022_07_14_163566) do
 
   create_table "bookmarks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
   end
 
   create_table "searches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "query_params", limit: 16777215
+    t.text "query_params", size: :medium
     t.integer "user_id"
     t.string "user_type"
     t.datetime "created_at", null: false
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.string "thumbnail_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "spotlight_bulk_updates", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "file", null: false
+    t.bigint "exhibit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibit_id"], name: "index_spotlight_bulk_updates_on_exhibit_id"
   end
 
   create_table "spotlight_contact_emails", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -144,6 +152,19 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.index ["exhibit_id"], name: "index_spotlight_custom_search_fields_on_exhibit_id"
   end
 
+  create_table "spotlight_events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "exhibit_id"
+    t.string "resource_type", null: false
+    t.bigint "resource_id", null: false
+    t.string "type"
+    t.string "collation_key"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibit_id"], name: "index_spotlight_events_on_exhibit_id"
+    t.index ["resource_type", "resource_id"], name: "index_spotlight_events_on_resource_type_and_resource_id"
+  end
+
   create_table "spotlight_exhibits", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "title", null: false
     t.string "subtitle"
@@ -160,8 +181,10 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.integer "weight", default: 50
     t.integer "site_id"
     t.string "theme"
+    t.index ["masthead_id"], name: "index_spotlight_exhibits_on_masthead_id"
     t.index ["site_id"], name: "index_spotlight_exhibits_on_site_id"
     t.index ["slug"], name: "index_spotlight_exhibits_on_slug", unique: true
+    t.index ["thumbnail_id"], name: "index_spotlight_exhibits_on_thumbnail_id"
   end
 
   create_table "spotlight_featured_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -190,6 +213,46 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exhibit_id"], name: "index_spotlight_filters_on_exhibit_id"
+  end
+
+  create_table "spotlight_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "slug"
+    t.text "title"
+    t.bigint "exhibit_id"
+    t.integer "weight", default: 50
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibit_id"], name: "index_spotlight_groups_on_exhibit_id"
+  end
+
+  create_table "spotlight_groups_members", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "group_id"
+    t.string "member_type"
+    t.bigint "member_id"
+    t.index ["group_id"], name: "index_spotlight_groups_members_on_group_id"
+    t.index ["member_type", "member_id"], name: "index_spotlight_groups_members_on_member_type_and_member_id"
+  end
+
+  create_table "spotlight_job_trackers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "on_type", null: false
+    t.bigint "on_id", null: false
+    t.string "resource_type", null: false
+    t.bigint "resource_id", null: false
+    t.string "job_id"
+    t.string "job_class"
+    t.string "parent_job_id"
+    t.string "parent_job_class"
+    t.string "status"
+    t.bigint "user_id"
+    t.text "log"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_spotlight_job_trackers_on_job_id"
+    t.index ["on_type", "on_id"], name: "index_spotlight_job_trackers_on_on_type_and_on_id"
+    t.index ["resource_type", "resource_id"], name: "index_spotlight_job_trackers_on_resource_type_and_resource_id"
+    t.index ["user_id"], name: "index_spotlight_job_trackers_on_user_id"
   end
 
   create_table "spotlight_languages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -228,7 +291,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.string "type"
     t.string "slug"
     t.string "scope"
-    t.text "content", limit: 16777215
+    t.text "content", size: :medium
     t.integer "weight", default: 1000
     t.boolean "published"
     t.integer "exhibit_id"
@@ -248,6 +311,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.index ["locale"], name: "index_spotlight_pages_on_locale"
     t.index ["parent_page_id"], name: "index_spotlight_pages_on_parent_page_id"
     t.index ["slug", "scope"], name: "index_spotlight_pages_on_slug_and_scope", unique: true
+    t.index ["thumbnail_id"], name: "index_spotlight_pages_on_thumbnail_id"
   end
 
   create_table "spotlight_reindexing_log_entries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -302,8 +366,11 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.integer "thumbnail_id"
     t.string "default_index_view_type"
     t.boolean "search_box", default: false
+    t.string "subtitle"
     t.index ["exhibit_id"], name: "index_spotlight_searches_on_exhibit_id"
+    t.index ["masthead_id"], name: "index_spotlight_searches_on_masthead_id"
     t.index ["slug", "scope"], name: "index_spotlight_searches_on_slug_and_scope", unique: true
+    t.index ["thumbnail_id"], name: "index_spotlight_searches_on_thumbnail_id"
   end
 
   create_table "spotlight_sites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -322,7 +389,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.string "document_type"
     t.integer "resource_id"
     t.string "resource_type"
-    t.binary "index_status", limit: 16777215
+    t.binary "index_status", size: :medium
     t.index ["document_type", "document_id"], name: "spotlight_solr_document_sidecars_solr_document"
     t.index ["exhibit_id", "document_type", "document_id"], name: "by_exhibit_and_doc", unique: true
     t.index ["exhibit_id", "document_type", "document_id"], name: "spotlight_solr_document_sidecars_exhibit_document"
@@ -391,7 +458,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_202118) do
     t.bigint "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
-    t.text "object", limit: 4294967295
+    t.text "object", size: :long
     t.datetime "created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end

@@ -1,5 +1,5 @@
 module MDL
-  class BorealisPPT <  BorealisAsset
+  class BorealisPpt <  BorealisAsset
     def src
       "http://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
     end
@@ -13,7 +13,7 @@ module MDL
     end
 
     def viewer
-      MDL::BorealisPPTViewer
+      MDL::BorealisPptViewer
     end
   end
 end

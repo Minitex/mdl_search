@@ -1,7 +1,7 @@
 class ContentdmImagesController < ApplicationController
 
   def info
-    render json: ContentdmIIIF.new(collection: identifiers.first, id: identifiers.last).info
+    render json: ContentdmIiif.new(collection: identifiers.first, id: identifiers.last).info
   end
 
   private

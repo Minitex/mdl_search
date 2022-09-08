@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'self-service indexing' do
   it 'is available to admins' do
-    user = create(:user, :admin)
+    user = create(:mdl_user, :admin)
     sign_in(user)
     get '/indexing'
 
@@ -10,7 +10,7 @@ describe 'self-service indexing' do
   end
 
   it 'is not available to non-admins' do
-    user = create(:user, :visitor)
+    user = create(:mdl_user, :visitor)
     sign_in(user)
     get '/indexing'
 

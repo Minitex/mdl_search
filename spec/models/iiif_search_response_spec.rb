@@ -117,7 +117,7 @@ describe IiifSearchResponse do
 
       it 'forms the correct structure' do
         expect(result['@context']).to eq('http://iiif.io/api/search/1/context.json')
-        expect(result['@id']).to eq('https://collection.mndigital.org/iiif/pch:1224/search?q=The%20reasoning%20of')
+        expect(result['@id']).to eq('https://collection.mndigital.org/iiif/pch:1224/search?q=The+reasoning+of')
         expect(result['@type']).to eq('sc:AnnotationList')
         expect(result['within']['@type']).to eq('sc:Layer')
         expect(result['within']['total']).to eq(1)

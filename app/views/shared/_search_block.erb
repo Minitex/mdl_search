@@ -1,10 +1,14 @@
 <div id="search-block">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
-        <%= render_search_bar  %>
+      <div class="col-sm-6 col-lg-9">
+        <%= render(SearchBarComponent.new(
+          url: search_action_url,
+          params: search_state.params_for_search.except(:qt),
+          autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
+        )) %>
       </div>
-      <div class="col-sm-6 advanced">
+      <div class="col-sm-6 col-lg-3 advanced">
         <a href="/advanced" class="btn btn-custom">Advanced Search</a>
       </div>
     </div>

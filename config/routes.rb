@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
-  mount Spotlight::Engine, at: '/exhibits'
+  mount Spotlight::Engine, at: Rails.application.config.spotlight_mount_path
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'

@@ -26,6 +26,6 @@ namespace :prune do
   end
 
   def etl
-    @etl ||= MDL::ETL.new
+    @etl ||= MDL::Etl.new
   end
 end

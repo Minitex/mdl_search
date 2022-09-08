@@ -3,6 +3,6 @@ class UpdateIiifManifestServiceDescriptionWorker
   sidekiq_options queue: :iiif_search
 
   def perform(collection)
-    UpdateIIIFManifestServiceDescription.for_collection(collection)
+    UpdateIiifManifestServiceDescription.for_collection(collection)
   end
 end

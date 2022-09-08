@@ -7,10 +7,10 @@ end
 
 gem 'dotenv-rails', groups: [:development, :test]
 
-gem 'mysql2', '~> 0.4.4'
+gem 'mysql2', '~> 0.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.1.0'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -19,16 +19,19 @@ gem 'uglifier', '>= 1.3.0'
 gem 'puma', '~> 3.7'
 # # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'execjs'
-# gem 'mini_racer', '~> 0.3.1'
 # # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'coffee-rails', '~> 4.2'
 # # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'bootstrap', '~> 4.0'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -51,7 +54,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'solr_wrapper', '>= 0.3'
   gem 'teaspoon-jasmine'
@@ -65,39 +68,40 @@ group :test do
   gem 'webmock'
 end
 
-gem 'blacklight', '~> 6.20'
-gem 'blacklight_advanced_search', '~> 6.4'
-gem 'blacklight_range_limit', '~> 6.5'
-gem 'blacklight-spotlight', '~> 2.13'
-gem 'blacklight_oai_provider', '~> 6.0'
+gem 'blacklight', '~> 7.27'
+gem 'blacklight_advanced_search', '~> 7.0'
+gem 'blacklight_range_limit', '~> 7.0'
+gem 'blacklight-spotlight', '~> 3.4'
+gem 'blacklight_oai_provider', '~> 7.0'
 gem 'chosen-rails', '~> 1.9'
 gem 'leaflet-rails'
-gem 'rsolr', '2.3.0'
-gem 'globalid', '0.4.2'
-gem 'webpacker', '2.0'
-gem 'cancancan', '~> 3.2.1'
+gem 'rsolr', '~> 2.5'
+gem 'globalid', '~> 1.0'
+gem 'webpacker', '~> 5.4'
+gem 'cancancan', '~> 3.4'
 
 # # CONTENTdm ETL
-gem 'devise', '4.6.2'
-gem 'devise-guests', '0.6.0'
+gem 'devise', '~> 4.8'
+gem 'devise-guests', '~> 0.8'
 gem 'hash_at_path', github: 'UMNLibraries/hash_at_path', ref: '92dafd3b06de2cbc861b9ad80dcadb3ed7274597'
-gem 'contentdm_api', github: 'UMNLibraries/contentdm_api', ref: '847a70689813c03990db2ebb622d0beee7657688'
-gem 'cdmbl', github: 'Minitex/cdmbl', tag: 'v0.20.0'
-gem 'sidekiq', '5.2.7'
-gem 'sinatra', '2.0.4', require: false
-gem 'sidekiq-failures', '1.0.0'
-gem 'whenever', '0.9.7', require: false
+gem 'contentdm_api', '~> 0.6'
+gem 'cdmbl', github: 'Minitex/cdmbl', ref: 'd1a2b0e'
+gem 'sidekiq', '~> 6.5'
+gem 'sinatra', '~> 2.0', require: false
+gem 'sidekiq-failures', '~> 1.0'
+gem 'whenever', '~> 0.9', require: false
 
 # Autmatically link URLs in citation details
-gem 'rinku', '2.0.2'
-gem 'redis-rails', '5.0.2'
+gem 'rinku', '~> 2.0'
+gem 'redis-rails', '~> 5.0'
 
 gem 'friendly_id'
 gem 'sitemap_generator'
 gem 'blacklight-gallery', '>= 0.3.0'
-gem 'blacklight-oembed', '~> 0.3'
+gem 'blacklight-oembed', '~> 1.1'
 
-gem 'autoprefixer-rails', '< 10.0' # Constraint to accommodate Node 8 on QA/Prod
-gem 'kaltura-client', '17.5.0'
+gem 'autoprefixer-rails', '~> 10.4.7' # Constraint to accommodate Node 8 on QA/Prod
+gem 'kaltura-client'
 
 gem 'sentry-raven'
+gem 'strscan', '3.0.1'

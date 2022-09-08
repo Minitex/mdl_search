@@ -3,10 +3,10 @@ require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_pdf.rb'
 require_relative '../../../lib/mdl/borealis_pdf_viewer.rb'
 module MDL
-  describe BorealisPDF do
+  describe BorealisPdf do
     describe 'when a pdf is a member of a compound object' do
       it 'provides a download link' do
-        expect(BorealisPDF.new(document: { 'id' => 'foo:123' },
+        expect(BorealisPdf.new(document: { 'id' => 'foo:123' },
                                collection: 'foo', id: '124').downloads).to eq(
           [
             {
@@ -20,7 +20,7 @@ module MDL
 
     describe 'when a pdf is a single item' do
       it 'provides a download link' do
-        expect(BorealisPDF.new(document: { 'id' => 'foo:123' },
+        expect(BorealisPdf.new(document: { 'id' => 'foo:123' },
                                collection: 'foo', id: '123').downloads).to eq(
           [
             {
@@ -33,11 +33,11 @@ module MDL
     end
 
     it 'knows its viewer' do
-      expect(BorealisPDF.new.viewer).to be MDL::BorealisPDFViewer
+      expect(BorealisPdf.new.viewer).to be MDL::BorealisPdfViewer
     end
 
     it 'knows its type' do
-      expect(BorealisPDF.new.type).to eq 'pdf'
+      expect(BorealisPdf.new.type).to eq 'pdf'
     end
   end
 end

@@ -3,7 +3,7 @@
 <% @page_title = t('blacklight.search.page_title.title', :constraints => render_search_to_page_title(params), :application_name => application_name) %>
 
 <% content_for(:head) do -%>
-  <%= render_opensearch_response_metadata %>
+  <%= render partial: 'catalog/opensearch_response_metadata', locals: { response: @response } %>
   <%= rss_feed_link_tag %>
   <%= atom_feed_link_tag %>
   <%= json_api_link_tag %>
@@ -20,7 +20,7 @@
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
 <%- else %>
-  <%= render_document_index %>
+  <%= render_document_index @response.documents %>
 <%- end %>
 
 <%= render partial: 'results_pagination', locals: {show_json_link: true}  %>

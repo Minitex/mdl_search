@@ -1,4 +1,4 @@
-class UpdateIIIFManifestServiceDescription
+class UpdateIiifManifestServiceDescription
   class << self
     def for_collection(setspec)
       start = 0

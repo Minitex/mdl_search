@@ -63,7 +63,7 @@ body {
 }
 
 @media (max-width: 599px) {
-	.input-group-addon {
+	.input-group-prepend {
 		display: none !important;
 	}
 
@@ -133,7 +133,7 @@ body {
 		border-bottom-left-radius: 4px !important;
 	}
 
-	.input-group-addon:first-child {
+	.input-group-prepend:first-child {
 		display: none;
 	}
 
@@ -187,7 +187,7 @@ body {
 
 @media (min-width: 1024px) {
 	.search_q {
-		width: 36rem !important;
+		width: 22rem !important;
 	}
 }
 
@@ -227,9 +227,7 @@ a:hover, a:focus {
 }
 
 a.remove:hover {
-	background-color: red !important;
-	border-color: red !important;
-	color: $white !important;
+  color: red;
 }
 
 .row {
@@ -261,23 +259,24 @@ a.remove:hover {
 .navbar {
 	border: none;
 	margin-bottom: 0;
+	padding: 0;
 }
 
 .navbar-nav {
 	height: 87px;
-	margin-left: 2rem;
 }
 
 .navbar-nav > li {
 	height: 87px;
 }
 
-.navbar-default .navbar-nav > li > a {
+a.dropdown-toggle {
 	color: $black;
-	font-size: 1.5rem;
 	height: 87px;
-	padding: 3.75rem 1.25rem 0 !important;
+	padding: 2rem 0.65rem 0 !important;
 	text-transform: uppercase;
+	text-decoration: none;
+	outline: none;
 
 	&:hover {
 		background-color: $lightest-gray;
@@ -285,7 +284,7 @@ a.remove:hover {
 	}
 }
 
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+.navbar-default .navbar-nav > .show > a, .navbar-default .navbar-nav > .show > a:hover, .navbar-default .navbar-nav > .show > a:focus {
 	background-color: $white;
 	color: $black;
 }
@@ -309,19 +308,12 @@ a.remove:hover {
 }
 
 #search-block {
-	margin-top: 87px;
 	background-color: $lightest-gray;
 	text-align: center;
-	padding: 1.5rem 0;
+	padding: 1rem 0;
 
 	.advanced {
 		text-align: right;
-	}
-}
-
-#search-block .search-query-form {
-	.search_field {
-		border: 0;
 	}
 }
 
@@ -330,11 +322,17 @@ a.remove:hover {
 }
 
 h1.advanced {
-	margin-top: 12rem;
+	margin-top: 2rem;
 }
 
 h1.advanced .advanced-search-start-over {
 	display: none;
+}
+
+.query-criteria-heading {
+	select {
+		color: inherit;
+	}
 }
 
 .advanced-search-start-over, .query-criteria-heading, .limit-criteria-heading {
@@ -348,6 +346,14 @@ h1.advanced .advanced-search-start-over {
 .advanced-search-field, .sort-submit-buttons {
 	.form-control {
 		border: 1px solid $light-gray;
+	}
+}
+
+.advanced {
+	.control-label {
+		padding-top: 7px;
+		text-align: right;
+		font-weight: bold;
 	}
 }
 
@@ -393,16 +399,18 @@ h1.advanced .advanced-search-start-over {
 	padding: 0;
 }
 
-.input-group-addon {
+.input-group-prepend {
 	background-color: $white;
 	border: none;
 	color: $black;
 }
 
-.input-group-addon:first-child {
+#search_field {
 	border-right: 1px solid $lightest-gray;
-	font-size: 1.5rem;
-	padding: 0 .5rem;
+}
+
+.for-search-field {
+	padding-right: 0.2rem;
 }
 
 .form-control {
@@ -423,7 +431,7 @@ input.range_begin, input.range_end {
 	font-size: 16px;
 }
 
-.btn-default {
+.btn-secondary, .btn-outline-secondary {
 	border-color: $light-gray;
 	color: $black;
 	text-decoration: none !important;
@@ -433,6 +441,10 @@ input.range_begin, input.range_end {
 		color: $black !important;
 		text-decoration: none !important;
 	}
+}
+
+.advanced .btn-secondary {
+	background-color: inherit;
 }
 
 .btn-primary {
@@ -447,7 +459,7 @@ input.range_begin, input.range_end {
 	}
 }
 
-form.range_limit .btn-default {
+form.range_limit .btn-secondary {
 	background-color: $dark-blue;
 	border-color: $dark-blue;
 	color: $white;
@@ -503,6 +515,19 @@ form.range_limit .btn-default {
 	text-decoration: none;
 }
 
+.nav-pills > li > a {
+  border-radius: 4px;
+  padding-right: 3px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.nav-pills > li + li {
+  margin-left: 2px
+}
+
 .nav-tabs, .nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
 	border: none !important;
 }
@@ -528,16 +553,41 @@ form.range_limit .btn-default {
 	border-color: $dark-green;
 }
 
-.panel-default > .panel-heading {
-	background-color: $dark-green;
-	border-color: $dark-green;
-	color: $white;
-	font-weight: bold;
-	text-transform: uppercase;
+.facet-field-heading {
+  background-color: $dark-green;
+  border-color: $dark-green;
+
+  button {
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+
+    &:focus {
+      color: inherit;
+    }
+
+    &:hover {
+      color:rgb(0, 0, 0);
+      text-decoration: none;
+    }
+  }
 }
 
-.panel-heading.collapse-toggle .panel-title::after {
+.document-counter {
+	color: $black;
+}
+
+#documents.documents-list .document-thumbnail img {
+	max-width: none;
+}
+
+.facets .card {
+	border: 1px solid $dark-green;
+}
+
+.collapse-toggle {
 	color: $white !important;
+	text-decoration: none !important;
 }
 
 .modal-dialog {
@@ -597,10 +647,10 @@ form.range_limit .btn-default {
 }
 
 .home-wrapper {
-	.search_field {
+	#search_field {
 		display: none;
 	}
-	.input-group-addon {
+	.input-group-prepend {
 		display: none;
 	}
 	.search_q {
@@ -723,6 +773,10 @@ form.range_limit .btn-default {
 	padding-right: 0;
 }
 
+.facet-values .remove {
+  line-height: initial;
+}
+
 .panel-title > a {
 	text-decoration: none !important;
 	text-transform: none !important;
@@ -779,12 +833,16 @@ form.range_limit .btn-default {
 	margin: 0 4px !important;
 }
 
-#documents.documents-gallery .document .title {
-	overflow: auto !important;
-}
-
 #documents.documents-gallery .panel {
 	margin: 0 0 20px 0 !important;
+}
+
+.facet-limit-active {
+  border-color: $dark-green !important;
+
+	.card-header.facet-field-heading {
+    background-color: $dark-green !important;
+  }
 }
 
 .gallery-result {
@@ -794,6 +852,7 @@ form.range_limit .btn-default {
 
 .gallery-result .panel-body {
 	height: 250px !important;
+	padding: 15px;
 }
 
 h3.document-title-heading {
@@ -823,6 +882,7 @@ h3.document-title-heading {
 
 .pagination {
 	margin: 15px 0 5px -7px;
+	float: left;
 }
 
 .pagination > li > a {
@@ -911,10 +971,17 @@ h3.document-title-heading {
 
 .more-like-this {
 	margin-top: 20px;
-}
 
-.more-like-this .panel-body {
-	text-align: center;
+  .card-header {
+    background-color: $dark-green;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .card-body {
+    text-align: center;
+  }
 }
 
 .more-like-this ul {
@@ -1048,6 +1115,10 @@ h3.document-title-heading {
 	margin-top: 20px;
 }
 
+.cite-details .details {
+  display: block;
+}
+
 dt, dd {
 	margin: 0;
 	padding: 0;
@@ -1065,6 +1136,7 @@ dt, dd {
 
 .label-default {
 	background-color: $white;
+  margin: 0;
 }
 
 .download-source {
@@ -1185,10 +1257,10 @@ a.view-text:hover {
 			}
 		}
 		li.active {
-			a { 
+			a {
 				background-color: $white;
 				color: $black;
-				font-weight: bold; 
+				font-weight: bold;
 			}
 		}
 	}
@@ -1199,7 +1271,7 @@ a.view-text:hover {
 			margin-bottom: 1rem;
 		}
 		.nav-pills {
-			.btn-default {
+			.btn-secondary {
 				@extend .btn-primary;
 			}
 			.btn-nav {
@@ -1269,7 +1341,7 @@ blockquote {
 	border-radius: 4px;
 	margin-bottom: 1.5rem;
 	padding: 1.5rem;
-	
+
 	.field {
 		padding: 1rem 0;
 

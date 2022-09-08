@@ -10,8 +10,8 @@ module MDL
     def initialize(format_field: 'jp2',
                    video_klass: BorealisVideo,
                    audio_klass: BorealisAudio,
-                   pdf_klass: BorealisPDF,
-                   ppt_klass: BorealisPPT,
+                   pdf_klass: BorealisPdf,
+                   ppt_klass: BorealisPpt,
                    image_klass: BorealisImage)
 
       @format_field = (format_field.nil?) ? 'jp2' : format_field

@@ -3,13 +3,12 @@ require_relative '../../../lib/mdl/borealis_assets_viewer.rb'
 require_relative '../../../lib/mdl/borealis_pdf_viewer.rb'
 require_relative '../../../lib/mdl/borealis_pdf.rb'
 module MDL
-  describe BorealisPDFViewer do
+  describe BorealisPdfViewer do
     let(:pdf) do
       instance_double(
-        'BorealisPDF',
+        BorealisPdf,
         src: 'http://stuffstuff.com/pdf',
         type: 'pdf',
-        text: '(Download)',
         transcripts: ['A brief history of cat costumes'],
         thumbnail: '/images/audio-3.png'
       )
@@ -40,7 +39,7 @@ module MDL
     end
 
     def viewer(asset)
-      @viewer ||= BorealisPDFViewer.new(assets: [asset]).to_viewer
+      @viewer ||= BorealisPdfViewer.new(assets: [asset]).to_viewer
     end
   end
 end

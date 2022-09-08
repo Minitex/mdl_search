@@ -2,12 +2,14 @@ module Blacklight
   class FieldRetriever
     # @param [SolrDocument] document
     # @param [Blacklight::Configuration::Field] field_config solr field configuration
-    def initialize(document, field_config)
+    # @param [ActionView::Base] view_context Rails rendering context
+    def initialize(document, field_config, view_context = nil)
       @document = document
       @field_config = field_config
+      @view_context = view_context
     end
 
-    attr_reader :document, :field_config
+    attr_reader :document, :field_config, :view_context
     delegate :field, to: :field_config
 
     # @return [Array]
@@ -17,7 +19,7 @@ module Blacklight
         if field_config.highlight && retrieve_highlight
           retrieve_highlight
         elsif field_config.accessor
-          retieve_using_accessor
+          retrieve_using_accessor
         elsif field_config
           retrieve_simple
         end
@@ -35,7 +37,7 @@ module Blacklight
         end
       end
 
-      def retieve_using_accessor
+      def retrieve_using_accessor
         # implicit method call
         if field_config.accessor == true
           document.send(field)

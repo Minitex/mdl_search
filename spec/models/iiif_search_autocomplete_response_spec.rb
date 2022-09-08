@@ -45,12 +45,12 @@ describe IiifSearchAutocompleteResponse do
 
       it 'forms the correct structure' do
         expect(result['@context']).to eq('http://iiif.io/api/search/1/context.json')
-        expect(result['@id']).to eq('https://collection.mndigital.org/iiif/pch:1224/autocomplete?q=The%20reasoning%20of')
+        expect(result['@id']).to eq('https://collection.mndigital.org/iiif/pch:1224/autocomplete?q=The+reasoning+of')
         expect(result['@type']).to eq('search:TermList')
         expect(result['terms']).to eq([
           {
             'match' => 'the reasoning of',
-            'url' => 'https://collection.mndigital.org/iiif/pch:1224/search?q=the%20reasoning%20of',
+            'url' => 'https://collection.mndigital.org/iiif/pch:1224/search?q=the+reasoning+of',
             'count' => 1
           }
         ])

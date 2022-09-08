@@ -28,9 +28,9 @@ module MDL
     end
 
     it 'correctly maps pdf' do
-      expect(MDL::BorealisAssetMap.new(format_field: 'pdf').map).to be BorealisPDF
-      expect(MDL::BorealisAssetMap.new(format_field: 'pdfpage').map).to be BorealisPDF
-      expect(MDL::BorealisAssetMap.new(format_field: 'application/pdf').map).to be BorealisPDF
+      expect(MDL::BorealisAssetMap.new(format_field: 'pdf').map).to be BorealisPdf
+      expect(MDL::BorealisAssetMap.new(format_field: 'pdfpage').map).to be BorealisPdf
+      expect(MDL::BorealisAssetMap.new(format_field: 'application/pdf').map).to be BorealisPdf
     end
 
     it 'correctly maps audio' do
@@ -38,7 +38,7 @@ module MDL
     end
 
     it 'correctly maps ppt' do
-      expect(MDL::BorealisAssetMap.new(format_field: 'pptx').map).to be BorealisPPT
+      expect(MDL::BorealisAssetMap.new(format_field: 'pptx').map).to be BorealisPpt
     end
   end
 end
