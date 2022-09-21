@@ -90,6 +90,10 @@ gem 'sidekiq', '~> 6.5'
 gem 'sinatra', '~> 2.0', require: false
 gem 'sidekiq-failures', '~> 1.0'
 gem 'whenever', '~> 0.9', require: false
+gem 'async'
+gem 'async-http'
+gem 'thread-local'
+gem 'rubyzip'
 
 # Autmatically link URLs in citation details
 gem 'rinku', '~> 2.0'
