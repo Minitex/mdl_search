@@ -17,11 +17,12 @@ Copy the .env-example file
 cp .env-example .env
 ```
 
-Install Ruby 2.4 via [RVM](http://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
+Install Ruby 3.1.2 via [rbenv](https://github.com/rbenv/rbenv)
 
-(rvm instructions)
 ```bash
-rvm install ruby-2.4
+brew install rbenv ruby-build
+rbenv init
+rbenv install 3.1.2
 ```
 
 Install MySQL and Redis clients, as well as geckodriver for system tests run via Selenium.
