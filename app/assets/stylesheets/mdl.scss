@@ -264,6 +264,7 @@ a.remove:hover {
 
 .navbar-nav {
 	height: 87px;
+	margin-left: -1.5rem;
 }
 
 .navbar-nav > li {
@@ -272,6 +273,7 @@ a.remove:hover {
 
 a.dropdown-toggle {
 	color: $black;
+	font-size: 0.9rem;
 	height: 87px;
 	padding: 2rem 0.65rem 0 !important;
 	text-transform: uppercase;
@@ -290,20 +292,27 @@ a.dropdown-toggle {
 }
 
 .dropdown-menu {
-	border: 1px solid $light-gray;
-	border-top: none;
-	box-shadow: none;
-	margin: -1px;
+	background-color: #ffffff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 1px solid #d3d4d7;
+    border-top: none;
+    font-size: 0.9rem;
+    margin: 0 0 0 -1px;
+    min-width: 18rem;
+    padding: 0;
+}
 
-	li > a {
-		color: $black;
-		font-size: 1.5rem;
-		padding: 0.25rem 1.25rem;
-		text-decoration: none;
-		&:hover {
-			background-color: $white;
-			color: $dark-green;
-		}
+.dropdown-item {
+	color: $black;
+	font-size: 0.9rem;
+	padding-left: 0.75rem;
+	text-decoration: none;
+	&:hover {
+		background-color: $white;
+		color: $dark-green;
 	}
 }
 
