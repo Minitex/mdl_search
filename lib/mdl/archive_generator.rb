@@ -7,6 +7,10 @@ module MDL
   class ArchiveGenerator
     TMP_DIR = File.exists?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
 
+    def self.call(identifier)
+      new(identifier).call
+    end
+
     attr_reader :identifier, :logger
 
     def initialize(identifier, logger: Rails.logger)
@@ -19,6 +23,7 @@ module MDL
       image_urls = gather_image_urls
       download_images(image_urls)
       create_archive
+      zip_file_path
     ensure
       remove_working_directory
     end
@@ -32,7 +37,7 @@ module MDL
       if File.exist?(zip_file_path)
         raise "archive already exists for #{identifier}"
       end
-      FileUtils.mkdir(work_dir)
+      FileUtils.mkdir_p(work_dir)
     end
 
     def remove_working_directory
@@ -49,13 +54,14 @@ module MDL
     def fetch_manifest
       log("Fetching manifest for #{identifier}")
 
-      task = Async do |task|
+      task = Async do
         internet = Async::HTTP::Internet.instance
         url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{identifier}/manifest.json"
         response = internet.get(url)
         if response.status == 200
           JSON.parse(response.read)
         else
+          log_error("Failed to fetch manifest. Response status: #{response.status}")
           raise 'Failed to fetch manifest'
         end
       ensure
@@ -67,7 +73,7 @@ module MDL
 
     def download_images(urls)
       log "downloading #{urls.size} images to #{work_dir}"
-      Async do |task|
+      Async do
         internet = Async::HTTP::Internet.instance # persistent connection
         barrier = Async::Barrier.new
         semaphore = Async::Semaphore.new(8, parent: barrier)
@@ -88,7 +94,7 @@ module MDL
     end
 
     def create_archive
-      log "[create_archive] writing to #{zip_file_path}"
+      log "writing to #{zip_file_path}"
       Zip::File.open(zip_file_path, create: true) do |zip_file|
         Dir[File.join(work_dir, '**')].each do |download|
           entry_name = download.sub(archives_dir + File::Separator, '')
@@ -124,7 +130,7 @@ module MDL
     end
 
     def format_log(msg)
-      "[#{identifier}] #{msg}"
+      "#{self.class.name} [#{identifier}] : #{msg}"
     end
   end
 end
