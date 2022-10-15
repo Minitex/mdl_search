@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import DetailsFieldValue from './cite-details-field-value'
 
 export default class DetailsField extends React.Component {
@@ -26,10 +27,10 @@ export default class DetailsField extends React.Component {
 }
 
 const propTypes = {
-  label: React.PropTypes.string.isRequired,
-  delimiter: React.PropTypes.string,
-  url: React.PropTypes.string,
-  field_values: React.PropTypes.array.isRequired
+  label: PropTypes.string.isRequired,
+  delimiter: PropTypes.string,
+  url: PropTypes.string,
+  field_values: PropTypes.array.isRequired
 }
 
 DetailsField.propTypes = propTypes

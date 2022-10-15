@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import CiteThumbnail from './cite-thumbnail'
 
 export default class Download extends React.Component {
@@ -19,7 +20,7 @@ export default class Download extends React.Component {
 }
 
 const propTypes = {
-  fields: React.PropTypes.array.isRequired
+  fields: PropTypes.array.isRequired
 }
 
 Download.propTypes = propTypes

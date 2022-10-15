@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default class CiteDownloadSource extends React.Component {
   constructor(props) {
@@ -18,8 +19,8 @@ export default class CiteDownloadSource extends React.Component {
 }
 
 const propTypes = {
-  src: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 }
 
 CiteDownloadSource.propTypes = propTypes
