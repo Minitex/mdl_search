@@ -205,6 +205,60 @@ body {
 	}
 }
 
+/* Fixes for Bootstrap 4 version, Fall 2022 */
+
+#main-container {
+	.facet_pagination, .modal-body {
+		padding: .75rem;
+		width: 100%;
+	}
+
+	.modal-header {
+		display: block;
+		margin: .75rem;
+		padding: 0;
+		width: 100%;
+
+		.ajax-modal-close {
+			display: none;
+		}
+
+		.alpha-filter {
+			.pagination {
+				margin: 1rem 0 1rem -1rem;
+			}
+		}
+	}
+
+	.modal-footer > * {
+		margin: 0;
+	}
+
+	.modal-footer {
+		margin: .75rem;
+		padding: 0;
+		width: 100%;
+
+		.facet_pagination {
+			padding: .75rem 0;
+		}
+	}
+
+	.page-item.active .page-link {
+		z-index: 3;
+		color: $white;
+		cursor: default;
+		background-color: $dark-blue;
+		border-color: $dark-blue;
+	}
+	
+	.sort-options {
+		float: right;
+	}
+}
+
+/* End BS4 fixes */
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: $dark-green;
 	font-family: 'Jost', helvetica, arial, sans-serif;
@@ -633,21 +687,6 @@ form.range_limit .btn-secondary {
 	margin: 0 12px 12px 0;
 }
 
-/* Non-modal filter landing pages */
-
-#main-container .modal-header, #main-container .modal-footer {
-	margin: 0 15px;
-	padding: 15px 0 !important;
-}
-
-#main-container .alpha-filter .pagination {
-	margin: 6px 0 0 0;
-}
-
-.modal-header .alpha-filter {
-	margin: 8px -14px 0;
-}
-
 /* Homepage styles */
 
 #home-search {
@@ -897,6 +936,7 @@ h3.document-title-heading {
 .pagination > li > a {
 	border: 1px solid $light-gray;
 	color: $dark-blue;
+	text-decoration: none;
 }
 
 .pagination > li > a:hover {
