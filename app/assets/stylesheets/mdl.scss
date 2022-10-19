@@ -215,7 +215,7 @@ h3.index_title {
 	margin-left: auto;
 }
 
-.blacklight-sessions {
+.blacklight-sessions, .blacklight-exhibits {
 	#main-container {
 		h2 {
 			margin-top: 1rem;
@@ -326,6 +326,11 @@ h3.index_title {
 	padding: 10px 20px;
     margin: 0 0 20px;
     border-left: 5px solid #eeeeee;
+}
+
+.primary-actions {
+	float: none !important;
+	margin-left: 15px;
 }
 
 /* End BS4 fixes */
@@ -460,6 +465,7 @@ a.dropdown-toggle {
 
 .page-header {
 	border-bottom: none;
+	margin-left: 15px;
 }
 
 h1.advanced {
