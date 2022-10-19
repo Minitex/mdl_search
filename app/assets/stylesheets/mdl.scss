@@ -215,6 +215,17 @@ h3.index_title {
 	margin-left: auto;
 }
 
+.blacklight-sessions {
+	#main-container {
+		h2 {
+			margin-top: 1rem;
+		}
+		.row {
+			display: block;
+		}
+	}
+}
+
 #main-container {
 	.facet_pagination, .modal-body {
 		padding: .75rem;
@@ -268,6 +279,46 @@ h3.index_title {
 .search-btn {
 	border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.blacklight-exhibits-index aside .nav-pills .btn-nav, .blacklight-sites-edit aside .nav-pills .btn-nav, .blacklight-sites-edit_exhibits aside .nav-pills .btn-nav, .blacklight-exhibits-new aside .nav-pills .btn-nav, .blacklight-home_pages-edit aside .nav-pills .btn-nav, .blacklight-exhibits-edit aside .nav-pills .btn-nav, .blacklight-appearances-edit aside .nav-pills .btn-nav, .blacklight-roles-index aside .nav-pills .btn-nav, .blacklight-metadata_configurations-edit aside .nav-pills .btn-nav, .blacklight-search_configurations-edit aside .nav-pills .btn-nav, .blacklight-catalog-admin aside .nav-pills .btn-nav, .blacklight-tags-index aside .nav-pills .btn-nav, .blacklight-searches-index aside .nav-pills .btn-nav, .blacklight-feature_pages-index aside .nav-pills .btn-nav, .blacklight-about_pages-index aside .nav-pills .btn-nav {
+	background-color: $dark-blue !important;
+	&:hover {
+		color: $white !important;
+	}
+}
+
+.exhibit-navbar {
+	.navbar-nav {
+		margin: 0 .25rem;
+		.active {
+			background-color: rgba(255,255,255,0.15);
+		}
+		.dropdown-menu {
+			a.dropdown-item {
+				color: $dark-blue !important;
+				padding: .25rem 1rem !important;
+				&:hover {
+					color: $dark-green !important;
+				}
+			}
+		}
+	}
+	a {
+		color: $white !important;
+		padding: 2rem 1rem;
+		text-decoration: none;
+		&:hover {
+			background-color: rgba(255,255,255,0.15);
+		}
+	}
+	a.dropdown-toggle {
+		font-size: 1rem;
+		padding: 2rem 1rem !important;
+		&:hover {
+			background-color: rgba(255,255,255,0.15);
+		}
+	}
 }
 
 /* End BS4 fixes */
