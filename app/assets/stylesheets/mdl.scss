@@ -207,6 +207,10 @@ body {
 
 /* Fixes for Bootstrap 4 version, Fall 2022 */
 
+h3.index_title {
+	font-family: Roboto;
+}
+
 #main-container {
 	.facet_pagination, .modal-body {
 		padding: .75rem;
@@ -370,6 +374,13 @@ a.dropdown-toggle {
 	}
 }
 
+.dropdown-item.active, .dropdown-item:active {
+	background-color: $dark-blue;
+	&:hover {
+		color: $white;
+	}
+}
+
 #search-block {
 	background-color: $lightest-gray;
 	text-align: center;
@@ -495,15 +506,23 @@ input.range_begin, input.range_end {
 }
 
 .btn-secondary, .btn-outline-secondary {
+	background-color: $white !important;
 	border-color: $light-gray;
 	color: $black;
 	text-decoration: none !important;
 	&:hover {
-		background: $lightest-gray !important;
+		background-color: $lightest-gray !important;
 		border-color: $medium-gray;
 		color: $black !important;
 		text-decoration: none !important;
 	}
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary.active:not(:disabled):not(.disabled), .show > .btn-outline-secondary.dropdown-toggle {
+	background-color: $lightest-gray !important;
+	border-color: $medium-gray;
+	color: $black !important;
+	text-decoration: none !important;
 }
 
 .advanced .btn-secondary {
@@ -864,12 +883,14 @@ form.range_limit .btn-secondary {
 	text-align: right;
 }
 
-.documents-list > .document {
-	background: $lightest-gray;
-	border: 1px solid $light-gray;
-	border-radius: 4px;
-	margin-top: 8px;
-	padding: 4px 12px;
+.documents-list {
+	.document {
+		background: $lightest-gray;
+		border: 1px solid $light-gray;
+		border-radius: 4px;
+		margin-top: 8px;
+		padding: 1rem;
+	}
 }
 
 .documents-list em {
