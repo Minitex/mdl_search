@@ -277,6 +277,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'rights_status_ssi' do |field|
       field.include_in_simple_search = false
       field.label = 'Rights Status'
+      field.collapse = false
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
     end
