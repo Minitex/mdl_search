@@ -6,7 +6,7 @@
   <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
 
   <% if @facet.key == 'physical_format_ssi' %>
-    <div class="pull-right"><%= link_to 'Glossary of Format Terms', '/glossary' %></div>
+    <div class="float-right"><%= link_to 'Glossary of Format Terms', '/glossary' %></div>
   <% end %>
 
   <h3 class="modal-title pull-left"><%= facet_field_label(@facet.key) %></h3>
