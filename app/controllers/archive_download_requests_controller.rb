@@ -23,7 +23,14 @@ class ArchiveDownloadRequestsController < ApplicationController
   end
 
   def show
-    adr = ArchiveDownloadRequest.find(mdl_identifier)
+    adr = ArchiveDownloadRequest.find(params[:id])
+    render(json: adr)
+  end
+
+  def ready
+    adr = ArchiveDownloadRequest.stored.not_expired.find_by!(
+      mdl_identifier: mdl_identifier
+    )
     render(json: adr)
   end
 

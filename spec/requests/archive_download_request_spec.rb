@@ -66,4 +66,48 @@ describe 'requesting an archive download' do
       expect(response.body).to eq('{"error":"not found"}')
     end
   end
+
+  describe 'checking if a download is ready' do
+    let(:create_request) do
+      ArchiveDownloadRequest.create(
+        mdl_identifier: 'owl:123',
+        status: status,
+        storage_url: 'https://somewhere-over-the-rain.bow'
+      )
+    end
+
+    before do
+      create_request
+      get ready_archive_download_request_path('owl:123'), headers: headers
+    end
+
+    context 'when yes' do
+      let(:status) { 'stored' }
+
+      it 'returns the request details' do
+        expect(response.status).to eq(200)
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response['id']).to eq(create_request.id)
+        expect(parsed_response['mdl_identifier']).to eq('owl:123')
+        expect(parsed_response['status']).to eq('stored')
+        expect(parsed_response['storage_url']).to eq('https://somewhere-over-the-rain.bow')
+      end
+    end
+
+    context 'when not quite yet' do
+      let(:status) { 'requested' }
+
+      it 'returns 404' do
+        expect(response.status).to eq(404)
+      end
+    end
+
+    context 'when no' do
+      let(:create_request) { nil }
+
+      it 'returns 404' do
+        expect(response.status).to eq(404)
+      end
+    end
+  end
 end

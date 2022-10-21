@@ -2,6 +2,7 @@ require 'async'
 require 'async/barrier'
 require 'async/semaphore'
 require 'async/http/internet/instance'
+require 'zip'
 
 module MDL
   class ArchiveGenerator

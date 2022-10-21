@@ -11,6 +11,7 @@ class ArchiveUploadWorker
       storage_url: public_url,
       expires_at: 7.days.from_now
     )
+    FileUtils.rm(archive_path)
   end
 
   private
