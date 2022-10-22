@@ -58,11 +58,4 @@ module FacetsHelper
       class: classes
     )
   end
-
-  ###
-  # Deprecated in Blacklight, but called by blacklight_range_limit
-  def facet_display_value(field, item)
-    facet_config = facet_configuration_for_field(field)
-    facet_item_presenter(facet_config, item, field).label
-  end
 end
