@@ -215,7 +215,7 @@ h3.index_title {
 	margin-left: auto;
 }
 
-.blacklight-sessions, .blacklight-exhibits-new, .blacklight-sites-edit, .blacklight-admin_users-index, .blacklight-dashboards-show, .blacklight-feature_pages-index, .blacklight-about_pages-index, .blacklight-contacts-new, .blacklight-about_pages-edit, .blacklight-registrations-new, .blacklight-home_pages-edit {
+.blacklight-sessions, .blacklight-exhibits-new, .blacklight-sites-edit, .blacklight-admin_users-index, .blacklight-dashboards-show, .blacklight-feature_pages-index, .blacklight-about_pages-index, .blacklight-contacts-new, .blacklight-about_pages-edit, .blacklight-registrations-new, .blacklight-home_pages-edit, .blacklight-feature_pages-show, .blacklight-home_pages-show, .blacklight-about_pages-show, .blacklight-sites-edit_exhibits, .blacklight-exhibits-create {
 	#main-container {
 		h2 {
 			margin-top: 1rem;
@@ -331,6 +331,10 @@ h3.index_title {
 .primary-actions {
 	float: none !important;
 	margin-left: 15px;
+}
+
+header.masthead {
+	display: none;
 }
 
 /* End BS4 fixes */
