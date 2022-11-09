@@ -1,0 +1,61 @@
+upstream mdl_app {
+    server unix://<%= app_root %>/tmp/sockets/puma.sock;
+}
+
+upstream webpack_dev_server {
+    server 0.0.0.0:8080;
+}
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80;
+    server_name mdl.devlocal;
+    return 301 https://mdl.devlocal$request_uri;
+}
+
+server {
+    listen       443 ssl;
+    server_name  mdl.devlocal;
+
+    ssl_certificate      <%= app_root %>/certs/mdl.devlocal.pem;
+    ssl_certificate_key  <%= app_root %>/certs/mdl.devlocal-key.pem;
+
+    location /packs/ {
+        proxy_pass http://webpack_dev_server;
+        proxy_set_header Host $host;
+    }
+
+    location / {
+        proxy_buffer_size          128k;
+        proxy_buffers              4 256k;
+        proxy_busy_buffers_size    256k;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Host $host;
+
+        # If the file exists as a static file serve it directly without
+        # running all the other rewrite tests on it
+        if (-f $request_filename) {
+            break;
+        }
+
+        if (!-f $request_filename) {
+            proxy_pass http://mdl_app;
+            break;
+        }
+    }
+
+    location /sockjs-node/ {
+        proxy_pass http://webpack_dev_server;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # path for static files
+    root <%= app_root %>/public;
+}
