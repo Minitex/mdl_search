@@ -5,5 +5,7 @@ Rails.application.config.session_store(
   key: '_mdl_search_session',
   domain: :all,
   same_site: :none,
+  secure: true,
+  expire_after: 14.days,
   tld_length: 2
 )

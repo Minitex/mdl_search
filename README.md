@@ -31,6 +31,37 @@ Install MySQL and Redis clients, as well as geckodriver for system tests run via
 brew install mysql@5.7 redis geckodriver
 ```
 
+Install Nginx and mkcert (for local SSL)
+
+```bash
+brew install nginx
+brew install mkcert
+brew install nss # If you use Firefox
+```
+
+Install a local SSL cert
+
+```bash
+mkcert -install # Will ask for sudo password
+
+mkcert mdl.devlocal
+
+mkdir -p certs
+mv mdl.devlocal* ./certs/
+```
+
+Install the Nginx config
+
+```bash
+./bin/install_nginx_conf
+```
+
+Start Nginx
+
+```bash
+sudo brew services start nginx
+```
+
 Install Node via [NVM](https://github.com/nvm-sh/nvm) (or preferred alternative)
 
 ```bash
@@ -70,7 +101,7 @@ Start the rails server
 bundle exec rails s
 ```
 
-You can login by visiting http://localhost:3000/users/sign_in
+You can login by visiting https://mdl.devlocal/users/sign_in
 
 username: local@example.com
 password: password
