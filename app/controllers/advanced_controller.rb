@@ -88,11 +88,15 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
     config.add_facet_field 'topic_ssim' do |field|
       field.label = 'Topic'
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
       field.show = true
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'physical_format_ssi' do |field|
       field.label = 'Physical Format'
@@ -100,28 +104,38 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.index_range = 'A'..'Z'
       field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
       field.index_range = 'A'..'Z'
       field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'rights_status_ssi' do |field|
       field.label = 'Rights Status'
       field.index_range = 'A'..'Z'
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
       field.index_range = 'A'..'Z'
       field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
     config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
       field.collapse = false
       field.range = true
+      field.item_presenter = FacetItemPresenter
+      field.item_component = FacetItemComponent
     end
   end
 end

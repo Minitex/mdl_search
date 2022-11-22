@@ -8,7 +8,7 @@ describe IndexingController do
         date: date
       }
     end
-    let(:etl) { instance_double(MDL::ETL) }
+    let(:etl) { instance_double(MDL::Etl) }
 
     before do
       user = User.create!(
@@ -17,7 +17,7 @@ describe IndexingController do
         user_roles: ['admin']
       )
       sign_in user
-      allow(MDL::ETL).to receive(:new).and_return(etl)
+      allow(MDL::Etl).to receive(:new).and_return(etl)
     end
 
     context 'when a date is provided' do

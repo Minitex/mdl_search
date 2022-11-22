@@ -5,6 +5,7 @@ class IndexingController < ApplicationController
   FACET_FIELD = 'oai_set_ssi'.freeze
 
   include Blacklight::Catalog
+  copy_blacklight_config_from(CatalogController)
 
   blacklight_config.configure do |config|
     ###
@@ -29,7 +30,7 @@ class IndexingController < ApplicationController
     if params[:date].present?
       args[:from] = Date.parse(params[:date]).iso8601
     end
-    MDL::ETL.new.run(args)
+    MDL::Etl.new.run(**args)
     redirect_to indexing_path, flash: { notice: 'Queued collection for indexing' }
   end
 
@@ -37,7 +38,7 @@ class IndexingController < ApplicationController
 
   def collections
     facet = blacklight_config.facet_fields[FACET_FIELD]
-    response = get_facet_field_response(facet.key, {})
+    response = search_service.facet_field_response(facet.key, {})
     response.aggregations[facet.key].items.map do |item|
       set_spec, collection_name, _ = item.value.split(MDL::OaiSetFormatter.delimiter)
       [collection_name, set_spec]

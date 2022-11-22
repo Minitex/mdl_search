@@ -1,5 +1,5 @@
 module MDL
-  class BorealisPDFViewer < BorealisAssetsViewer
+  class BorealisPdfViewer < BorealisAssetsViewer
     def type
       'pdf'
     end

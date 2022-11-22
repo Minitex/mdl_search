@@ -17,17 +17,49 @@ Copy the .env-example file
 cp .env-example .env
 ```
 
-Install Ruby 2.4 via [RVM](http://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
+Install Ruby 3.1.2 via [rbenv](https://github.com/rbenv/rbenv)
 
-(rvm instructions)
 ```bash
-rvm install ruby-2.4
+brew install rbenv ruby-build
+rbenv init
+rbenv install 3.1.2
 ```
 
 Install MySQL and Redis clients, as well as geckodriver for system tests run via Selenium.
 
 ```bash
 brew install mysql@5.7 redis geckodriver
+```
+
+Install Nginx and mkcert (for local SSL)
+
+```bash
+brew install nginx
+brew install mkcert
+brew install nss # If you use Firefox
+```
+
+Install a local SSL cert
+
+```bash
+mkcert -install # Will ask for sudo password
+
+mkcert mdl.devlocal
+
+mkdir -p certs
+mv mdl.devlocal* ./certs/
+```
+
+Install the Nginx config
+
+```bash
+./bin/install_nginx_conf
+```
+
+Start Nginx
+
+```bash
+sudo brew services start nginx
 ```
 
 Install Node via [NVM](https://github.com/nvm-sh/nvm) (or preferred alternative)
@@ -54,7 +86,12 @@ Start Sidekiq
 ./start_sidekiq.sh 'default -q iiif_search -q critical,2'
 ```
 
-[Ingest some content](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup#ingest-some-content)
+Ingest some content
+
+```bash
+bundle exec rake 'mdl_ingester:collection[p15160coll13]'
+bundle exec rake 'mdl_ingester:collection[p16022coll10]'
+```
 
 ## Logging in
 
@@ -64,7 +101,7 @@ Start the rails server
 bundle exec rails s
 ```
 
-You can login by visiting http://localhost:3000/users/sign_in
+You can login by visiting https://mdl.devlocal/users/sign_in
 
 username: local@example.com
 password: password
@@ -77,7 +114,7 @@ Enter an interactive session with the application (must be running in another ta
 
 ## Troubleshooting
 
-* [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
+* [MySQL] If you run into issues with the database, try removing and recreating the db volumes:
   * `$ docker-compose down -v; docker-compose up`
 
 ## Updating the React Component

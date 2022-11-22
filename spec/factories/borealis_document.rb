@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :borealis_document, class: MDL::BorealisDocument do
     transient do
       fixture_filename { 'video.json' }
@@ -14,7 +14,7 @@ FactoryGirl.define do
           )
         )
       )
-      new(document: document)
+      MDL::BorealisDocument.new(document: document)
     end
 
     trait :image do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UpdateIIIFManifestServiceDescription do
+describe UpdateIiifManifestServiceDescription do
   describe '#call' do
     let(:response) do
       {

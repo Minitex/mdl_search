@@ -15,7 +15,7 @@
         input_label_range_begin = field_config[:input_label_range_begin] || t("blacklight.range_limit.range_begin", field_label: label)
         input_label_range_end   = field_config[:input_label_range_end] || t("blacklight.range_limit.range_end", field_label: label)
         -%>
-        <div class="form-group advanced-search-field">
+        <div class="form-group advanced-search-field row">
             <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
                 <%= facet_field_label(display_facet.name) %>
             <% end %>
@@ -29,7 +29,7 @@
             </div>
         </div>
     <% else %>
-        <div class="form-group advanced-search-facet">
+        <div class="form-group advanced-search-facet row">
             <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
                 <%= facet_field_label(display_facet.name) %>
             <% end %>

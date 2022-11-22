@@ -23,22 +23,23 @@ module MdlSearch
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
-    config.load_defaults 5.1
+    config.load_defaults 6.1
+    config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
+
 
     config.enable_dependency_loading = true
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += %w(catalog_show)
-
-
-    unless Rails.env.production?
-        # Work around sprockets+teaspoon mismatch:
-        Rails.application.config.assets.precompile += %w(spec_helper.js)
-    end
+    
+    # Allow iframe embedding in Tableau
+    config.action_dispatch.default_headers['X-Frame-Options'] = 'ALLOW-FROM https://tableau.umn.edu/'
 
     # Compress pages
     config.middleware.use Rack::Deflater
+
+    config.spotlight_mount_path = '/exhibits'
 
     config.to_prepare do
       Dir.glob("#{Rails.root}/app/overrides/**/*_override.rb").each do |override|

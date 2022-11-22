@@ -88,7 +88,10 @@ module MDL
     end
 
     def facet_url(key, val, facet = false)
-      (facet && val) ? URI.escape("/catalog?f[#{key}][]=#{val}") : nil
+      if facet && val
+        query = "f[#{key}][]=#{URI.encode_www_form_component(val)}"
+        "/catalog?#{query}"
+      end
     end
 
     def details_fields

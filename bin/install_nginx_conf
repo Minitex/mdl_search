@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'erb'
+
+app_root = File.expand_path('../..', __FILE__)
+config_template_path = File.join(app_root, 'config/local-nginx.conf.erb')
+nginx_servers_path = '/usr/local/etc/nginx/servers'
+nginx_config_path = File.join(nginx_servers_path, 'mdl.conf')
+
+FileUtils.mkdir_p(nginx_servers_path)
+
+File.open(nginx_config_path, 'w+') do |f|
+  template = IO.read(config_template_path)
+  f << ERB.new(template).result_with_hash(app_root: app_root)
+end
+
+puts 'Nginx config is installed ✅'

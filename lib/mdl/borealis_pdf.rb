@@ -1,5 +1,5 @@
 module MDL
-  class BorealisPDF < BorealisAsset
+  class BorealisPdf < BorealisAsset
      def src
       if is_child?
         "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
@@ -30,7 +30,7 @@ module MDL
     # PDF viewer requires multiple PDFs, so no to_viewer method here. See
     # borealis_pdf_viewer instead
     def viewer
-      MDL::BorealisPDFViewer
+      MDL::BorealisPdfViewer
     end
   end
 end
