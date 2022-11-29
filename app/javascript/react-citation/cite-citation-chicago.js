@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import citationRender from './cite-citation-render'
 
 class CitationChicago extends React.Component {
@@ -34,12 +35,12 @@ class CitationChicago extends React.Component {
 }
 
 const propTypes = {
-  creator: React.PropTypes.string,
-  creation_date: React.PropTypes.string,
-  title: React.PropTypes.string,
-  contributing_organization: React.PropTypes.string,
-  url: React.PropTypes.string,
-  mapping: React.PropTypes.object
+  creator: PropTypes.string,
+  creation_date: PropTypes.string,
+  title: PropTypes.string,
+  contributing_organization: PropTypes.string,
+  url: PropTypes.string,
+  mapping: PropTypes.object
 }
 
 CitationChicago.propTypes = propTypes

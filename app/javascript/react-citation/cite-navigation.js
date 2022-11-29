@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import CiteNavigationItem from './cite-navigation-item'
 
 export default class CiteNavigation extends React.Component {
@@ -33,10 +34,10 @@ export default class CiteNavigation extends React.Component {
 }
 
 const propTypes = {
-  items: React.PropTypes.array.isRequired,
-  setActiveItem: React.PropTypes.func.isRequired,
-  getActiveItemIndex: React.PropTypes.func.isRequired,
-  class_name: React.PropTypes.string
+  items: PropTypes.array.isRequired,
+  setActiveItem: PropTypes.func.isRequired,
+  getActiveItemIndex: PropTypes.func.isRequired,
+  class_name: PropTypes.string
 }
 
 CiteNavigation.defaultProps = {

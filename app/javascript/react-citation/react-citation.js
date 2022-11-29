@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ActiveItem from './active-item';
 
 import CiteNavigation from './cite-navigation';
@@ -44,8 +45,8 @@ class ReactCitation extends React.Component {
 }
 
 const propTypes = {
-  items: React.PropTypes.array.isRequired,
-  getActiveItem: React.PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired,
+  getActiveItem: PropTypes.func.isRequired,
 };
 
 ReactCitation.propTypes = propTypes;

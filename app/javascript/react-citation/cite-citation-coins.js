@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import citationRender from './cite-citation-render'
 
 class CitationCoins extends React.Component {
@@ -13,7 +14,7 @@ class CitationCoins extends React.Component {
   }
 
   mappings() {
-    let defaultMapping =  
+    let defaultMapping =
           [
             {creator: {prefix: '&amp;rft.creator', suffix: '', formatters: [encodeURIComponent]}},
             {creation_date: {prefix: ' ', suffix: '.', formatters: [encodeURIComponent]}},
@@ -37,16 +38,16 @@ class CitationCoins extends React.Component {
 }
 
 const propTypes = {
-  creator: React.PropTypes.string,
-  creation_date: React.PropTypes.string,
-  title: React.PropTypes.string,
-  description: React.PropTypes.string,
-  contributing_organization: React.PropTypes.string,
-  type: React.PropTypes.string,
-  format: React.PropTypes.string,
-  rights: React.PropTypes.string,
-  url: React.PropTypes.string,
-  mapping: React.PropTypes.object
+  creator: PropTypes.string,
+  creation_date: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  contributing_organization: PropTypes.string,
+  type: PropTypes.string,
+  format: PropTypes.string,
+  rights: PropTypes.string,
+  url: PropTypes.string,
+  mapping: PropTypes.object
 }
 
 CitationCoins.defaultProps = {

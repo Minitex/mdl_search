@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import DownloadSource from './cite-download-source'
 
 class CiteThumbnail extends React.Component {
@@ -20,8 +21,8 @@ class CiteThumbnail extends React.Component {
 }
 
 const propTypes = {
-  thumbnail: React.PropTypes.string.isRequired,
-  sources: React.PropTypes.array.isRequired
+  thumbnail: PropTypes.string.isRequired,
+  sources: PropTypes.array.isRequired
 }
 
 CiteThumbnail.propTypes = propTypes

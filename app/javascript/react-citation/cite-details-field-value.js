@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default class DetailsFieldValue extends React.Component {
   constructor(props) {
@@ -44,9 +45,9 @@ export default class DetailsFieldValue extends React.Component {
 }
 
 const propTypes = {
-  text: React.PropTypes.string.isRequired,
-  delimiter: React.PropTypes.string,
-  url: React.PropTypes.string
+  text: PropTypes.string.isRequired,
+  delimiter: PropTypes.string,
+  url: PropTypes.string
 }
 
 DetailsFieldValue.propTypes = propTypes

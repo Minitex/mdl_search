@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import CitationCoins from './cite-citation-coins'
 import CitationChicago from './cite-citation-chicago'
 import CitationMla from './cite-citation-mla'
@@ -26,8 +27,8 @@ export default class Citation extends React.Component {
 }
 
 const propTypes = {
-  fields: React.PropTypes.array,
-  mapping: React.PropTypes.object
+  fields: PropTypes.array,
+  mapping: PropTypes.object
 }
 
 CitationChicago.propTypes = propTypes

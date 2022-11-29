@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default class CiteNavigationItem extends React.Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export default class CiteNavigationItem extends React.Component {
   }
 
   render() {
-    const { active, setActiveItem, label } = this.props      
+    const { active, setActiveItem, label } = this.props
     return (
       <li role="presentation" className={active}>
         <a onClick={setActiveItem} href="#">{label}</a>
@@ -17,9 +18,9 @@ export default class CiteNavigationItem extends React.Component {
 }
 
 const propTypes = {
-  label: React.PropTypes.string.isRequired,
-  setActiveItem: React.PropTypes.func.isRequired,
-  class_name: React.PropTypes.string
+  label: PropTypes.string.isRequired,
+  setActiveItem: PropTypes.func.isRequired,
+  class_name: PropTypes.string
 }
 
 CiteNavigationItem.propTypes = propTypes
