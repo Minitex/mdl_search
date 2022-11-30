@@ -3,9 +3,10 @@
 require 'fileutils'
 require 'erb'
 
+brew_prefix = `brew --prefix`.strip
 app_root = File.expand_path('../..', __FILE__)
 config_template_path = File.join(app_root, 'config/local-nginx.conf.erb')
-nginx_servers_path = '/usr/local/etc/nginx/servers'
+nginx_servers_path = "#{brew_prefix}/etc/nginx/servers"
 nginx_config_path = File.join(nginx_servers_path, 'mdl.conf')
 
 FileUtils.mkdir_p(nginx_servers_path)
