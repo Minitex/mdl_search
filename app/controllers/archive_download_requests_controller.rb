@@ -3,12 +3,15 @@ class ArchiveDownloadRequestsController < ApplicationController
 
   SolrDocNotFound = Class.new(ArgumentError)
 
+  before_action :validate_captcha_token, only: :create
   before_action :check_document_exists, only: :create
 
   rescue_from ActiveRecord::RecordNotFound do
     render json: { error: 'not found' }, status: :not_found
   end
-
+  rescue_from CaptchaValidator::ValidationError do
+    render json: { error: 'forbidden' }, status: :forbidden
+  end
   rescue_from SolrDocNotFound do
     render json: { error: 'ID not found' }, status: :unprocessable_entity
   end
@@ -38,6 +41,10 @@ class ArchiveDownloadRequestsController < ApplicationController
 
   def mdl_identifier
     params.require(:id)
+  end
+
+  def validate_captcha_token
+    CaptchaValidator.call(params[:token])
   end
 
   def check_document_exists

@@ -13,11 +13,14 @@ describe ArchiveUploadWorker do
     before do
       allow(MDL::ArchiveUploader).to receive(:call)
         .and_return('http://downloadurl.zip')
+      allow(FileUtils).to receive(:rm).with('/path/to/the/archive.zip')
     end
 
-    it 'uploads the archive' do
+    it 'uploads the archive then deletes the local copy' do
       worker.perform(request.id, '/path/to/the/archive.zip')
       expect(MDL::ArchiveUploader).to have_received(:call)
+        .with('/path/to/the/archive.zip')
+      expect(FileUtils).to have_received(:rm)
         .with('/path/to/the/archive.zip')
     end
 

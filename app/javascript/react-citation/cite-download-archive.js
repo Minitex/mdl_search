@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
+import Recaptcha from "react-google-recaptcha";
 
 const CiteDownloadArchive = ({ readyUrl, downloadRequestUrl, itemId }) => {
   const [loading, setLoading] = useState(true);
@@ -7,6 +8,7 @@ const CiteDownloadArchive = ({ readyUrl, downloadRequestUrl, itemId }) => {
   const [status, setStatus] = useState();
   const [storageUrl, setStorageUrl] = useState();
   const [progress, setProgress] = useState(0);
+  const captchaRef = useRef(null);
 
   useEffect(() => {
     window.fetch(readyUrl, {
@@ -77,15 +79,19 @@ const CiteDownloadArchive = ({ readyUrl, downloadRequestUrl, itemId }) => {
     return () => window.clearInterval(timer);
   }, [status, progress]);
 
-  const requestDownload = () => {
+  const requestDownload = (e) => {
+    e.preventDefault();
+    const token = captchaRef.current.getValue();
+    if (!token) { return }
     setLoading(true);
+    captchaRef.current.reset();
     window.fetch(downloadRequestUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ id: itemId })
+      body: JSON.stringify({ id: itemId, token })
     })
     .then(response => {
       if (response.ok) {
@@ -113,11 +119,12 @@ const CiteDownloadArchive = ({ readyUrl, downloadRequestUrl, itemId }) => {
         <Fragment>
           <p>Download all the media files for this item in a single zip file</p>
 
-          <a
-            className="btn btn-primary"
-            onClick={requestDownload}
-            disabled={loading}
-          >Download ZIP</a>
+          <form onSubmit={requestDownload} disabled={loading}>
+            <Recaptcha sitekey="6LdB0j4jAAAAAO2W4TPkRDYmF258b0PfIJA8azr4" ref={captchaRef} />
+            <button className="btn btn-primary request-download">
+              Download ZIP
+            </button>
+          </form>
         </Fragment>
       )}
       {statusUrl && status && (

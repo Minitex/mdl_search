@@ -7,6 +7,7 @@ describe 'requesting an archive download' do
 
   describe 'creating the request' do
     before do
+      allow(CaptchaValidator).to receive(:call)
       allow(DownloadMediaWorker).to receive(:perform_async)
     end
 

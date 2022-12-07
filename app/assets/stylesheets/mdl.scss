@@ -270,7 +270,7 @@ h3.index_title {
 		background-color: $dark-blue;
 		border-color: $dark-blue;
 	}
-	
+
 	.sort-options {
 		float: right;
 	}
@@ -1268,6 +1268,10 @@ h3.document-title-heading {
 
 .cite-archive {
 	min-height: 100px;
+
+	.request-download {
+		margin-top: 1rem;
+	}
 }
 
 dt, dd {
