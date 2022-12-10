@@ -79,10 +79,14 @@ module MDL
         barrier = Async::Barrier.new
         semaphore = Async::Semaphore.new(8, parent: barrier)
 
+        digits = urls.size.to_s.size
         urls.each_with_index do |url, idx|
           semaphore.async do
             ext = url.split('.').last
-            filename = File.join(work_dir, "#{idx}.#{ext}")
+            # zero-pad the filename so that the files are correctly
+            # ordered within the zip
+            basename = idx.to_s.rjust(digits, '0')
+            filename = File.join(work_dir, "#{basename}.#{ext}")
             response = internet.get(url)
             response.save(filename, 'wb') if response.success?
           end
