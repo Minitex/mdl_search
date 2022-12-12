@@ -1,6 +1,4 @@
 class ArchiveDownloadRequestsController < ApplicationController
-  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
-
   SolrDocNotFound = Class.new(ArgumentError)
 
   before_action :validate_captcha_token, only: :create
@@ -44,7 +42,7 @@ class ArchiveDownloadRequestsController < ApplicationController
   end
 
   def validate_captcha_token
-    CaptchaValidator.call(params[:token])
+    CaptchaValidator.call(params[:captcha_token])
   end
 
   def check_document_exists

@@ -81,17 +81,24 @@ const CiteDownloadArchive = ({ readyUrl, downloadRequestUrl, itemId }) => {
 
   const requestDownload = (e) => {
     e.preventDefault();
-    const token = captchaRef.current.getValue();
-    if (!token) { return }
+    const captchaToken = captchaRef.current.getValue();
+    if (!captchaToken) { return }
     setLoading(true);
     captchaRef.current.reset();
+    const csrfToken = document
+      .querySelector("meta[name='csrf-token']")
+      .getAttribute("content");
     window.fetch(downloadRequestUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ id: itemId, token })
+      body: JSON.stringify({
+        id: itemId,
+        captcha_token: captchaToken,
+        authenticity_token: csrfToken
+      })
     })
     .then(response => {
       if (response.ok) {
