@@ -6,6 +6,7 @@ import CiteNavigation from './cite-navigation';
 import Details from './cite-details';
 import Citation from './cite-citation';
 import Download from './cite-download';
+import DownloadArchive from './cite-download-archive';
 import Transcript from './cite-transcript';
 
 class ReactCitation extends React.Component {
@@ -24,6 +25,8 @@ class ReactCitation extends React.Component {
         return <Citation fields={item.fields} />;
       case 'download':
         return <Download fields={item.fields} />;
+      case 'archive':
+        return <DownloadArchive {...item} />;
       case 'transcript':
         return <Transcript transcript={item.transcript} />;
       default:
