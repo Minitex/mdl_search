@@ -67,6 +67,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :archive_download_requests, only: [:create, :show] do
+    member do
+      get :ready, as: :ready
+    end
+  end
+
   get 'contentdm-images' => 'contentdm_images#show'
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'

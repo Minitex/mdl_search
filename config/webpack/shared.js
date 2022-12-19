@@ -49,10 +49,6 @@ module.exports = {
       resolve(settings.source_path),
       'node_modules',
     ],
-    alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat'
-    },
   },
 
   resolveLoader: {
