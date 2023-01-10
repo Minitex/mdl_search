@@ -59,6 +59,12 @@ class SolrDocument
     OaiSet.sets_for(self)
   end
 
+  def image_url
+    asset = MDL::BorealisDocument.new(document: self._source).assets.first
+    return unless asset.is_a?(MDL::BorealisImage)
+    asset.src
+  end
+
   private
 
   def mlt_values

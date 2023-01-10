@@ -9,7 +9,8 @@ module MDL
     end
 
     it 'correctly identifies its src' do
-      expect(image.src).to eq '/contentdm-images/info?id=foo:21'
+      expected_src = 'https://cdm16022.contentdm.oclc.org/iiif/2/foo:21/full/full/0/default.jpg'
+      expect(image.src).to eq expected_src
     end
 
     it 'correctly identifies its type' do
@@ -18,8 +19,8 @@ module MDL
 
     it 'correctly identifies its downloads' do
       expect(image.downloads).to eq [
-        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/150,/0/default.jpg", label: '(150w)' },
-        { src: "http://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg", label: '(800w)' }
+        { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/150,/0/default.jpg', label: '(150w)' },
+        { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg', label: '(800w)' }
       ]
     end
 

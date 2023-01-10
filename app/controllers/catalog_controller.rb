@@ -156,8 +156,9 @@ class CatalogController < ApplicationController
     # Spotlight additions
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
-    config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
-    config.show.partials.insert(1, :openseadragon)
+    config.show.tile_source_field = :image_uri_ssi
+    config.index.tile_source_field = :image_uri_ssi
+    config.view.embed.partials = ['embedded']
     config.document_solr_path = 'get'
     config.document_unique_id_param = 'ids'
 
