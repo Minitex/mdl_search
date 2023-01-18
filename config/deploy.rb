@@ -25,7 +25,7 @@ set :repo_url, 'git@github.com:UMNLibraries/mdl_search.git'
 # set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w(log public/uploads)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -36,8 +36,6 @@ set :repo_url, 'git@github.com:UMNLibraries/mdl_search.git'
 set :deploy_to, '/swadm/var/www/mdl'
 
 set :ssh_options, { user: 'swadm', forward_agent: true }
-
-append :linked_dirs, "log"
 
 set :rails_env, "production"
 
