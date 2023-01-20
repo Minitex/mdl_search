@@ -110,3 +110,6 @@ gem 'kaltura-client'
 
 gem 'sentry-raven'
 gem 'strscan', '3.0.1'
+
+gem 'ed25519'
+gem 'bcrypt_pbkdf'

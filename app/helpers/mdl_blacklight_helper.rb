@@ -41,8 +41,11 @@ module MDLBlacklightHelper
   end
 
   def link_to_document(doc, field_or_opts = nil, opts = { counter: nil })
-    if field_or_opts.is_a? Hash
+    case field_or_opts
+    when Hash
       opts = field_or_opts
+    when String
+      return document_show_link(document: doc, label: field_or_opts, **opts)
     else
       field = field_or_opts
     end
