@@ -25,8 +25,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
@@ -66,6 +64,7 @@ group :test do
   gem 'database_cleaner'
   gem 'vcr'
   gem 'webmock'
+  gem 'shoulda-matchers'
 end
 
 gem 'blacklight', '~> 7.27'
@@ -90,6 +89,12 @@ gem 'sidekiq', '~> 6.5'
 gem 'sinatra', '~> 2.0', require: false
 gem 'sidekiq-failures', '~> 1.0'
 gem 'whenever', '~> 0.9', require: false
+gem 'async'
+gem 'async-http'
+gem 'thread-local'
+gem 'rubyzip'
+gem 'aws-sdk-s3', '~> 1.114'
+gem 'json', '~> 2.6', '>= 2.6.2'
 
 # Autmatically link URLs in citation details
 gem 'rinku', '~> 2.0'

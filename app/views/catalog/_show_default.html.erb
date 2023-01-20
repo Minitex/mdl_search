@@ -4,6 +4,13 @@
   config << MDL::CiteDetails.new(solr_doc: document).to_hash
   config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
   config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
+  if borealis_doc.assets.size > 1
+    config << MDL::CiteDownloadArchive.new(
+      ready_url: ready_archive_download_request_path(document['id']),
+      download_request_url: archive_download_requests_path,
+      item_id: document['id']
+    ).to_hash
+  end
   config << MDL::CiteTranscript.new(solr_doc: document).to_hash
   config = config.map(&:presence).compact
 %>

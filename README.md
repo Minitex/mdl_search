@@ -17,6 +17,8 @@ Copy the .env-example file
 cp .env-example .env
 ```
 
+Once this file has been copied, you will need to legitimize the values of the various environment variables it contains. Check with Paul Swanson to get real values for variables that have placeholders.
+
 Install Ruby 3.1.2 via [rbenv](https://github.com/rbenv/rbenv)
 
 ```bash
