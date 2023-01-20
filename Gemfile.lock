@@ -508,7 +508,7 @@ GEM
     public_suffix (5.0.0)
     puma (3.12.6)
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.2)
     rack-contrib (2.3.0)
       rack (~> 2.0)
     rack-protection (2.2.0)
