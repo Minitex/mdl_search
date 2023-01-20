@@ -443,7 +443,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.2.3)
-    mustermann (1.1.1)
+    mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.4)
     net-imap (0.2.3)
@@ -508,10 +508,10 @@ GEM
     public_suffix (5.0.0)
     puma (3.12.6)
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.2)
     rack-contrib (2.3.0)
       rack (~> 2.0)
-    rack-protection (2.2.0)
+    rack-protection (2.2.3)
       rack
     rack-proxy (0.7.2)
       rack
@@ -669,10 +669,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.2.0)
-      mustermann (~> 1.0)
+    sinatra (2.2.3)
+      mustermann (~> 2.0)
       rack (~> 2.2)
-      rack-protection (= 2.2.0)
+      rack-protection (= 2.2.3)
       tilt (~> 2.0)
     sitemap_generator (6.2.1)
       builder (~> 3.0)
@@ -838,7 +838,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.5)
   sidekiq-failures (~> 1.0)
-  sinatra (~> 2.0)
+  sinatra (~> 2.2)
   sitemap_generator
   solr_wrapper (>= 0.3)
   spring
