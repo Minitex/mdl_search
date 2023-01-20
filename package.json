@@ -30,7 +30,7 @@
     "glob": "^7.1.2",
     "immutable": "^4.1.0",
     "js-yaml": "^3.10.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^7.0.0",
     "path-complete-extname": "^0.1.0",
     "postcss-loader": "^2.0.9",
     "postcss-smart-import": "^0.7.5",
