@@ -45,10 +45,12 @@ module MDL
       FileUtils.rm_r(work_dir) if File.exist?(work_dir)
     end
 
+    # Replace the full resolution URL with one that will return
+    # the image bounded to 800px wide
     def gather_image_urls
       manifest = fetch_manifest
       manifest['sequences'][0]['canvases'].map do |c|
-        c['images'][0]['resource']['@id']
+        c['images'][0]['resource']['@id'].sub('/full/full', '/full/800,')
       end
     end
 
