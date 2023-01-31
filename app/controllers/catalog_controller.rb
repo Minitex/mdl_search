@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
   before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
+  before_action :manage_pagination, only: :index
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -96,6 +97,44 @@ class CatalogController < ApplicationController
   # See: def solr_facet_params - blacklight-5.7.2/lib/blacklight/solr_helper.rb
   def facet_list_limit
     (params[:limit]) ? params[:limit] : 20
+  end
+
+  private
+
+  ###
+  # When a user changes their per_page count, we want to try
+  # to keep them relatively close to their previous position
+  # in the result set. We're leaning on the flash here to avoid
+  # a redirect loop.
+  def manage_pagination
+    return if flash.key?(:pagination_managed)
+    per_page = params.fetch(:per_page) { return }
+
+    per_page = per_page.to_i
+    prev_page, previous_per_page = parse_referrer_pagination_params
+    return if prev_page <= 1 # no page, or coming from page 1
+    return if previous_per_page == per_page # per_page is unchanged
+
+    offset = previous_per_page * (prev_page - 1) + 1
+    new_page = offset / per_page + ((offset % per_page).zero? ? 0 : 1)
+    return if new_page == params[:page].to_i # offset still on prev page number
+
+    redirect_to(
+      search_catalog_path(
+        **params
+          .except(:action, :controller)
+          .merge(page: new_page, per_page: per_page)
+      ),
+      flash: { pagination_managed: true }
+    )
+  end
+
+  def parse_referrer_pagination_params
+    prev_params = CGI.parse(URI(request.referrer).query)
+    previous_page, _ = prev_params['page']
+    previous_per_page, _ = prev_params['per_page']
+    previous_per_page ||= blacklight_config.default_per_page
+    [previous_page.to_i, previous_per_page.to_i]
   end
 
   configure_blacklight do |config|
