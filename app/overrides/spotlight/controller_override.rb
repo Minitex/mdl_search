@@ -4,7 +4,12 @@ module Spotlight
       if current_exhibit
         exhibit_search_facet_path(*args, **kwargs)
       else
-        main_app.facet_catalog_url(*args, **kwargs)
+        opts = search_state
+           .to_h
+           .merge(only_path: true)
+           .merge(kwargs)
+           .except(:page)
+        main_app.facet_catalog_url(*args, **opts)
       end
     end
 
