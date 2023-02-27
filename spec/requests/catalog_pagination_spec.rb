@@ -118,4 +118,13 @@ describe 'Catalog#index pagination' do
       expect(flash.key?(:pagination_managed)).to eq(false)
     end
   end
+
+  context 'no referrer' do
+    let(:target_per_page) { '25' }
+    let(:headers) { {} }
+
+    it 'does not redirect' do
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end

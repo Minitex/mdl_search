@@ -109,6 +109,7 @@ class CatalogController < ApplicationController
   def manage_pagination
     return if flash.key?(:pagination_managed)
     per_page = params.fetch(:per_page) { return }
+    return unless request.referrer
 
     per_page = per_page.to_i
     prev_page, previous_per_page = parse_referrer_pagination_params
