@@ -255,6 +255,7 @@ class CatalogController < ApplicationController
       field.label = 'Topic'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
@@ -263,6 +264,7 @@ class CatalogController < ApplicationController
       field.limit = 10
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'physical_format_ssi' do |field|
       field.label = 'Physical Format'
@@ -273,6 +275,7 @@ class CatalogController < ApplicationController
       field.limit = 5
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
@@ -280,6 +283,7 @@ class CatalogController < ApplicationController
       field.range = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'placename_ssim' do |field|
       field.label = 'Location'
@@ -289,6 +293,7 @@ class CatalogController < ApplicationController
       field.index = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
@@ -299,6 +304,7 @@ class CatalogController < ApplicationController
       field.index = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
@@ -320,6 +326,7 @@ class CatalogController < ApplicationController
       field.collapse = false
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
 
     # Have BL send all facet field names to Solr, which has been the default
