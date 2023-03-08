@@ -142,7 +142,6 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.range = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
-      field.component = Blacklight::FacetFieldListComponent
     end
   end
 end
