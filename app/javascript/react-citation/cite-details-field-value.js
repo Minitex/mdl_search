@@ -5,7 +5,6 @@ export default class DetailsFieldValue extends React.Component {
   constructor(props) {
     super(props)
     this._field =  this._field.bind(this)
-    this._link  =  this._link.bind(this)
     this._danger = this._danger.bind(this)
     this._delimiter = this._delimiter.bind(this)
     this._text = this._text.bind(this)
@@ -15,13 +14,13 @@ export default class DetailsFieldValue extends React.Component {
     return ({__html: value})
   }
 
-  _link() {
-    return `<a href="${this.props.url}">${this.props.text}</a>`
-  }
-
   _field() {
     if (this.props.url) {
-      return this._danger(this._link())
+      return (
+        <a href={this.props.url} data-turbolinks="false">
+          {this.props.text}
+        </a>
+      );
     } else {
       return this._danger(this.props.text)
     }
