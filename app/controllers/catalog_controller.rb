@@ -283,7 +283,6 @@ class CatalogController < ApplicationController
       field.range = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
-      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'placename_ssim' do |field|
       field.label = 'Location'
