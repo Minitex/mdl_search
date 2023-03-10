@@ -90,6 +90,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
@@ -97,6 +98,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'physical_format_ssi' do |field|
       field.label = 'Physical Format'
@@ -106,6 +108,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
@@ -114,6 +117,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'rights_status_ssi' do |field|
       field.label = 'Rights Status'
@@ -121,6 +125,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
@@ -129,6 +134,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.sort = 'index'
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
     config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'

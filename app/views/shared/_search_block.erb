@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-6 col-lg-9">
         <%= render(SearchBarComponent.new(
-          url: search_action_url,
+          url: main_app.search_catalog_url,
           params: search_state.params_for_search.except(:qt),
           autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
         )) %>

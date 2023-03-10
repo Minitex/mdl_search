@@ -1,6 +1,6 @@
-<%= form_tag search_catalog_url, method: :get, class: 'search-query-form form-inline', role: 'search' do %>
+<%= form_tag url, method: :get, class: 'search-query-form form-inline', role: 'search' do %>
   <% if params[:search_field] != 'advanced' %>
-    <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
+    <%= render Blacklight::HiddenSearchStateComponent.new(params: hidden_field_params) %>
   <% end %>
   <div class="input-group">
     <% if search_fields.length > 1 %>
