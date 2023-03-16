@@ -110,13 +110,17 @@ class CatalogController < ApplicationController
     return if flash.key?(:pagination_managed)
     per_page = params.fetch(:per_page) { return }
     return unless request.referrer
+    referrer_uri = URI(request.referrer)
+    return unless referrer_uri.query
 
     per_page = per_page.to_i
-    prev_page, previous_per_page = parse_referrer_pagination_params
-    return if prev_page <= 1 # no page, or coming from page 1
+    previous_page, previous_per_page = parse_referrer_pagination_params(
+      referrer_uri.query
+    )
+    return if previous_page <= 1 # no page, or coming from page 1
     return if previous_per_page == per_page # per_page is unchanged
 
-    offset = previous_per_page * (prev_page - 1) + 1
+    offset = previous_per_page * (previous_page - 1) + 1
     new_page = offset / per_page + ((offset % per_page).zero? ? 0 : 1)
     return if new_page == params[:page].to_i # offset still on prev page number
 
@@ -130,8 +134,8 @@ class CatalogController < ApplicationController
     )
   end
 
-  def parse_referrer_pagination_params
-    prev_params = CGI.parse(URI(request.referrer).query)
+  def parse_referrer_pagination_params(query_string)
+    prev_params = CGI.parse(query_string)
     previous_page, _ = prev_params['page']
     previous_per_page, _ = prev_params['per_page']
     previous_per_page ||= blacklight_config.default_per_page

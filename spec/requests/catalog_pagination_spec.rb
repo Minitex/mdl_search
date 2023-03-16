@@ -9,10 +9,9 @@ describe 'Catalog#index pagination' do
       q: ''
     }
   end
+  let(:referrer) { "https://mdl.devlocal/catalog?#{referrer_page_params}" }
   let(:headers) do
-    {
-      'HTTP_REFERER' => "https://mdl.devlocal/catalog?#{referrer_page_params}"
-    }
+    { 'HTTP_REFERER' => referrer }
   end
 
   def assert_redirect(page:)
@@ -112,6 +111,16 @@ describe 'Catalog#index pagination' do
   context 'when no referrer page params are provided' do
     let(:referrer_page_params) { '' }
     let(:target_per_page) { '2' }
+
+    it 'does not redirect' do
+      expect(response).to have_http_status(:ok)
+      expect(flash.key?(:pagination_managed)).to eq(false)
+    end
+  end
+
+  context 'referrer has no query string' do
+    let(:referrer) { 'https://mdl.devlocal/' }
+    let(:target_per_page) { '100' }
 
     it 'does not redirect' do
       expect(response).to have_http_status(:ok)
