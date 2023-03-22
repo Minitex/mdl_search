@@ -98,7 +98,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the geonames field' do
-      expect(subject.to_hash[:fields][18]).to eq({:label=>"GeoNames URI", :field_values => [{:text=>"<a href=\"http://example.com\">http://example.com</a>", :url=>"/catalog?f[geonam_ssi][]=http%3A%2F%2Fexample.com"}]})
+      expect(subject.to_hash[:fields][18]).to eq({:label=>"GeoNames URI", :field_values => [{:text=>"<a href=\"http://example.com\">http://example.com</a>"}]})
     end
 
     it 'transforms the language field' do
