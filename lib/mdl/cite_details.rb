@@ -114,7 +114,7 @@ module MDL
         {key: 'state_ssi', label: 'State or Province', facet: true},
         {key: 'country_ssi', label: 'Country', facet: true},
         {key: 'geographic_feature_ssim', label: 'Geographic Feature', facet: true},
-        {key: 'geonam_ssi', label: 'GeoNames URI', facet: true},
+        {key: 'geonam_ssi', label: 'GeoNames URI'},
         {key: 'language_ssi', label: 'Language'},
         {key: 'local_identifier_ssi', label: 'Local Identifier'},
         {key: 'identifier_ssi', label: 'MDL Identifier'},

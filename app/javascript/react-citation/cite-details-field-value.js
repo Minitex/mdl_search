@@ -39,7 +39,7 @@ export default class DetailsFieldValue extends React.Component {
   }
 
   render() {
-    return <span>{this._field()}{this._delimiter()}</span>
+    return <div>{this._field()}{this._delimiter()}</div>
   }
 }
 
