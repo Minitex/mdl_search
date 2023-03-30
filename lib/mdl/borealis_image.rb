@@ -14,9 +14,5 @@ module MDL
         { src: "https://cdm16022.contentdm.oclc.org/digital/iiif/#{collection}/#{id}/full/800,/0/default.jpg", label: '(800w)' }
       ]
     end
-
-    def viewer
-      MDL::BorealisOpenSeadragon
-    end
   end
 end

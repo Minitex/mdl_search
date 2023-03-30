@@ -26,11 +26,5 @@ module MDL
     def parent_id
       document['id'].split(':').last
     end
-
-    # PDF viewer requires multiple PDFs, so no to_viewer method here. See
-    # borealis_pdf_viewer instead
-    def viewer
-      MDL::BorealisPdfViewer
-    end
   end
 end

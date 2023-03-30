@@ -1,7 +1,6 @@
-require_relative '../../../lib/mdl/borealis_assets_viewer.rb'
 require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_pdf.rb'
-require_relative '../../../lib/mdl/borealis_pdf_viewer.rb'
+
 module MDL
   describe BorealisPdf do
     describe 'when a pdf is a member of a compound object' do
@@ -30,10 +29,6 @@ module MDL
           ]
         )
       end
-    end
-
-    it 'knows its viewer' do
-      expect(BorealisPdf.new.viewer).to be MDL::BorealisPdfViewer
     end
 
     it 'knows its type' do

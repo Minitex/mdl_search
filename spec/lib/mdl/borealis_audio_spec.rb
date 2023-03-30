@@ -1,15 +1,10 @@
-require_relative '../../../lib/mdl/borealis_assets_viewer.rb'
 require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_audio.rb'
-require_relative '../../../lib/mdl/borealis_audio_player.rb'
+
 module MDL
   describe BorealisAudio do
     it 'provides downloads' do
       expect(BorealisAudio.new.downloads).to eq []
-    end
-
-    it 'knows its viewer' do
-      expect(BorealisAudio.new.viewer).to be MDL::BorealisAudioPlayer
     end
 
     it 'knows its type' do
