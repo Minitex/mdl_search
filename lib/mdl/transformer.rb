@@ -11,23 +11,6 @@ module MDL
       end
     end
 
-    # Calculating the Borealis fragment is expensive, so it is precalculated
-    # here
-    class BorealisFragmentFormatter
-      def self.format(doc)
-        # This is pretty ugly. OK, it's heinous. I am not going to refactor the
-        # Borealis code though, b/c my plan is to migrate MDL to the new UMedia
-        # platform and get rid of React altogether...partially b/c we can get
-        # rid of a lot of this ugly config generation code
-        if (!doc.fetch('format').is_a?(Hash))
-          doc = doc.merge('format_tesi' => doc.fetch('format'))
-        end
-        compounds = ((doc['page'].is_a?(Hash)) ? [] : doc['page']).to_json
-        doc = doc.merge('compound_objects_ts' => compounds)
-        MDL::DocumentAnchor.new(doc: doc).anchor
-      end
-    end
-
     def self.field_mappings
       [
         {dest_path: 'location_llsi', origin_path: '/', formatters: [CDMBL::LocationFormatter]},
@@ -149,7 +132,6 @@ module MDL
         {dest_path: 'rights_status_ssi', origin_path: 'rightc', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'rights_statement_ssi', origin_path: 'rightd', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'public_ssi', origin_path: 'public', formatters: [CDMBL::StripFormatter]},
-        {dest_path: 'borealis_fragment_ssi', origin_path: '/', formatters: [BorealisFragmentFormatter]},
         {dest_path: 'iiif_manifest_url_ssi', origin_path: '/', formatters: [MDL::IiifManifestUrlFormatter]},
         {dest_path: 'iiif_manifest_ss', origin_path: '/', formatters: [MDL::IiifManifestFormatter]},
         {dest_path: nil, origin_path: '/', formatters: [MDL::QueueIiifSearchProcessing]}

@@ -41,9 +41,5 @@ module MDL
     def playlist?
       type == 'kaltura_video_playlist'
     end
-
-    def viewer
-      MDL::BorealisVideoPlayer
-    end
   end
 end

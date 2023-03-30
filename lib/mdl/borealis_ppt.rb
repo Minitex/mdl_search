@@ -11,9 +11,5 @@ module MDL
     def type
       'ppt'
     end
-
-    def viewer
-      MDL::BorealisPptViewer
-    end
   end
 end

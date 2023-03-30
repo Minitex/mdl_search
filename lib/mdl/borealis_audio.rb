@@ -12,10 +12,6 @@ module MDL
       []
     end
 
-    def viewer
-      MDL::BorealisAudioPlayer
-    end
-
     def type
       (audio_playlist_id) ? 'kaltura_audio_playlist' : 'kaltura_audio'
     end

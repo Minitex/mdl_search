@@ -616,7 +616,7 @@ input.range_begin, input.range_end {
 }
 
 form.range_limit .btn-secondary {
-	background-color: $dark-blue;
+	background-color: $dark-blue !important;
 	border-color: $dark-blue;
 	color: $white;
 	&:hover {

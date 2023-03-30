@@ -1,7 +1,6 @@
 require_relative '../../../lib/mdl/borealis_asset.rb'
-require_relative '../../../lib/mdl/borealis_assets_viewer.rb'
 require_relative '../../../lib/mdl/borealis_image.rb'
-require_relative '../../../lib/mdl/borealis_open_seadragon.rb'
+
 module MDL
   describe BorealisImage do
     let(:image) do
@@ -22,10 +21,6 @@ module MDL
         { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/150,/0/default.jpg', label: '(150w)' },
         { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg', label: '(800w)' }
       ]
-    end
-
-    it 'knows its player' do
-      expect(image.viewer).to be MDL::BorealisOpenSeadragon
     end
   end
 end
