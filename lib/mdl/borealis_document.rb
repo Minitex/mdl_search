@@ -8,33 +8,14 @@ module MDL
   class BorealisDocument
     attr_reader :document,
                 :asset_map_klass,
-                :to_viewers_klass,
                 :collection,
                 :id
 
     # @param document [Hash] Solr document
-    def initialize(document: {},
-                   asset_map_klass: BorealisAssetMap,
-                   to_viewers_klass: MDL::BorealisAssetsToViewers)
-      @document         = document
-      @collection, @id  = document['id'].split(':')
-      @asset_map_klass  = asset_map_klass
-      @to_viewers_klass = to_viewers_klass
-    end
-
-    def first_key
-      to_viewer.keys.first
-    end
-
-    def initial_viewer_type
-      assets.first.type
-    end
-
-    # Output a viewer configuration hash
-    # This hash can be converted with .to_json and passed to the Borealis React
-    # component as its configuration. See views/catalog/_show_default.html.erb.
-    def to_viewer
-      to_viewers_klass.new(assets: assets).viewers
+    def initialize(document: {}, asset_map_klass: BorealisAssetMap)
+      @document        = document
+      @collection, @id = document['id'].split(':')
+      @asset_map_klass = asset_map_klass
     end
 
     def assets
@@ -97,16 +78,20 @@ module MDL
 
     def asset(asset_klass, id, transcript, title = false)
       if !title
-        asset_klass.new(id: id,
-                        collection: collection,
-                        transcript: transcript,
-                        document: document)
+        asset_klass.new(
+          id: id,
+          collection: collection,
+          transcript: transcript,
+          document: document
+        )
       else
-        asset_klass.new(id: id,
-                        collection: collection,
-                        transcript: transcript,
-                        title: title,
-                        document: document)
+        asset_klass.new(
+          id: id,
+          collection: collection,
+          transcript: transcript,
+          title: title,
+          document: document
+        )
       end
     end
 
