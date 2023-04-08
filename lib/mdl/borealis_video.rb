@@ -9,8 +9,12 @@ module MDL
       MDL::Thumbnail::DEFAULT_VIDEO_URL
     end
 
+    def thumbnail
+      thumbnail_url
+    end
+
     def downloads
-      []
+      [{ src: src, label: 'Download Video' }]
     end
 
     def type

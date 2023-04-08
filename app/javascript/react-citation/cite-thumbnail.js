@@ -8,21 +8,20 @@ class CiteThumbnail extends React.Component {
   }
 
   render() {
-    let { thumbnail, sources } = this.props
-    return  (
-              <div className="col-md-2 download-source">
-                <img className="thumbnail" src={thumbnail} />
-                {sources.map((source, i) => {
-                  return <DownloadSource key={i} {...source} />
-                })}
-              </div>
-            )
+    let { thumbnail, sources, className } = this.props;
+    return (
+      <div className={`${className} download-source`}>
+        <img className="thumbnail" src={thumbnail} loading="lazy" />
+        {sources.map((source, i) => <DownloadSource key={i} {...source} />)}
+      </div>
+    )
   }
 }
 
 const propTypes = {
   thumbnail: PropTypes.string.isRequired,
-  sources: PropTypes.array.isRequired
+  sources: PropTypes.array.isRequired,
+  className: PropTypes.string.isRequired,
 }
 
 CiteThumbnail.propTypes = propTypes

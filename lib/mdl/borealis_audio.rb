@@ -8,8 +8,12 @@ module MDL
       MDL::Thumbnail::DEFAULT_AUDIO_URL
     end
 
+    def thumbnail
+      thumbnail_url
+    end
+
     def downloads
-      []
+      [{ src: src, label: 'Download Audio' }]
     end
 
     def type

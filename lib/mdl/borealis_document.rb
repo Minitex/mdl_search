@@ -56,19 +56,24 @@ module MDL
     # A non-compound record returns a list of one.
     def to_assets
       if compounds.empty?
-        [asset(asset_klass(format_field),
-              id,
-              transcript(document),
-              title)]
+        [
+          asset(
+            asset_klass(format_field),
+            id,
+            transcript(document),
+            title
+          )
+        ]
       else
-        compounds.map do |compound|
+        compounds.filter_map do |compound|
           next if bad_compound?(compound)
-          asset(asset_klass(compound_format(compound)),
-                compound['pageptr'],
-                transcript(compound),
-                compound['title'])
-
-        end.compact
+          asset(
+            asset_klass(compound_format(compound)),
+            compound['pageptr'],
+            transcript(compound),
+            compound['title']
+          )
+        end
       end
     end
 

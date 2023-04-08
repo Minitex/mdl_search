@@ -15,7 +15,10 @@ module MDL
     end
 
     it 'provides a download link' do
-      expect(video.downloads).to eq []
+      downloads = video.downloads
+      expect(downloads.size).to eq(1)
+      expect(downloads[0][:label]).to eq('Download Video')
+      expect(downloads[0][:src]).to eq(video.src)
     end
 
     it 'knows its src' do

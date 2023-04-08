@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const config = JSON.parse(node.getAttribute('citationConfig'))
   ReactDOM.render(
     <div className="row citation">
-      <ReactCitation items={config } />
+      <ReactCitation items={config} />
     </div>,
     viewerNode.appendChild(document.createElement('div')),
   );

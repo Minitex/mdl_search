@@ -9,7 +9,7 @@ module MDL
     end
 
     def downloads
-      [src: src, label: 'Download']
+      [src: src, label: 'Download PDF']
     end
 
     def is_child?
