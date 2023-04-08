@@ -7,6 +7,12 @@ module MDL
       MDL::BorealisImage.new collection: 'foo', id: 21
     end
 
+    it 'has a thumbnail from ContentDM' do
+      expect(image.thumbnail).to eq(
+        'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/foo/id/21'
+      )
+    end
+
     it 'correctly identifies its src' do
       expected_src = 'https://cdm16022.contentdm.oclc.org/iiif/2/foo:21/full/full/0/default.jpg'
       expect(image.src).to eq expected_src

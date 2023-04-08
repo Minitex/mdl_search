@@ -1,3 +1,5 @@
+require_relative './thumbnail'
+
 module MDL
   class BorealisImage < BorealisAsset
     def src
@@ -6,6 +8,14 @@ module MDL
 
     def type
       'image'
+    end
+
+    def thumbnail
+      Thumbnail.new(
+        id: id,
+        collection: collection,
+        cache_dir: '' # Don't need cache for this use case
+      ).thumbnail_url
     end
 
     def downloads
