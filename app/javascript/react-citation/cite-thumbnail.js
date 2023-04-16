@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import DownloadSource from './cite-download-source'
+import DownloadSource from './cite-download-source';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 class CiteThumbnail extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class CiteThumbnail extends React.Component {
     let { thumbnail, sources, className } = this.props;
     return (
       <div className={`${className} download-source`}>
-        <img className="thumbnail" src={thumbnail} loading="lazy" />
+        <LazyLoadImage className="thumbnail" src={thumbnail} />
         {sources.map((source, i) => <DownloadSource key={i} {...source} />)}
       </div>
     )
