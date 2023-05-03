@@ -6,8 +6,8 @@
 const webpack = require('webpack');
 const { basename, dirname, join, relative, resolve } = require('path');
 const { sync } = require('glob');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const extname = require('path-complete-extname');
 const { env, settings, output, loadersDir } = require('./configuration.js');
 
@@ -20,7 +20,7 @@ module.exports = {
     (map, entry) => {
       const localMap = map;
       const namespace = relative(join(entryPath), dirname(entry));
-      localMap['babel-polyfill', join(namespace, basename(entry, extname(entry)))] = resolve(entry);
+      localMap[join(namespace, basename(entry, extname(entry)))] = resolve(entry);
       return localMap;
     }, {}),
   output: {
@@ -36,8 +36,8 @@ module.exports = {
 
   plugins: [
     new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(env))),
-    new ExtractTextPlugin(env.NODE_ENV === 'production' ? '[name]-[hash].css' : '[name].css'),
-    new ManifestPlugin({
+    new MiniCssExtractPlugin(),
+    new WebpackManifestPlugin({
       publicPath: output.publicPath,
       writeToFileEmit: true,
     }),
@@ -54,4 +54,6 @@ module.exports = {
   resolveLoader: {
     modules: ['node_modules'],
   },
+
+  mode: "development",
 };
