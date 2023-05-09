@@ -1524,6 +1524,10 @@ a.view-text:hover {
 		border: none !important;
 	}
 }
+
+.blacklight-exhibits-index .tags {
+	display: none; /* hide tags nav pills on exhibits landing page */
+}
 /* End Spotlight styles */
 
 /* Footer styles */
