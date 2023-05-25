@@ -1,25 +1,13 @@
 <%
   borealis_doc = MDL::BorealisDocument.new(document: document)
-  config = []
-  config << MDL::CiteDetails.new(solr_doc: document).to_hash
-  config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
-  config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
-  if borealis_doc.assets.size > 1
-    config << MDL::CiteDownloadArchive.new(
-      ready_url: ready_archive_download_request_path(document['id']),
-      download_request_url: archive_download_requests_path,
-      item_id: document['id']
-    ).to_hash
-  end
-  config << MDL::CiteTranscript.new(solr_doc: document).to_hash
-  config = config.map(&:presence).compact
+  manifest_url = borealis_doc.manifest_url
 %>
 
 <div class="metadata" data-metadata='<%= document_metadata(document).to_json %>'></div>
 
 <%= content_tag :div,
   id: "viewer_data",
-  citationConfig: config.to_json do %>
+  citationConfig: @citation_config.to_json do %>
 <% end %>
 
 <div class="row">
@@ -73,7 +61,7 @@
       }
 
       createUV('#uv', {
-        iiifResourceUri: '<%= borealis_doc.manifest_url %>',
+        iiifResourceUri: '<%= manifest_url %>',
         root: '../../../uv/',
         configUri: '/uv/config.json',
         collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,

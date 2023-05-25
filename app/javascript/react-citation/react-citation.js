@@ -24,13 +24,13 @@ class ReactCitation extends React.Component {
       case 'citation':
         return <Citation fields={item.fields} />;
       case 'download':
-        return <Download fields={item.fields} />;
+        return <Download {...item} />;
       case 'archive':
         return <DownloadArchive {...item} />;
       case 'transcript':
         return <Transcript transcript={item.transcript} />;
       default:
-        return <div>No Viewer Avaialable for type: {item.type}</div>;
+        return <div>No Viewer Available for type: {item.type}</div>;
     }
   }
 

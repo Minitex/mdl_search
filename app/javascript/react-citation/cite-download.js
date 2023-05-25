@@ -16,7 +16,7 @@ export default class Download extends React.Component {
         {fields.map((field, i) => (
           <CiteThumbnail
             key={i}
-            className={`col-md-${cols}`}
+            className={`col-xs-12 col-sm-6 col-md-4 col-lg-${cols}`}
             {...field}
           />
         ))}

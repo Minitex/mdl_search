@@ -1301,6 +1301,21 @@ dt, dd {
 .download-source {
 	margin-bottom: 20px;
 	padding: 0;
+	display: flex;
+	justify-content: center;
+	width: 165px;
+}
+
+.download-label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 11px;
+	text-align: center;
+}
+
+.download-source-link {
+	font-size: 13px;
 }
 
 .thumbnail {

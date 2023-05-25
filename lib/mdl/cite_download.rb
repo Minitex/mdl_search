@@ -20,6 +20,7 @@ module MDL
         next if asset.downloads.empty?
         {
           thumbnail: asset.thumbnail,
+          label: asset.try(:label) || '',
           sources: asset.downloads
         }
       end

@@ -9,7 +9,7 @@ export default class CiteDownloadSource extends React.Component {
   render() {
     let { label, src } = this.props
     return (
-      <div>
+      <div className="col text-center download-source-link">
         <a href={src} target="_blank" rel="noopener">
           <span className="glyphicon glyphicon-download-alt"></span> {label}
         </a>

@@ -85,6 +85,12 @@ class CatalogController < ApplicationController
   def show
     _, @document = search_service.fetch(params[:id])
     @hide_previous_next = true if params[:pn] == 'false'
+    @citation_config = MDL::CitationConfig.new(
+      document: @document,
+      base_url: request.base_url,
+      download_request_url: archive_download_requests_path,
+      download_ready_url: ready_archive_download_request_path(@document['id'])
+    )
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }

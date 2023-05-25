@@ -9,10 +9,11 @@ class CiteThumbnail extends React.Component {
   }
 
   render() {
-    let { thumbnail, sources, className } = this.props;
+    let { thumbnail, label, sources, className } = this.props;
     return (
-      <div className={`${className} download-source`}>
+      <div className={`${className} download-source row`}>
         <LazyLoadImage className="thumbnail" src={thumbnail} />
+        <div title={label} className="download-label col-md-12">{label}</div>
         {sources.map((source, i) => <DownloadSource key={i} {...source} />)}
       </div>
     )
