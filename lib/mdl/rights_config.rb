@@ -43,6 +43,42 @@ module MDL
           text: 'This Item is protected by copyright and/or related rights. However, for this Item, either (a) no rights-holder(s) have been identified or (b) one or more rights-holder(s) have been identified but none have been located. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
         },
         {
+          url: 'http://rightsstatements.org/vocab/InC-OW-EU/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/InC-OW-EU.dark-white-interior.png',
+          name: 'IN COPYRIGHT - EU ORPHAN WORK',
+          text: 'This Item has been identified as an orphan work in the country of first publication and in line with Directive 2012/28/EU of the European Parliament and of the Council of 25 October 2012 on certain permitted uses of orphan works. For this Item, either (a) no rights-holder(s) have been identified or (b) one or more rights-holder(s) have been identified but none have been located even though a diligent search for the rights-holder(s) has been conducted. The results of the diligent search are available in the EU Orphan Works Database. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use.'
+        },
+        {
+          url: 'http://rightsstatements.org/vocab/InC-EDU/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/InC-EDU.dark-white-interior.png',
+          name: 'IN COPYRIGHT - EDUCATIONAL USE PERMITTED',
+          text: 'This Item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. In addition, no permission is required from the rights-holder(s) for educational uses. For other uses, you need to obtain permission from the rights-holder(s).'
+        },
+        {
+          url: 'http://rightsstatements.org/vocab/InC-NC/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/InC-NC.dark-white-interior.png',
+          name: 'IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED',
+          text: 'This Item is protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. In addition, no permission is required from the rights-holder(s) for non-commercial uses. For other uses you need to obtain permission from the rights-holder(s).'
+        },
+        {
+          url: 'http://rightsstatements.org/vocab/NoC-CR/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/NoC-CR.dark-white-interior.png',
+          name: 'NO COPYRIGHT - CONTRACTUAL RESTRICTIONS',
+          text: 'Use of this Item is not restricted by copyright and/or related rights. As part of the acquisition or digitization of this Work, the organization that has made the Item available is contractually required to limit the use of this Item. Limitations may include, but are not limited to, privacy issues, cultural protections, digitization agreements or donor agreements. Please refer to the organization that has made the Item available for more information.'
+        },
+        {
+          url: 'http://rightsstatements.org/vocab/NoC-NC/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/NoC-NC.dark-white-interior.png',
+          name: 'NO COPYRIGHT - NON-COMMERCIAL USE ONLY',
+          text: 'This Work has been digitized in a public-private partnership. As part of this partnership, the partners have agreed to limit commercial uses of this digital representation of the Work by third parties. You can, without permission, copy, modify, distribute, display, or perform the Item, for non-commercial uses. For any other permissible uses, please review the terms and conditions of the organization that has made the Item available.'
+        },
+        {
+          url: 'http://rightsstatements.org/vocab/NoC-OKLR/1.0/',
+          image_url: 'https://rightsstatements.org/files/buttons/NoC-OKLR.dark-white-interior.png',
+          name: 'NO COPYRIGHT - OTHER KNOWN LEGAL RESTRICTIONS',
+          text: 'Use of this Item is not restricted by copyright and/or related rights. In one or more jurisdictions, laws other than copyright are known to impose restrictions on the use of this Item. Please refer to the organization that has made the Item available for more information.'
+        },
+        {
           url: 'https://creativecommons.org/licenses/by/4.0/',
           image_url: 'https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png',
           name: 'Attribution 4.0 International (CC BY 4.0)',
@@ -76,6 +112,12 @@ module MDL
           url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
           image_url: 'https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png',
           name: 'Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)',
+          text: ''
+        },
+        {
+          url: 'https://creativecommons.org/publicdomain/zero/1.0/',
+          image_url: 'https://mirrors.creativecommons.org/presskit/buttons/88x31/png/cc-zero.png',
+          name: 'CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
           text: ''
         }
       ]
