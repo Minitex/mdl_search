@@ -23,10 +23,11 @@ module MDL
     end
 
     it 'correctly identifies its downloads' do
-      expect(image.downloads).to eq [
-        { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/150,/0/default.jpg', label: '(150w)' },
-        { src: 'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg', label: '(800w)' }
-      ]
+      expected = Download.new(
+        'https://cdm16022.contentdm.oclc.org/digital/iiif/foo/21/full/800,/0/default.jpg',
+        '(800w)'
+      )
+      expect(image.download).to eq(expected)
     end
   end
 end

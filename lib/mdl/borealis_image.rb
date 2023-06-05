@@ -18,11 +18,15 @@ module MDL
       ).thumbnail_url
     end
 
-    def downloads
-      [
-        { src: "https://cdm16022.contentdm.oclc.org/digital/iiif/#{collection}/#{id}/full/150,/0/default.jpg", label: '(150w)' },
-        { src: "https://cdm16022.contentdm.oclc.org/digital/iiif/#{collection}/#{id}/full/800,/0/default.jpg", label: '(800w)' }
-      ]
+    ###
+    # @deprecated - use MDL::DownloadAsset instead
+    # For images, we now use the IIIF manifest to generate
+    # download thumbnails/URLs
+    def download
+      Download.new(
+        "https://cdm16022.contentdm.oclc.org/digital/iiif/#{collection}/#{id}/full/800,/0/default.jpg",
+        '(800w)'
+      )
     end
   end
 end

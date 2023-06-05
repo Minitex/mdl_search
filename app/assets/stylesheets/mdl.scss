@@ -1302,11 +1302,10 @@ dt, dd {
 	margin-bottom: 20px;
 	padding: 0;
 	display: flex;
-	justify-content: center;
-	width: 165px;
 }
 
 .download-label {
+	max-width: 100px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

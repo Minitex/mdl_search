@@ -50,14 +50,8 @@ describe MDL::DownloadAsset do
       expect(instance.thumbnail).to eq(
         'https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll64:4803/full/90,/0/default.jpg'
       )
-      small, large = instance.downloads
-
-      expect(small[:label]).to eq('Small')
-      expect(large[:label]).to eq('Large')
-      expect(small[:src]).to eq(
-        'https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll64:4803/full/150,/0/default.jpg'
-      )
-      expect(large[:src]).to eq(
+      expect(instance.download.label).to eq('Page 15')
+      expect(instance.download.src).to eq(
         'https://cdm16022.contentdm.oclc.org/iiif/2/p16022coll64:4803/full/800,/0/default.jpg'
       )
     end

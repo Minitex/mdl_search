@@ -14,11 +14,9 @@ module MDL
       )
     end
 
-    it 'provides downloads' do
-      downloads = instance.downloads
-      expect(downloads.size).to eq(1)
-      expect(downloads[0][:label]).to eq('Download Audio')
-      expect(downloads[0][:src]).to eq(
+    it 'provides a download' do
+      expect(instance.download.label).to eq('Download Audio')
+      expect(instance.download.src).to eq(
         'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/foobar:123/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4'
       )
     end

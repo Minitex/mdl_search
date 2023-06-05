@@ -1,3 +1,5 @@
+require_relative './download'
+
 module MDL
   class BorealisVideo < BorealisAsset
     def src(entry_id = nil)
@@ -13,8 +15,8 @@ module MDL
       thumbnail_url
     end
 
-    def downloads
-      [{ src: src, label: 'Download Video' }]
+    def download
+      Download.new(src, 'Download Video')
     end
 
     def type

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DownloadSource from './cite-download-source';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 class CiteThumbnail extends React.Component {
@@ -9,21 +8,23 @@ class CiteThumbnail extends React.Component {
   }
 
   render() {
-    let { thumbnail, label, sources, className } = this.props;
+    let { thumbnail, label, src, className } = this.props;
     return (
-      <div className={`${className} download-source row`}>
-        <LazyLoadImage className="thumbnail" src={thumbnail} />
-        <div title={label} className="download-label col-md-12">{label}</div>
-        {sources.map((source, i) => <DownloadSource key={i} {...source} />)}
-      </div>
+      <a href={src} target="_blank" rel="noopener" className={`${className} download-source`}>
+        <div className="download-thumbnail-wrapper">
+          <LazyLoadImage className="thumbnail" src={thumbnail} />
+          <div title={label} className="download-label">{label}</div>
+        </div>
+      </a>
     )
   }
 }
 
 const propTypes = {
   thumbnail: PropTypes.string.isRequired,
-  sources: PropTypes.array.isRequired,
+  src: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 }
 
 CiteThumbnail.propTypes = propTypes

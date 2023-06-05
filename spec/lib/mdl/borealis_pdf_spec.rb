@@ -15,23 +15,21 @@ module MDL
     describe 'when a pdf is a member of a compound object' do
       let(:id) { '124' }
       it 'provides a download link' do
-        expect(instance.downloads).to eq([
-          {
-            src: 'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/124/filename',
-            label: 'Download PDF'
-          }
-        ])
+        expected = Download.new(
+          'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/124/filename',
+          'Download PDF'
+        )
+        expect(instance.download).to eq(expected)
       end
     end
 
     describe 'when a pdf is a single item' do
       it 'provides a download link' do
-        expect(instance.downloads).to eq([
-          {
-            src: 'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/123/filename/123',
-            label: 'Download PDF'
-          }
-        ])
+        expected = Download.new(
+          'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/123/filename/123',
+          'Download PDF'
+        )
+        expect(instance.download).to eq(expected)
       end
     end
 

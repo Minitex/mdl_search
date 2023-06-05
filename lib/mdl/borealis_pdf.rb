@@ -1,3 +1,5 @@
+require_relative './download'
+
 module MDL
   class BorealisPdf < BorealisAsset
      def src
@@ -8,8 +10,8 @@ module MDL
       end
     end
 
-    def downloads
-      [src: src, label: 'Download PDF']
+    def download
+      Download.new(src, 'Download PDF')
     end
 
     def is_child?

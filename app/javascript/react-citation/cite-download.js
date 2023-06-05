@@ -13,13 +13,16 @@ export default class Download extends React.Component {
 
     return (
       <div className="row">
-        {fields.map((field, i) => (
-          <CiteThumbnail
+        {fields.map((field, i) => {
+          let { thumbnail, src, label } = field;
+          return <CiteThumbnail
             key={i}
             className={`col-xs-12 col-sm-6 col-md-4 col-lg-${cols}`}
-            {...field}
+            thumbnail={thumbnail}
+            src={src}
+            label={label}
           />
-        ))}
+        })}
       </div>
     )
   }

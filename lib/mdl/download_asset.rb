@@ -1,3 +1,5 @@
+require_relative './download'
+
 module MDL
   class DownloadAsset
     class << self
@@ -16,12 +18,12 @@ module MDL
 
     FULL_PATH = %r{/full/full}.freeze
 
-    attr_reader :downloads, :label, :thumbnail
+    attr_reader :download, :label, :thumbnail
 
     def initialize(label:, url:)
       @label = label
       @thumbnail = generate_thumbnail(url)
-      @downloads = generate_downloads(label, url)
+      @download = generate_download(url, label)
     end
 
     private
@@ -30,11 +32,8 @@ module MDL
       scaled_image_url(url, '90')
     end
 
-    def generate_downloads(label, url)
-      [
-        { src: scaled_image_url(url, '150'), label: 'Small' },
-        { src: scaled_image_url(url, '800'), label: 'Large' }
-      ]
+    def generate_download(url, label)
+      Download.new(scaled_image_url(url, '800'), label)
     end
 
     def scaled_image_url(url, width)

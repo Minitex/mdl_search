@@ -17,11 +17,10 @@ module MDL
 
     def downloads
       assets.filter_map do |asset|
-        next if asset.downloads.empty?
         {
           thumbnail: asset.thumbnail,
-          label: asset.try(:label) || '',
-          sources: asset.downloads
+          label: asset.download.label || '',
+          src: asset.download.src
         }
       end
     end
