@@ -8,14 +8,23 @@ export default class Download extends React.Component {
   }
 
   render() {
-    let { fields, label }  = this.props
-    return  (
-              <div className="row">
-                {fields.map(function(field, i) {
-                  return <CiteThumbnail key={i} {...field}/>
-                })}
-              </div>
-            )
+    let { fields } = this.props
+    let cols = fields.length > 6 ? 2 : Math.floor(12 / fields.length);
+
+    return (
+      <div className="row">
+        {fields.map((field, i) => {
+          let { thumbnail, src, label } = field;
+          return <CiteThumbnail
+            key={i}
+            className={`col-xs-12 col-sm-6 col-md-4 col-lg-${cols}`}
+            thumbnail={thumbnail}
+            src={src}
+            label={label}
+          />
+        })}
+      </div>
+    )
   }
 }
 
