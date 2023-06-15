@@ -14,8 +14,9 @@ module MDL
       )
     end
 
-    it 'provides a download link' do
-      expect(video.downloads).to eq []
+    it 'provides a download' do
+      expected = Download.new(video.src, 'Download Video')
+      expect(video.download).to eq(expected)
     end
 
     it 'knows its src' do

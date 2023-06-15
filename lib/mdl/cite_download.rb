@@ -1,6 +1,7 @@
 module MDL
   class CiteDownload
     attr_reader :assets
+
     def initialize(assets: [])
       @assets = assets
     end
@@ -10,18 +11,17 @@ module MDL
         focus: false,
         type: 'download',
         label: 'Download',
-        fields: downloads.compact
+        fields: downloads
       }
     end
-    
+
     def downloads
-      assets.map do |asset|
-        unless asset.downloads.empty?
-          {
-            thumbnail: asset.thumbnail,
-            sources: asset.downloads
-          }
-        end
+      assets.filter_map do |asset|
+        {
+          thumbnail: asset.thumbnail,
+          label: asset.download.label || '',
+          src: asset.download.src
+        }
       end
     end
   end

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import DownloadSource from './cite-download-source'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 class CiteThumbnail extends React.Component {
   constructor(props) {
@@ -8,21 +8,23 @@ class CiteThumbnail extends React.Component {
   }
 
   render() {
-    let { thumbnail, sources } = this.props
-    return  (
-              <div className="col-md-2 download-source">
-                <img className="thumbnail" src={thumbnail} />
-                {sources.map((source, i) => {
-                  return <DownloadSource key={i} {...source} />
-                })}
-              </div>
-            )
+    let { thumbnail, label, src, className } = this.props;
+    return (
+      <a href={src} target="_blank" rel="noopener" className={`${className} download-source`}>
+        <div className="download-thumbnail-wrapper">
+          <LazyLoadImage className="thumbnail" src={thumbnail} />
+          <div title={label} className="download-label">{label}</div>
+        </div>
+      </a>
+    )
   }
 }
 
 const propTypes = {
   thumbnail: PropTypes.string.isRequired,
-  sources: PropTypes.array.isRequired
+  src: PropTypes.array.isRequired,
+  className: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 }
 
 CiteThumbnail.propTypes = propTypes

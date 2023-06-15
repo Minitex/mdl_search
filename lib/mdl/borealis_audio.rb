@@ -1,3 +1,5 @@
+require_relative './download'
+
 module MDL
   class BorealisAudio < BorealisAsset
     def src(entry_id = audio_id)
@@ -8,8 +10,12 @@ module MDL
       MDL::Thumbnail::DEFAULT_AUDIO_URL
     end
 
-    def downloads
-      []
+    def thumbnail
+      thumbnail_url
+    end
+
+    def download
+      Download.new(src, 'Download Audio')
     end
 
     def type

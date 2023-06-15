@@ -45,6 +45,10 @@ module MDL
       false
     end
 
+    def download
+      raise NotImplementedError
+    end
+
     private
 
     def subtitle

@@ -1271,6 +1271,13 @@ h3.document-title-heading {
 	}
 }
 
+.cite-download {
+	max-height: 505px;
+	overflow: scroll;
+	border-top: 1px solid #cecece;
+	padding-top: 1.5rem;
+}
+
 dt, dd {
 	margin: 0;
 	padding: 0;
@@ -1294,6 +1301,20 @@ dt, dd {
 .download-source {
 	margin-bottom: 20px;
 	padding: 0;
+	display: flex;
+}
+
+.download-label {
+	max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 11px;
+	text-align: center;
+}
+
+.download-source-link {
+	font-size: 13px;
 }
 
 .thumbnail {
