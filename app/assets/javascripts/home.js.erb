@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( document ).ready(function() {
 
   // Work-around - safari hangs for a bit before setting focus when
   // autocomplete has been enabled
@@ -23,9 +23,7 @@ $( document ).on('turbolinks:load', function() {
 
   $('.home-page .more_facets_link').removeClass('more_facets_link');
 
-  $(document).ready(function() {
-    $('.search_q').focus();
-  });
+  $('.search_q').focus();
 
   reinitModal();
 });
