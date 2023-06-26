@@ -32,12 +32,14 @@ module MDL
     end
 
     def download_assets
-      @download_assets ||= if document.key?('iiif_manifest_ss')
-        CiteDownloadAssetsFromManifest.call(
+      @download_assets ||= begin
+        manifest = if document.key?('iiif_manifest_ss')
           JSON.parse(document['iiif_manifest_ss'])
-        )
-      else
-        BorealisDocument.new(document: document).assets
+        else
+          doc = BorealisDocument.new(document: document)
+          IiifManifest.new(doc).as_json
+        end
+        CiteDownloadAssetsFromManifest.call(manifest)
       end
     end
 
