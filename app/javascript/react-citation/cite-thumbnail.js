@@ -12,7 +12,7 @@ class CiteThumbnail extends React.Component {
     return (
       <a href={src} target="_blank" rel="noopener" className={`${className} download-source`}>
         <div className="download-thumbnail-wrapper">
-          <LazyLoadImage className="thumbnail" src={thumbnail} />
+          <LazyLoadImage className="thumbnail download-thumbnail" src={thumbnail}/>
           <div title={label} className="download-label">{label}</div>
         </div>
       </a>
