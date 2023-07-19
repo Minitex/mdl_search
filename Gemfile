@@ -40,10 +40,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'binding_of_caller'
   gem 'meta_request', '~> 0.7.2'
-  gem 'capistrano', '~> 3.6'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-passenger'
   gem 'fontello_rails_converter'
   gem 'coveralls', require: false
 end
@@ -110,6 +106,3 @@ gem 'kaltura-client'
 
 gem 'sentry-raven'
 gem 'strscan', '3.0.1'
-
-gem 'ed25519'
-gem 'bcrypt_pbkdf'
