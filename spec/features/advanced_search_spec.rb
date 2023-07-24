@@ -26,9 +26,9 @@ describe 'advanced search' do
       count: 3
     )
 
-    # filters = page.all('.appliedFilter', count: 1)
-    # filters.first.find('.filterName', text: 'Title')
-    # filters.first.find('.filterValue', text: 'Streetcar')
+    filters = page.all('.applied-filter', count: 1)
+    filters.first.find('.filter-name', text: 'Title')
+    filters.first.find('.filter-value', text: 'Streetcar')
 
     type_facet,
     format_facet,

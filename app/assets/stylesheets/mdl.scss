@@ -932,7 +932,13 @@ form.range_limit .btn-secondary {
 .constraints-container {
 	background-color: $lightest-gray;
 	border-color: $light-gray;
-	margin: 10px 0 20px;
+	margin: 10px 15px;
+	padding: .5rem;
+	align-items: center;
+}
+
+.constraints-start-over {
+	margin-left: auto;
 }
 
 #sortAndPerPage {

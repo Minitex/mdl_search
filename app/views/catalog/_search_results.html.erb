@@ -9,6 +9,12 @@
   <%= json_api_link_tag %>
 <% end %>
 
+<% content_for(:container_header) do -%>
+  <h2 class="sr-only visually-hidden top-content-title"><%= t('blacklight.search.header') %></h1>
+
+  <%= render 'constraints' %>
+<% end %>
+
 <%= render 'search_header' %>
 
 <div class="top-pagination"><%= render partial: 'results_pagination', locals: {show_json_link: false}%></div>
