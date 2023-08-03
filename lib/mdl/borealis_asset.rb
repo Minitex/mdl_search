@@ -1,3 +1,5 @@
+require_relative './thumbnail'
+
 module MDL
   class BorealisAsset
     attr_reader :id, :collection, :transcripts, :title, :document, :assets
@@ -29,9 +31,15 @@ module MDL
       }
     end
 
-    def thumbnail
-      "/thumbnails/#{collection}:#{id}"
+    def thumbnail_url
+      Thumbnail.new(
+        collection: collection,
+        id: id,
+        cache_dir: ''
+      ).thumbnail_url
     end
+
+    def thumbnail = thumbnail_url
 
     def iiif_compatable?
       false

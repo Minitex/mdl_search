@@ -1,4 +1,3 @@
-require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_video.rb'
 
 module MDL

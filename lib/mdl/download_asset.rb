@@ -27,13 +27,11 @@ module MDL
       def assets_from_manifest_v3(manifest)
         Array(manifest.dig('rendering')).map do |r|
           label = r.dig('label', 'en', 0)
-          thumbnail = case r['type']
-          when 'Video'
-            MDL::Thumbnail::DEFAULT_VIDEO_URL
-          when 'Sound'
-            MDL::Thumbnail::DEFAULT_AUDIO_URL
-          when 'Text'
-            MDL::Thumbnail::DEFAULT_PDF_URL
+          thumbnail = r.dig('thumbnail', 0, 'id')
+          thumbnail ||= thumbnail = case r['type']
+          when 'Video' then Thumbnail::DEFAULT_VIDEO_URL
+          when 'Sound' then Thumbnail::DEFAULT_AUDIO_URL
+          when 'Text' then Thumbnail::DEFAULT_PDF_URL
           end
           new(
             label: label,

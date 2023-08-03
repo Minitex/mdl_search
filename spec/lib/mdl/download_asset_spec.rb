@@ -98,7 +98,7 @@ describe MDL::DownloadAsset do
         expect(transcript.download.src).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1120/filename')
         expect(transcript.download.label).to eq('Transcript')
         expect(transcript.label).to eq('Transcript')
-        expect(transcript.thumbnail).to eq(MDL::Thumbnail::DEFAULT_PDF_URL)
+        expect(transcript.thumbnail).to eq('https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll548/id/1120')
       end
     end
 
@@ -119,7 +119,7 @@ describe MDL::DownloadAsset do
         expect(transcript.download.src).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
         expect(transcript.download.label).to eq('Transcript')
         expect(transcript.label).to eq('Transcript')
-        expect(transcript.thumbnail).to eq(MDL::Thumbnail::DEFAULT_PDF_URL)
+        expect(transcript.thumbnail).to eq('https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/sll/id/22547')
       end
     end
   end

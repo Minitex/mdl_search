@@ -13,6 +13,10 @@ class IiifManifest
     MDL::BorealisPdf => {
       type: 'Text',
       format: 'application/pdf'
+    },
+    MDL::BorealisImage => {
+      type: 'Image',
+      format: 'image/jpeg'
     }
   }.freeze
 
@@ -195,7 +199,14 @@ class IiifManifest
         'label' => {
           'en' => [asset.title]
         },
-        'format' => annotation_body_format(asset)
+        'format' => annotation_body_format(asset),
+        'thumbnail' => [
+          {
+            'id' => asset.thumbnail_url,
+            'type' => 'Image',
+            'format' => 'image/jpeg'
+          }
+        ]
       }
     end
   end
@@ -246,7 +257,8 @@ class IiifManifest
       [
         MDL::BorealisVideo,
         MDL::BorealisAudio,
-        MDL::BorealisPdf
+        MDL::BorealisPdf,
+        MDL::BorealisImage
       ].include?(a.class)
     end
   end
