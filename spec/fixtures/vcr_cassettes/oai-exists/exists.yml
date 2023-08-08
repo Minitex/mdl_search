@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cdm16022.contentdm.oclc.org/oai/oai.php?identifier=oai:cdm16022.contentdm.oclc.org:p16022coll44/1&metadataPrefix=oai_dc&verb=GetRecord
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - cdm16022.contentdm.oclc.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Aug 2023 00:52:11 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Set-Cookie:
+      - PHPSESSID=b1e53804a4e44cec70306939573896cf; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1007'
+      Content-Type:
+      - text/xml;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2023-08-10T00:52:23Z</responseDate><request verb="GetRecord" identifier="oai:cdm16022.contentdm.oclc.org:p16022coll44/1" metadataPrefix="oai_dc">http://cdm16022.contentdm.oclc.org/oai/oai.php</request><GetRecord><record><header><identifier>oai:cdm16022.contentdm.oclc.org:p16022coll44/1</identifier><datestamp>2023-06-01</datestamp><setSpec>p16022coll44</setSpec></header>
+        <metadata>
+        <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+        <dc:title>Potter Mary Roettger at the studio of Jeff Oestreich, Taylors Falls, Minnesota </dc:title>
+        <dc:creator>American Craft Council </dc:creator>
+        <dc:description>Mary Roettger from St. Paul, Minnesota, was a guest potter at the studio of Minnesota potter Jeff Oestreich during the 22nd Annual St. Croix Valley Pottery Tour, held May 9, 10, and 11, 2014. Roettger was one of 44 potters selling work at seven host studios throughout the St. Croix River Valley. </dc:description>
+        <dc:date>2014-05-09</dc:date>
+        <dc:source>American Craft Council Library</dc:source>
+        <dc:relation>The Arts</dc:relation>
+        <dc:type>Still Image</dc:type>
+        <dc:format>Color photographs</dc:format>
+        <dc:subject>Pottery; Artists; Artists&#x27; studios;</dc:subject>
+        <dc:subject>Potters; Pottery (visual works); Crafts (art genres); Rural communities; tours (journeys); Roettger, Mary; Exhibitions (events)</dc:subject>
+        <dc:coverage>Taylors Falls</dc:coverage>
+        <dc:coverage>Chisago</dc:coverage>
+        <dc:coverage>Minnesota</dc:coverage>
+        <dc:coverage>United States</dc:coverage>
+        <dc:coverage>http://sws.geonames.org/5049773/</dc:coverage>
+        <dc:publisher>American Craft Council</dc:publisher>
+        <dc:rights>http://rightsstatements.org/vocab/InC/1.0/</dc:rights>
+        <dc:identifier>roettgerm_portrait_2014</dc:identifier>
+        <dc:identifier>acc080</dc:identifier>
+        <dc:identifier>http://cdm16022.contentdm.oclc.org/cdm/ref/collection/p16022coll44/id/1</dc:identifier></oai_dc:dc>
+        </metadata>
+        </record></GetRecord></OAI-PMH>
+  recorded_at: Thu, 10 Aug 2023 00:52:23 GMT
+recorded_with: VCR 6.1.0
