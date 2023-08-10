@@ -1,9 +1,9 @@
 <% if rendered_constraints = render_constraints(params).presence %>
-  <div id="appliedParams" class="clearfix constraints-container">
-    <div class="pull-right">
-      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-sm btn-text", :id=>"startOverLink" %>
-    </div>
+  <div id="appliedParams" class="constraints-container">
     <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
     <%= rendered_constraints %>
+    <div class="constraints-start-over">
+      <%= link_to t('blacklight.search.start_over'), start_over_path, class: "catalog_startOverLink btn btn-sm btn-text", id: "startOverLink" %>
+    </div>
   </div>
 <% end %>

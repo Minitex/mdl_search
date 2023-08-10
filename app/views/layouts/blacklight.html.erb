@@ -46,7 +46,7 @@
   <%= render partial: 'shared/search_block' unless current_page?('/advanced') %>
 
   <div id="main-container" class="<%= container_classes %>">
-
+    <%= content_for(:container_header) %>
     <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
     <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
