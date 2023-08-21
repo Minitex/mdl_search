@@ -1,4 +1,3 @@
-require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_audio.rb'
 
 module MDL
@@ -32,6 +31,10 @@ module MDL
 
     it 'knows its audio id' do
       expect(instance.audio_id).to eq 'foobar:123'
+    end
+
+    it 'knows its thumbnail_url' do
+      expect(instance.thumbnail_url).to eq(Thumbnail::DEFAULT_AUDIO_URL)
     end
   end
 end

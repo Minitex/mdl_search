@@ -36,5 +36,13 @@ module MDL
     it 'knows its type' do
       expect(BorealisPdf.new.type).to eq 'pdf'
     end
+
+    describe '#thumbnail_url' do
+      it 'returns the expected url' do
+        expect(instance.thumbnail_url).to eq(
+          'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/foo/id/123'
+        )
+      end
+    end
   end
 end

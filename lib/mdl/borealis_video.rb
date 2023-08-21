@@ -1,3 +1,4 @@
+require_relative './borealis_asset'
 require_relative './download'
 
 module MDL
@@ -7,13 +8,7 @@ module MDL
       "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4"
     end
 
-    def thumbnail_url
-      MDL::Thumbnail::DEFAULT_VIDEO_URL
-    end
-
-    def thumbnail
-      thumbnail_url
-    end
+    def thumbnail_url = MDL::Thumbnail::DEFAULT_VIDEO_URL
 
     def download
       Download.new(src, 'Download Video')

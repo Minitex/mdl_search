@@ -1,4 +1,3 @@
-require_relative '../../../lib/mdl/borealis_asset.rb'
 require_relative '../../../lib/mdl/borealis_image.rb'
 
 module MDL
@@ -28,6 +27,12 @@ module MDL
         '(800w)'
       )
       expect(image.download).to eq(expected)
+    end
+
+    it 'has the correct thumbnail_url' do
+      expect(image.thumbnail_url).to eq(
+        'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/foo/id/21'
+      )
     end
   end
 end
