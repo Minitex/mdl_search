@@ -70,11 +70,25 @@ describe IiifManifest do
         expect(result['rendering'][0]['type']).to eq('Video')
         expect(result['rendering'][0]['label']['en']).to eq(['Video'])
         expect(result['rendering'][0]['format']).to eq('video/mp4')
+        expect(result['rendering'][0]['thumbnail']).to eq([
+          {
+            'id' => MDL::Thumbnail::DEFAULT_VIDEO_URL,
+            'type' => 'Image',
+            'format' => 'image/jpeg'
+          }
+        ])
 
         expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
         expect(result['rendering'][1]['type']).to eq('Text')
         expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
         expect(result['rendering'][1]['format']).to eq('application/pdf')
+        expect(result['rendering'][1]['thumbnail']).to eq([
+          {
+            'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/sll/id/22547',
+            'type' => 'Image',
+            'format' => 'image/jpeg'
+          }
+        ])
       end
     end
 
@@ -136,11 +150,25 @@ describe IiifManifest do
         expect(result['rendering'][0]['type']).to eq('Sound')
         expect(result['rendering'][0]['label']['en']).to eq(['Audio'])
         expect(result['rendering'][0]['format']).to eq('audio/mp4')
+        expect(result['rendering'][0]['thumbnail']).to eq([
+          {
+            'id' => MDL::Thumbnail::DEFAULT_AUDIO_URL,
+            'type' => 'Image',
+            'format' => 'image/jpeg'
+          }
+        ])
 
         expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
         expect(result['rendering'][1]['type']).to eq('Text')
         expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
         expect(result['rendering'][1]['format']).to eq('application/pdf')
+        expect(result['rendering'][1]['thumbnail']).to eq([
+          {
+            'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll548/id/1193',
+            'type' => 'Image',
+            'format' => 'image/jpeg'
+          }
+        ])
       end
     end
 

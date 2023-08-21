@@ -24,7 +24,7 @@ module MDL
         c << CiteDetails.new(solr_doc: document).to_hash
         c << CiteCitation.new(solr_doc: document, base_url: base_url).to_hash
         c << CiteDownload.new(assets: download_assets).to_hash
-        c << download_archive if download_assets.size > 1
+        c << download_archive if include_archive_option?
         c << CiteTranscript.new(solr_doc: document).to_hash
         c.map!(&:presence)
         c.compact!
@@ -41,6 +41,12 @@ module MDL
         end
         CiteDownloadAssetsFromManifest.call(manifest)
       end
+    end
+
+    def include_archive_option?
+      return false unless document.key?('iiif_manifest_ss')
+      return false unless download_assets.size > 1
+      true
     end
 
     def download_archive
