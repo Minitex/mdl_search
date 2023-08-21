@@ -86,10 +86,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.before(:each, type: :feature) do
-    allow(CacheThumbnailWorker).to receive(:perform_async)
-  end
-
   if ENV.fetch('CI', false)
     config.around(:each, type: :feature) do |spec|
       Capybara.current_driver = :selenium_chrome_headless

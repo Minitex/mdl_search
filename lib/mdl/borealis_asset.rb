@@ -32,11 +32,7 @@ module MDL
     end
 
     def thumbnail_url
-      Thumbnail.new(
-        collection: collection,
-        id: id,
-        cache_dir: ''
-      ).thumbnail_url
+      Thumbnail.new(collection:, id:,).thumbnail_url
     end
 
     def thumbnail = thumbnail_url
