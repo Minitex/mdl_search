@@ -19,7 +19,7 @@ Capybara.default_driver = :selenium
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
-  config.allow_http_connections_when_no_cassette = true
+  config.allow_http_connections_when_no_cassette = false
   config.default_cassette_options = { record: :once }
   config.ignore_localhost = true
   config.filter_sensitive_data('<KS>') do |int|
@@ -85,4 +85,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:each, type: :feature) do
+    allow(CacheThumbnailWorker).to receive(:perform_async)
+  end
+
+  if ENV.fetch('CI', false)
+    config.around(:each, type: :feature) do |spec|
+      Capybara.current_driver = :selenium_chrome_headless
+      spec.run
+      Capybara.use_default_driver
+    end
+  end
 end

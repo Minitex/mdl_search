@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cdm16022.contentdm.oclc.org/oai/oai.php?identifier=oai:cdm16022.contentdm.oclc.org:fakiefaker/nuttin&metadataPrefix=oai_dc&verb=GetRecord
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - cdm16022.contentdm.oclc.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Aug 2023 00:52:06 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Set-Cookie:
+      - PHPSESSID=4bcb5abb57723976ffff2222f7efcf81; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '374'
+      Content-Type:
+      - text/xml;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2023-08-10T00:52:11Z</responseDate><request
+        verb="GetRecord" identifier="oai:cdm16022.contentdm.oclc.org:fakiefaker/nuttin"
+        metadataPrefix="oai_dc">http://cdm16022.contentdm.oclc.org/oai/oai.php</request><error
+        code="idDoesNotExist">The value of the identifier argument is unknown or illegal
+        in this repository. "oai:cdm16022.contentdm.oclc.org:fakiefaker/nuttin"</error></OAI-PMH>
+  recorded_at: Thu, 10 Aug 2023 00:52:11 GMT
+recorded_with: VCR 6.1.0

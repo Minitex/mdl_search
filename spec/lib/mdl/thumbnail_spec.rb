@@ -5,6 +5,7 @@ describe MDL::Thumbnail do
   let(:tmpdir) { File.join(Rails.root, 'tmp') }
   let(:tmpfilepath) { File.join(tmpdir, 'mpls_13128.jpg') }
   before(:each) do
+    FileUtils.mkdir_p(tmpdir)
     FileUtils.rm(tmpfilepath) if File.exist?(tmpfilepath)
   end
 
@@ -88,6 +89,7 @@ describe MDL::Thumbnail do
     end
 
     context 'when representing a cached image doc (from contentdm)' do
+      let(:thumbnails_dir) { Rails.root.join('public', 'assets', 'thumbnails') }
       subject(:instance) do
         MDL::Thumbnail.new(
           collection: 'foo',
@@ -97,11 +99,12 @@ describe MDL::Thumbnail do
       end
 
       before do
-        FileUtils.touch(Rails.root.join('public', 'assets', 'thumbnails', 'foo_123.jpg'))
+        FileUtils.mkdir_p(thumbnails_dir)
+        FileUtils.touch(thumbnails_dir.join('foo_123.jpg'))
       end
 
       after do
-        FileUtils.rm(Rails.root.join('public', 'assets', 'thumbnails', 'foo_123.jpg'))
+        FileUtils.rm(thumbnails_dir.join('foo_123.jpg'))
       end
 
       it { is_expected.to eq('/assets/thumbnails/foo_123.jpg') }
