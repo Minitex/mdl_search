@@ -65,7 +65,7 @@ end
 
 gem 'blacklight', '~> 7.27'
 gem 'blacklight_advanced_search', '~> 7.0'
-gem 'blacklight_range_limit', '~> 7.0'
+gem 'blacklight_range_limit', '~> 8.2.0'
 gem 'blacklight-spotlight', '~> 3.4'
 gem 'blacklight_oai_provider', '~> 7.0'
 gem 'chosen-rails', '~> 1.9'
