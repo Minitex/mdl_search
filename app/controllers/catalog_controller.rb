@@ -291,8 +291,20 @@ class CatalogController < ApplicationController
       field.label = 'Date Created'
       field.collapse = false
       field.range = true
-      field.item_presenter = FacetItemPresenter
-      field.item_component = FacetItemComponent
+      field.range_config = {
+        num_segments: 10,
+        chart_js: true,
+        slider_js: true,
+        segments: true,
+        assumed_boundaries: nil,
+        maxlength: nil,
+        input_label_range_begin: nil,
+        input_label_range_end: nil
+      }
+      field.filter_class = BlacklightRangeLimit::FilterField
+      field.presenter = BlacklightRangeLimit::FacetFieldPresenter
+      field.item_presenter = BlacklightRangeLimit::FacetItemPresenter
+      field.component = RangeFacetComponent
     end
     config.add_facet_field 'placename_ssim' do |field|
       field.label = 'Location'
