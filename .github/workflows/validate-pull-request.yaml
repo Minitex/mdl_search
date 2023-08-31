@@ -1,0 +1,44 @@
+name: Validate Pull Request
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: theroot
+          MYSQL_DATABASE: mdl_test
+          MYSQL_USER: mdl
+          MYSQL_PASSWORD: mdl
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      solr:
+        image: minitex/mdl_solr:latest
+        ports:
+          - 8986:8983
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Tesseract
+        run: |
+          sudo apt-get update
+          sudo apt-get install tesseract-ocr
+      - name: Install Dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: '3.1.2'
+      - name: Setup DB
+        run: bin/rails db:schema:load
+      - name: Run Tests
+        run: bundle exec rspec --tag ~skip_ci

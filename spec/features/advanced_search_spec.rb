@@ -17,6 +17,7 @@ describe 'advanced search' do
 
   it 'respects the given parameters' do
     visit '/'
+    page.current_window.resize_to(1200, 1200)
     click_link 'Advanced Search'
     fill_in 'Title', with: '"Streetcar"'
     click_button 'Search'
