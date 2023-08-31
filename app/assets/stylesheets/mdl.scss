@@ -634,6 +634,23 @@ form.range_limit .btn-secondary {
 	}
 }
 
+#facet-dat_ssim {
+	.range-limit-form-submit {
+		border-radius: 0 0.2rem 0.2rem 0;
+	}
+
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type=number] {
+		appearance: textfield;
+		-moz-appearance: textfield;
+	}
+}
+
 .btn-custom {
 	background-color: $dark-green;
 	color: $white;
