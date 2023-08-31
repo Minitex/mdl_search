@@ -192,8 +192,8 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = false
     config.autocomplete_path = 'suggest'
 
-    config.index.thumbnail_method = :cached_thumbnail_tag
-    config.show.thumbnail_method = :cached_thumbnail_tag
+    config.index.thumbnail_method = :thumbnail_tag
+    config.show.thumbnail_method = :thumbnail_tag
 
     config.view.gallery(
       default: false,
