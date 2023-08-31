@@ -30,7 +30,7 @@ rbenv install 3.1.2
 Install MySQL and Redis clients, as well as geckodriver for system tests run via Selenium.
 
 ```bash
-brew install mysql@5.7 redis geckodriver
+brew install mysql@5.7 redis geckodriver tesseract
 ```
 
 Install Nginx and mkcert (for local SSL)
