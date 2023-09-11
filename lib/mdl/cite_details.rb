@@ -32,7 +32,7 @@ module MDL
       # @return [Array<MDL::CiteDetails::FieldConfig>]
       def field_configs
         [
-          FieldConfig.new(key: 'contributing_organization_tesi', label: 'Contributing Organization', facet: true),
+          FieldConfig.new(key: 'contributing_organization_ssi', label: 'Contributing Organization', facet: true),
           FieldConfig.new(key: 'title_ssi', label: 'Title'),
           FieldConfig.new(key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true),
           FieldConfig.new(key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true),
@@ -60,9 +60,7 @@ module MDL
           FieldConfig.new(key: 'rights_status_ssi', label: 'Rights'),
           FieldConfig.new(key: 'rights_statement_ssi', label: 'Rights Statement'),
           FieldConfig.new(key: 'rights_uri_ssi', label: 'Rights Statement URI'),
-          FieldConfig.new(key: 'public_ssi', label: 'Expected Public Domain Entry Year'),
-          FieldConfig.new(key: 'contact_information_ssi', label: 'Contact Information'),
-          FieldConfig.new(key: 'collection_description_tesi', label: 'Collection Description')
+          FieldConfig.new(key: 'public_ssi', label: 'Expected Public Domain Entry Year')
         ]
       end
     end
@@ -71,8 +69,8 @@ module MDL
 
     ###
     # @param solr_doc [SolrDocument]
-    def initialize(solr_doc: '{}', auto_linker: Rinku)
-      @solr_doc = solr_doc
+    def initialize(solr_doc:, auto_linker: Rinku)
+      @solr_doc = SolrDocument.wrap(solr_doc)
       @auto_linker = auto_linker
     end
 
@@ -86,13 +84,13 @@ module MDL
     end
 
     def details
-      details_with_actual_collections.map do |field|
-        if !redundant_rights_field?(field)
-          val = solr_doc[field.key]
-          vals = field_values([val].flatten, field.key, field.facet)
-          map_details(vals, field.label, field.delimiter)
-        end
-      end.compact
+      self.class.field_configs.filter_map do |field_config|
+        next if redundant_rights_field?(field_config)
+
+        val = solr_doc[field_config.key]
+        vals = field_values([val].flatten, field_config)
+        map_details(vals, field_config)
+      end
     end
 
     private
@@ -103,53 +101,15 @@ module MDL
     end
 
     def has_rights_uri?
-      solr_doc.fetch('rights_uri_ssi', false) != false
+      !!solr_doc.fetch('rights_uri_ssi', false)
     end
 
-    # Many users add Contributing org details in the OAI collection name field.
-    # We don't want to show these collections, because they are redundant with
-    # contributing org. So, remove collection if these two field values are the same
-    def details_with_actual_collections
-      details_fields.select do |field_config|
-        good_collection(field_config) || !is_collection(field_config)
-      end
-    end
-
-    # @param field_config [MDL::CiteDetails::FieldConfig]
-    def is_collection(field_config)
-      field_config.key == 'collection_name_ssi'
-    end
-
-    # @param field_config [MDL::CiteDetails::FieldConfig]
-    def good_collection(field_config)
-      is_collection(field_config) && !same_contrib_and_collection?
-    end
-
-    def same_contrib_and_collection?
-      solr_doc['collection_name_ssi'] == solr_doc['contributing_organization_ssi']
-    end
-
-    def map_details(values, label, delimiter = nil, facet = nil)
-      if values != [{}]
-        [
-          {label: label},
-          {delimiter: delimiter},
-          {field_values: values}
-        ].inject({}) do |memo, item|
-          (!empty_value?(item)) ? memo.merge(item) : memo
-        end
-      end
-    end
-
-    def empty_value?(item)
-      item.values.flatten.compact.empty?
-    end
-
-    def field_values(values, key, facet)
-      values.map do |val|
-        [{text: auto_link(val)}, {url: facet_url(key, val, facet)}].inject({}) do |memo, item|
-          (item.values.first) ? memo.merge(item) : memo
-        end
+    def field_values(values, field_config)
+      values.filter_map do |val|
+        {
+          text: auto_link(val),
+          url: url(val, field_config)
+        }.compact.presence
       end
     end
 
@@ -158,13 +118,38 @@ module MDL
       auto_linker.auto_link(text) if text
     end
 
-    def facet_url(key, val, facet = false)
-      if facet && val
-        query = "f[#{key}][]=#{URI.encode_www_form_component(val)}"
+    def url(val, field_config)
+      custom = custom_url(field_config.key, val)
+      return custom if custom
+
+      if field_config.facet && val
+        query = "f[#{field_config.key}][]=#{URI.encode_www_form_component(val)}"
         "/catalog?#{query}"
       end
     end
 
-    def details_fields = self.class.field_configs
+    ###
+    # This is barebones for now, but leaves the door open to
+    # offering custom links on other Solr fields.
+    #
+    # @param key [String] A Solr document key
+    # @param val [String] the value in the document for the given key
+    # @return [String, nil] A custom URL, if applicable
+    def custom_url(key, val)
+      case key
+      when 'contributing_organization_ssi'
+        ContributingOrganizationLink.resolve(val)
+      end
+    end
+
+    def map_details(field_values, facet_config)
+      return if field_values.empty?
+
+      {
+        label: facet_config.label,
+        delimiter: facet_config.delimiter,
+        field_values:
+      }.compact
+    end
   end
 end

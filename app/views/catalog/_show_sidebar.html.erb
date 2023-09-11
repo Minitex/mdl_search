@@ -1,10 +1,14 @@
 <div class="addthis_inline_share_toolbox"></div>
-<!-- <div class="panel feedback-panel"><a href="https://mndigital.org/about/contact-us"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send us your feedback about our new website!</a></div> -->
+  <%= link_to(
+    "Browse the #{@document.contributing_organization} collection",
+    @document.collection_url,
+    class: 'btn btn-primary'
+  ) %>
 <% unless @document.more_like_this.empty? %>
   <div class="card panel-default more-like-this">
     <div class="card-header">Related Items</div>
     <div class="card-body">
-      <%= render :collection => @document.more_like_this, :partial => 'show_more_like_this', :as => :doc %>
+      <%= render(collection: @document.more_like_this, partial: 'show_more_like_this', as: :doc) %>
     </div>
   </div>
 <% end %>
