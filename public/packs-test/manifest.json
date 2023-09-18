@@ -1,4 +1,7 @@
 {
   "drawMap.js": "/packs-test/drawMap.js",
-  "fullRecord.js": "/packs-test/fullRecord.js"
+  "fullRecord.js": "/packs-test/fullRecord.js",
+  "citation.js": "/packs-test/citation.js",
+  "universalviewer.js": "/packs-test/universalviewer.js",
+  "universalviewer_lib.js": "/packs-test/universalviewer_lib.js"
 }

@@ -33,12 +33,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install tesseract-ocr
-      - name: Install Dependencies
+      - name: Install Dependencies Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: '3.1.2'
+      - name: Install Dependencies Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+          cache: 'yarn'
+      - name: Install Yarn Packages
+        run: yarn install
       - name: Setup DB
         run: bin/rails db:schema:load
+      - name: Prep UV
+        run: ./prep_uv.sh
       - name: Run Tests
         run: bundle exec rspec --tag ~skip_ci
