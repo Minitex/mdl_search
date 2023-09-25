@@ -49,14 +49,11 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'solr_wrapper', '>= 0.3'
-  gem 'teaspoon-jasmine'
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'database_cleaner'
   gem 'vcr'
   gem 'webmock'
   gem 'shoulda-matchers'
@@ -76,8 +73,6 @@ gem 'cancancan', '~> 3.4'
 
 # # CONTENTdm ETL
 gem 'devise', '~> 4.8'
-gem 'devise-guests', '~> 0.8'
-gem 'hash_at_path', github: 'UMNLibraries/hash_at_path', ref: '92dafd3b06de2cbc861b9ad80dcadb3ed7274597'
 gem 'contentdm_api', '~> 0.6'
 gem 'cdmbl', github: 'Minitex/cdmbl', ref: 'd1a2b0e'
 gem 'sidekiq', '~> 6.5'
