@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).ready(function () {
   $(".advanced-search-facet-select").chosen({
     placeholder_text_multiple: "Select...",
     single_backstroke_delete: false,

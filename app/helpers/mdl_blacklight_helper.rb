@@ -71,7 +71,6 @@ module MDLBlacklightHelper
         id: document.id
       ),
       document_link_params(document, opts)
-        .merge(data: { turbolinks: false })
     )
   end
 
