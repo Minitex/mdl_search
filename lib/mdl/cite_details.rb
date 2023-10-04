@@ -32,7 +32,7 @@ module MDL
       # @return [Array<MDL::CiteDetails::FieldConfig>]
       def field_configs
         [
-          FieldConfig.new(key: 'contributing_organization_ssi', label: 'Contributing Organization', facet: true),
+          FieldConfig.new(key: 'contributing_organization_tesi', label: 'Contributing Organization', facet: true),
           FieldConfig.new(key: 'title_ssi', label: 'Title'),
           FieldConfig.new(key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true),
           FieldConfig.new(key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true),
