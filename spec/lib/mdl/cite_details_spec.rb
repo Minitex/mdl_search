@@ -25,7 +25,7 @@ describe MDL::CiteDetails do
   end
   describe "when transforming records" do
     it 'transforms the contributing organization field' do
-      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[contributing_organization_ssi][]=Minnesota+Geological+Survey"}]})
+      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[contributing_organization_tesi][]=Minnesota+Geological+Survey"}]})
     end
 
 
