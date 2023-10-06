@@ -68,10 +68,24 @@ module MDLBlacklightHelper
       url_for(
         controller: 'catalog',
         action: 'show',
-        id: document.id
+        id: document.id,
+        anchor: document_link_anchor(document)
       ),
       document_link_params(document, opts)
     )
+  end
+
+  ###
+  # This provides support for "deep linking" into a specific page
+  # of a compound document if the MDL identifier for that page is
+  # directly queried in the global search bar.
+  #
+  # @param document [SolrDocument]
+  # @return [String, nil]
+  def document_link_anchor(document)
+    cmpd_doc_page_idx = Array(document['identifier_ssim']).index(params[:q])
+    return unless cmpd_doc_page_idx
+    "?cv=#{cmpd_doc_page_idx}"
   end
 
   def document_metadata(document)
