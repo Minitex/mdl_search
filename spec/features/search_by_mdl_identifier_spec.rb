@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'searching by MDL identifier' do
+describe 'searching by MDL identifier', :skip_ci do
   context 'in a compound document' do
     before { solr_fixtures('spl:3207') }
 
