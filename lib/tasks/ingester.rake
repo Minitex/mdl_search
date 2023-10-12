@@ -35,10 +35,10 @@ namespace :mdl_ingester do
     IndexingRun.create!
     MDL::TransformWorker.perform_async(
       [args[:id].split(':')],
-      { url: config[:solr_config][:url]},
+      { 'url' => config[:solr_config][:url]},
       config[:cdm_endpoint],
       config[:oai_endpoint],
-      config[:field_mappings],
+      config[:field_mappings].map(&:stringify_keys),
       false
     )
   end
@@ -74,10 +74,10 @@ namespace :mdl_ingester do
     response['response']['docs'].each do |doc|
       MDL::TransformWorker.perform_async(
         [doc['id'].split(':')],
-        { url: config[:solr_config][:url] },
+        { 'url' => config[:solr_config][:url] },
         config[:cdm_endpoint],
         config[:oai_endpoint],
-        config[:field_mappings],
+        config[:field_mappings].map(&:stringify_keys),
         false
       )
     end

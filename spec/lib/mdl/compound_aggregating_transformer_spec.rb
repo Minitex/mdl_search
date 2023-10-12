@@ -1,5 +1,4 @@
-require 'spec_helper'
-require_relative '../../../lib/mdl/etl_worker'
+require 'rails_helper'
 
 module MDL
   describe CompoundAggregatingTransformer do
