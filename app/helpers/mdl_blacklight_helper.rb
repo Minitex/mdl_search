@@ -69,7 +69,7 @@ module MDLBlacklightHelper
         controller: 'catalog',
         action: 'show',
         id: document.id,
-        anchor: document_link_anchor(document)
+        uvcv: desired_canvas_index(document)
       ),
       document_link_params(document, opts)
     )
@@ -82,10 +82,8 @@ module MDLBlacklightHelper
   #
   # @param document [SolrDocument]
   # @return [String, nil]
-  def document_link_anchor(document)
-    cmpd_doc_page_idx = Array(document['identifier_ssim']).index(params[:q])
-    return unless cmpd_doc_page_idx
-    "?cv=#{cmpd_doc_page_idx}"
+  def desired_canvas_index(document)
+    Array(document['identifier_ssim']).index(params[:q])
   end
 
   def document_metadata(document)
