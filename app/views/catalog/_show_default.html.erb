@@ -48,6 +48,21 @@
 
 <% content_for(:blocking_javascript) do %>
   <script type="text/javascript">
+    function getQueryParams() {
+      const url = window.location.href;
+      const params = new URLSearchParams((new URL(url)).search);
+      const obj = {};
+
+      for (const [key, value] of params.entries()) {
+          obj[key] = value;
+      }
+
+      return obj;
+    }
+    const queryParams = getQueryParams();
+    if (queryParams.uvcv && queryParams.uvcv.length) {
+      window.location.hash = `?${queryParams.uvcv}`;
+    }
     window.addEventListener('uvLoaded', function (e) {
       const urlDataProvider = new UV.URLDataProvider();
       const collectionIndex = urlDataProvider.get('c');
@@ -55,7 +70,7 @@
       // If we were given a legacy anchor, such as #/image/4, parse
       // out the 4 and use it as the canvasIndex in the UV config.
       const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
-      let canvasIndexFallback = legacyAnchorMatch.pop();
+      let canvasIndexFallback = queryParams.uvcv || legacyAnchorMatch.pop();
       if (legacyAnchorMatch.length) {
         window.location.hash = '';
       }
