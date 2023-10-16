@@ -91,8 +91,8 @@ Start Sidekiq
 Ingest some content
 
 ```bash
-bundle exec rake 'mdl_ingester:collection[p15160coll13]'
-bundle exec rake 'mdl_ingester:collection[p16022coll10]'
+INGEST_ALL=1 bundle exec rake 'mdl_ingester:collection[p15160coll13]'
+INGEST_ALL=1 bundle exec rake 'mdl_ingester:collection[p16022coll10]'
 ```
 
 ## Logging in

@@ -68,7 +68,7 @@ module MDL
         {dest_path: 'language_unstem_search', origin_path: 'langua', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'contributing_unstem_search', origin_path: 'contra', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'contributing_organization_tesi', origin_path: 'contra', formatters: ['CDMBL::StripFormatter']},
-        {dest_path: 'contributing_organization_ssi', origin_path: 'contra', formatters: ['CDMBL::Titlieze', 'CDMBL::StripFormatter']},
+        {dest_path: 'contributing_organization_ssi', origin_path: 'contra', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'contact_information_ssi', origin_path: 'contac', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'rights_ssi', origin_path: 'righta', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'local_identifier_ssi', origin_path: 'identi', formatters: ['CDMBL::StripFormatter']},

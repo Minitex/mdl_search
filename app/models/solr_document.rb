@@ -43,6 +43,24 @@ class SolrDocument
     rights: 'rights_ssi'
   )
 
+  # @!attribute [r] contributing_organization
+  #   @return [String]
+  attribute(
+    :contributing_organization,
+    Blacklight::Types::String,
+    'contributing_organization_ssi'
+  )
+
+  class << self
+    ###
+    # @param doc [Hash, SolrDocument]
+    # @return SolrDocument
+    def wrap(doc)
+      return doc if doc.is_a?(SolrDocument)
+      new(doc)
+    end
+  end
+
   def more_like_this
     mlt_assets solr.more_like_this(query)['response']['docs']
   end
@@ -63,6 +81,16 @@ class SolrDocument
     asset = MDL::BorealisDocument.new(document: self._source).assets.first
     return unless asset.is_a?(MDL::BorealisImage)
     asset.src
+  end
+
+  def collection_url = facet_url('contributing_organization_ssi')
+
+  ###
+  # @param property [String] a field on the document
+  # @return [String] a link to search, faceted by the given property
+  def facet_url(property)
+    query = "f[#{property}][]=#{URI.encode_www_form_component(self[property])}"
+    "/catalog?#{query}"
   end
 
   private
