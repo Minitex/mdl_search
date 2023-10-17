@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class SolrDocument
-
   include Blacklight::Solr::Document
   include Blacklight::Gallery::OpenseadragonSolrDocument
 
@@ -9,6 +8,8 @@ class SolrDocument
   include Spotlight::SolrDocument::AtomicUpdates
   include BlacklightOaiProvider::SolrDocument
 
+  MDL_ITEM_URL_FIELD = 'mdl_item_url'.freeze
+  private_constant :MDL_ITEM_URL_FIELD
 
   # self.unique_key = 'id'
 
@@ -40,7 +41,8 @@ class SolrDocument
     source: 'publishing_agency_ssi',
     relation: 'topic_ssim',
     publisher: 'contributing_organization_ssi',
-    rights: 'rights_ssi'
+    rights: 'rights_ssi',
+    identifier: MDL_ITEM_URL_FIELD
   )
 
   # @!attribute [r] contributing_organization
@@ -59,6 +61,19 @@ class SolrDocument
       return doc if doc.is_a?(SolrDocument)
       new(doc)
     end
+  end
+
+  ###
+  # Override the default implementation here to inject a link
+  # to the item into the wrapped source document. This allows
+  # us to return an identifier in the OAI record response without
+  # having to store it in Solr.
+  def initialize(source_doc = {}, response = nil)
+    item_url = "https://collection.mndigital.org/catalog/#{source_doc['id']}"
+    super(
+      source_doc.merge(MDL_ITEM_URL_FIELD => item_url),
+      response
+    )
   end
 
   def more_like_this
