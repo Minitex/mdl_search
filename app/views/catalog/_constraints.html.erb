@@ -3,7 +3,12 @@
     <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
     <%= rendered_constraints %>
     <div class="constraints-start-over">
-      <%= link_to t('blacklight.search.start_over'), start_over_path, class: "catalog_startOverLink btn btn-sm btn-text", id: "startOverLink" %>
+      <%= link_to(
+        t('blacklight.search.start_over'),
+        root_path,
+        class: "catalog_startOverLink btn btn-sm btn-text",
+        id: "startOverLink"
+      ) %>
     </div>
   </div>
 <% end %>
