@@ -24,9 +24,9 @@ module MDL
         KalturaMediaEntryService.get(playlist_id)
       rescue Kaltura::KalturaAPIError => e
         Rails.logger.error(e.message)
-        Raven.capture_message(
+        Sentry.capture_message(
           'Kaltura playlist not found',
-          playlist_id: playlist_id
+          extra: { playlist_id: }
         )
         nil
       end

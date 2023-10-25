@@ -55,7 +55,7 @@ module MDL
     end
 
     def notify_complete
-      Raven.capture_message('ETL Finished')
+      Sentry.capture_message('ETL Finished')
     end
 
     def indexing_finished?(indexing_run)
