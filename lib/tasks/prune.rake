@@ -10,7 +10,7 @@ namespace :prune do
   end
 
   def do_prune(solr_query: nil)
-    Raven.send_event(Raven::Event.new(message: 'Batch delete job started'))
+    Sentry.capture_message('Batch delete job started')
     CDMBL::BatchDeleterWorker.perform_async(
       0,
       50,

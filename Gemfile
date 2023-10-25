@@ -98,5 +98,7 @@ gem 'blacklight-oembed', '~> 1.1'
 gem 'autoprefixer-rails', '~> 10.4.7' # Constraint to accommodate Node 8 on QA/Prod
 gem 'kaltura-client'
 
-gem 'sentry-raven'
+gem 'sentry-ruby'
+gem 'sentry-rails'
+gem 'sentry-sidekiq'
 gem 'strscan', '3.0.1'
