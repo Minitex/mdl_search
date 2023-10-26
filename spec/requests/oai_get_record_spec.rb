@@ -23,5 +23,6 @@ describe 'OAI GetRecord verb' do
     expect(metadata.xpath('//oai_dc:dc/dc:relation', ns).text).to eq 'Architecture'
     expect(metadata.xpath('//oai_dc:dc/dc:publisher', ns).text).to eq 'Otter Tail County Historical Society'
     expect(metadata.xpath('//oai_dc:dc/dc:rights', ns).text).to eq 'Copyright © 2005 Otter Tail County Historical Society. Contact contributing institution for reproduction.'
+    expect(metadata.xpath('//oai_dc:dc/dc:identifier', ns).text).to eq 'https://collection.mndigital.org/catalog/otter:297'
   end
 end

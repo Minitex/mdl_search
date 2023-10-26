@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/Minitex/cdmbl.git
-  revision: d1a2b0ef25a4ae22dfdd54182138662b67c8a0c8
-  ref: d1a2b0e
+  revision: 68e154c7cae5f84fdc706ef28dbfd8f7492dbea0
+  ref: 68e154c
   specs:
     cdmbl (1.0.0)
       activesupport (>= 4.2)
@@ -235,7 +235,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
-    connection_pool (2.2.5)
+    connection_pool (2.4.1)
     console (1.15.3)
       fiber-local
     contentdm_api (0.6.0)
@@ -515,7 +515,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.5.1)
-    redis (4.8.0)
+    redis (4.8.1)
     redis-actionpack (5.3.0)
       actionpack (>= 5, < 8)
       redis-rack (>= 2.1.0, < 3)
@@ -612,14 +612,20 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    sentry-raven (3.1.2)
-      faraday (>= 1.0)
+    sentry-rails (5.12.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.12.0)
+    sentry-ruby (5.12.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+    sentry-sidekiq (5.12.0)
+      sentry-ruby (~> 5.12.0)
+      sidekiq (>= 3.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.5.5)
-      connection_pool (>= 2.2.2)
+    sidekiq (6.5.10)
+      connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
-      redis (>= 4.5.0)
+      redis (>= 4.5.0, < 5)
     sidekiq-failures (1.0.1)
       sidekiq (>= 4.0.0)
     signet (0.17.0)
@@ -773,7 +779,9 @@ DEPENDENCIES
   rubyzip
   sass-rails (~> 5.0)
   selenium-webdriver
-  sentry-raven
+  sentry-rails
+  sentry-ruby
+  sentry-sidekiq
   shoulda-matchers
   sidekiq (~> 6.5)
   sidekiq-failures (~> 1.0)

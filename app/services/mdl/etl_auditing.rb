@@ -29,8 +29,8 @@ module MDL
 
       job.update(completed_at: Time.current)
       if indexing_finished?(indexing_run)
-        notify_complete
         SolrClient.new.commit
+        notify_complete
       end
     end
 
@@ -55,7 +55,7 @@ module MDL
     end
 
     def notify_complete
-      Raven.capture_message('ETL Finished')
+      Sentry.capture_message('ETL Finished')
     end
 
     def indexing_finished?(indexing_run)

@@ -74,7 +74,7 @@ gem 'cancancan', '~> 3.4'
 # # CONTENTdm ETL
 gem 'devise', '~> 4.8'
 gem 'contentdm_api', '~> 0.6'
-gem 'cdmbl', github: 'Minitex/cdmbl', ref: 'd1a2b0e'
+gem 'cdmbl', github: 'Minitex/cdmbl', ref: '68e154c'
 gem 'sidekiq', '~> 6.5'
 gem 'sinatra', '~> 2.0', require: false
 gem 'sidekiq-failures', '~> 1.0'
@@ -98,5 +98,7 @@ gem 'blacklight-oembed', '~> 1.1'
 gem 'autoprefixer-rails', '~> 10.4.7' # Constraint to accommodate Node 8 on QA/Prod
 gem 'kaltura-client'
 
-gem 'sentry-raven'
+gem 'sentry-ruby'
+gem 'sentry-rails'
+gem 'sentry-sidekiq'
 gem 'strscan', '3.0.1'

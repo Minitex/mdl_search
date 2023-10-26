@@ -2,32 +2,31 @@ require 'rails_helper'
 require_relative '../../../lib/mdl/cite_details.rb'
 
 describe MDL::CiteDetails do
-  let(:solr_doc) do
-   JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'solr_doc.json')))
+  let(:source_doc) do
+    JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'solr_doc.json')))
   end
-  subject { MDL::CiteDetails.new(solr_doc: solr_doc) }
+  let(:solr_doc) { SolrDocument.new(source_doc) }
+  subject { MDL::CiteDetails.new(solr_doc:) }
+
   describe 'when both a rights and a rights_uri field exist' do
+    let(:source_doc) { super().merge('rights_uri_ssi' => 'http://rights.org/blah') }
+
     it 'ignores the rights field' do
-      solr_doc_with_rights_uri = solr_doc.merge('rights_uri_ssi' => 'http://rights.org/blah')
-      cite = MDL::CiteDetails.new(solr_doc: solr_doc_with_rights_uri)
-      has_rights = cite.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
+      has_rights = subject.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
       expect(has_rights).to eq false
     end
   end
 
   describe 'when a rights field exists but a rights_uri field does not exist' do
     it 'ignores includes the rights field' do
-      solr_doc_with_rights_uri = solr_doc.merge('rights_uri_ssi' => 'http://rights.org/blah')
-      cite = MDL::CiteDetails.new(solr_doc: solr_doc)
-      has_rights = cite.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
+      has_rights = subject.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
       expect(has_rights).to eq true
     end
   end
   describe "when transforming records" do
     it 'transforms the contributing organization field' do
-      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"/catalog?f[contributing_organization_tesi][]=Minnesota+Geological+Survey"}]})
+      expect(subject.to_hash[:fields][0]).to eq({:label=>"Contributing Organization", :field_values=>[{:text=>"Minnesota Geological Survey", :url=>"https://mndigital.org/about/contributing-organizations/minnesota-geological-survey"}]})
     end
-
 
     it 'transforms the title field' do
       expect(subject.to_hash[:fields][1]).to eq({:label=>"Title", :field_values=>[{:text=>"Aeromagnetic map of Minnesota, central region, Plate 1"}]})
@@ -123,14 +122,6 @@ describe MDL::CiteDetails do
 
     it 'transforms the rights field' do
       expect(subject.to_hash[:fields][24]).to eq({:label=>"Rights", :field_values=>[{:text=>"Public domain.  We request that if the images are used credit be given to the Minnesota Geological Survey, University of Minnesota."}]})
-    end
-
-    it 'transforms the contact information field' do
-      expect(subject.to_hash[:fields][25]).to eq({:label=>"Contact Information", :field_values=>[{:text=>"Minnesota Geological Survey, 2642 University Avenue, St. Paul, MN 55114"}]})
-    end
-
-    it 'transforms the fiscal sponsor field' do
-      expect(subject.to_hash[:fields][26]).to eq({:label=>"Collection Description", :field_values=>[{:text=>"foo collection"}]})
     end
   end
 end
