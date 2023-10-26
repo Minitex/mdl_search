@@ -31,7 +31,6 @@ namespace :mdl_ingester do
 
   desc 'Launch a background job to index a single record.'
   task :record, [:id] => :environment do |t, args|
-    require Rails.root.join('lib/mdl/etl_worker')
     IndexingRun.create!
     MDL::TransformWorker.perform_async(
       [args[:id].split(':')],
