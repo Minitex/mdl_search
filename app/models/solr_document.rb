@@ -32,17 +32,18 @@ class SolrDocument
   field_semantics.merge!(
     creator: 'creator_tesi',
     date: 'dat_ssi',
-    subject: 'subject_ssim',
+    subject: ['subject_ssim', 'keyword_tesi'],
     title: 'title_ssi',
+    coverage: ['city_ssim', 'county_ssim', 'state_ssi', 'country_ssi', 'geonam_ssi'],
     language: 'language_ssi',
-    format: 'physical_format_tesi',
+    format: ['physical_format_tesi', 'dimensions_ssi'],
     type: 'type_ssi',
     description: 'description_ts',
     source: 'publishing_agency_ssi',
-    relation: 'topic_ssim',
+    relation: ['topic_ssim', 'collection_name_ssi'],
     publisher: 'contributing_organization_ssi',
-    rights: 'rights_ssi',
-    identifier: MDL_ITEM_URL_FIELD
+    rights: ['rights_ssi', 'rights_uri_ssi', 'rights_status_ssi', 'rights_statement_ssi'],
+    identifier: [MDL_ITEM_URL_FIELD, 'local_identifier_ssi', 'identifier_ssi']
   )
 
   # @!attribute [r] contributing_organization
