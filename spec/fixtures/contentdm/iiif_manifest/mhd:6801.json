@@ -1,0 +1,791 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6801/manifest.json",
+  "label": "Edgar F. Comstock's Civil War pension documents, Minneapolis, Minnesota",
+  "metadata": [
+    {
+      "label": "City or Township",
+      "value": "Minneapolis"
+    },
+    {
+      "label": "Contact Information",
+      "value": "Northwest Minnesota Historical Center, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, Minnesota 56563 https://www.mnstate.edu/northwest-mn/ "
+    },
+    {
+      "label": "Contributing Organization",
+      "value": "Northwest Minnesota Historical Center"
+    },
+    {
+      "label": "Country",
+      "value": "United States"
+    },
+    {
+      "label": "County",
+      "value": "Hennepin"
+    },
+    {
+      "label": "Date Created",
+      "value": "1890-06-14"
+    },
+    {
+      "label": "Description",
+      "value": "Letters, claimant forms, and a declaration related to Edgar F. Comstock's Civil War pension."
+    },
+    {
+      "label": "Dimensions",
+      "value": "28 x 20.25"
+    },
+    {
+      "label": "Fiscal Sponsor",
+      "value": "Funding provided to the Minnesota Digital Library through the Minnesota Arts and Cultural Heritage Fund, a component of the Minnesota Clean Water, Land and Legacy constitutional amendment, ratified by Minnesota voters in 2008."
+    },
+    {
+      "label": "Minnesota Reflections Topic",
+      "value": "Politics and Government"
+    },
+    {
+      "label": "Geographic Feature",
+      "value": "Sara"
+    },
+    {
+      "label": "GeoNames URI",
+      "value": "http://sws.geonames.org/5037657/"
+    },
+    {
+      "label": "Local Identifier",
+      "value": "S248-EFComstock"
+    },
+    {
+      "label": "Language",
+      "value": "English"
+    },
+    {
+      "label": "Collection Name",
+      "value": "Solomon G. Comstock Papers"
+    },
+    {
+      "label": "Creator",
+      "value": "Comstock, Edgar F.; Comstock, Solomon G., 1842-1933"
+    },
+    {
+      "label": "Physical Format",
+      "value": "Letters (correspondence)"
+    },
+    {
+      "label": "Rights Status",
+      "value": "No Copyright - United States"
+    },
+    {
+      "label": "Rights Statement",
+      "value": "The organization that has made the Item available believes that the Item is in the Public Domain under the laws of the United States, but a determination was not made as to its copyright status under the copyright laws of other countries. The Item may not be in the Public Domain under the laws of other countries. Please refer to the organization that has made the Item available for more information.\r\n"
+    },
+    {
+      "label": "Use Determination URI",
+      "value": "http://rightsstatements.org/vocab/NoC-US/1.0/\r\n"
+    },
+    {
+      "label": "Library of Congress Subject Headings",
+      "value": "Letters; Letter writing; United States -- History -- Civil War, 1861-1865; Veterans;"
+    },
+    {
+      "label": "State or Province",
+      "value": "Minnesota"
+    },
+    {
+      "label": "Keywords",
+      "value": "Comstock, Solomon G., 1842-1933; Veterans; Comstock, Edgar F."
+    },
+    {
+      "label": "Title",
+      "value": "Edgar F. Comstock's Civil War pension documents, Minneapolis, Minnesota"
+    },
+    {
+      "label": "Type",
+      "value": "Text"
+    },
+    {
+      "label": "Repository",
+      "value": "Minnesota Digital Library"
+    },
+    {
+      "label": "Source",
+      "value": "<span>From: <a href=\"https://cdm16022.contentdm.oclc.org/digital/collection/mhd/id/6801\">Edgar F. Comstock's Civil War pension documents, Minneapolis, Minnesota</a></span>"
+    }
+  ],
+  "attribution": [
+    "",
+    "http://rightsstatements.org/vocab/NoC-US/1.0/\r\n"
+  ],
+  "seeAlso": {
+    "@id": "https://cdm16022.contentdm.oclc.org/oai/oai.php?verb=GetRecord&identifier=oai:cdm16022.contentdm.oclc.org:mhd/6801&metadataPrefix=oai_qdc",
+    "format": "application/xml",
+    "profile": "http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"
+  },
+  "within": "https://cdm16022.contentdm.oclc.org/iiif/mhd/manifest.json",
+  "sequences": [
+    {
+      "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6801/sequence/s0",
+      "@type": "sc:Sequence",
+      "label": "Edgar F. Comstock's Civil War pension documents, Minneapolis, Minnesota",
+      "canvases": [
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6798/canvas/c0",
+          "@type": "sc:Canvas",
+          "label": "Edgar F. Comstock letter, June 14, 1890, page 1",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6798/annotation/a0",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6798/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6798",
+                  "width": 4434,
+                  "height": 5862,
+                  "tiles": [
+                    {
+                      "width": 4434,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4434,
+                "height": 5862
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6798/canvas/c0"
+            }
+          ],
+          "width": 4434,
+          "height": 5862
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6799/canvas/c1",
+          "@type": "sc:Canvas",
+          "label": "Edgar F. Comstock letter, June 14, 1890, page 1",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6799/annotation/a1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6799/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6799",
+                  "width": 4565,
+                  "height": 5837,
+                  "tiles": [
+                    {
+                      "width": 4565,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4565,
+                "height": 5837
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6799/canvas/c1"
+            }
+          ],
+          "width": 4565,
+          "height": 5837
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6800/canvas/c2",
+          "@type": "sc:Canvas",
+          "label": "Edgar F. Comstock letter, June 14, 1890, page 3",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6800/annotation/a2",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6800/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:6800",
+                  "width": 4453,
+                  "height": 5857,
+                  "tiles": [
+                    {
+                      "width": 4453,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4453,
+                "height": 5857
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6800/canvas/c2"
+            }
+          ],
+          "width": 4453,
+          "height": 5857
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7053/canvas/c3",
+          "@type": "sc:Canvas",
+          "label": "Declaration for Original Invalid Pension, page 1",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7053/annotation/a3",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7053/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7053",
+                  "width": 2662,
+                  "height": 4261,
+                  "tiles": [
+                    {
+                      "width": 2662,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2662,
+                "height": 4261
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7053/canvas/c3"
+            }
+          ],
+          "width": 2662,
+          "height": 4261
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7054/canvas/c4",
+          "@type": "sc:Canvas",
+          "label": "Declaration for Original Invalid Pension, page 2",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7054/annotation/a4",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7054/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7054",
+                  "width": 2661,
+                  "height": 4250,
+                  "tiles": [
+                    {
+                      "width": 2661,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2661,
+                "height": 4250
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7054/canvas/c4"
+            }
+          ],
+          "width": 2661,
+          "height": 4250
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7055/canvas/c5",
+          "@type": "sc:Canvas",
+          "label": "A letter from Mr. Cole, Fergus Falls, Minnesota, to Edgar F. Comstock, Minneapolis, Minnesota\r\n",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7055/annotation/a5",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7055/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7055",
+                  "width": 3054,
+                  "height": 5853,
+                  "tiles": [
+                    {
+                      "width": 3054,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 3054,
+                "height": 5853
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7055/canvas/c5"
+            }
+          ],
+          "width": 3054,
+          "height": 5853
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7056/canvas/c6",
+          "@type": "sc:Canvas",
+          "label": "Edgar F. Comstock letter, December 31, 1890, page 1",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7056/annotation/a6",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7056/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7056",
+                  "width": 4167,
+                  "height": 5545,
+                  "tiles": [
+                    {
+                      "width": 4167,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4167,
+                "height": 5545
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7056/canvas/c6"
+            }
+          ],
+          "width": 4167,
+          "height": 5545
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7057/canvas/c7",
+          "@type": "sc:Canvas",
+          "label": "Edgar F. Comstock letter, December 31, 1890, page 2",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7057/annotation/a7",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7057/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7057",
+                  "width": 4180,
+                  "height": 5545,
+                  "tiles": [
+                    {
+                      "width": 4180,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4180,
+                "height": 5545
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7057/canvas/c7"
+            }
+          ],
+          "width": 4180,
+          "height": 5545
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7058/canvas/c8",
+          "@type": "sc:Canvas",
+          "label": "E.F. Comstock letter, December 31, 1890, page 1",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7058/annotation/a8",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7058/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7058",
+                  "width": 2000,
+                  "height": 4400,
+                  "tiles": [
+                    {
+                      "width": 2000,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2000,
+                "height": 4400
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7058/canvas/c8"
+            }
+          ],
+          "width": 2000,
+          "height": 4400
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7059/canvas/c9",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, January, 1890, back",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7059/annotation/a9",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7059/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7059",
+                  "width": 2000,
+                  "height": 4390,
+                  "tiles": [
+                    {
+                      "width": 2000,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2000,
+                "height": 4390
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7059/canvas/c9"
+            }
+          ],
+          "width": 2000,
+          "height": 4390
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7060/canvas/c10",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, June 18, 1890, front",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7060/annotation/a10",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7060/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7060",
+                  "width": 2090,
+                  "height": 4460,
+                  "tiles": [
+                    {
+                      "width": 2090,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2090,
+                "height": 4460
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7060/canvas/c10"
+            }
+          ],
+          "width": 2090,
+          "height": 4460
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7061/canvas/c11",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, June 18, 1890, back",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7061/annotation/a11",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7061/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7061",
+                  "width": 4462,
+                  "height": 2086,
+                  "tiles": [
+                    {
+                      "width": 4462,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 4462,
+                "height": 2086
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7061/canvas/c11"
+            }
+          ],
+          "width": 4462,
+          "height": 2086
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7062/canvas/c12",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, July 26, 1890, front\r\n",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7062/annotation/a12",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7062/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7062",
+                  "width": 2070,
+                  "height": 4460,
+                  "tiles": [
+                    {
+                      "width": 2070,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 2070,
+                "height": 4460
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7062/canvas/c12"
+            }
+          ],
+          "width": 2070,
+          "height": 4460
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7063/canvas/c13",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, December 1890, back",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7063/annotation/a13",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7063/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7063",
+                  "width": 1980,
+                  "height": 4390,
+                  "tiles": [
+                    {
+                      "width": 1980,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 1980,
+                "height": 4390
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7063/canvas/c13"
+            }
+          ],
+          "width": 1980,
+          "height": 4390
+        },
+        {
+          "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7064/canvas/c14",
+          "@type": "sc:Canvas",
+          "label": "Edgard F. Comstock claimant, December, 1890, back",
+          "images": [
+            {
+              "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7064/annotation/a14",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7064/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://cdm16022.contentdm.oclc.org/iiif/2/mhd:7064",
+                  "width": 1990,
+                  "height": 4400,
+                  "tiles": [
+                    {
+                      "width": 1990,
+                      "scaleFactors": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                      ]
+                    }
+                  ],
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 1990,
+                "height": 4400
+              },
+              "on": "https://cdm16022.contentdm.oclc.org/iiif/mhd:7064/canvas/c14"
+            }
+          ],
+          "width": 1990,
+          "height": 4400
+        }
+      ]
+    }
+  ],
+  "structures": [
+    {
+      "@id": "https://cdm16022.contentdm.oclc.org/iiif/mhd:6801/range/r0",
+      "@type": "sc:Range",
+      "label": "Edgar F. Comstock's Civil War pension documents, Minneapolis, Minnesota",
+      "ranges": [],
+      "canvases": [
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:6798/canvas/c0",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:6799/canvas/c1",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:6800/canvas/c2",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7053/canvas/c3",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7054/canvas/c4",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7055/canvas/c5",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7056/canvas/c6",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7057/canvas/c7",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7058/canvas/c8",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7059/canvas/c9",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7060/canvas/c10",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7061/canvas/c11",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7062/canvas/c12",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7063/canvas/c13",
+        "https://cdm16022.contentdm.oclc.org/iiif/mhd:7064/canvas/c14"
+      ],
+      "viewingHint": "top"
+    }
+  ]
+}

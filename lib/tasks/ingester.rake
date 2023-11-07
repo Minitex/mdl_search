@@ -64,6 +64,7 @@ namespace :mdl_ingester do
       qt: 'search',
       rows: 1_000_000,
       q: '*:*',
+      fl: 'id',
       wt: 'json'
     })
     count = response['response']['numFound']
