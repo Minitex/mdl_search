@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'vcr'
+require 'webmock/rspec'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
 
