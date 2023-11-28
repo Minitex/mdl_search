@@ -93,5 +93,11 @@ RSpec.configure do |config|
       spec.run
       Capybara.use_default_driver
     end
+
+    config.after(:each, type: :feature) do |e|
+      next unless e.exception
+      save_page
+      save_screenshot
+    end
   end
 end
