@@ -10,10 +10,7 @@ describe 'searching by MDL identifier' do
       click_on 'Search'
       result_link = find_link('A Statewide Movement for the Collection and Preservation of Minnesota\'s War Records')
       result_link.click
-
-      within('.searchResults') do
-        expect(page).to have_content('image 9 of 24')
-      end
+      expect(page).to have_selector('.searchResults', text: 'image 9 of 24')
     end
   end
 end
