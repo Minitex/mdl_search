@@ -22,7 +22,7 @@ module MDL
       msg_which = set_specs.size > 1 ? "#{set_specs.size} collections" : set_specs.first
       msg_from = from ? "from #{from}" : ''
       message = "ETL Started for #{msg_which} #{msg_from}".rstrip
-      Sentry.capture_message(message)
+      NotificationWorker.perform_async(message)
       CDMBL::ETLBySetSpecs.new(
         set_specs: set_specs,
         etl_config: config.tap { |c| c.merge!(from: from) if from },

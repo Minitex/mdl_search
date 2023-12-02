@@ -51,3 +51,9 @@ jobs:
         run: ./prep_uv.sh
       - name: Run Tests
         run: bundle exec rspec --tag ~skip_ci
+      - name: Upload Capybara Saved Pages
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: capybara
+          path: tmp/capybara

@@ -55,7 +55,7 @@ module MDL
     end
 
     def notify_complete
-      Sentry.capture_message('ETL Finished')
+      NotificationWorker.perform_async('ETL Finished')
     end
 
     def indexing_finished?(indexing_run)

@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'vcr'
+require 'webmock/rspec'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
 
@@ -91,6 +92,12 @@ RSpec.configure do |config|
       Capybara.current_driver = :selenium_chrome_headless
       spec.run
       Capybara.use_default_driver
+    end
+
+    config.after(:each, type: :feature) do |e|
+      next unless e.exception
+      save_page
+      save_screenshot
     end
   end
 end
