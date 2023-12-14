@@ -26,6 +26,18 @@
     %>
   </div>
 
+  <span class="input-group">
+    <label for="transcription_boost" class="sr-only">Transcription Boost</label>
+    <input
+      type="number"
+      min="1"
+      class="form-control"
+      name="transcription_boost"
+      placeholder="Transcription Boost"
+      value="<%= params[:transcription_boost] %>"
+    />
+  </span>
+
   <span class="input-group input-group-btn">
     <label for="search" class="sr-only"><%= t('blacklight.search.form.submit') %></label>
     <button type="submit" class="btn btn-primary search-btn" id="search">
