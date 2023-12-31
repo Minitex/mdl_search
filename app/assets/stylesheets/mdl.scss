@@ -282,7 +282,7 @@ h3.index_title {
 
 .search-btn {
 	border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 .blacklight-exhibits-index aside .nav-pills .btn-nav, .blacklight-sites-edit aside .nav-pills .btn-nav, .blacklight-sites-edit_exhibits aside .nav-pills .btn-nav, .blacklight-exhibits-new aside .nav-pills .btn-nav, .blacklight-home_pages-edit aside .nav-pills .btn-nav, .blacklight-exhibits-edit aside .nav-pills .btn-nav, .blacklight-appearances-edit aside .nav-pills .btn-nav, .blacklight-roles-index aside .nav-pills .btn-nav, .blacklight-metadata_configurations-edit aside .nav-pills .btn-nav, .blacklight-search_configurations-edit aside .nav-pills .btn-nav, .blacklight-catalog-admin aside .nav-pills .btn-nav, .blacklight-tags-index aside .nav-pills .btn-nav, .blacklight-searches-index aside .nav-pills .btn-nav, .blacklight-feature_pages-index aside .nav-pills .btn-nav, .blacklight-about_pages-index aside .nav-pills .btn-nav {
@@ -788,7 +788,6 @@ form.range_limit .btn-secondary {
 
 .icon-json {
   font-size: 3em;
-  margin-top: 15px;
 }
 
 .glossary {
@@ -1053,9 +1052,28 @@ h3.document-title-heading {
 	margin-bottom: 8px;
 }
 
+.number-to-text {
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	appearance: textfield;
+	-moz-appearance: textfield;
+}
+
 .pagination {
 	margin: 15px 0 5px -7px;
-	float: left;
+	input.jump-to-page {
+		border: 1px solid $light-gray;
+		width: 60px;
+	}
+
+	.btn {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 }
 
 .pagination > li > a {
