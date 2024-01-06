@@ -6,6 +6,11 @@ module MDL
 
     attr_accessor :collection, :id, :title, :type
 
+    def self.from_identifier(identifier)
+      collection, id = identifier.split(':')
+      new(collection:, id:)
+    end
+
     def initialize(collection: :missing_collection,
                    id: :missing_id,
                    title: '',

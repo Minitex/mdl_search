@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'thumbnail_link/:id' => 'thumbnail_links#show'
 
   get ":page" => "pages#show", constraints: lambda { |request|
-    %w(catalog sidekiq indexing).exclude?(request.params[:page])
+    %w(catalog sidekiq indexing lists).exclude?(request.params[:page])
   }
 
   require 'sidekiq/web'
@@ -70,6 +70,12 @@ Rails.application.routes.draw do
   resources :archive_download_requests, only: [:create, :show] do
     member do
       get :ready, as: :ready
+    end
+  end
+
+  resources :lists, only: [:index, :show] do
+    collection do
+      get 'items/:ids', to: 'lists#items'
     end
   end
 
