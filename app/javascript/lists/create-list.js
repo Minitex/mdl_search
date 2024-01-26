@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ModalListForm } from "./modal-list-form";
 import { repo } from "./repo";
 
-const CreateList = ({ onCreate }) => {
+const CreateList = ({ onCreate, className }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const closeModal = () => setModalOpen(false);
@@ -20,7 +20,7 @@ const CreateList = ({ onCreate }) => {
         onClose={closeModal}
         submitButtonText="Create List"
       />
-      <button className="btn btn-primary" onClick={() => setModalOpen(true)}>
+      <button className={`btn ${className}`} onClick={() => setModalOpen(true)}>
         Create New List
       </button>
     </>

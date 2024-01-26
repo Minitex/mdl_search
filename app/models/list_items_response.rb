@@ -7,12 +7,11 @@ class ListItemsResponse
   ) do
     def as_json(*)
       {
-        id:,
         title:,
         description:,
         collectionName: collection_name,
         thumbnailUrl: thumbnail_url,
-        catalogUrl: "/catalog/#{id}"
+        catalogUrl: "https://collection.mndigital.org/catalog/#{id}"
       }
     end
 

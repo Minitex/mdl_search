@@ -1,20 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { CreateList } from "../lists/create-list";
-import { repo } from "../lists/repo";
+import { repo, LIST_LIMIT } from "../lists/repo";
 
 /**
- * Initializes the application by setting up the repository, loading lists, and
- * attaching event listeners. Renders the CreateList React component once the
- * DOM is fully loaded.
+ * Applies list functionality in the context of a search results page;
+ * for instance, on URL path /catalog
  */
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   repo.init();
   loadLists();
   attachListeners();
   const createListNode = document.getElementById("create-list-root");
   ReactDOM.render(
-    <CreateList onCreate={addNewList} />,
+    <CreateList onCreate={addNewList} className="btn-primary" />,
     createListNode
   );
 });
@@ -27,7 +26,7 @@ async function addNewList(list) {
   createListOptions({ [list.id]: list }, listItem => {
     listItem.setAttribute("selected", "selected");
   });
-  enableAddToList(list.id);
+  await enableAddToList(list.id);
 }
 
 /**
@@ -35,7 +34,13 @@ async function addNewList(list) {
  */
 async function loadLists() {
   const lists = await repo.loadLists();
-  createListOptions(lists);
+  const selectedListId = await repo.getSelectedList();
+  createListOptions(lists, async listItem => {
+    if (selectedListId && listItem.value === selectedListId) {
+      listItem.setAttribute("selected", "selected");
+      await enableAddToList(selectedListId);
+    }
+  });
 }
 
 /**
@@ -92,17 +97,59 @@ async function addOrRemoveItem(event) {
   } else {
     await repo.removeFromList(documentId, listId);
   }
-  await updateSelectOptionText(listId);
+  const list = await repo.loadList(listId);
+  onListUpdated(list);
+}
+
+/**
+ * Apply any necessary updates to the DOM in response to an
+ * update to the given list.
+ * @param {object} list
+ */
+function onListUpdated(list) {
+  updateSelectOptionText(list);
+  applyCheckboxState(list)
 }
 
 /**
  * Updates the text of a select option based on the updated list.
- * @param {string} listId - The ID of the list to update.
+ * @param {object} list - The list to update.
  */
-async function updateSelectOptionText(listId) {
-  const list = await repo.loadList(listId);
+function updateSelectOptionText(list) {
+  const listId = list.id;
   const option = document.querySelector(`#selectList option[value="${listId}"]`);
   option.textContent = listOptionLabel(list);
+}
+
+/**
+ * Limit the number of items a list can have. No-op if the limit
+ * is not yet reached
+ * @param {object} list
+ */
+function applyCheckboxState(list) {
+  const limitReached = list.count >= LIST_LIMIT;
+
+  document
+    .querySelectorAll("input.list-eligible[type='checkbox']")
+    .forEach(chbx => {
+      chbx.setAttribute("data-list-id", list.id);
+      const itemId = chbx.getAttribute("data-document-id");
+      const isChecked = itemId in list.selectedHash;
+      chbx.checked = isChecked;
+
+      const label = chbx.parentNode;
+      const labelText = label.querySelector(".js-label-text");
+
+      if (limitReached && !isChecked) {
+        chbx.setAttribute("disabled", "disabled");
+        label.setAttribute("title", `List can have a max of ${LIST_LIMIT} items`);
+        labelText.textContent = "Can't add more";
+      } else {
+        chbx.removeAttribute("disabled");
+        label.removeAttribute("title");
+        labelText.textContent = isChecked ? "Added to List" : "Add to List";
+      }
+    });
 }
 
 /**
@@ -110,9 +157,9 @@ async function updateSelectOptionText(listId) {
  * @param {Event} event - The event object.
  */
 function setCurrentList(event) {
-  const selectedList = event.target.value;
-  if (selectedList) {
-    enableAddToList(selectedList);
+  const selectedListId = event.target.value;
+  if (selectedListId) {
+    enableAddToList(selectedListId);
   } else {
     disableAddToList();
   }
@@ -124,23 +171,20 @@ function setCurrentList(event) {
  */
 async function enableAddToList(listId) {
   let list = await repo.loadList(listId);
-  document
-    .querySelectorAll("input.list-eligible[type='checkbox']")
-    .forEach(node => {
-      node.setAttribute("data-list-id", listId);
-      const itemId = node.getAttribute("data-document-id");
-      node.checked = !!list.selectedHash[itemId];
-    });
+  applyCheckboxState(list);
+  // show the checkboxes
   document
     .querySelectorAll(".document-add-to-list")
     .forEach(node => node.classList.remove("hide"));
+  await repo.setSelectedList(listId);
 }
 
 /**
  * Disables the addition of items to any list.
  */
-function disableAddToList() {
+async function disableAddToList() {
   document
     .querySelectorAll(".document-add-to-list")
     .forEach(node => node.classList.add("hide"));
+  await repo.setSelectedList(null);
 }

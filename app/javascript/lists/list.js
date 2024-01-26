@@ -3,6 +3,7 @@ import { repo } from "./repo";
 import { ModalListForm } from "./modal-list-form";
 import { Modal } from "./modal";
 import { ListItem } from "./list-item";
+import { generateCsv } from "./generate-csv";
 
 const List = ({ listId }) => {
   const [list, setList] = useState({});
@@ -51,18 +52,26 @@ const List = ({ listId }) => {
     window.location = "/lists";
   }
 
-  const onItemRemoved = () => {
-    setAlertText("Item removed. Uncheck to undo.");
-    setTimeout(() => {
-      setAlertText("");
-    }, 3000);
-  }
-
-  const onItemAdded = () => {
-    setAlertText("Item added");
+  const alert = message => {
+    setAlertText(message);
     setTimeout(() => {
       setAlertText("");
     }, 1500);
+  }
+
+  const downloadCsv = (e) => {
+    e.preventDefault();
+    const content = generateCsv(items);
+    const csv = new Blob([content], { type: "text/csv;charset=utf-8;" });
+    const csvUrl = URL.createObjectURL(csv);
+    const link = document.createElement("a");
+    link.href = csvUrl;
+    link.setAttribute("download", `${list.name}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(csvUrl);
   }
 
   return (
@@ -79,13 +88,18 @@ const List = ({ listId }) => {
       <div className="row mb-2">
         <p><strong>Note:</strong> The link to this list won't work for someone else or in another browser.</p>
       </div>
+      {items.length > 0 && (
+        <div className="row mb-2">
+          <a href="" onClick={downloadCsv}>Download List</a>
+        </div>
+      )}
       {items.map(item => (
         <ListItem
           key={item.id}
           item={item}
           listId={list.id}
-          onRemoved={onItemRemoved}
-          onAdded={onItemAdded}
+          onRemoved={() => alert("Item removed. Uncheck to undo.")}
+          onAdded={() => alert("Item added")}
         />
       ))}
       <div className="row mt-4">
