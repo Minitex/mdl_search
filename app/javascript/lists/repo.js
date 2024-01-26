@@ -1,5 +1,7 @@
 import localforage from "localforage";
 
+const LIST_LIMIT = 50;
+
 const repo = {
   /**
    * Initializes the IndexedDB configuration.
@@ -26,7 +28,9 @@ const repo = {
   loadLists: async function() {
     const lists = {};
     await localforage.iterate((value, key, _i) => {
-      lists[key] = value;
+      if (typeof value === "object" && value !== null) {
+        lists[key] = value;
+      }
     })
     return lists;
   },
@@ -83,6 +87,10 @@ const repo = {
    */
   addToList: async function(itemId, listId) {
     const list = await this.loadList(listId);
+    if (list.count >= LIST_LIMIT) {
+      throw new Error(`list is at capacity (${LIST_LIMIT} items)`);
+    }
+
     list.selectedHash[itemId] = itemId;
     list.count = Object.keys(list.selectedHash).length;
     return await localforage.setItem(listId, list);
@@ -102,6 +110,25 @@ const repo = {
   },
 
   /**
+   * Gets the ID of the currently selected list
+   * @returns {Promise<string>}
+   */
+  getSelectedList: async function() {
+    return localforage.getItem('selected-list');
+  },
+
+  /**
+   * @param {string} listId - The ID of the list being selected
+   */
+  setSelectedList: async function(listId) {
+    if (listId) {
+      return await localforage.setItem('selected-list', listId);
+    } else {
+      return await localforage.removeItem('selected-list');
+    }
+  },
+
+  /**
    * Returns the current timestamp.
    * @return {number} The current timestamp (unix time).
    */
@@ -110,4 +137,4 @@ const repo = {
   }
 };
 
-export { repo };
+export { repo, LIST_LIMIT };
