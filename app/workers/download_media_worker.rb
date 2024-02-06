@@ -1,5 +1,6 @@
 class DownloadMediaWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :archive_generation
 
   # @param archive_download_request_id [Integer] ID of the ArchiveDownloadRequest
   def perform(archive_download_request_id)

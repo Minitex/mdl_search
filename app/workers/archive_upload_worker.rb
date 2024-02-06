@@ -1,5 +1,6 @@
 class ArchiveUploadWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :archive_generation
 
   # @param archive_download_request_id [Integer] ID of the ArchiveDownloadRequest
   # @param archive_path [String] file system path of the archive to be uploaded

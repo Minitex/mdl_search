@@ -91,6 +91,7 @@ module MDL
             filename = File.join(work_dir, "#{basename}.#{ext}")
             response = internet.get(url)
             response.save(filename, 'wb') if response.success?
+            response.finish
           end
         end
 
