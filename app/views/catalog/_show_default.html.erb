@@ -78,7 +78,7 @@
       createUV('#uv', {
         iiifResourceUri: '<%= manifest_url %>',
         root: '../../../uv/',
-        configUri: '/uv/config.json',
+        configUri: '<%= uvconfig_path(params[:id]) %>',
         collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
         manifestIndex: Number(urlDataProvider.get('m', 0)),
         sequenceIndex: Number(urlDataProvider.get('s', 0)),
