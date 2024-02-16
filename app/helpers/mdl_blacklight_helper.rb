@@ -10,7 +10,7 @@ module MDLBlacklightHelper
   end
 
   def json_result_link
-    link_to(raw('<div class="icon-json float-right"><span class="sr-only">Download JSON</span></div>'), current_search_json, {class: 'json-link'})
+    link_to(raw('<div class="icon-json"><span class="sr-only">Download JSON</span></div>'), current_search_json, {class: 'json-link'})
   end
 
   def json_page_link
