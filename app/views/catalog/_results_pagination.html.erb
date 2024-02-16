@@ -1,12 +1,41 @@
 <% show_json_link ||= false %>
 <% if show_pagination? and @response.total_pages > 1 %>
- <div class="row record-padding">
-  <div class="col-md-12">
-    <div class="pagination">
-      <%= paginate @response, :outer_window => 2, :theme => 'blacklight' %>
-    </div>
-    <%= json_result_link if show_json_link %>
+ <div class="row">
+  <div class="col-md-10">
+    <%= paginate @response, window: 1, outer_window: 2, theme: 'blacklight' %>
   </div>
+  <div class="col-md-2">
+    <div class="pagination jump-to-page">
+      <%= form_tag(search_catalog_path, method: :get, class: 'form-inline') do %>
+        <%= params_as_hidden_fields(params.except(:controller, :action, :page, :commit)) %>
+        <div class="row no-gutters">
+          <div class="form-group">
+            <label for="jump-to-page" class="sr-only">Jump to Page</label>
+            <%=
+              number_field_tag(
+                :page,
+                params[:page],
+                min: 1,
+                max: @response.total_pages,
+                id: 'jump-to-page',
+                class: 'form-control number-to-text jump-to-page',
+                aria: { describedby: 'jump-to-page-desc' }
+              )
+            %>
+            <%= submit_tag 'go', class: 'btn btn-primary' %>
+          </div>
+          <div class="col">
+            <small id="jump-to-page-desc">Jump to Page</small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if show_json_link %>
+    <div class="col-md-1">
+      <%= json_result_link %>
+    </div>
+  <% end %>
  </div>
 <% else %>
   <%= json_result_link if show_json_link %>
