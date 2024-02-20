@@ -67,7 +67,7 @@ sudo brew services start nginx
 Install Node via [NVM](https://github.com/nvm-sh/nvm) (or preferred alternative)
 
 ```bash
-nvm install 12
+nvm install 20
 ```
 
 Install Yarn
@@ -119,19 +119,38 @@ Enter an interactive session with the application (must be running in another ta
 * [MySQL] If you run into issues with the database, try removing and recreating the db volumes:
   * `$ docker-compose down -v; docker-compose up`
 
-## Updating the React Component
+## Updating the Webpacker Image
 
-The React dependency associated with this project are included in the `package.json` file and tied to specific commits:
+When you update certain frontend elements of the app, you'll need to rebuild the webpacker image. Things like adding a new "pack" (entrypoint), adding or removing dependencies, and updating the version of NodeJS all require rebuilding the image. Here's how you do it:
 
-```json
-  ...
-    "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#52091d617b5d",
-  ...
-```
+1) Find the container ID of the webpacker container
 
-After running the production build process on one of these projects and pushing the new files to GitHub, include the new commit hash in the `mdl_search` project `package.json` file and run the following command (located in the root directory of this repo): `./yarn_rebuild.sh`.
+    `docker ps -qa -f name=webpacker`
 
-For more details on how to develop and build these React components, see the [React Borealis project page](https://github.com/UMNLibraries/react-borealis).
+2) If it's running, stop it
+
+    `docker stop $CONTAINER_ID`
+
+3) remove the container:
+
+    `docker rm $CONTAINER_ID`
+
+4) Find the image(s)
+
+    `docker images mdl_search_webpacker -q`
+
+5) Remove the images
+
+    `docker rm $IMAGE_ID`
+
+6) Build the new image (assuming you're done making changes for now)
+
+    `docker-compose build webpacker`
+
+7) Run the container
+
+    `docker-compose up -d webpacker`
+
 
 # Testing
 
