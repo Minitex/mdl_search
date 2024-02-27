@@ -25,6 +25,12 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
+User-agent: Bytedance
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
 User-agent: *
 Disallow: /catalog/facet # blocks facet pages
 Disallow: /catalog.atom
