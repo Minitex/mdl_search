@@ -7,6 +7,7 @@ class ListItemsResponse
   ) do
     def as_json(*)
       {
+        id:,
         title:,
         description:,
         collectionName: collection_name,

@@ -47,13 +47,13 @@ const MyLists = () => {
         onSubmit={createList}
         submitButtonText="Create"
       />
-      <div className="row mt-3">
+      <div className="row mt-3" role="list">
         {Object.entries(lists).map(([id, list]) => {
           return (
-            <div key={id} className="mb-3 col-xs-12 col-lg-6">
+            <div key={id} className="mb-3 col-xs-12 col-lg-6" role="listitem">
               <div className="card">
                 <div className="card-body">
-                  <h4 className="card-title">
+                  <h4 className="card-title" aria-label={list.name}>
                     <a href={`/lists/${id}`}>{list.name}</a>
                   </h4>
                   <p className="card-text">{list.count} {list.count == 1 ? "item" : "items"}</p>

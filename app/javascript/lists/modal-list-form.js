@@ -11,12 +11,12 @@ const ModalListForm = ({
 }) => {
   return (
     <Modal open={open} onClose={onClose} title="Name Your List">
-      {open && (<ListForm
+      <ListForm
         onSubmit={onSubmit}
         onCancel={onClose}
         submitButtonText={submitButtonText}
         name={name}
-      />)}
+      />
     </Modal>
   );
 };

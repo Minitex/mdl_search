@@ -1,9 +1,11 @@
 import React from "react";
 
 const Modal = ({ open, onClose, title, children }) => {
+  if (!open) return <></>;
+
   return (
     <>
-      <div className={`modal fade ${open && "show d-block"}`} tabIndex="-1" role="dialog">
+      <div className="modal fade show d-block" tabIndex="-1" role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header d-flex">
@@ -18,7 +20,7 @@ const Modal = ({ open, onClose, title, children }) => {
           </div>
         </div>
       </div>
-      {open && <div className="modal-backdrop fade show"></div>}
+      <div className="modal-backdrop fade show"></div>
     </>
   );
 };
