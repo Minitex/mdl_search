@@ -22,7 +22,7 @@ class CiteThumbnail extends React.Component {
 
 const propTypes = {
   thumbnail: PropTypes.string.isRequired,
-  src: PropTypes.array.isRequired,
+  src: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 }
