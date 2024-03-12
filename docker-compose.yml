@@ -69,6 +69,8 @@ services:
   webpacker:
       build: .
       command: ./bin/webpack-dev-server
+      environment:
+        - NODE_OPTIONS=--openssl-legacy-provider
       volumes:
         - .:/app
       ports:

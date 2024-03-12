@@ -3,7 +3,7 @@ LABEL maintainer="fenne035@umn.edu"
 
 # Stolen from https://github.com/jfroom/docker-compose-rails-selenium-example
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash \
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash \
   && apt-get update && apt-get install -qq -y --no-install-recommends \
   build-essential nodejs \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
