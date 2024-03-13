@@ -75,10 +75,10 @@ const List = ({ listId }) => {
   }
 
   return (
-    <div className="container position-relative">
+    <div className="container position-relative" role="list" aria-labelledby="list-name">
       {alertText && <div className="alert alert-warning alert-fixed">{alertText}</div>}
       <div className="row">
-        <h1>{list.name}</h1>
+        <h1 id="list-name">{list.name}</h1>
       </div>
       <div className="row mb-3">
         <button className="btn btn-primary" type="button" onClick={editList}>

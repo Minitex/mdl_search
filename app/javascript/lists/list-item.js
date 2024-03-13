@@ -20,7 +20,7 @@ const ListItem = ({ item, listId, onRemoved, onAdded }) => {
   }
 
   return (
-    <div className={`row mb-2 ${deleted ? "list-item-deleted" : ""}`} key={item.id}>
+    <div className={`row mb-2 ${deleted ? "list-item-deleted" : ""}`} role="listitem" aria-label={item.title}>
       <div className="col col-1">
         <form className="form">
           <div className="form-group">
