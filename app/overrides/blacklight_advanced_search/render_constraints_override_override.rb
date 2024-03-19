@@ -17,9 +17,21 @@ module BlacklightAdvancedSearch
       return "".html_safe unless search_state.filters.any?
 
       Deprecation.silence(Blacklight::RenderConstraintsHelperBehavior) do
-        safe_join(search_state.filters.map do |field|
-          render_filter_element(field.key, field.values, search_state)
-        end, "\n")
+        filter_elements = search_state.filters.map do |field|
+          # We sometimes receive params that are formatted incorrectly. For
+          # instance:
+          #   f[contributing_organization_ssi][0]=somevalue
+          # when it should be
+          #   f[contributing_organization_ssi][]=somevalue
+          # This causes the values to be arrays of Hashes instead of strings
+          # so this normalizes them in that situation.
+          values = field.values.flat_map do |v|
+            v.respond_to?(:values) ? v.values : v
+          end
+          render_filter_element(field.key, values, search_state)
+        end
+
+        safe_join(filter_elements, "\n")
       end
     end
   end
