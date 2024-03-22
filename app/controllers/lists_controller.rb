@@ -7,7 +7,11 @@ class ListsController < ApplicationController
 
   def items
     solr_response = fetch_items
-    render json: ListItemsResponse.from_solr(solr_response)
+    catalog_uri = URI::HTTPS.build(host: request.host, path: '/catalog')
+    render json: ListItemsResponse.from_solr(
+      solr_response,
+      catalog_path: catalog_uri.to_s
+    )
   end
 
   private

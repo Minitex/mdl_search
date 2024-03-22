@@ -1,4 +1,5 @@
 const headersByAttribute = {
+  id: "ID",
   title: "Title",
   description: "Description",
   collectionName: "Collection",

@@ -3,7 +3,8 @@ class ListItemsResponse
     :id,
     :title,
     :description,
-    :collection_name
+    :collection_name,
+    :catalog_path
   ) do
     def as_json(*)
       {
@@ -11,17 +12,16 @@ class ListItemsResponse
         title:,
         description:,
         collectionName: collection_name,
-        thumbnailUrl: thumbnail_url,
-        catalogUrl: "https://collection.mndigital.org/catalog/#{id}"
+        catalogUrl: "#{catalog_path}/#{id}"
       }
-    end
-
-    def thumbnail_url
-      MDL::Thumbnail.from_identifier(id).thumbnail_url
     end
   end
 
-  def self.from_solr(response)
+  ###
+  # @param response [Hash] the parsed Solr response body JSON
+  # @param catalog_path [String] the base URL to the catalog resource
+  # @return [ListItemsResponse]
+  def self.from_solr(response, catalog_path:)
     docs = Array(response.dig('response', 'docs'))
     items = docs.map do |doc|
       item = Item.new
@@ -29,6 +29,7 @@ class ListItemsResponse
       item.title = doc['title_ssi']
       item.description = doc['description_ts']
       item.collection_name = doc['collection_name_ssi']
+      item.catalog_path = catalog_path
       item
     end
     new(items)
