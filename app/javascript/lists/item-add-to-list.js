@@ -53,9 +53,9 @@ const ItemAddToList = ({ documentId }) => {
   const update = () => setUpdatedAt(repo.now());
 
   return (
-    <div className="item-add-to-list mt-3">
+    <section className="item-add-to-list mt-3">
+      <h2>Add to List</h2>
       {alertText && <div className="alert alert-warning alert-fixed">{alertText}</div>}
-      <CreateList className="btn-secondary w-100" onCreate={update} />
       <div className="lists-available mt-2">
         {lists.map(list => (
           <div key={list.id} className="form-check form-check-inline w-100">
@@ -70,7 +70,11 @@ const ItemAddToList = ({ documentId }) => {
               className="form-check-label d-flex justify-content-between w-100"
               htmlFor={`list-${list.id}`}
             >
-              <span>{list.name}</span>
+              <span
+                className="d-inline-block text-truncate"
+                style={{maxWidth: "130px"}}
+                title={list.name}
+              >{list.name}</span>
               <span>
                 <small className="text-muted">
                   {` ${list.count} item${list.count === 1 ? "" : "s"}`}
@@ -80,7 +84,8 @@ const ItemAddToList = ({ documentId }) => {
           </div>
         ))}
       </div>
-    </div>
+      <CreateList className="btn-secondary w-100 mt-2" onCreate={update} />
+    </section>
   );
 };
 
