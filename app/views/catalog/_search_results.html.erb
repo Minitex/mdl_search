@@ -1,12 +1,16 @@
 <h2 class="sr-only top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
-<% @page_title = t('blacklight.search.page_title.title', :constraints => render_search_to_page_title(params), :application_name => application_name) %>
+<% @page_title = t('blacklight.search.page_title.title', constraints: render_search_to_page_title(params), application_name: application_name) %>
 
 <% content_for(:head) do -%>
   <%= render partial: 'catalog/opensearch_response_metadata', locals: { response: @response } %>
   <%= rss_feed_link_tag %>
   <%= atom_feed_link_tag %>
   <%= json_api_link_tag %>
+<% end %>
+
+<% content_for(:webpack_bundles) do %>
+  <%= javascript_pack_tag 'addToList' %>
 <% end %>
 
 <% content_for(:container_header) do -%>
@@ -16,6 +20,22 @@
 <% end %>
 
 <%= render 'search_header' %>
+
+<%- if !@response.empty? %>
+<div class="my-3 py-2 add-to-list-widgets row justify-content-between">
+  <div class="col" id="create-list-root"></div>
+  <div class="col d-flex justify-content-end">
+    <form class="form form-inline">
+      <div class="form-group">
+        <label for="selectList" class="mr-1">Add to:</label>
+        <select class="form-control form-control-lg list-form-control" id="selectList">
+          <option value=>No List</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+<% end %>
 
 <div class="top-pagination"><%= render partial: 'results_pagination', locals: {show_json_link: false}%></div>
 

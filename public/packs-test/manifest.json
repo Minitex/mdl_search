@@ -1,7 +1,9 @@
 {
-  "drawMap.js": "/packs-test/drawMap.js",
-  "fullRecord.js": "/packs-test/fullRecord.js",
+  "addToList.js": "/packs-test/addToList.js",
   "citation.js": "/packs-test/citation.js",
+  "drawMap.js": "/packs-test/drawMap.js",
+  "itemAddToList.js": "/packs-test/itemAddToList.js",
+  "lists.js": "/packs-test/lists.js",
   "universalviewer.js": "/packs-test/universalviewer.js",
   "universalviewer_lib.js": "/packs-test/universalviewer_lib.js"
 }

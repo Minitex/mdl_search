@@ -1,5 +1,10 @@
 <% counter = document_counter_with_offset(document_counter) %>
+<% document_actions = capture do %>
+  <%= render_index_doc_actions document, wrapping_class: "index-document-functions col-sm-3 col-lg-2" %>
+<% end %>
+
 <div class="panel panel-default gallery-result">
+  <%= document_actions %>
   <div class="panel-body">
     <div class="image-wrapper">
       <%=

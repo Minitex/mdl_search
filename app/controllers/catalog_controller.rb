@@ -195,6 +195,12 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :thumbnail_tag
     config.show.thumbnail_method = :thumbnail_tag
 
+    config.index.document_actions[:add_to_list] = Blacklight::Configuration::ToolConfig.new(
+      key: :add_to_list,
+      name: :add_to_list,
+      partial: 'add_to_list'
+    )
+
     config.view.gallery(
       default: false,
       partials: [:index],

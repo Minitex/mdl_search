@@ -20,7 +20,7 @@
 
 .gallery-result {
   display: inline-block;
-  height: 230px;
+  min-height: 230px;
   .panel-body {
     width: 185px;
     height: 230px;
@@ -33,6 +33,14 @@
     max-height: 150px;
     max-width: 150px;
     overflow: hidden;
+  }
+  .index-document-functions {
+    padding-top: 0.5rem;
+  }
+  .document-add-to-list {
+    label {
+      margin-bottom: 0;
+    }
   }
 }
 

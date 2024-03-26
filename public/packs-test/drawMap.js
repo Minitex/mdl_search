@@ -37,12 +37,32 @@ var MDLdrawMap =
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -60,234 +80,70 @@ var MDLdrawMap =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/packs-test/";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 91);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/javascript/packs/drawMap.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 53:
+/***/ "./app/javascript/draw_map.js":
+/*!************************************!*\
+  !*** ./app/javascript/draw_map.js ***!
+  \************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = drawMap;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__needle_js__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__linked_thumbnail_js__ = __webpack_require__(54);
-
-
-
-function pinHTML(location) {
-  return new __WEBPACK_IMPORTED_MODULE_1__linked_thumbnail_js__["a" /* default */](location.title_ssi, location.id, location.type_ssi).toHtml();
-}
-
-function reDrawMap(coordinates, needle) {
-  var coords = (coordinates.lat + ',' + coordinates.lng).replace(/\./g, '+');
-  $.ajax({
-    url: '/nearbys/' + coords,
-    jsonp: 'callback',
-    dataType: 'jsonp',
-    success: function success(nearbyLocations) {
-      nearbyLocations.forEach(function (location) {
-        needle.pinIt(location.coordinates_llsi.split(','), pinHTML(location));
-      });
-    },
-    error: function error(xhr, type, exception) {
-      console(type + ' ---- ' + exception);
-    }
-  });
-}
-
-function drawMap(coordinates, nearbyLocations, mapName) {
-  var needle = new __WEBPACK_IMPORTED_MODULE_0__needle_js__["a" /* default */](coordinates, mapName);
-  nearbyLocations.forEach(function (location) {
-    needle.pinIt(location.coordinates_llsi.split(','), pinHTML(location), location.title_ssi.substring(0, 50) + '...');
-  });
-  needle.onMove(reDrawMap, needle);
-  return needle;
-}
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return drawMap; });\n/* harmony import */ var _needle_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./needle.js */ \"./app/javascript/needle.js\");\n/* harmony import */ var _linked_thumbnail_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linked_thumbnail.js */ \"./app/javascript/linked_thumbnail.js\");\n\n\nfunction pinHTML(location) {\n  return new _linked_thumbnail_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"](location.title_ssi, location.id, location.type_ssi, location.anchor).toHtml();\n}\nfunction reDrawMap(coordinates, needle) {\n  const coords = `${coordinates.lat},${coordinates.lng}`.replace(/\\./g, '+');\n  $.ajax({\n    url: `/nearbys/${coords}`,\n    jsonp: 'callback',\n    dataType: 'jsonp',\n    success: function (nearbyLocations) {\n      nearbyLocations.forEach(location => {\n        needle.pinIt(location.coordinates_llsi.split(','), pinHTML(location));\n      });\n    },\n    error: function (xhr, type, exception) {\n      console(`${type} ---- ${exception}`);\n    }\n  });\n}\nfunction drawMap(coordinates, nearbyLocations, mapName) {\n  const needle = new _needle_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](coordinates, mapName);\n  nearbyLocations.forEach(location => {\n    needle.pinIt(location.coordinates_llsi.split(','), pinHTML(location), `${location.title_ssi.substring(0, 50)}...`);\n  });\n  needle.onMove(reDrawMap, needle);\n  return needle;\n}\n\n//# sourceURL=webpack://MDL%5Bname%5D/./app/javascript/draw_map.js?");
 
 /***/ }),
 
-/***/ 54:
+/***/ "./app/javascript/draw_map_with_popup.js":
+/*!***********************************************!*\
+  !*** ./app/javascript/draw_map_with_popup.js ***!
+  \***********************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-var LinkedThumbnail = function () {
-  function LinkedThumbnail(title, id, type) {
-    _classCallCheck(this, LinkedThumbnail);
-
-    this.title = title;
-    this.id = id;
-    this.type = type;
-    this.toHtml = this.toHtml.bind(this);
-    this.thumbnail = this.thumbnail.bind(this);
-  }
-
-  _createClass(LinkedThumbnail, [{
-    key: 'toHtml',
-    value: function toHtml() {
-      return ['' + this.recordLink('thumbnail', this.thumbnail()), '' + this.recordLink(this.title, this.title)].join(' ');
-    }
-  }, {
-    key: 'recordLink',
-    value: function recordLink(alt, data) {
-      return '<a href="/catalog/' + this.id + '?pn=false" alt="' + alt + '" class="map-pin-link">' + data + '</a>';
-    }
-  }, {
-    key: 'thumbnail',
-    value: function thumbnail() {
-      return '<div><img alt="' + this.title + '" src="/thumbnails/' + this.id + '/' + this.type + '" /></div>';
-    }
-  }]);
-
-  return LinkedThumbnail;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (LinkedThumbnail);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return drawMapWithPopup; });\n/* harmony import */ var _draw_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./draw_map.js */ \"./app/javascript/draw_map.js\");\n/* harmony import */ var _linked_thumbnail_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linked_thumbnail.js */ \"./app/javascript/linked_thumbnail.js\");\n\n\nfunction drawMapWithPopup(title, id, type, coordinates, nearbyLocations, mapName) {\n  const pinHTML = new _linked_thumbnail_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"](title, id, type).toHtml();\n  Object(_draw_map_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(coordinates, nearbyLocations, mapName).pinIt(coordinates, pinHTML).openPopup();\n}\n\n//# sourceURL=webpack://MDL%5Bname%5D/./app/javascript/draw_map_with_popup.js?");
 
 /***/ }),
 
-/***/ 91:
+/***/ "./app/javascript/linked_thumbnail.js":
+/*!********************************************!*\
+  !*** ./app/javascript/linked_thumbnail.js ***!
+  \********************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__draw_map__ = __webpack_require__(53);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "drawMap", function() { return __WEBPACK_IMPORTED_MODULE_0__draw_map__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__draw_map_with_popup__ = __webpack_require__(93);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "drawMapWithPopup", function() { return __WEBPACK_IMPORTED_MODULE_1__draw_map_with_popup__["a"]; });
-
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return LinkedThumbnail; });\nclass LinkedThumbnail {\n  constructor(title, id, type, anchorPath) {\n    this.title = title;\n    this.id = id;\n    this.type = type;\n    this.anchorPath = anchorPath;\n    this.toHtml = this.toHtml.bind(this);\n    this.thumbnail = this.thumbnail.bind(this);\n  }\n  toHtml() {\n    return [`${this.recordLink('thumbnail', this.thumbnail())}`, `${this.recordLink(this.title, this.title)}`].join(' ');\n  }\n  recordLink(alt, data) {\n    return `<a href=\"/catalog/${this.id}?pn=false#${this.anchorPath}\" alt=\"${alt}\" class=\"map-pin-link\">${data}</a>`;\n  }\n  thumbnail() {\n    return `<div><img alt=\"${this.title}\" src=\"/thumbnails/${this.id}/${this.type}\" /></div>`;\n  }\n}\n\n//# sourceURL=webpack://MDL%5Bname%5D/./app/javascript/linked_thumbnail.js?");
 
 /***/ }),
 
-/***/ 92:
+/***/ "./app/javascript/needle.js":
+/*!**********************************!*\
+  !*** ./app/javascript/needle.js ***!
+  \**********************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-// "[Pine] Needle," a Leaflet wrapper
-var Needle = function () {
-  _createClass(Needle, null, [{
-    key: 'config',
-    value: function config(coordinates) {
-      return {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        center: coordinates,
-        id: 'cj17xqnh8003j2rquui5gm3ar',
-        minZoom: 7,
-        accessToken: 'pk.eyJ1IjoibGlic3lzIiwiYSI6Iks3SXpZUTQifQ.mVUUXOBDusaTEnEsSO3yAQ'
-      };
-    }
-  }]);
-
-  function Needle(coordinates) {
-    var mapName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'mdl_map';
-
-    _classCallCheck(this, Needle);
-
-    this.coordinates = coordinates;
-    this.mapName = mapName;
-    this._map = this._map.bind(this);
-    this._tileIt = this._tileIt.bind(this);
-    this.pinIt = this.pinIt.bind(this);
-    this._attachMap = this._attachMap.bind(this);
-    this._attachMap();
-    this.onMove = this.onMove.bind(this);
-  }
-
-  _createClass(Needle, [{
-    key: 'onMove',
-    value: function onMove(handler) {
-      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      this.map.on('dragend', function (e) {
-        handler.apply(undefined, [e.target.getCenter()].concat(args));
-      });
-    }
-  }, {
-    key: 'pinIt',
-    value: function pinIt(coordinates, pinHTML, altText) {
-      return L.marker(coordinates, { alt: 'Pin for: ' + altText }).bindPopup(pinHTML).addTo(this.map);
-    }
-
-    // Initialize the map and attach it to the DOM
-
-  }, {
-    key: '_attachMap',
-    value: function _attachMap() {
-      this.map = this._map();
-      this._tileIt();
-    }
-  }, {
-    key: '_tileIt',
-    value: function _tileIt() {
-      L.tileLayer('https://api.mapbox.com/styles/v1/libsys/{id}/tiles/256/{z}/{x}/{y}?access_token={accessToken}', Needle.config(this.coordinates)).addTo(this.map);
-    }
-  }, {
-    key: '_map',
-    value: function _map() {
-      if (!this.maplib) {
-        this.maplib = L.map(this.mapName).setView(this.coordinates, 10);
-      }
-      return this.maplib;
-    }
-  }]);
-
-  return Needle;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Needle);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Needle; });\n// \"[Pine] Needle,\" a Leaflet wrapper\nclass Needle {\n  static config(coordinates) {\n    return {\n      attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors',\n      center: coordinates,\n      id: 'cj17xqnh8003j2rquui5gm3ar',\n      minZoom: 7\n    };\n  }\n  constructor(coordinates) {\n    let mapName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'mdl_map';\n    this.coordinates = coordinates;\n    this.mapName = mapName;\n    this._map = this._map.bind(this);\n    this._tileIt = this._tileIt.bind(this);\n    this.pinIt = this.pinIt.bind(this);\n    this._attachMap = this._attachMap.bind(this);\n    this._attachMap();\n    this.onMove = this.onMove.bind(this);\n  }\n  onMove(handler) {\n    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {\n      args[_key - 1] = arguments[_key];\n    }\n    this.map.on('dragend', function (e) {\n      handler(e.target.getCenter(), ...args);\n    });\n  }\n  pinIt(coordinates, pinHTML, altText) {\n    return L.marker(coordinates, {\n      alt: `Pin for: ${altText}`\n    }).bindPopup(pinHTML).addTo(this.map);\n  }\n\n  // Initialize the map and attach it to the DOM\n  _attachMap() {\n    this.map = this._map();\n    this._tileIt();\n  }\n  _tileIt() {\n    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', Needle.config(this.coordinates)).addTo(this.map);\n  }\n  _map() {\n    if (!this.maplib) {\n      this.maplib = L.map(this.mapName).setView(this.coordinates, 10);\n    }\n    return this.maplib;\n  }\n}\n\n//# sourceURL=webpack://MDL%5Bname%5D/./app/javascript/needle.js?");
 
 /***/ }),
 
-/***/ 93:
+/***/ "./app/javascript/packs/drawMap.js":
+/*!*****************************************!*\
+  !*** ./app/javascript/packs/drawMap.js ***!
+  \*****************************************/
+/*! exports provided: drawMap, drawMapWithPopup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = drawMapWithPopup;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__draw_map_js__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__linked_thumbnail_js__ = __webpack_require__(54);
-
-
-
-function drawMapWithPopup(title, id, type, coordinates, nearbyLocations, mapName) {
-  var pinHTML = new __WEBPACK_IMPORTED_MODULE_1__linked_thumbnail_js__["a" /* default */](title, id, type).toHtml();
-  Object(__WEBPACK_IMPORTED_MODULE_0__draw_map_js__["a" /* default */])(coordinates, nearbyLocations, mapName).pinIt(coordinates, pinHTML).openPopup();
-}
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _draw_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../draw_map */ \"./app/javascript/draw_map.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"drawMap\", function() { return _draw_map__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _draw_map_with_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../draw_map_with_popup */ \"./app/javascript/draw_map_with_popup.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"drawMapWithPopup\", function() { return _draw_map_with_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n\n\n\n//# sourceURL=webpack://MDL%5Bname%5D/./app/javascript/packs/drawMap.js?");
 
 /***/ })
 
