@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ModalListForm } from "./modal-list-form";
 import { repo } from "./repo";
+import { eventTracking } from "./event-tracking";
 
 const CreateList = ({ onCreate, className }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -9,6 +10,7 @@ const CreateList = ({ onCreate, className }) => {
   const createList = async (name) => {
     const list = await repo.createList(name);
     onCreate(list);
+    eventTracking.listCreated();
     closeModal();
   }
 

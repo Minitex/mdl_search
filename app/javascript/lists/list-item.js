@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { repo } from "./repo";
+import { eventTracking } from "./event-tracking";
 
 const ListItem = ({ item, listId, onRemoved, onAdded }) => {
   const [deleted, setDeleted] = useState(false);
@@ -7,8 +8,10 @@ const ListItem = ({ item, listId, onRemoved, onAdded }) => {
   const addOrRemoveItem = async (shouldRemove) => {
     if (shouldRemove) {
       await repo.removeFromList(item.id, listId);
+      eventTracking.itemRemoved(item.id);
     } else {
       await repo.addToList(item.id, listId);
+      eventTracking.itemAdded(item.id);
     }
   };
 

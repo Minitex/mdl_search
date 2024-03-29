@@ -34,14 +34,14 @@ describe("MyLists", () => {
   it("supports creating a list", async () => {
     const { getByRole } = await renderComponent();
 
-    const createListButton = getByRole("button", { name: "Add List" });
+    const createListButton = getByRole("button", { name: "Create New List" });
     fireEvent.click(createListButton);
     const modalDialog = getByRole("dialog");
     const { getByText } = within(modalDialog);
     getByText("Name Your List");
     const input = getByRole("textbox", { name: "List Name" });
     fireEvent.change(input, { target: { value: "Quiddich Players" } });
-    fireEvent.click(getByRole("button", { name: "Create" }));
+    fireEvent.click(getByRole("button", { name: "Create List" }));
 
     await waitFor(() => expect(repo.createList).toHaveBeenCalled());
     expect(repo.createList).toHaveBeenCalledWith("Quiddich Players");

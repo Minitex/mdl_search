@@ -4,6 +4,7 @@ import { ModalListForm } from "./modal-list-form";
 import { Modal } from "./modal";
 import { ListItem } from "./list-item";
 import { generateCsv } from "./generate-csv";
+import { eventTracking } from "./event-tracking";
 
 const List = ({ listId }) => {
   const [list, setList] = useState({});
@@ -48,6 +49,7 @@ const List = ({ listId }) => {
 
   const deleteList = async () => {
     await repo.deleteList(listId);
+    eventTracking.listDeleted();
     closeDeleteModal();
     window.location = "/lists";
   }
@@ -61,6 +63,7 @@ const List = ({ listId }) => {
 
   const downloadCsv = (e) => {
     e.preventDefault();
+    eventTracking.listDownloaded();
     const content = generateCsv(items);
     const csv = new Blob([content], { type: "text/csv;charset=utf-8;" });
     const csvUrl = URL.createObjectURL(csv);

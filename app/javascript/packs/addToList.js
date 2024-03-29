@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { CreateList } from "../lists/create-list";
+import { eventTracking } from "../lists/event-tracking";
 import { repo, LIST_LIMIT } from "../lists/repo";
 
 /**
@@ -94,8 +95,10 @@ async function addOrRemoveItem(event) {
   const listId = input.getAttribute("data-list-id");
   if (input.checked) {
     await repo.addToList(documentId, listId);
+    eventTracking.itemAdded(documentId);
   } else {
     await repo.removeFromList(documentId, listId);
+    eventTracking.itemRemoved(documentId);
   }
   const list = await repo.loadList(listId);
   onListUpdated(list);

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { repo } from "./repo";
-import { ModalListForm } from "./modal-list-form";
+import { CreateList } from "./create-list";
 
 const MyLists = () => {
   const [lists, setLists] = useState({});
   const [dirtiedAt, setDirtiedAt] = useState(repo.now());
-  const [modalOpen, setModalOpen] = useState(false);
 
   const loadLists = async () => {
     const myLists = await repo.loadLists();
@@ -18,13 +17,9 @@ const MyLists = () => {
     loadLists();
   }, [dirtiedAt]);
 
-  const createList = async (name) => {
-    await repo.createList(name);
+  const onCreateList = async () => {
     setDirtiedAt(repo.now());
-    closeModal();
   }
-
-  const closeModal = () => setModalOpen(false);
 
   return (
     <div className="container">
@@ -34,19 +29,9 @@ const MyLists = () => {
           <p>
             <strong>Note:</strong> You won't see lists created in another browser here. To view those lists, open the browser you used when creating them.
           </p>
-          <button
-            className="btn btn-primary"
-            onClick={() => setModalOpen(true)}>
-            Add List
-          </button>
+          <CreateList onCreate={onCreateList} className="btn-primary" />
         </div>
       </div>
-      <ModalListForm
-        open={modalOpen}
-        onClose={closeModal}
-        onSubmit={createList}
-        submitButtonText="Create"
-      />
       <div className="row mt-3" role="list">
         {Object.entries(lists).map(([id, list]) => {
           return (

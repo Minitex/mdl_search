@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { repo } from "./repo";
 import { CreateList } from "./create-list";
+import { eventTracking } from "./event-tracking";
 
 /**
  * This is the component that handles adding an item to a list
@@ -33,6 +34,7 @@ const ItemAddToList = ({ documentId }) => {
     try {
       await repo.addToList(documentId, listId);
       alert("Item added");
+      eventTracking.itemAdded(documentId);
     } catch ({ message }) {
       alert(message);
     }
@@ -41,6 +43,7 @@ const ItemAddToList = ({ documentId }) => {
   const remove = async listId => {
     await repo.removeFromList(documentId, listId);
     alert("Item removed");
+    eventTracking.itemRemoved(documentId);
   }
 
   const alert = message => {
