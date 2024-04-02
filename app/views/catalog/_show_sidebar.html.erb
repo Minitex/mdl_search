@@ -4,6 +4,7 @@
     @document.collection_url,
     class: 'btn btn-primary'
   ) %>
+  <div id="item-add-to-list-root" attr-document-id="<%= @document.id %>"></div>
 <% unless @document.more_like_this.empty? %>
   <div class="card panel-default more-like-this">
     <div class="card-header">Related Items</div>
@@ -14,3 +15,7 @@
 <% end %>
 
 <%= json_page_link %>
+
+<% content_for(:webpack_bundles) do %>
+  <%= javascript_pack_tag 'itemAddToList' %>
+<% end %>
