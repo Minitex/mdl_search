@@ -1,0 +1,5 @@
+<div id="lists-root" class="w-100" data-list-id="<%= params[:id] %>"></div>
+
+<% content_for(:webpack_bundles) do %>
+  <%= javascript_pack_tag 'lists' %>
+<% end %>

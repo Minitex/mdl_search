@@ -409,7 +409,7 @@ a.remove:hover {
 	height: 87px;
 }
 
-a.dropdown-toggle {
+a.dropdown-toggle, a.my-lists {
 	color: $black;
 	font-size: 0.9rem;
 	height: 87px;
@@ -803,6 +803,31 @@ form.range_limit .btn-secondary {
 	margin: 0 12px 12px 0;
 }
 
+.list-form-control {
+	border: 1px solid $light-gray;
+	border-radius: 0.25rem;
+}
+
+.add-to-list-widgets {
+	background-color: $lightest-gray;
+}
+
+.list-item-deleted {
+	opacity: 45%;
+}
+
+.item-add-to-list {
+	background: #ecedf0;
+	border: 1px solid #d3d4d7;
+	border-radius: 4px;
+	padding: 1rem;
+}
+
+.item-add-to-list h2 {
+	font-family: 'Roboto', helvetica, arial, sans-serif !important;
+    	font-size: 1.5rem;
+}
+
 /* Homepage styles */
 
 #home-search {
@@ -1019,11 +1044,11 @@ form.range_limit .btn-secondary {
 
 .gallery-result {
 	background-color: $lightest-gray;
-	height: 250px !important;
+	min-height: 250px !important;
 }
 
 .gallery-result .panel-body {
-	height: 250px !important;
+	min-height: 250px !important;
 	padding: 15px;
 }
 
@@ -1093,6 +1118,28 @@ h3.document-title-heading {
 
 .toggle_bookmark {
 	display: none !important;
+}
+
+.hide {
+	display: none;
+}
+
+.alert-fixed {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1000;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 1040;
 }
 /* End search results item page styles */
 

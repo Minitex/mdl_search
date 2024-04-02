@@ -49,7 +49,7 @@ jobs:
         run: bin/rails db:schema:load
       - name: Prep UV
         run: ./prep_uv.sh
-      - name: Run Tests
+      - name: Run Backend Tests
         run: bundle exec rspec --tag ~skip_ci
       - name: Upload Capybara Saved Pages
         uses: actions/upload-artifact@v3
@@ -57,3 +57,5 @@ jobs:
         with:
           name: capybara
           path: tmp/capybara
+      - name: Run Frontend Tests
+        run: npm test
