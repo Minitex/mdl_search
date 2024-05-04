@@ -79,6 +79,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tracks, only: [:show]
+
   get 'contentdm-images' => 'contentdm_images#show'
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'
