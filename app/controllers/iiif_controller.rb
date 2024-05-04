@@ -11,8 +11,9 @@ class IiifController < ApplicationController
     if document.key?('iiif_manifest_ss')
       render body: document['iiif_manifest_ss'], content_type: 'application/json'
     else
+      base_uri = URI::HTTPS.build(host: request.host)
       doc = MDL::BorealisDocument.new(document: document)
-      manifest = IiifManifest.new(doc)
+      manifest = IiifManifest.new(doc, base_url: base_uri.to_s)
       render json: manifest
     end
   end

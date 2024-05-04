@@ -24,8 +24,9 @@ VCR.configure do |config|
   config.default_cassette_options = { record: :once }
   config.ignore_localhost = true
   config.filter_sensitive_data('<KS>') do |int|
-    if int.request.uri.match(%r{www.kaltura.com})
-      JSON.parse(int.request.body)['ks']
+    req = int.request
+    if req.uri.match(%r{www.kaltura.com}) && req.method == :post
+      JSON.parse(req.body)['ks']
     end
   end
 end

@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   end
 
   resources :uvconfig, only: [:show]
+  resources :tracks, only: [:show]
 
   get 'contentdm-images' => 'contentdm_images#show'
   get 'contentdm-images/info' => 'contentdm_images#info'

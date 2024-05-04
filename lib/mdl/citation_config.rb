@@ -36,8 +36,8 @@ module MDL
         manifest = if document.key?('iiif_manifest_ss')
           JSON.parse(document['iiif_manifest_ss'])
         else
-          doc = BorealisDocument.new(document: document)
-          IiifManifest.new(doc).as_json
+          doc = BorealisDocument.new(document:)
+          IiifManifest.new(doc, base_url:).as_json
         end
         CiteDownloadAssetsFromManifest.call(manifest)
       end

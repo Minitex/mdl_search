@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe IiifManifest do
   describe '#as_json' do
-    let(:instance) { IiifManifest.new(doc) }
+    let(:instance) do
+      IiifManifest.new(doc, base_url: 'https://collection.mndigital.org')
+    end
 
     context 'with a video doc' do
       let(:doc) { build(:borealis_document, :video) }
@@ -78,11 +80,16 @@ describe IiifManifest do
           }
         ])
 
-        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
+        expect(result['rendering'][1]['id']).to eq('https://collection.mndigital.org/tracks/1_fisppzr2.vtt')
         expect(result['rendering'][1]['type']).to eq('Text')
-        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
-        expect(result['rendering'][1]['format']).to eq('application/pdf')
-        expect(result['rendering'][1]['thumbnail']).to eq([
+        expect(result['rendering'][1]['label']['en']).to eq(['Captions'])
+        expect(result['rendering'][1]['format']).to eq('text/vtt')
+
+        expect(result['rendering'][2]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
+        expect(result['rendering'][2]['type']).to eq('Text')
+        expect(result['rendering'][2]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][2]['format']).to eq('application/pdf')
+        expect(result['rendering'][2]['thumbnail']).to eq([
           {
             'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/sll/id/22547',
             'type' => 'Image',
@@ -158,11 +165,16 @@ describe IiifManifest do
           }
         ])
 
-        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
+        expect(result['rendering'][1]['id']).to eq('https://collection.mndigital.org/tracks/1_i1bal3lz.vtt')
         expect(result['rendering'][1]['type']).to eq('Text')
-        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
-        expect(result['rendering'][1]['format']).to eq('application/pdf')
-        expect(result['rendering'][1]['thumbnail']).to eq([
+        expect(result['rendering'][1]['label']['en']).to eq(['Captions'])
+        expect(result['rendering'][1]['format']).to eq('text/vtt')
+
+        expect(result['rendering'][2]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
+        expect(result['rendering'][2]['type']).to eq('Text')
+        expect(result['rendering'][2]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][2]['format']).to eq('application/pdf')
+        expect(result['rendering'][2]['thumbnail']).to eq([
           {
             'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll548/id/1193',
             'type' => 'Image',
@@ -190,6 +202,7 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
+        expect(result['rendering'].size).to eq(5)
         expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Video')
         expect(result['rendering'][0]['label']['en']).to eq(['Video Part 1'])
@@ -380,6 +393,7 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
+        expect(result['rendering'].size).to eq(4)
         expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Sound')
         expect(result['rendering'][0]['label']['en']).to eq(['Audio Part 1'])

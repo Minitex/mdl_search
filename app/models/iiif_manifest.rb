@@ -19,6 +19,11 @@ class IiifManifest
       format: 'image/jpeg'
     }
   }.freeze
+  private_constant :ANNOTATION_DATA_BY_TYPE
+  RENDERABLE_ASSET_CLASSES = ANNOTATION_DATA_BY_TYPE.keys.freeze
+  private_constant :RENDERABLE_ASSET_CLASSES
+  AV_ASSETS = [MDL::BorealisVideo, MDL::BorealisAudio].freeze
+  private_constant :AV_ASSETS
 
   delegate :collection,
            :id,
@@ -26,12 +31,22 @@ class IiifManifest
            :assets,
            to: :borealis_document
 
+  # @return [MDL::BorealisDocument]
   attr_reader :borealis_document
 
-  def initialize(borealis_document)
+  # @return [String]
+  attr_reader :base_url
+
+  ###
+  # @param borealis_document [MDL::BorealisDocument]
+  # @param base_url [String]
+  def initialize(borealis_document, base_url:)
     @borealis_document = borealis_document
+    @base_url = base_url
   end
 
+  ###
+  # @return [Hash]
   def as_json(*)
     {
       '@context' => 'http://iiif.io/api/presentation/3/context.json',
@@ -58,7 +73,7 @@ class IiifManifest
           }
         }
       end,
-      'items' => canvasable_assets.map { |a| canvas(a) }
+      'items' => canvasable_assets.map(&method(:canvas))
     }.tap do |hsh|
       if borealis_document.document['rights_statement_ssi']
         hsh['requiredStatement'] = {
@@ -67,7 +82,7 @@ class IiifManifest
           }
       end
       if renderable_assets.any?
-        hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
+        hsh['rendering'] = renderable_assets.flat_map(&method(:rendering))
       end
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
@@ -80,13 +95,13 @@ class IiifManifest
   private
 
   def details
-    MDL::CiteDetails.new(
-      solr_doc: borealis_document.document
-    ).details
+    MDL::CiteDetails
+      .new(solr_doc: borealis_document.document)
+      .details
   end
 
   def base_identifier
-    "https://collection.mndigital.org/iiif/info/#{collection}/#{id}"
+    "#{base_url}/iiif/info/#{collection}/#{id}"
   end
 
   def canvas(asset)
@@ -181,9 +196,10 @@ class IiifManifest
   end
 
   def rendering(asset)
+    renderings = []
     if asset.playlist?
-      asset.playlist_data.map.with_index do |data, idx|
-        {
+      asset.playlist_data.each_with_index do |data, idx|
+        renderings << {
           'id' => asset.src(data['entry_id']),
           'type' => annotation_body_type(asset),
           'label' => {
@@ -193,7 +209,7 @@ class IiifManifest
         }
       end
     else
-      {
+      renderings << {
         'id' => asset.src,
         'type' => annotation_body_type(asset),
         'label' => {
@@ -209,6 +225,23 @@ class IiifManifest
         ]
       }
     end
+    if supports_captions?(asset)
+      entry_id = case asset
+      when MDL::BorealisVideo then asset.video_id
+      when MDL::BorealisAudio then asset.audio_id
+      end
+      renderings << {
+        'id' => "#{base_url}/tracks/#{entry_id}.vtt",
+        'type' => 'Text',
+        'label' => { 'en' => ['Captions'] },
+        'format' => 'text/vtt'
+      }
+    end
+    renderings
+  end
+
+  def supports_captions?(asset)
+    AV_ASSETS.include?(asset.class) && !asset.playlist?
   end
 
   def structure(asset, range_index)
@@ -248,18 +281,13 @@ class IiifManifest
 
   def canvasable_assets
     assets.select do |a|
-      [MDL::BorealisVideo, MDL::BorealisAudio].include?(a.class)
+      AV_ASSETS.include?(a.class)
     end
   end
 
   def renderable_assets
     assets.select do |a|
-      [
-        MDL::BorealisVideo,
-        MDL::BorealisAudio,
-        MDL::BorealisPdf,
-        MDL::BorealisImage
-      ].include?(a.class)
+      RENDERABLE_ASSET_CLASSES.include?(a.class)
     end
   end
 

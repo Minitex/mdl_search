@@ -65,7 +65,9 @@ describe MDL::DownloadAsset do
   end
 
   describe '.assets_from_manifest_v3' do
-    let(:manifest_v3) { IiifManifest.new(doc).as_json }
+    let(:manifest_v3) do
+      IiifManifest.new(doc, base_url: 'collection.mndigital.com').as_json
+    end
 
     context 'with a playlist' do
       let(:doc) { build(:borealis_document, :video_playlist) }
