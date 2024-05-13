@@ -141,7 +141,7 @@ When you update certain frontend elements of the app, you'll need to rebuild the
 
 5) Remove the images
 
-    `docker rm $IMAGE_ID`
+    `docker rmi $IMAGE_ID`
 
 6) Build the new image (assuming you're done making changes for now)
 

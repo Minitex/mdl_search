@@ -16,8 +16,4 @@ done
 bundle exec rake db:migrate db:test:prepare db:seed
 yarn install
 
-# Copy UV assets to their expected locations in public/
-echo "Preparing UniversalViewer assets..."
-./prep_uv.sh
-
 echo "Finished ✅"

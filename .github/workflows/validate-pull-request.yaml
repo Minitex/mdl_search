@@ -47,8 +47,6 @@ jobs:
         run: yarn install
       - name: Setup DB
         run: bin/rails db:schema:load
-      - name: Prep UV
-        run: ./prep_uv.sh
       - name: Run Backend Tests
         run: bundle exec rspec --tag ~skip_ci
       - name: Upload Capybara Saved Pages
