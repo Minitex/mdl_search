@@ -5,9 +5,7 @@ module MDL
   describe QueueIiifSearchProcessing do
     describe '.format' do
       let(:document) do
-        YAML.load_file(
-          File.join(Rails.root, 'spec', 'fixtures', 'contentdm', filename)
-        )
+        FactoryBot.build(:cdm_document, fixture: filename)
       end
 
       context 'with an audio playlist document' do
