@@ -7,8 +7,7 @@ class FetchCaptionService
   def self.fetch(entry_id)
     service = new
     response = service.list_caption_assets(entry_id)
-    caption_asset = response
-      .objects
+    caption_asset = Array(response.objects)
       .lazy
       .select { |o| o.file_ext == 'srt' }
       .sort_by { |o| -o.accuracy }

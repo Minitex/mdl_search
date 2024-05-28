@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe FetchCaptionService do
   around do |spec|
-    VCR.use_cassette('kaltura/caption_assets') { spec.run }
+    VCR.use_cassette('kaltura/captions') { spec.run }
   end
 
   context 'when there is more than one format available' do
@@ -13,6 +13,12 @@ describe FetchCaptionService do
         00:00:12,020 --> 00:00:14,110
         Okay.
       VTT
+    end
+  end
+
+  context 'when no captions are available' do
+    it 'returns nil' do
+      expect(described_class.fetch('asdf')).to eq(nil)
     end
   end
 end

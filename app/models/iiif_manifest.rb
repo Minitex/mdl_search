@@ -130,6 +130,22 @@ class IiifManifest
         hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
       else
         hsh['duration'] = borealis_document.duration
+        if supports_captions?(asset)
+          hsh['rendering'] = [
+            {
+              'id' => "#{base_url}/tracks/#{collection}:#{borealis_document.id}.vtt",
+              'type' => 'Text',
+              'label' => { 'en' => ['English'] },
+              'format' => 'text/vtt'
+            },
+            {
+              'id' => asset.src,
+              'type' => annotation_body_type(asset),
+              'duration' => borealis_document.duration,
+              'format' => annotation_body_format(asset)
+            }
+          ]
+        end
       end
       width, height = annotation_aspect(asset)
 
@@ -196,10 +212,9 @@ class IiifManifest
   end
 
   def rendering(asset)
-    renderings = []
     if asset.playlist?
-      asset.playlist_data.each_with_index do |data, idx|
-        renderings << {
+      asset.playlist_data.map.with_index do |data, idx|
+        {
           'id' => asset.src(data['entry_id']),
           'type' => annotation_body_type(asset),
           'label' => {
@@ -209,7 +224,7 @@ class IiifManifest
         }
       end
     else
-      renderings << {
+      [{
         'id' => asset.src,
         'type' => annotation_body_type(asset),
         'label' => {
@@ -223,21 +238,8 @@ class IiifManifest
             'format' => 'image/jpeg'
           }
         ]
-      }
+      }]
     end
-    if supports_captions?(asset)
-      entry_id = case asset
-      when MDL::BorealisVideo then asset.video_id
-      when MDL::BorealisAudio then asset.audio_id
-      end
-      renderings << {
-        'id' => "#{base_url}/tracks/#{entry_id}.vtt",
-        'type' => 'Text',
-        'label' => { 'en' => ['Captions'] },
-        'format' => 'text/vtt'
-      }
-    end
-    renderings
   end
 
   def supports_captions?(asset)

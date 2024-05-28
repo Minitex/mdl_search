@@ -21,12 +21,28 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = false
-  config.default_cassette_options = { record: :once }
+  config.default_cassette_options = {
+    record: ENV.fetch('VCR_RECORD_MODE', :once).to_sym,
+    match_requests_on: %i(method uri body query)
+  }
   config.ignore_localhost = true
+  # config.debug_logger = $stdout
   config.filter_sensitive_data('<KS>') do |int|
     req = int.request
-    if req.uri.match(%r{www.kaltura.com}) && req.method == :post
-      JSON.parse(req.body)['ks']
+    next unless req.uri.match(%r{www.kaltura.com})
+
+    case req.method
+    when :post then JSON.parse(req.body)['ks']
+    when :get then req.uri.match(/ks=(.*)\z/).captures[0]
+    end
+  end
+  config.before_playback do |interaction|
+    req = interaction.request
+    next unless req.uri.match(%r{www.kaltura.com})
+
+    case req.method
+    when :post then req.body.sub!('<KS>', ENV['KALTURA_SESSION'])
+    when :get then req.uri.sub!('<KS>', ENV['KALTURA_SESSION'])
     end
   end
 end

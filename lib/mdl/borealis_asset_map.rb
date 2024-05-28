@@ -1,56 +1,43 @@
+require_relative './borealis_asset'
+require_relative './borealis_image'
+require_relative './borealis_audio'
+require_relative './borealis_video'
+require_relative './borealis_pdf'
+require_relative './borealis_ppt'
+
 module MDL
   class BorealisAssetMap
-    attr_reader :format_field,
-                :video_klass,
-                :audio_klass,
-                :pdf_klass,
-                :ppt_klass,
-                :image_klass
+    MAPPING = {
+      'image/jpeg' => BorealisImage,
+      'image/jp2' => BorealisImage,
+      'image/jpg' => BorealisImage,
+      'tif' => BorealisImage,
+      'jp2' => BorealisImage,
+      'jpg' => BorealisImage,
+      'audio/mp3' => BorealisAudio,
+      'audio/mpeg' => BorealisAudio,
+      'mp3' => BorealisAudio,
+      'mp4' => BorealisVideo,
+      'video/dv' => BorealisVideo,
+      'video/mp4' => BorealisVideo,
+      'video/dvvideo/mp4' => BorealisVideo,
+      'video/mpeg4' => BorealisVideo,
+      'pdf' => BorealisPdf,
+      'pdfpage' => BorealisPdf,
+      'application/pdf' => BorealisPdf,
+      'pptx' => BorealisPpt
+    }.freeze
+    private_constant :MAPPING
 
-    def initialize(format_field: 'jp2',
-                   video_klass: BorealisVideo,
-                   audio_klass: BorealisAudio,
-                   pdf_klass: BorealisPdf,
-                   ppt_klass: BorealisPpt,
-                   image_klass: BorealisImage)
+    REGEX = /;|\n|\s/
+    private_constant :REGEX
 
-      @format_field = (format_field.nil?) ? 'jp2' : format_field
-      @video_klass  = video_klass
-      @audio_klass  = audio_klass
-      @pdf_klass    = pdf_klass
-      @ppt_klass    = ppt_klass
-      @image_klass  = image_klass
-    end
-
-    def map
-      mapping.fetch(sanitized_format)
-    end
-
-    def sanitized_format
-      format_field.gsub(/;|\n|\s/, '').downcase
-    end
-
-    def mapping
-      {
-        'image/jpeg' => image_klass,
-        'image/jp2' => image_klass,
-        'image/jpg' => image_klass,
-        'tif' => image_klass,
-        'jp2' => image_klass,
-        'jpg' => image_klass,
-        'audio/mp3' => audio_klass,
-        'audio/mpeg' => audio_klass,
-        'mp3' => audio_klass,
-        'mp4' => video_klass,
-        'video/dv' => video_klass,
-        'video/mp4' => video_klass,
-        'video/dvvideo/mp4' => video_klass,
-        'video/mpeg4' => video_klass,
-        'pdf' => pdf_klass,
-        'pdfpage' => pdf_klass,
-        'application/pdf' => pdf_klass,
-        'pptx' => ppt_klass
-      }
+    ###
+    # @param format_field [String]
+    # @return [Class<BorealisAsset>]
+    def self.[](format_field)
+      sanitized = (format_field || 'jp2').gsub(REGEX, '').downcase
+      MAPPING.fetch(sanitized)
     end
   end
 end
