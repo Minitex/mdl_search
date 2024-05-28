@@ -10,6 +10,17 @@ class TracksController < ApplicationController
   private
 
   def vtt_content
-    FetchCaptionService.fetch(params[:id])
+    client = Blacklight.default_index.connection
+    response = client.get('select', params: {
+      defType: 'edismax',
+      fq: "id:\"#{RSolr.solr_escape(params[:id])}\"",
+      fl: 'captions_ts',
+      qt: 'search',
+      rows: 1,
+      q: '*:*',
+      wt: 'json'
+    })
+    docs = Array(response.dig('response', 'docs'))
+    docs.first&.[]('captions_ts')
   end
 end

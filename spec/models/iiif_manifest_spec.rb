@@ -56,6 +56,20 @@ describe IiifManifest do
                 ]
               }
             ],
+            'rendering' => [
+              {
+                'format' => 'text/vtt',
+                'id' => 'https://collection.mndigital.org/tracks/sll:22548.vtt',
+                'label' => { 'en' => ['English'] },
+                'type' => 'Text'
+              },
+              {
+                'duration' => 7260,
+                'format' => 'video/mp4',
+                'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                'type' => 'Video'
+              }
+            ],
             'thumbnail' => [
               {
                 'id' => '/images/video-1.png',
@@ -80,16 +94,11 @@ describe IiifManifest do
           }
         ])
 
-        expect(result['rendering'][1]['id']).to eq('https://collection.mndigital.org/tracks/1_fisppzr2.vtt')
+        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
         expect(result['rendering'][1]['type']).to eq('Text')
-        expect(result['rendering'][1]['label']['en']).to eq(['Captions'])
-        expect(result['rendering'][1]['format']).to eq('text/vtt')
-
-        expect(result['rendering'][2]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/sll/id/22547/filename')
-        expect(result['rendering'][2]['type']).to eq('Text')
-        expect(result['rendering'][2]['label']['en']).to eq(['Transcript'])
-        expect(result['rendering'][2]['format']).to eq('application/pdf')
-        expect(result['rendering'][2]['thumbnail']).to eq([
+        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][1]['format']).to eq('application/pdf')
+        expect(result['rendering'][1]['thumbnail']).to eq([
           {
             'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/sll/id/22547',
             'type' => 'Image',
@@ -142,6 +151,20 @@ describe IiifManifest do
                 ]
               }
             ],
+            'rendering' => [
+              {
+                'format' => 'text/vtt',
+                'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1194.vtt',
+                'label' => { 'en' => ['English'] },
+                'type' => 'Text'
+              },
+              {
+                'duration' => 3734,
+                'format' => 'audio/mp4',
+                'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                'type' => 'Sound'
+              }
+            ],
             'thumbnail' => [
               {
                 'id' => '/images/audio-3.png',
@@ -165,16 +188,11 @@ describe IiifManifest do
           }
         ])
 
-        expect(result['rendering'][1]['id']).to eq('https://collection.mndigital.org/tracks/1_i1bal3lz.vtt')
+        expect(result['rendering'][1]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
         expect(result['rendering'][1]['type']).to eq('Text')
-        expect(result['rendering'][1]['label']['en']).to eq(['Captions'])
-        expect(result['rendering'][1]['format']).to eq('text/vtt')
-
-        expect(result['rendering'][2]['id']).to eq('https://cdm16022.contentdm.oclc.org/utils/getfile/collection/p16022coll548/id/1193/filename')
-        expect(result['rendering'][2]['type']).to eq('Text')
-        expect(result['rendering'][2]['label']['en']).to eq(['Transcript'])
-        expect(result['rendering'][2]['format']).to eq('application/pdf')
-        expect(result['rendering'][2]['thumbnail']).to eq([
+        expect(result['rendering'][1]['label']['en']).to eq(['Transcript'])
+        expect(result['rendering'][1]['format']).to eq('application/pdf')
+        expect(result['rendering'][1]['thumbnail']).to eq([
           {
             'id' => 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/p16022coll548/id/1193',
             'type' => 'Image',
