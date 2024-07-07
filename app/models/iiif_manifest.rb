@@ -130,10 +130,10 @@ class IiifManifest
         hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
       else
         hsh['duration'] = borealis_document.duration
-        if supports_captions?(asset)
+        if !asset.playlist?
           hsh['rendering'] = [
             {
-              'id' => "#{base_url}/tracks/#{collection}:#{borealis_document.id}.vtt",
+              'id' => vtt_url(asset.entry_id),
               'type' => 'Text',
               'label' => { 'en' => ['English'] },
               'format' => 'text/vtt'
@@ -157,6 +157,12 @@ class IiifManifest
         hsh['items'][0]['items'][0]['body']['width'] = width
       end
     end
+  end
+
+  # @param entry_id [String]
+  # @return [String]
+  def vtt_url(entry_id)
+    "#{base_url}/tracks/#{collection}:#{id}/entry/#{entry_id}.vtt"
   end
 
   def annotation_items(asset, canvas_id)
@@ -206,7 +212,21 @@ class IiifManifest
           hsh['width'] = width if width
           hsh['height'] = height if height
         end,
-        'target' => target
+        'target' => target,
+        'rendering' => [
+          {
+            'id' => vtt_url(data['entry_id']),
+            'type' => 'Text',
+            'label' => { 'en' => ['English'] },
+            'format' => 'text/vtt'
+          },
+          {
+            'id' => asset.src(data['entry_id']),
+            'type' => type,
+            'duration' => data['duration'],
+            'format' => body_format
+          }
+        ]
       }
     end
   end
@@ -240,10 +260,6 @@ class IiifManifest
         ]
       }]
     end
-  end
-
-  def supports_captions?(asset)
-    AV_ASSETS.include?(asset.class) && !asset.playlist?
   end
 
   def structure(asset, range_index)

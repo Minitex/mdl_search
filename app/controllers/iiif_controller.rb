@@ -47,6 +47,7 @@ class IiifController < ApplicationController
       base_uri = URI::HTTPS.build(host: request.host)
       doc = MDL::BorealisDocument.new(document:)
       manifest = IiifManifest.new(doc, base_url: base_uri.to_s)
+      headers['access-control-allow-origin'] = '*'
       render json: manifest
     end
   end
