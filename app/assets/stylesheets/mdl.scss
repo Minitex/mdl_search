@@ -1505,8 +1505,9 @@ a.view-text:hover {
 }
 
 .iiif-av-component .controls-container {
-	position: relative;
-	z-index: 10;
+	.volume {
+		float: left !important;
+	}
 }
 /* End item page styles */
 
