@@ -5,13 +5,12 @@ class TracksController < ApplicationController
     respond_to do |format|
       format.vtt do
         content = fetch_vtt_content
-        if content
-          vtt_content = JSON.parse(content).dig(params[:entry_id])
+        head :not_found and return unless content.present?
 
-          render plain: "WEBVTT\n\n#{vtt_content}", content_type: 'text/vtt'
-        else
-          head :not_found
-        end
+        vtt_content = JSON.parse(content).dig(params[:entry_id])
+        head :not_found and return unless vtt_content.present?
+
+        render plain: "WEBVTT\n\n#{vtt_content}", content_type: 'text/vtt'
       end
     end
   end

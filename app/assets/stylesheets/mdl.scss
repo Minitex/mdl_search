@@ -1504,10 +1504,8 @@ a.view-text:hover {
 	}
 }
 
-.iiif-av-component .controls-container {
-	.volume {
-		float: left !important;
-	}
+.iiif-av-component .controls-container .volume {
+	float: left !important;
 }
 /* End item page styles */
 
