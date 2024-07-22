@@ -13,8 +13,15 @@ module MDL
         caption_data = entry_ids.reduce({}) do |acc, entry_id|
           id = entry_id.strip
           vtt_data = ::FetchCaptionService.fetch(entry_id.strip)
+          # Correct invalid timestamp format on the VTT data
           vtt_data&.gsub!(/(\d),(\d{3})/, '\1.\2')
-          acc[id] = vtt_data
+          # We sometimes hit encoding errors due to copy/paste, most likely
+          acc[id] = vtt_data&.encode(
+            'UTF-8',
+            invalid: :replace,
+            undef: :replace,
+            replace: '?'
+          )
           acc
         end
 
