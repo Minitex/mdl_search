@@ -46,6 +46,17 @@
     src="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@077b9f9f19a1015e7b8aae49a70c48c126c15800/dist/umd/UV.js"
   ></script>
   <script type="text/javascript">window.$ = jQuery;</script>
+  <style>
+    .iiif-av-component .controls-container .volume {
+      float: left !important;
+    }
+    .iiif-av-component .controls-container .captions-button {
+      padding-top: 10px;
+    }
+    .caption-choices-list-item {
+      padding-bottom: 0 !important;
+    }
+  </style>
 <% end %>
 
 <% content_for(:webpack_bundles) do %>
