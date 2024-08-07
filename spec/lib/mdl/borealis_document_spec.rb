@@ -1,60 +1,14 @@
-require_relative '../../../lib/mdl/borealis_asset.rb'
-require_relative '../../../lib/mdl/borealis_image.rb'
-require_relative '../../../lib/mdl/borealis_audio.rb'
-require_relative '../../../lib/mdl/borealis_video.rb'
-require_relative '../../../lib/mdl/borealis_pdf.rb'
-require_relative '../../../lib/mdl/borealis_asset_map.rb'
-require_relative '../../../lib/mdl/borealis_document.rb'
-require_relative '../../../lib/mdl/borealis_ppt.rb'
+require 'rails_helper'
 
 module MDL
   describe BorealisDocument do
-    let(:asset_klass) { double }
     let(:document) do
-      {'id' => 'foo:123', 'format' => 'image/jp2', 'title_ssi' => 'blerg'}
-    end
-    let(:compound_document) do
-      document.merge('compound_objects_ts' => <<~JSON
-        [
-          {
-            "pageptr": 123,
-            "title": "Some thing",
-            "transc": "blah",
-            "pagefile": "foo.jp2"
-          },
-          {
-            "pageptr": 321,
-            "title": "Another Thing",
-            "transc": "The text",
-            "pagefile": "foo.mp4"
-          }
-        ]
-      JSON
-      )
-    end
-    let(:bogus_pagefile) do
-      document.merge('compound_objects_ts' => <<~JSON
-        [
-          {
-            "pageptr": 123,
-            "title": "Some thing",
-            "transc": "blah",
-            "pagefile": {}
-          },
-         {
-            "pageptr": 321,
-            "title": "Another Thing",
-            "transc": "The text",
-            "pagefile": "foo.jp2"
-          }
-        ]
-      JSON
-      )
+      { 'id' => 'foo:123', 'format' => 'image/jp2', 'title_ssi' => 'blerg' }
     end
 
     describe '#manifest_url' do
       subject do
-        BorealisDocument.new(document: document).manifest_url
+        BorealisDocument.new(document:).manifest_url
       end
 
       it do

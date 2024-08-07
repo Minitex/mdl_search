@@ -60,7 +60,6 @@ module MDL
           asset(
             asset_klass(format_field),
             id,
-            transcript(document),
             title
           )
         ]
@@ -70,7 +69,6 @@ module MDL
           asset(
             asset_klass(compound_format(compound)),
             compound['pageptr'],
-            transcript(compound),
             compound['title']
           )
         end
@@ -81,22 +79,11 @@ module MDL
       compound['pagefile'].split('.').last
     end
 
-    def asset(asset_klass, id, transcript, title = false)
+    def asset(asset_klass, id, title = false)
       if !title
-        asset_klass.new(
-          id: id,
-          collection: collection,
-          transcript: transcript,
-          document: document
-        )
+        asset_klass.new(id:, collection:, document:)
       else
-        asset_klass.new(
-          id: id,
-          collection: collection,
-          transcript: transcript,
-          title: title,
-          document: document
-        )
+        asset_klass.new(id:, collection:, title:, document:)
       end
     end
 
@@ -105,10 +92,6 @@ module MDL
     # Format field data is hand entered and sometimes incorrectly so.
     def asset_klass(format_field)
       asset_map_klass.new(format_field: format_field).map
-    end
-
-    def transcript(doc)
-      doc.fetch('transc' , '')
     end
 
     def compounds
