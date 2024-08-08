@@ -26,6 +26,7 @@ module MDL
         c << CiteDownload.new(assets: download_assets).to_hash
         c << download_archive if include_archive_option?
         c << CiteTranscript.new(solr_doc: document).to_hash
+        c << CiteTranslation.new(solr_doc: document).to_hash
         c.map!(&:presence)
         c.compact!
       end

@@ -19,14 +19,22 @@ module MDL
         it "aggregates the transcriptions of the child pages onto the parent record" do
           records = [{
             'id' => 'foo/5123',
-            'page' => [{'id' => 'blah/3245', 'transc' => 'OHAI CHEEZEBURGER'}]
+            'page' => [{
+              'id' => 'blah/3245',
+              'transc' => 'OHAI CHEEZEBURGER',
+              'transl' => 'Oh, hi, cheeseburger'
+            }]
           }]
-          transformation = CompoundAggregatingTransformer.new(cdm_records: records, field_mappings: field_mappings).records
+          transformation = CompoundAggregatingTransformer
+            .new(cdm_records: records, field_mappings:)
+            .records
           expect(transformation).to eq([
             {
-              "id"=>"foo:5123",
-              "transcription_tesim"=>["OHAI CHEEZEBURGER"],
-              "compound_objects_ts"=>"[{\"id\":\"blah/3245\",\"transc\":\"OHAI CHEEZEBURGER\"}]","record_type"=>"primary"
+              'id' => 'foo:5123',
+              'transcription_tesim' => ['OHAI CHEEZEBURGER'],
+              'translation_tesim' => ['Oh, hi, cheeseburger'],
+              'compound_objects_ts' => '[{"id":"blah/3245","transc":"OHAI CHEEZEBURGER","transl":"Oh, hi, cheeseburger"}]',
+              'record_type' => 'primary'
             }
           ])
         end
@@ -37,11 +45,14 @@ module MDL
               'id' => 'foo/5123',
               'page' => [{'id' => 'blah/3245'}]
             }]
-            transformation = CompoundAggregatingTransformer.new(cdm_records: records, field_mappings: field_mappings).records
+            transformation = CompoundAggregatingTransformer
+              .new(cdm_records: records, field_mappings:)
+              .records
             expect(transformation).to eq([
               {
-                "id"=>"foo:5123",
-                "compound_objects_ts"=>"[{\"id\":\"blah/3245\"}]","record_type"=>"primary"
+                'id' => 'foo:5123',
+                'compound_objects_ts' => '[{"id":"blah/3245"}]',
+                'record_type' => 'primary'
               }
             ])
           end
@@ -57,11 +68,13 @@ module MDL
               {'id' => 'blah/3248', 'transc' => 'OHAI CHEEZEBURGER 1'}
             ]
           }]
-          transformation = CompoundAggregatingTransformer.new(cdm_records: records, extract_compounds: true, field_mappings: field_mappings).records
+          transformation = CompoundAggregatingTransformer
+            .new(cdm_records: records, extract_compounds: true, field_mappings:)
+            .records
           expect(transformation).to eq([
-            {"id"=>"foo:5123", "transcription_tesim"=>["OHAI CHEEZEBURGER", "OHAI CHEEZEBURGER 1"], "compound_objects_ts"=>"[{\"id\":\"blah/3245\",\"transc\":\"OHAI CHEEZEBURGER\",\"parent_id\":\"foo/5123\",\"parent\":{\"id\":\"foo/5123\",\"record_type\":\"primary\"},\"record_type\":\"secondary\",\"child_index\":0},{\"id\":\"blah/3248\",\"transc\":\"OHAI CHEEZEBURGER 1\",\"parent_id\":\"foo/5123\",\"parent\":{\"id\":\"foo/5123\",\"record_type\":\"primary\"},\"record_type\":\"secondary\",\"child_index\":1}]", "record_type"=>"primary"},
-            {"id"=>"blah:3245", "transcription_tesi"=>"OHAI CHEEZEBURGER", "record_type"=>"secondary", "parent_id"=>"foo/5123", "child_index"=>0},
-            {"id"=>"blah:3248", "transcription_tesi"=>"OHAI CHEEZEBURGER 1", "record_type"=>"secondary", "parent_id"=>"foo/5123", "child_index"=>1}
+            {'id' => 'foo:5123', 'transcription_tesim' => ['OHAI CHEEZEBURGER', 'OHAI CHEEZEBURGER 1'], 'compound_objects_ts' => '[{"id":"blah/3245","transc":"OHAI CHEEZEBURGER","parent_id":"foo/5123","parent":{"id":"foo/5123","record_type":"primary"},"record_type":"secondary","child_index":0},{"id":"blah/3248","transc":"OHAI CHEEZEBURGER 1","parent_id":"foo/5123","parent":{"id":"foo/5123","record_type":"primary"},"record_type":"secondary","child_index":1}]', 'record_type' => 'primary'},
+            {'id' => 'blah:3245', 'transcription_tesi' => 'OHAI CHEEZEBURGER', 'record_type' => 'secondary', 'parent_id' => 'foo/5123', 'child_index' => 0},
+            {'id' => 'blah:3248', 'transcription_tesi' => 'OHAI CHEEZEBURGER 1', 'record_type' => 'secondary', 'parent_id' => 'foo/5123', 'child_index' => 1}
           ])
         end
       end
@@ -76,16 +89,15 @@ module MDL
             {'id' => 'blah/3246', 'resour' => 'realID'},
           ]
         }]
-        transformation = CompoundAggregatingTransformer.new(
-          cdm_records: records,
-          field_mappings: field_mappings
-        ).records
+        transformation = CompoundAggregatingTransformer
+          .new(cdm_records: records, field_mappings:)
+          .records
         expect(transformation).to eq([
           {
-            "id"=>"foo:5123",
-            "identifier_ssim"=>["fakeID", "realID"],
-            "compound_objects_ts"=>"[{\"id\":\"blah/3245\",\"resour\":\"fakeID\"},{\"id\":\"blah/3246\",\"resour\":\"realID\"}]",
-            "record_type"=>"primary"
+            'id' => 'foo:5123',
+            'identifier_ssim' => ['fakeID', 'realID'],
+            'compound_objects_ts' => '[{"id":"blah/3245","resour":"fakeID"},{"id":"blah/3246","resour":"realID"}]',
+            'record_type' => 'primary'
           }
         ])
       end

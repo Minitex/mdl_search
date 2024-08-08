@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types";
 import TranscriptErrorDisclaimer from "./transcript-error-disclaimer";
 
-const Transcript = (props) => {
+const Translation = (props) => {
   return (
     <>
       <div className="ocr-transcript-info">
@@ -10,16 +10,16 @@ const Transcript = (props) => {
           Why are there errors in the transcript?
         </a>
       </div>
-      <div className="transcript">{props.transcript}</div>
+      <div className="translation">{props.translation}</div>
       <TranscriptErrorDisclaimer />
     </>
   );
 };
 
 const propTypes = {
-  transcript: PropTypes.string.isRequired
-};
+  translation: PropTypes.string.isRequired
+}
 
-Transcript.propTypes = propTypes;
+Translation.propTypes = propTypes
 
-export default Transcript;
+export default Translation;
