@@ -25,7 +25,13 @@ module BlacklightAdvancedSearch
           #   f[contributing_organization_ssi][]=somevalue
           # This causes the values to be arrays of Hashes instead of strings
           # so this normalizes them in that situation.
+          #
+          # One exception is the hash { missing: true }, which Blacklight
+          # defines as Blacklight::SearchState::FilterField::MISSING. This
+          # is passed through as is due to its special semantic meaning to
+          # the Blacklight library.
           values = field.values.flat_map do |v|
+            next v if v == Blacklight::SearchState::FilterField::MISSING
             v.respond_to?(:values) ? v.values : v
           end
           render_filter_element(field.key, values, search_state)
