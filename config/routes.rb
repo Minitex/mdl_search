@@ -79,7 +79,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :uvconfig, only: [:show]
   resources :tracks, only: [] do
     member do
       get 'entry/:entry_id', action: :entry
