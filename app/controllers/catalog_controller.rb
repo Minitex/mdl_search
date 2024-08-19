@@ -376,7 +376,10 @@ class CatalogController < ApplicationController
     config.add_index_field 'type_tesi', label: 'Type', highlight: true
     config.add_index_field 'physical_format_tesi', label: 'Format', highlight: true
 
-    field_list = 'id,title_tesi,' + config.index_fields.keys.join(',')
+    field_list = 'id,title_tesi,timestamp,identifier_ssim,' +
+      SolrDocument::OAI_FIELDS.join(',') +
+      ',' +
+      config.index_fields.keys.join(',')
     # Default parameters to send to solr for all search-like requests.
     config.default_solr_params = {
       rows: 20,
