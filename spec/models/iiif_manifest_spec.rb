@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe IiifManifest do
   describe '#as_json' do
-    let(:instance) { IiifManifest.new(doc) }
+    let(:instance) do
+      IiifManifest.new(doc, base_url: 'https://collection.mndigital.org')
+    end
 
     context 'with a video doc' do
       let(:doc) { build(:borealis_document, :video) }
@@ -52,6 +54,20 @@ describe IiifManifest do
                     'target' => 'https://collection.mndigital.org/iiif/info/sll/22548/canvas/0'
                   }
                 ]
+              }
+            ],
+            'rendering' => [
+              {
+                'format' => 'text/vtt',
+                'id' => 'https://collection.mndigital.org/tracks/sll:22548/entry/1_fisppzr2.vtt',
+                'label' => { 'en' => ['English'] },
+                'type' => 'Text'
+              },
+              {
+                'duration' => 7260,
+                'format' => 'video/mp4',
+                'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_fisppzr2/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                'type' => 'Video'
               }
             ],
             'thumbnail' => [
@@ -135,6 +151,20 @@ describe IiifManifest do
                 ]
               }
             ],
+            'rendering' => [
+              {
+                'format' => 'text/vtt',
+                'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1194/entry/1_i1bal3lz.vtt',
+                'label' => { 'en' => ['English'] },
+                'type' => 'Text'
+              },
+              {
+                'duration' => 3734,
+                'format' => 'audio/mp4',
+                'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_i1bal3lz/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                'type' => 'Sound'
+              }
+            ],
             'thumbnail' => [
               {
                 'id' => '/images/audio-3.png',
@@ -190,6 +220,7 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
+        expect(result['rendering'].size).to eq(5)
         expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Video')
         expect(result['rendering'][0]['label']['en']).to eq(['Video Part 1'])
@@ -238,6 +269,17 @@ describe IiifManifest do
                       'duration' => 387,
                       'format' => 'video/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1121/entry/1_or91f5dp.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_or91f5dp/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'format' => 'video/mp4',
+                      'duration' => 387,
+                      'type' => 'Video'
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0#t=0,387'
                   },
                   {
@@ -252,6 +294,17 @@ describe IiifManifest do
                       'duration' => 1876,
                       'format' => 'video/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1121/entry/1_nfct7x5c.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_nfct7x5c/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'format' => 'video/mp4',
+                      'duration' => 1876,
+                      'type' => 'Video'
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0#t=387,2263'
                   },
                   {
@@ -266,6 +319,17 @@ describe IiifManifest do
                       'duration' => 1699,
                       'format' => 'video/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1121/entry/1_0wmrqvpc.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_0wmrqvpc/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'format' => 'video/mp4',
+                      'duration' => 1699,
+                      'type' => 'Video'
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0#t=2263,3962'
                   },
                   {
@@ -280,6 +344,17 @@ describe IiifManifest do
                       'duration' => 228,
                       'format' => 'video/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1121/entry/1_ivkawv6u.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_ivkawv6u/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4',
+                      'format' => 'video/mp4',
+                      'duration' => 228,
+                      'type' => 'Video'
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1121/canvas/0#t=3962,4190'
                   }
                 ]
@@ -380,6 +455,7 @@ describe IiifManifest do
           'St. Paul',
           'MN 51102-1906'
         ])
+        expect(result['rendering'].size).to eq(4)
         expect(result['rendering'][0]['id']).to eq('https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4')
         expect(result['rendering'][0]['type']).to eq('Sound')
         expect(result['rendering'][0]['label']['en']).to eq(['Audio Part 1'])
@@ -419,6 +495,17 @@ describe IiifManifest do
                       'duration' => 1812,
                       'format' => 'audio/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1013/entry/1_m9tvjl6o.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_m9tvjl6o/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'format' => 'audio/mp4',
+                      'type' => 'Sound',
+                      'duration' => 1812
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1013/canvas/0#t=0,1812'
                   },
                   {
@@ -431,6 +518,17 @@ describe IiifManifest do
                       'duration' => 1898,
                       'format' => 'audio/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1013/entry/1_vpgan6fg.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_vpgan6fg/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'format' => 'audio/mp4',
+                      'type' => 'Sound',
+                      'duration' => 1898
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1013/canvas/0#t=1812,3710'
                   },
                   {
@@ -443,6 +541,17 @@ describe IiifManifest do
                       'duration' => 471,
                       'format' => 'audio/mp4'
                     },
+                    'rendering' => [{
+                      'id' => 'https://collection.mndigital.org/tracks/p16022coll548:1013/entry/1_zz7vf4az.vtt',
+                      'format' => 'text/vtt',
+                      'label' => { 'en' => ['English'] },
+                      'type' => 'Text'
+                    }, {
+                      'id' => 'https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/1_zz7vf4az/flavorId/1_atuqqpf6/format/url/protocol/http/a.mp4',
+                      'format' => 'audio/mp4',
+                      'type' => 'Sound',
+                      'duration' => 471
+                    }],
                     'target' => 'https://collection.mndigital.org/iiif/info/p16022coll548/1013/canvas/0#t=3710,4181'
                   }
                 ]

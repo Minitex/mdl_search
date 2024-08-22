@@ -11,25 +11,7 @@ class SolrDocument
   MDL_ITEM_URL_FIELD = 'mdl_item_url'.freeze
   private_constant :MDL_ITEM_URL_FIELD
 
-  # self.unique_key = 'id'
-
-  # Email uses the semantic field mappings below to generate the body of an email.
-  SolrDocument.use_extension( Blacklight::Document::Email )
-
-  # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension( Blacklight::Document::Sms )
-
-  # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
-  # Semantic mappings of solr stored fields. Fields may be multi or
-  # single valued. See Blacklight::Document::SemanticFields#field_semantics
-  # and Blacklight::Document::SemanticFields#to_semantic_values
-  # Recommendation: Use field names from Dublin Core
-  use_extension( Blacklight::Document::DublinCore)
-
-  ###
-  # These define the metadata that's returned for each record
-  # when calling the OAI GetRecord verb
-  field_semantics.merge!(
+  MDL_FIELD_SEMANTICS = {
     creator: 'creator_tesi',
     date: 'dat_ssi',
     subject: ['subject_ssim', 'keyword_tesi'],
@@ -44,7 +26,33 @@ class SolrDocument
     publisher: 'contributing_organization_ssi',
     rights: ['rights_ssi', 'rights_uri_ssi', 'rights_status_ssi', 'rights_statement_ssi'],
     identifier: [MDL_ITEM_URL_FIELD, 'local_identifier_ssi', 'identifier_ssi']
-  )
+  }.freeze
+  private_constant :MDL_FIELD_SEMANTICS
+
+  OAI_FIELDS = (['oai_set_ssi'] + MDL_FIELD_SEMANTICS
+    .values
+    .flat_map(&:itself))
+    .freeze
+
+  # self.unique_key = 'id'
+
+  # Email uses the semantic field mappings below to generate the body of an email.
+  SolrDocument.use_extension( Blacklight::Document::Email )
+
+  # SMS uses the semantic field mappings below to generate the body of an SMS email.
+  SolrDocument.use_extension( Blacklight::Document::Sms )
+
+  # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
+  # Semantic mappings of solr stored fields. Fields may be multi or
+  # single valued. See Blacklight::Document::SemanticFields#field_semantics
+  # and Blacklight::Document::SemanticFields#to_semantic_values
+  # Recommendation: Use field names from Dublin Core
+  use_extension(Blacklight::Document::DublinCore)
+
+  ###
+  # These define the metadata that's returned for each record
+  # when calling the OAI GetRecord verb
+  field_semantics.merge!(MDL_FIELD_SEMANTICS)
 
   # @!attribute [r] contributing_organization
   #   @return [String]
