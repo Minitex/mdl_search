@@ -19,6 +19,11 @@ class IiifManifest
       format: 'image/jpeg'
     }
   }.freeze
+  private_constant :ANNOTATION_DATA_BY_TYPE
+  RENDERABLE_ASSET_CLASSES = ANNOTATION_DATA_BY_TYPE.keys.freeze
+  private_constant :RENDERABLE_ASSET_CLASSES
+  AV_ASSETS = [MDL::BorealisVideo, MDL::BorealisAudio].freeze
+  private_constant :AV_ASSETS
 
   delegate :collection,
            :id,
@@ -26,12 +31,22 @@ class IiifManifest
            :assets,
            to: :borealis_document
 
+  # @return [MDL::BorealisDocument]
   attr_reader :borealis_document
 
-  def initialize(borealis_document)
+  # @return [String]
+  attr_reader :base_url
+
+  ###
+  # @param borealis_document [MDL::BorealisDocument]
+  # @param base_url [String]
+  def initialize(borealis_document, base_url:)
     @borealis_document = borealis_document
+    @base_url = base_url
   end
 
+  ###
+  # @return [Hash]
   def as_json(*)
     {
       '@context' => 'http://iiif.io/api/presentation/3/context.json',
@@ -58,7 +73,7 @@ class IiifManifest
           }
         }
       end,
-      'items' => canvasable_assets.map { |a| canvas(a) }
+      'items' => canvasable_assets.map(&method(:canvas))
     }.tap do |hsh|
       if borealis_document.document['rights_statement_ssi']
         hsh['requiredStatement'] = {
@@ -67,7 +82,7 @@ class IiifManifest
           }
       end
       if renderable_assets.any?
-        hsh['rendering'] = renderable_assets.map { |a| rendering(a) }.flatten
+        hsh['rendering'] = renderable_assets.flat_map(&method(:rendering))
       end
       if rangeable_assets.any?
         hsh['structures'] = rangeable_assets
@@ -80,13 +95,13 @@ class IiifManifest
   private
 
   def details
-    MDL::CiteDetails.new(
-      solr_doc: borealis_document.document
-    ).details
+    MDL::CiteDetails
+      .new(solr_doc: borealis_document.document)
+      .details
   end
 
   def base_identifier
-    "https://collection.mndigital.org/iiif/info/#{collection}/#{id}"
+    "#{base_url}/iiif/info/#{collection}/#{id}"
   end
 
   def canvas(asset)
@@ -115,6 +130,22 @@ class IiifManifest
         hsh['duration'] = asset.playlist_data.sum { |d| d['duration'] }
       else
         hsh['duration'] = borealis_document.duration
+        if !asset.playlist?
+          hsh['rendering'] = [
+            {
+              'id' => vtt_url(asset.entry_id),
+              'type' => 'Text',
+              'label' => { 'en' => ['English'] },
+              'format' => 'text/vtt'
+            },
+            {
+              'id' => asset.src,
+              'type' => annotation_body_type(asset),
+              'duration' => borealis_document.duration,
+              'format' => annotation_body_format(asset)
+            }
+          ]
+        end
       end
       width, height = annotation_aspect(asset)
 
@@ -126,6 +157,12 @@ class IiifManifest
         hsh['items'][0]['items'][0]['body']['width'] = width
       end
     end
+  end
+
+  # @param entry_id [String]
+  # @return [String]
+  def vtt_url(entry_id)
+    "#{base_url}/tracks/#{collection}:#{id}/entry/#{entry_id}.vtt"
   end
 
   def annotation_items(asset, canvas_id)
@@ -175,7 +212,21 @@ class IiifManifest
           hsh['width'] = width if width
           hsh['height'] = height if height
         end,
-        'target' => target
+        'target' => target,
+        'rendering' => [
+          {
+            'id' => vtt_url(data['entry_id']),
+            'type' => 'Text',
+            'label' => { 'en' => ['English'] },
+            'format' => 'text/vtt'
+          },
+          {
+            'id' => asset.src(data['entry_id']),
+            'type' => type,
+            'duration' => data['duration'],
+            'format' => body_format
+          }
+        ]
       }
     end
   end
@@ -193,7 +244,7 @@ class IiifManifest
         }
       end
     else
-      {
+      [{
         'id' => asset.src,
         'type' => annotation_body_type(asset),
         'label' => {
@@ -207,7 +258,7 @@ class IiifManifest
             'format' => 'image/jpeg'
           }
         ]
-      }
+      }]
     end
   end
 
@@ -248,18 +299,13 @@ class IiifManifest
 
   def canvasable_assets
     assets.select do |a|
-      [MDL::BorealisVideo, MDL::BorealisAudio].include?(a.class)
+      AV_ASSETS.include?(a.class)
     end
   end
 
   def renderable_assets
     assets.select do |a|
-      [
-        MDL::BorealisVideo,
-        MDL::BorealisAudio,
-        MDL::BorealisPdf,
-        MDL::BorealisImage
-      ].include?(a.class)
+      RENDERABLE_ASSET_CLASSES.include?(a.class)
     end
   end
 

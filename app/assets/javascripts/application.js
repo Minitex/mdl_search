@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require 'blacklight_advanced_search'
 
 //= require jquery3
 //= require rails-ujs
@@ -19,7 +17,9 @@
 //= require twitter/typeahead
 //= require bootstrap
 //= require chosen-jquery
+
 // Required by Blacklight
+//= require blacklight_advanced_search
 //= require blacklight/blacklight
 
 //= require_tree .
@@ -27,5 +27,5 @@
 
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
-//= require 'blacklight_range_limit'
+//= require blacklight_range_limit
 

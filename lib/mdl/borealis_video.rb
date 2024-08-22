@@ -4,7 +4,7 @@ require_relative './download'
 module MDL
   class BorealisVideo < BorealisAsset
     def src(entry_id = nil)
-      entry_id ||= (playlist_id || video_id)
+      entry_id ||= self.entry_id
       "https://cdnapisec.kaltura.com/p/1369852/sp/136985200/playManifest/entryId/#{entry_id.strip}/flavorId/1_uivmmxof/format/url/protocol/http/a.mp4"
     end
 
@@ -16,6 +16,10 @@ module MDL
 
     def type
       (playlist_id) ? 'kaltura_video_playlist' : 'kaltura_video'
+    end
+
+    def entry_id
+      playlist_id || video_id
     end
 
     def video_id

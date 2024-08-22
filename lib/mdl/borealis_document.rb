@@ -1,4 +1,5 @@
 require 'json'
+require_relative './borealis_asset_map'
 
 ###
 # Wraps a Solr document hash. Accessing values of the document
@@ -7,15 +8,13 @@ require 'json'
 module MDL
   class BorealisDocument
     attr_reader :document,
-                :asset_map_klass,
                 :collection,
                 :id
 
     # @param document [Hash] Solr document
-    def initialize(document: {}, asset_map_klass: BorealisAssetMap)
+    def initialize(document: {})
       @document        = document
       @collection, @id = document['id'].split(':')
-      @asset_map_klass = asset_map_klass
     end
 
     def assets
@@ -104,7 +103,8 @@ module MDL
     # field of a document. If an error occurs, it will generally be here.
     # Format field data is hand entered and sometimes incorrectly so.
     def asset_klass(format_field)
-      asset_map_klass.new(format_field: format_field).map
+      # binding.pry
+      BorealisAssetMap[format_field]
     end
 
     def transcript(doc)
@@ -116,7 +116,14 @@ module MDL
     end
 
     def format_field
-      document.fetch('format_tesi', 'jp2').gsub(/;/, '')
+      document.fetch('format_tesi') do
+        # if format_tesi is missing, attempt to map using other clues
+        case document['type_ssi']
+        when /sound recording/i then 'audio/mp3'
+        when /moving image/i then 'video/mp4'
+        else 'jp2'
+        end
+      end
     end
 
     def bad_compound?(compound)
