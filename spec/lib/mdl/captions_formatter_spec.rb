@@ -4,7 +4,7 @@ require_relative '../../../lib/mdl/captions_formatter'
 module MDL
   describe CaptionsFormatter do
     around do |spec|
-      VCR.use_cassette('kaltura/captions') { spec.run }
+      VCR.use_cassette('kaltura/captions', tag: :kaltura) { spec.run }
     end
 
     describe '.format' do

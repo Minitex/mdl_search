@@ -12,7 +12,7 @@ module MDL
         end
 
         it 'calls Kaltura to get the playlist, and the the content' do
-          VCR.use_cassette('kaltura/audio_playlist') do
+          VCR.use_cassette('kaltura/audio_playlist', tag: :kaltura) do
             expect(JSON.parse(result, symbolize_names: true )).to eq([
               { entry_id: '1_aodbyxua', duration: 665, name: 'Interview with Vishant Shah, Part 1' },
               { entry_id: '1_880z74b6', duration: 608, name: 'Interview with Vishant Shah, Part 2' },
@@ -42,7 +42,7 @@ module MDL
         end
 
         it 'fetches the playlist from Kaltura' do
-          VCR.use_cassette('kaltura/video_playlist') do
+          VCR.use_cassette('kaltura/video_playlist', tag: :kaltura) do
             parsed_result = JSON.parse(result, symbolize_names: true )
             expect(parsed_result.size).to eq(2)
 

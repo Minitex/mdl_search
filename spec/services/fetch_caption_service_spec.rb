@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe FetchCaptionService do
   around do |spec|
-    VCR.use_cassette('kaltura/captions') { spec.run }
+    VCR.use_cassette('kaltura/captions', tag: :kaltura) { spec.run }
   end
 
   context 'when there is more than one format available' do
