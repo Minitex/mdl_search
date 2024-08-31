@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  SEARCH_INSTANCE = Search.new.freeze
+  private_constant :SEARCH_INSTANCE
+
   before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
   before_action :manage_pagination, only: :index
 
@@ -7,27 +10,20 @@ class CatalogController < ApplicationController
 
   ##
   # Determine whether to render the bookmarks control
-  def render_bookmarks_control?
-    false
-  end
+  def render_bookmarks_control? = false
 
   ##
   # Determine whether to render the saved searches link
-  def render_saved_searches?
-    false
-  end
+  def render_saved_searches? = false
 
   ##
   # Prevents inserts to Blacklight's searches table
-  def start_new_search_session?
-    false
-  end
+  def start_new_search_session? = false
 
   ##
   # Override of Blacklight::SearchContext to prevent queries to
   # Blacklight's searches table
-  def current_search_session
-  end
+  def find_search_session = SEARCH_INSTANCE
 
   include Blacklight::Catalog
   include BlacklightOaiProvider::Controller
