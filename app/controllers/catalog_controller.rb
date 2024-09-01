@@ -17,18 +17,6 @@ class CatalogController < ApplicationController
     false
   end
 
-  ##
-  # Prevents inserts to Blacklight's searches table
-  def start_new_search_session?
-    false
-  end
-
-  ##
-  # Override of Blacklight::SearchContext to prevent queries to
-  # Blacklight's searches table
-  def current_search_session
-  end
-
   include Blacklight::Catalog
   include BlacklightOaiProvider::Controller
 
