@@ -17,18 +17,6 @@ class CatalogController < ApplicationController
     false
   end
 
-  ##
-  # Prevents inserts to Blacklight's searches table
-  def start_new_search_session?
-    false
-  end
-
-  ##
-  # Override of Blacklight::SearchContext to prevent queries to
-  # Blacklight's searches table
-  def current_search_session
-  end
-
   include Blacklight::Catalog
   include BlacklightOaiProvider::Controller
 
@@ -164,6 +152,10 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # limit the number of search IDs stored in user's session
+    config.search_history_window = 10
+    # don't store searches for bots
+    config.crawler_detector = CrawlerDetector
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 
     config.add_results_collection_tool(:sort_widget)
