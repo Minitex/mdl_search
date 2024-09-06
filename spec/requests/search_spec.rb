@@ -92,4 +92,23 @@ describe 'search' do
       TITLE
     end
   end
+
+  context 'for human visitors' do
+    it 'stores searches' do
+      expect do
+        get '/catalog?search_field=county&q=Hennepin'
+      end.to change(Search, :count).by(1)
+    end
+  end
+
+  context 'for bots' do
+    it 'does not store searches' do
+      headers = {
+        'User-Agent' => 'Mozilla/5.0 (compatible; DataForSeoBot/1.0; +https://dataforseo.com/dataforseo-bot)'
+      }
+      expect do
+        get('/catalog?search_field=county&q=Hennepin', headers:)
+      end.to_not change(Search, :count)
+    end
+  end
 end
