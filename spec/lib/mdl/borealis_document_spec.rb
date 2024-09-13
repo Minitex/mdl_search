@@ -1,9 +1,123 @@
 require 'rails_helper'
+require_relative '../../../lib/mdl/borealis_document.rb'
 
 module MDL
   describe BorealisDocument do
     let(:document) do
       { 'id' => 'foo:123', 'format' => 'image/jp2', 'title_ssi' => 'blerg' }
+    end
+
+    describe '#assets' do
+      context 'with audio doc' do
+        let(:document) { FactoryBot.build(:borealis_document, :audio) }
+
+        it 'contains Audio assets' do
+          expect(document.assets.size).to eq(2)
+          expect(document.assets.map(&:class)).to eq([
+            BorealisAudio,
+            BorealisPdf,
+          ])
+        end
+      end
+
+      context 'with audio playlist doc' do
+        let(:document) { FactoryBot.build(:borealis_document, :audio_playlist) }
+
+        it 'contains Audio assets' do
+          expect(document.assets.size).to eq(2)
+          expect(document.assets.map(&:class)).to eq([
+            BorealisAudio,
+            BorealisPdf,
+          ])
+        end
+      end
+
+      context 'with video doc' do
+        let(:document) { FactoryBot.build(:borealis_document, :video) }
+
+        it 'contains Video assets' do
+          expect(document.assets.size).to eq(2)
+          expect(document.assets.map(&:class)).to eq([
+            BorealisVideo,
+            BorealisPdf,
+          ])
+        end
+      end
+
+      context 'with video playlist doc' do
+        let(:document) do
+          FactoryBot.build(:borealis_document, :video_playlist)
+        end
+
+        it 'contains Video assets' do
+          expect(document.assets.size).to eq(2)
+          expect(document.assets.map(&:class)).to eq([
+            BorealisVideo,
+            BorealisPdf,
+          ])
+        end
+      end
+
+      context 'with image doc' do
+        let(:document) { FactoryBot.build(:borealis_document, :image) }
+
+        it 'contains Image assets' do
+          expect(document.assets.size).to eq(1)
+          expect(document.assets.map(&:class)).to eq([BorealisImage])
+        end
+      end
+
+      context 'when format_tesi is null' do
+        before do
+          document.document.delete('compound_objects_ts')
+          document.document.delete('format_tesi')
+        end
+
+        context 'with audio doc' do
+          let(:document) { FactoryBot.build(:borealis_document, :audio) }
+
+          it 'contains Audio assets' do
+            expect(document.assets.size).to eq(1)
+            expect(document.assets.map(&:class)).to eq([BorealisAudio])
+          end
+        end
+
+        context 'with audio playlist doc' do
+          let(:document) { FactoryBot.build(:borealis_document, :audio_playlist) }
+
+          it 'contains Audio assets' do
+            expect(document.assets.size).to eq(1)
+            expect(document.assets.map(&:class)).to eq([BorealisAudio])
+          end
+        end
+
+        context 'with video doc' do
+          let(:document) { FactoryBot.build(:borealis_document, :video) }
+
+          it 'contains Video assets' do
+            expect(document.assets.size).to eq(1)
+            expect(document.assets.map(&:class)).to eq([BorealisVideo])
+          end
+        end
+
+        context 'with video playlist doc' do
+          let(:document) { FactoryBot.build(:borealis_document, :video_playlist) }
+
+          it 'contains Video assets' do
+            expect(document.assets.size).to eq(1)
+            expect(document.assets.map(&:class)).to eq([BorealisVideo])
+          end
+        end
+
+        context 'with image doc' do
+          let(:document) { FactoryBot.build(:borealis_document, :image) }
+
+          it 'contains Image assets' do
+            expect(document.assets.size).to eq(1)
+            expect(document.assets.map(&:class)).to eq([BorealisImage])
+          end
+        end
+      end
     end
 
     describe '#manifest_url' do

@@ -1,5 +1,5 @@
 <%
-  borealis_doc = MDL::BorealisDocument.new(document: document)
+  borealis_doc = MDL::BorealisDocument.new(document:)
   manifest_url = borealis_doc.manifest_url
 %>
 
@@ -23,7 +23,7 @@
   </div>
   <div class="col-md-3">
     <div id="sidebar">
-       <%= render_document_sidebar_partial(@document) %>
+      <%= render_document_sidebar_partial(@document) %>
     </div>
   </div>
 </div>
@@ -37,8 +37,26 @@
 %>
 
 <% content_for(:head) do %>
-  <link rel="stylesheet" href="/uv/uv.css">
-  <%= javascript_pack_tag 'universalviewer' %>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/uv.css"
+  />
+  <script
+    type="application/javascript"
+    src="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/umd/UV.js"
+  ></script>
+  <script type="text/javascript">window.$ = jQuery;</script>
+  <style>
+    .iiif-av-component .controls-container .volume {
+      float: left !important;
+    }
+    .iiif-av-component .controls-container .captions-button {
+      padding-top: 10px;
+    }
+    .caption-choices-list-item {
+      padding-bottom: 0 !important;
+    }
+  </style>
 <% end %>
 
 <% content_for(:webpack_bundles) do %>
@@ -63,36 +81,103 @@
     if (queryParams.uvcv && queryParams.uvcv.length) {
       window.location.hash = `?${queryParams.uvcv}`;
     }
-    window.addEventListener('uvLoaded', function (e) {
-      const urlDataProvider = new UV.URLDataProvider();
-      const collectionIndex = urlDataProvider.get('c');
 
-      // If we were given a legacy anchor, such as #/image/4, parse
-      // out the 4 and use it as the canvasIndex in the UV config.
-      const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
-      let canvasIndexFallback = queryParams.uvcv || legacyAnchorMatch.pop();
-      if (legacyAnchorMatch.length) {
-        window.location.hash = '';
-      }
+    const urlAdapter = new UV.IIIFURLAdapter();
+    const collectionIndex = urlAdapter.get("c");
+    // If we were given a legacy anchor, such as #/image/4, parse
+    // out the 4 and use it as the canvasIndex in the UV config.
+    const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
+    let canvasIndexFallback = queryParams.uvcv || legacyAnchorMatch.pop();
+    if (legacyAnchorMatch.length) {
+      window.location.hash = '';
+    }
 
-      createUV('#uv', {
-        iiifResourceUri: '<%= manifest_url %>',
-        root: '../../../uv/',
-        configUri: '<%= uvconfig_path(params[:id]) %>',
-        collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
-        manifestIndex: Number(urlDataProvider.get('m', 0)),
-        sequenceIndex: Number(urlDataProvider.get('s', 0)),
-        canvasIndex: Number(urlDataProvider.get('cv', canvasIndexFallback)),
-        rotation: Number(urlDataProvider.get('r', 0)),
-        rangeId: urlDataProvider.get('rid', ''),
-        xywh: urlDataProvider.get('xywh', '')
-      }, urlDataProvider);
+    const data = {
+      manifest: "<%= manifest_url %>",
+      collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
+      canvasIndex: Number(urlAdapter.get("cv", canvasIndexFallback)),
+      manifestIndex: Number(urlAdapter.get("m", 0)),
+      rotation: Number(urlAdapter.get("r", 0)),
+      rangeId: urlAdapter.get("rid", ""),
+      xywh: urlAdapter.get("xywh", ""),
+      target: urlAdapter.get("target", "")
+    };
 
-      $(document).on('click', 'button.download', function () {
-        // We don't want to offer the full-size image download option
-        $('#wholeImageHighRes, #wholeImageHighReslabel').remove();
-      })
-    }, false);
+    const uv = UV.init("uv", data);
+    urlAdapter.bindTo(uv);
+
+    uv.on("configure", ({ config, cb }) => {
+      cb({
+        options: {
+          dropEnabled: true,
+          footerPanelEnabled: true,
+          headerPanelEnabled: true,
+          leftPanelEnabled: true,
+          limitLocales: false,
+          overrideFullScreen: false,
+          pagingEnabled: true,
+          rightPanelEnabled: true,
+          termsOfUseEnabled: true,
+          zoomToSearchResultEnabled: true,
+          zoomToBoundsEnabled: false
+        },
+        modules: {
+          downloadDialogue: {
+            options: {
+              downloadCurrentViewEnabled: false,
+              downloadWholeImageHighResEnabled: false
+            }
+          },
+          headerPanel: {
+            options: {
+              localeToggleEnabled: false
+            }
+          },
+          moreInfoRightPanel: {
+            options: {
+              manifestDisplayOrder: "Contributing Organization,Title,Creator,Contributor,Description,Date of Creation,Dimensions,Minnesota Reflections Topic,Item Type,Item Physical Format,Formal Subject Headings,Locally Assigned Subject Headings,Minnesota City or Township,Minnesota County,State or Province,Country,GeoNames URI,Language,Local Identifier,Fiscal Sponsor,Rights Management,Contact Information"
+            }
+          },
+          openSeadragonCenterPanel: {
+            options: {
+              autoHideControls: false,
+              requiredStatementEnabled: false
+            }
+          },
+          mediaelementCenterPanel: {
+            options: {
+              requiredStatementEnabled: false
+            }
+          },
+          avCenterPanel: {
+            options: {
+              requiredStatementEnabled: false
+            }
+          },
+          centerPanel: {
+            options: {
+              requiredStatementEnabled: false
+            }
+          },
+          contentLeftPanel: {
+            options: {
+              panelOpen: <%= !borealis_doc.assets.first.playlist? %>,
+              defaultToTreeEnabled: true
+            }
+          },
+          searchFooterPanel: {
+            options: {
+              positionMarkerEnabled: true,
+              pageModeEnabled: false
+            }
+          },
+          footerPanel: {
+            options: {
+              downloadEnabled: true
+            }
+          }
+        }
+      });
+    });
   </script>
-  <%= javascript_pack_tag 'universalviewer_lib' %>
 <% end %>

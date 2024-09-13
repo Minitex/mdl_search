@@ -128,6 +128,7 @@ module MDL
         {dest_path: 'public_ssi', origin_path: 'public', formatters: ['CDMBL::StripFormatter']},
         {dest_path: 'iiif_manifest_url_ssi', origin_path: '/', formatters: ['MDL::IiifManifestUrlFormatter']},
         {dest_path: 'iiif_manifest_ss', origin_path: '/', formatters: ['MDL::IiifManifestFormatter']},
+        {dest_path: 'captions_ts', origin_path: '/', formatters: ['MDL::CaptionsFormatter']},
         {dest_path: nil, origin_path: '/', formatters: ['MDL::QueueIiifSearchProcessing']}
       ]
     end

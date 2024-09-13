@@ -25,7 +25,9 @@ module MDL
       # @param manifest [Hash] Parsed IIIF Manifest v3
       # @return [Array<MDL::DownloadAsset>]
       def assets_from_manifest_v3(manifest)
-        Array(manifest.dig('rendering')).map do |r|
+        Array(manifest.dig('rendering')).filter_map do |r|
+          next if r['format'] == 'text/vtt'
+
           label = r.dig('label', 'en', 0)
           thumbnail = r.dig('thumbnail', 0, 'id')
           thumbnail ||= thumbnail = case r['type']

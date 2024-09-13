@@ -25,6 +25,10 @@ module MDL
       document.fetch('kaltura_audio_ssi', false)
     end
 
+    def entry_id
+      audio_id
+    end
+
     def playlist_data
       data = document.fetch('kaltura_audio_playlist_entry_data_ts', '[]')
       JSON.parse(data)

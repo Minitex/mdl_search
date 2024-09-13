@@ -2,6 +2,9 @@
 class CatalogController < ApplicationController
   before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
   before_action :manage_pagination, only: :index
+
+  rescue_from(Blacklight::Exceptions::RecordNotFound, with: :invalid_document_id_error)
+
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -149,6 +152,10 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # limit the number of search IDs stored in user's session
+    config.search_history_window = 10
+    # don't store searches for bots
+    config.crawler_detector = CrawlerDetector
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 
     config.add_results_collection_tool(:sort_widget)
@@ -177,15 +184,6 @@ class CatalogController < ApplicationController
     #
     ## Model that maps search index responses to the blacklight response model
     # config.response_model = Blacklight::Solr::Response
-
-    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
-    config.default_solr_params = {
-      rows: 20,
-      fl: '*',
-      hl: 'on',
-      'hl.fl': '*',
-      'hl.fragsize': 0
-    }
 
     config.default_per_page = 25
 
@@ -370,6 +368,18 @@ class CatalogController < ApplicationController
     config.add_index_field 'type_tesi', label: 'Type', highlight: true
     config.add_index_field 'physical_format_tesi', label: 'Format', highlight: true
 
+    field_list = 'id,title_tesi,timestamp,identifier_ssim,' +
+      SolrDocument::OAI_FIELDS.join(',') +
+      ',' +
+      config.index_fields.keys.join(',')
+    # Default parameters to send to solr for all search-like requests.
+    config.default_solr_params = {
+      rows: 20,
+      fl: field_list,
+      hl: 'on',
+      'hl.fl': field_list,
+      'hl.fragsize': 0
+    }
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

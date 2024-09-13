@@ -21,7 +21,7 @@
 
 # Prevent search sessions from bloating our DB
 every 1.day, at: '12:15am' do
-  rake "blacklight_maintenance:truncate_searches"
+  rake 'blacklight:delete_old_searches[1]'
 end
 
 # Pick up new CDM records daily - Index All Items (from all collections)

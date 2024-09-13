@@ -21,11 +21,46 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = false
-  config.default_cassette_options = { record: :once }
+  config.default_cassette_options = {
+    record: ENV.fetch('VCR_RECORD_MODE', :once).to_sym,
+    match_requests_on: %i(method uri body query)
+  }
   config.ignore_localhost = true
-  config.filter_sensitive_data('<KS>') do |int|
-    if int.request.uri.match(%r{www.kaltura.com})
-      JSON.parse(int.request.body)['ks']
+  # config.debug_logger = $stdout
+  config.filter_sensitive_data('<KS>', :kaltura) do |int|
+    req = int.request
+    next unless req.uri.match(%r{www.kaltura.com})
+
+    case req.method
+    when :post then JSON.parse(req.body)['ks']
+    when :get then req.uri.match(/ks=(.*)\z/).captures[0]
+    end
+  end
+  config.filter_sensitive_data('<kalsig>', :kaltura) do |int|
+    req = int.request
+    next unless req.method == :post
+    next unless req.uri.match(%r{www.kaltura.com})
+
+    JSON.parse(req.body)['kalsig']
+  end
+  ###
+  # VCR hook called before the cassette is matched against an outgoing request.
+  # Here we must reverse the effects of the +filter_sensitive_data+ hooks above.
+  # Unfortunately, that includes recalculating the request signature applied by
+  # the Kaltura SDK.
+  config.before_playback(:kaltura) do |int|
+    req = int.request
+    next unless req.uri.match(%r{www.kaltura.com})
+
+    case req.method
+    when :get then req.uri.sub!('<KS>', ENV['KALTURA_SESSION'].to_s)
+    when :post
+      req.body.sub!('<KS>', ENV['KALTURA_SESSION'].to_s)
+      client = Kaltura::KalturaClient.new(Kaltura::KalturaConfiguration.new)
+      params = JSON.parse(req.body).except('kalsig')
+      sig = client.signature(params)
+      params['kalsig'] = sig
+      req.body = JSON.generate(params)
     end
   end
 end
