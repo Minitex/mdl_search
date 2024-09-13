@@ -2,33 +2,16 @@ require_relative './thumbnail'
 
 module MDL
   class BorealisAsset
-    attr_reader :id, :collection, :transcripts, :title, :document, :assets
-    attr_accessor :focus
+    attr_reader :id, :collection, :title, :document
+
     def initialize(id: '',
                    collection: '',
-                   transcript: false,
                    title: false,
-                   document: {},
-                   assets: [])
-      @id           = id
-      @collection   = collection
-      @transcripts  = [sanitize_field(transcript)].compact
-      @title        = sanitize_field(title)
-      @document     = document
-      @assets       = assets
-    end
-
-    def to_h
-      {
-        id: id,
-        collection: collection,
-        transcripts: transcripts,
-        transcript: "#{title} \n #{transcripts.join("\n")}",
-        subtitle: subtitle,
-        title: title,
-        assets: assets,
-        thumbnail: thumbnail
-      }
+                   document: {})
+      @id         = id
+      @collection = collection
+      @title      = sanitize_field(title)
+      @document   = document
     end
 
     def thumbnail_url
