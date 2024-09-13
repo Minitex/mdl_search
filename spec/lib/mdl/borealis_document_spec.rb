@@ -4,45 +4,7 @@ require_relative '../../../lib/mdl/borealis_document.rb'
 module MDL
   describe BorealisDocument do
     let(:document) do
-      {'id' => 'foo:123', 'format' => 'image/jp2', 'title_ssi' => 'blerg'}
-    end
-    let(:compound_document) do
-      document.merge('compound_objects_ts' => <<~JSON
-        [
-          {
-            "pageptr": 123,
-            "title": "Some thing",
-            "transc": "blah",
-            "pagefile": "foo.jp2"
-          },
-          {
-            "pageptr": 321,
-            "title": "Another Thing",
-            "transc": "The text",
-            "pagefile": "foo.mp4"
-          }
-        ]
-      JSON
-      )
-    end
-    let(:bogus_pagefile) do
-      document.merge('compound_objects_ts' => <<~JSON
-        [
-          {
-            "pageptr": 123,
-            "title": "Some thing",
-            "transc": "blah",
-            "pagefile": {}
-          },
-         {
-            "pageptr": 321,
-            "title": "Another Thing",
-            "transc": "The text",
-            "pagefile": "foo.jp2"
-          }
-        ]
-      JSON
-      )
+      { 'id' => 'foo:123', 'format' => 'image/jp2', 'title_ssi' => 'blerg' }
     end
 
     describe '#assets' do

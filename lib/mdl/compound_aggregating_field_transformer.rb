@@ -8,6 +8,9 @@ module MDL
     TRANSC_FIELD_MAPPING = Transformer.field_mappings.find do |m|
       m[:dest_path] == 'transcription_tesi'
     end
+    TRANSL_FIELD_MAPPING = Transformer.field_mappings.find do |m|
+      m[:dest_path] == 'translation_tesi'
+    end
     RESOUR_FIELD_MAPPING = Transformer.field_mappings.find do |m|
       m[:dest_path] == 'identifier_ssi'
     end
@@ -36,6 +39,7 @@ module MDL
         # hsh.merge!(child_field_2)
         # hsh.merge!(child_field_3)
         hsh.merge!(transcriptions)
+        hsh.merge!(translations)
         hsh.merge!(mdl_identifiers)
       end.select { |_, v| v.present? }
     end
@@ -49,6 +53,17 @@ module MDL
         ).reduce.values
       end
       { 'transcription_tesim' => transcriptions }
+    end
+
+    def translations
+      translation_pages = Array(record['page']).select { |p| p['transl'] }
+      translations = translation_pages.flat_map do |page|
+        self.class.superclass.new(
+          record: page,
+          field_mapping: CDMBL::FieldMapping.new(config: TRANSL_FIELD_MAPPING)
+        ).reduce.values
+      end
+      { 'translation_tesim' => translations }
     end
 
     def mdl_identifiers
