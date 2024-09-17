@@ -210,6 +210,12 @@ class CatalogController < ApplicationController
     # Spotlight additions
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
+    # Allows the "item embed" widget to utilize universalviewer
+    config.view.embed(
+      partials: [:embed_uv],
+      if: false,
+      locals: { view_config: config.show }
+    )
     config.show.tile_source_field = :image_uri_ssi
     config.index.tile_source_field = :image_uri_ssi
     config.document_solr_path = 'get'
