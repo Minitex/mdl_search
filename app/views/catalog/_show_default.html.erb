@@ -1,8 +1,3 @@
-<%
-  borealis_doc = MDL::BorealisDocument.new(document:)
-  manifest_url = borealis_doc.manifest_url
-%>
-
 <div class="metadata" data-metadata='<%= document_metadata(document).to_json %>'></div>
 
 <%= content_tag :div,
@@ -11,8 +6,8 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-12">
-    <div id="uv" class="uv" style="height: 768px;"></div>
+  <div class="col-md-12 uv-wrapper">
+    <%= render('universalviewer', document:) %>
   </div>
 </div>
 
@@ -36,148 +31,7 @@
   }
 %>
 
-<% content_for(:head) do %>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/uv.css"
-  />
-  <script
-    type="application/javascript"
-    src="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/umd/UV.js"
-  ></script>
-  <script type="text/javascript">window.$ = jQuery;</script>
-  <style>
-    .iiif-av-component .controls-container .volume {
-      float: left !important;
-    }
-    .iiif-av-component .controls-container .captions-button {
-      padding-top: 10px;
-    }
-    .caption-choices-list-item {
-      padding-bottom: 0 !important;
-    }
-  </style>
-<% end %>
-
 <% content_for(:webpack_bundles) do %>
   <%= javascript_pack_tag 'drawMap' %>
   <%= javascript_pack_tag 'citation' %>
-<% end %>
-
-<% content_for(:blocking_javascript) do %>
-  <script type="text/javascript">
-    function getQueryParams() {
-      const url = window.location.href;
-      const params = new URLSearchParams((new URL(url)).search);
-      const obj = {};
-
-      for (const [key, value] of params.entries()) {
-          obj[key] = value;
-      }
-
-      return obj;
-    }
-    const queryParams = getQueryParams();
-    if (queryParams.uvcv && queryParams.uvcv.length) {
-      window.location.hash = `?${queryParams.uvcv}`;
-    }
-
-    const urlAdapter = new UV.IIIFURLAdapter();
-    const collectionIndex = urlAdapter.get("c");
-    // If we were given a legacy anchor, such as #/image/4, parse
-    // out the 4 and use it as the canvasIndex in the UV config.
-    const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
-    let canvasIndexFallback = queryParams.uvcv || legacyAnchorMatch.pop();
-    if (legacyAnchorMatch.length) {
-      window.location.hash = '';
-    }
-
-    const data = {
-      manifest: "<%= manifest_url %>",
-      collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
-      canvasIndex: Number(urlAdapter.get("cv", canvasIndexFallback)),
-      manifestIndex: Number(urlAdapter.get("m", 0)),
-      rotation: Number(urlAdapter.get("r", 0)),
-      rangeId: urlAdapter.get("rid", ""),
-      xywh: urlAdapter.get("xywh", ""),
-      target: urlAdapter.get("target", "")
-    };
-
-    const uv = UV.init("uv", data);
-    urlAdapter.bindTo(uv);
-
-    uv.on("configure", ({ config, cb }) => {
-      cb({
-        options: {
-          dropEnabled: true,
-          footerPanelEnabled: true,
-          headerPanelEnabled: true,
-          leftPanelEnabled: true,
-          limitLocales: false,
-          overrideFullScreen: false,
-          pagingEnabled: true,
-          rightPanelEnabled: true,
-          termsOfUseEnabled: true,
-          zoomToSearchResultEnabled: true,
-          zoomToBoundsEnabled: false
-        },
-        modules: {
-          downloadDialogue: {
-            options: {
-              downloadCurrentViewEnabled: false,
-              downloadWholeImageHighResEnabled: false
-            }
-          },
-          headerPanel: {
-            options: {
-              localeToggleEnabled: false
-            }
-          },
-          moreInfoRightPanel: {
-            options: {
-              manifestDisplayOrder: "Contributing Organization,Title,Creator,Contributor,Description,Date of Creation,Dimensions,Minnesota Reflections Topic,Item Type,Item Physical Format,Formal Subject Headings,Locally Assigned Subject Headings,Minnesota City or Township,Minnesota County,State or Province,Country,GeoNames URI,Language,Local Identifier,Fiscal Sponsor,Rights Management,Contact Information"
-            }
-          },
-          openSeadragonCenterPanel: {
-            options: {
-              autoHideControls: false,
-              requiredStatementEnabled: false
-            }
-          },
-          mediaelementCenterPanel: {
-            options: {
-              requiredStatementEnabled: false
-            }
-          },
-          avCenterPanel: {
-            options: {
-              requiredStatementEnabled: false
-            }
-          },
-          centerPanel: {
-            options: {
-              requiredStatementEnabled: false
-            }
-          },
-          contentLeftPanel: {
-            options: {
-              panelOpen: <%= !borealis_doc.assets.first.playlist? %>,
-              defaultToTreeEnabled: true
-            }
-          },
-          searchFooterPanel: {
-            options: {
-              positionMarkerEnabled: true,
-              pageModeEnabled: false
-            }
-          },
-          footerPanel: {
-            options: {
-              downloadEnabled: true
-            }
-          }
-        }
-      });
-    });
-  </script>
 <% end %>

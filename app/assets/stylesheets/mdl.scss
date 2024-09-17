@@ -1502,6 +1502,8 @@ a.view-text:hover {
 	.leftPanel .views .thumbsView .thumbs .thumb .wrap.video {
 		background-image: none !important;
 	}
+
+	height: inherit;
 }
 
 .iiif-av-component .controls-container {
@@ -1513,9 +1515,22 @@ a.view-text:hover {
 		padding-top: 10px;
 	}
 }
+
+.caption-choices-list-item {
+	padding-bottom: 0 !important;
+}
+
+.uv-wrapper {
+	height: 768px;
+}
 /* End item page styles */
 
 /* Spotlight styles */
+
+.embed-uv {
+	width: 100%;
+	height: 768px;
+}
 
 .card-back .description {
 	font-size: 14px;
