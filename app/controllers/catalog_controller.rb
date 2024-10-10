@@ -339,6 +339,7 @@ class CatalogController < ApplicationController
       field.index = true
       field.item_presenter = FacetItemPresenter
       field.item_component = FacetItemComponent
+      field.component = Blacklight::FacetFieldListComponent
     end
 
     ###
