@@ -49,12 +49,6 @@ module MDL
             }
           JSON
         end
-
-        it 'applies a viewingHint of "paged" to the sequence' do
-          result = described_class.format(doc)
-          parsed_result = JSON.parse(result)
-          expect(parsed_result['sequences'][0]['viewingHint']).to eq('paged')
-        end
       end
 
       context 'with a multi-page document' do

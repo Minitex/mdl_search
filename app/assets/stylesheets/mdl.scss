@@ -1514,6 +1514,10 @@ a.view-text:hover {
 		}
 	}
 
+	.thumb:focus {
+		outline: none;
+	}
+
 	.title {
 		color: white;
 	}

@@ -33,20 +33,7 @@ module MDL
         }
 
         apply_page_level_metadata(doc, parsed_response)
-        format_sequence(parsed_response)
         JSON.generate(parsed_response)
-      end
-
-      def format_sequence(manifest)
-        sequence = Array(manifest['sequences'])[0]
-        canvases = Array(sequence['canvases'])
-        if sequence && canvases.size > 2
-          ###
-          # With this, UV will support "two-up" (side-by-side) pages
-          # in the viewer. Only makes sense visually if there are
-          # at least three canvases (pages).
-          manifest['sequences'][0]['viewingHint'] = 'paged'
-        end
       end
 
       private
