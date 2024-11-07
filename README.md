@@ -24,7 +24,7 @@ Install Ruby 3.1.2 via [rbenv](https://github.com/rbenv/rbenv)
 ```bash
 brew install rbenv ruby-build
 rbenv init
-rbenv install 3.1.2
+rbenv install 3.3.5
 ```
 
 Install MySQL and Redis clients, as well as geckodriver for system tests run via Selenium.
