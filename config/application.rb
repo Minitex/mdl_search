@@ -21,11 +21,8 @@ module MdlSearch
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-
-    config.load_defaults 6.1
+    config.load_defaults 7.0
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
-
 
     config.enable_dependency_loading = true
     config.autoload_paths << Rails.root.join('lib')
