@@ -10,7 +10,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'mysql2', '~> 0.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -33,12 +33,8 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '>= 3.3.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen'
   gem 'binding_of_caller'
-  gem 'meta_request', '~> 0.7.2'
   gem 'fontello_rails_converter'
   gem 'coveralls', require: false
 end
