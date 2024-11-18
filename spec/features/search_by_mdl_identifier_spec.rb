@@ -10,7 +10,7 @@ describe 'searching by MDL identifier' do
       click_on 'Search'
       result_link = find_link('A Statewide Movement for the Collection and Preservation of Minnesota\'s War Records')
       result_link.click
-      page_input = page.find('.autocompleteText', wait: 15)
+      page_input = page.find('.autocompleteText', visible: :all)
       expect(page_input.value).to eq('9')
     end
   end
