@@ -6,7 +6,7 @@ require 'zip'
 
 module MDL
   class ArchiveGenerator
-    TMP_DIR = File.exists?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
+    TMP_DIR = File.exist?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
 
     def self.call(identifier)
       new(identifier).call

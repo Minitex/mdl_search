@@ -1,6 +1,6 @@
 module MDL
   class ProcessDocumentForSearch
-    TMP_DIR = File.exists?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
+    TMP_DIR = File.exist?('/swadm/tmp') ? '/swadm/tmp' : Dir.tmpdir
     ###
     # Glue that connects an IIIF canvas, the image it represents,
     # and the OCR process we need to perform.
