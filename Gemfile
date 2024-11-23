@@ -33,10 +33,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '>= 3.3.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen'
   gem 'binding_of_caller'
   gem 'fontello_rails_converter'
   gem 'coveralls', require: false
