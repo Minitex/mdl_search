@@ -1,0 +1,71 @@
+{
+  options: {
+    dropEnabled: true,
+    footerPanelEnabled: true,
+    headerPanelEnabled: true,
+    leftPanelEnabled: true,
+    limitLocales: false,
+    overrideFullScreen: false,
+    pagingEnabled: true,
+    rightPanelEnabled: true,
+    termsOfUseEnabled: true,
+    zoomToSearchResultEnabled: true,
+    zoomToBoundsEnabled: false
+  },
+  modules: {
+    downloadDialogue: {
+      options: {
+        downloadCurrentViewEnabled: false,
+        downloadWholeImageHighResEnabled: false
+      }
+    },
+    headerPanel: {
+      options: {
+        localeToggleEnabled: false
+      }
+    },
+    moreInfoRightPanel: {
+      options: {
+        manifestDisplayOrder: "Contributing Organization,Title,Creator,Contributor,Description,Date of Creation,Dimensions,Minnesota Reflections Topic,Item Type,Item Physical Format,Formal Subject Headings,Locally Assigned Subject Headings,Minnesota City or Township,Minnesota County,State or Province,Country,GeoNames URI,Language,Local Identifier,Fiscal Sponsor,Rights Management,Contact Information"
+      }
+    },
+    openSeadragonCenterPanel: {
+      options: {
+        autoHideControls: false,
+        requiredStatementEnabled: false
+      }
+    },
+    mediaelementCenterPanel: {
+      options: {
+        requiredStatementEnabled: false
+      }
+    },
+    avCenterPanel: {
+      options: {
+        requiredStatementEnabled: false
+      }
+    },
+    centerPanel: {
+      options: {
+        requiredStatementEnabled: false
+      }
+    },
+    contentLeftPanel: {
+      options: {
+        panelOpen: <%= left_panel_open %>,
+        defaultToTreeEnabled: true
+      }
+    },
+    searchFooterPanel: {
+      options: {
+        positionMarkerEnabled: true,
+        pageModeEnabled: false
+      }
+    },
+    footerPanel: {
+      options: {
+        downloadEnabled: true
+      }
+    }
+  }
+}
