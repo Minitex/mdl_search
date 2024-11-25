@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     %w(catalog sidekiq indexing lists).exclude?(request.params[:page])
   }
 
+  ###
+  # For embedding UV in an iframe, set the src attribute to
+  # /uv/uv.html#?manifest=/iiif/:id/manifest.json
+  get 'uv/uv' => 'uv#iframe'
+
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
