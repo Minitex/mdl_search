@@ -28,6 +28,7 @@ gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'bootstrap', '~> 4.0'
+gem 'bootstrap_form', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 
 group :development do
@@ -58,10 +59,12 @@ end
 gem 'blacklight', '~> 7.27'
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_range_limit', '~> 8.2.0'
-gem 'blacklight-spotlight', '~> 3.4'
+gem 'blacklight-spotlight', '~> 4.0'
 gem 'blacklight_oai_provider', '~> 7.0'
 gem 'blacklight-gallery', '>= 0.3.0'
 gem 'blacklight-oembed', '~> 1.1'
+
+gem 'view_component', '< 3'
 
 gem 'chosen-rails', '~> 1.9'
 gem 'leaflet-rails'
