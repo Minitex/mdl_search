@@ -1,2 +1,2 @@
-require 'json/pure'
-JSON.parser = JSON::Pure::Parser
+# require 'json/pure'
+# JSON.parser = JSON::Pure::Parser
