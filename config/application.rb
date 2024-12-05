@@ -28,8 +28,13 @@ module MdlSearch
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-    config.assets.precompile += %w(catalog_show)
-    
+    config.assets.precompile += [
+      'catalog_show',
+      # Move this to app/assets/config/manifest.js when upgrading to Sprockets 4
+      # https://github.com/projectblacklight/spotlight/releases/tag/v4.0.0
+      'spotlight/manifest.js'
+    ]
+
     # Allow iframe embedding in Tableau
     config.action_dispatch.default_headers['X-Frame-Options'] = 'ALLOW-FROM https://tableau.umn.edu/'
 
