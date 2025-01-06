@@ -1,6 +1,7 @@
 version: '3'
 services:
   solr: &solr
+    platform: linux/x86_64
     image: minitex/mdl_solr:latest
     ports:
       - "8983:8983"
@@ -31,6 +32,7 @@ services:
     depends_on:
       - solr
   db:
+    platform: linux/x86_64
     image: library/mysql:5.7
     env_file:
       - .env
