@@ -49,6 +49,7 @@ module MDL
       log('Finished')
     ensure
       cleanup_tempfiles
+      nil
     end
 
     private
@@ -151,23 +152,32 @@ module MDL
       )
     end
 
+    # @return [Tempfile]
     def download(candidate, http_connection)
       uri = URI(candidate.image_url)
       req = Net::HTTP::Get.new(uri)
-      response = http_connection.request(req)
-      if response.code == '200'
-        Tempfile.new(
-          candidate.image_filename_parts,
-          TMP_DIR,
-          mode: File::Constants::BINARY,
-          encoding: 'ascii-8bit'
-        ).tap do |file|
-          file << response.body
-          file.rewind
+      retries = 3
+      until retries.zero?
+        retries -= 1
+
+        response = http_connection.request(req)
+        if response.code == '200'
+          return Tempfile.new(
+            candidate.image_filename_parts,
+            TMP_DIR,
+            mode: File::Constants::BINARY,
+            encoding: 'ascii-8bit'
+          ).tap do |file|
+            file << response.body
+            file.rewind
+          end
         end
-      else
-        raise "failed to fetch image #{candidate.image_url}"
+
+        log("Got #{response.code} for URL #{uri}")
+        sleep 0.5
       end
+
+      raise "failed to fetch image #{candidate.image_url}" if retries.zero?
     end
 
     def build_ocr_candidates(manifest)

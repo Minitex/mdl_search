@@ -119,6 +119,25 @@ module MDL
           expect(described_class.format(doc)).to be_nil
         end
       end
+
+      context 'when the manifest is not found' do
+        let(:body) do
+          <<~JSON
+            {
+              "title": "Not Found",
+              "status": 404
+            }
+          JSON
+        end
+        let(:mock_response) do
+          double('response', code: '404', body:)
+        end
+
+        it 'returns nil after three tries' do
+          expect(described_class.format(doc)).to be(nil)
+          expect(Net::HTTP).to have_received(:get_response).thrice
+        end
+      end
     end
   end
 end
