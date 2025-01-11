@@ -19,7 +19,9 @@ module MDL
 
         url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{collection}:#{id}/manifest.json"
         res = Net::HTTP.get_response(URI(url))
-        self.format(doc, retries - 1) if res.code != '200' && retries.positive?
+        retries -= 1
+        self.format(doc, retries) if res.code != '200' && retries.positive?
+        return unless res.code == '200'
 
         parsed_response = JSON.parse(res.body)
         parsed_response['service'] = {
@@ -45,7 +47,7 @@ module MDL
           # With this, UV will support "two-up" (side-by-side) pages
           # in the viewer. Only makes sense visually if there are
           # at least three canvases (pages).
-          manifest['sequences'][0]['viewingHint'] = 'paged'
+          sequence['viewingHint'] = 'paged'
         end
       end
 
