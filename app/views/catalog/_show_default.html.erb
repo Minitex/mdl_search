@@ -35,3 +35,57 @@
   <%= javascript_pack_tag 'drawMap' %>
   <%= javascript_pack_tag 'citation' %>
 <% end %>
+
+<% content_for(:blocking_javascript) do %>
+  <script type="text/javascript">
+    function getQueryParams() {
+      const url = window.location.href;
+      const params = new URLSearchParams((new URL(url)).search);
+      const obj = {};
+
+      for (const [key, value] of params.entries()) {
+          obj[key] = value;
+      }
+
+      return obj;
+    }
+    const queryParams = getQueryParams();
+    if (queryParams.uvcv && queryParams.uvcv.length) {
+      window.location.hash = `?${queryParams.uvcv}`;
+    }
+
+    const urlAdapter = new UV.IIIFURLAdapter();
+    const collectionIndex = urlAdapter.get("c");
+    // If we were given a legacy anchor, such as #/image/4, parse
+    // out the 4 and use it as the canvasIndex in the UV config.
+    const legacyAnchorMatch = /\/image\/(\d+)$/.exec(window.location.hash) || [0];
+    let canvasIndexFallback = queryParams.uvcv || legacyAnchorMatch.pop();
+    if (legacyAnchorMatch.length) {
+      window.location.hash = '';
+    }
+
+    const data = {
+      manifest: "<%= manifest_url %>",
+      collectionIndex: (collectionIndex !== undefined) ? Number(collectionIndex) : undefined,
+      canvasIndex: Number(urlAdapter.get("cv", canvasIndexFallback)),
+      manifestIndex: Number(urlAdapter.get("m", 0)),
+      rotation: Number(urlAdapter.get("r", 0)),
+      rangeId: urlAdapter.get("rid", ""),
+      xywh: urlAdapter.get("xywh", ""),
+      target: urlAdapter.get("target", "")
+    };
+
+    const uv = UV.init("uv", data);
+    urlAdapter.bindTo(uv);
+
+    uv.on("configure", ({ config, cb }) => {
+      cb(
+        <%= render(
+          partial: 'uv/viewer_config',
+          formats: [:js],
+          locals: { left_panel_open: !borealis_doc.assets.first.playlist? }
+        ) %>
+      );
+    });
+  </script>
+<% end %>

@@ -5,8 +5,7 @@ describe 'advanced search' do
     solr_fixtures('sll:22470', 'otter:297', 'msn:2277', 'msn:2670', 'msn:2680')
   end
 
-  xit 'can find a record by text contained in its transcript' do
-    pending 'Transcript is temporarily excluded from advanced search'
+  it 'can find a record by text contained in its transcript' do
     visit '/'
     click_link 'Advanced Search'
     fill_in 'Transcript', with: '"fifty percent cut"'

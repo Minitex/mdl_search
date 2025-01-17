@@ -8,7 +8,7 @@ git clone https://github.com/UMNLibraries/mdl-solr-core.git;
 mkdir -p public/assets/thumbnails;
 docker-compose build -- solr solr_test db redis webpacker;
 docker-compose up -d solr solr_test db redis webpacker;
-until docker exec mdl_search_db_1 mysql --user=mdl --password=mdl -e "select 1" >/dev/null
+until docker exec mdl_search-db-1 mysql --user=mdl --password=mdl -e "select 1" >/dev/null
 do
   echo "Waiting for MySQL to start..."
   sleep 1

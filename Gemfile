@@ -64,6 +64,9 @@ gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_range_limit', '~> 8.2.0'
 gem 'blacklight-spotlight', '~> 3.4'
 gem 'blacklight_oai_provider', '~> 7.0'
+gem 'blacklight-gallery', '>= 0.3.0'
+gem 'blacklight-oembed', '~> 1.1'
+
 gem 'chosen-rails', '~> 1.9'
 gem 'leaflet-rails'
 gem 'rsolr', '~> 2.5'
@@ -92,8 +95,6 @@ gem 'redis-rails', '~> 5.0'
 
 gem 'friendly_id'
 gem 'sitemap_generator'
-gem 'blacklight-gallery', '>= 0.3.0'
-gem 'blacklight-oembed', '~> 1.1'
 
 gem 'autoprefixer-rails', '~> 10.4.7' # Constraint to accommodate Node 8 on QA/Prod
 gem 'kaltura-client'
@@ -101,4 +102,3 @@ gem 'kaltura-client'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 gem 'sentry-sidekiq'
-gem 'strscan', '3.0.1'
