@@ -1,8 +1,3 @@
-<%
-  borealis_doc = MDL::BorealisDocument.new(document:)
-  manifest_url = borealis_doc.manifest_url
-%>
-
 <div class="metadata" data-metadata='<%= document_metadata(document).to_json %>'></div>
 
 <%= content_tag :div,
@@ -11,8 +6,8 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-12">
-    <div id="uv" class="uv" style="height: 768px;"></div>
+  <div class="col-md-12 uv-wrapper">
+    <%= render('universalviewer', document:) %>
   </div>
 </div>
 
@@ -35,29 +30,6 @@
     with_popup: true
   }
 %>
-
-<% content_for(:head) do %>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/uv.css"
-  />
-  <script
-    type="application/javascript"
-    src="https://cdn.jsdelivr.net/gh/DanOlson/uv-dist@03f6459f71d9966908786dfad327d51e12ca06d0/dist/umd/UV.js"
-  ></script>
-  <script type="text/javascript">window.$ = jQuery;</script>
-  <style>
-    .iiif-av-component .controls-container .volume {
-      float: left !important;
-    }
-    .iiif-av-component .controls-container .captions-button {
-      padding-top: 10px;
-    }
-    .caption-choices-list-item {
-      padding-bottom: 0 !important;
-    }
-  </style>
-<% end %>
 
 <% content_for(:webpack_bundles) do %>
   <%= javascript_pack_tag 'drawMap' %>
