@@ -10,7 +10,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'mysql2', '~> 0.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.1.0'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
