@@ -24,6 +24,7 @@ module MdlSearch
     config.load_defaults 7.0
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
 
+    config.add_autoload_paths_to_load_path = false
     config.autoload_lib(ignore: %w(assets tasks))
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += [
