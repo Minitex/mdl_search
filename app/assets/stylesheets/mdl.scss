@@ -6,7 +6,7 @@
 /* color variables */
 $black: #000000;
 $white: #ffffff;
-$medium-gray: #6d6e71;
+$medium-gray: #505666;
 $light-gray: #d3d4d7;
 $lightest-gray: #ecedf0;
 $dark-blue: #005da3;
@@ -737,6 +737,10 @@ form.range_limit .btn-secondary {
 	border-color: $dark-green;
 }
 
+.text-success, .exhibit-admin .confirmation-status .confirmed, .facet-values li .selected {
+	color: $dark-green !important;
+}
+
 .facet-field-heading {
   background-color: $dark-green;
   border-color: $dark-green;
@@ -1061,6 +1065,10 @@ h3.document-title-heading {
 	font-weight: bold !important;
 	line-height: 1.5 !important;
 	padding-left: 0;
+}
+
+.dl-invert dt {
+	color: $medium-gray !important;
 }
 
 .dl-horizontal dt {
