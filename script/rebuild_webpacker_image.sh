@@ -29,7 +29,7 @@ fi
 
 # Find the image(s)
 log "Finding the webpacker image(s)..."
-IMAGE_IDS=$(docker images mdl_search_webpacker -q)
+IMAGE_IDS=$(docker images mdl_search-webpacker -q)
 
 if [ -n "$IMAGE_IDS" ]; then
     log "Webpacker images found. Removing images..."
