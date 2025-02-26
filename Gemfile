@@ -77,7 +77,7 @@ gem 'cancancan', '~> 3.4'
 gem 'devise', '~> 4.8'
 gem 'contentdm_api', '~> 0.6'
 gem 'cdmbl', github: 'Minitex/cdmbl', ref: '68e154c'
-gem 'sidekiq', '~> 6.5'
+gem 'sidekiq', '< 8'
 gem 'sinatra', '~> 2.0', require: false
 gem 'sidekiq-failures', '~> 1.0'
 gem 'whenever', '~> 0.9', require: false
