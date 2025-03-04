@@ -1,5 +1,3 @@
-require_relative './thumbnail'
-
 module MDL
   class BorealisAsset
     attr_reader :id, :collection, :title, :document

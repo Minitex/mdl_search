@@ -13,6 +13,13 @@ describe 'item details' do
       )
     expect(contributing_org_link).to have_text('Otter Tail County Historical Society')
 
+    within('#uv') do
+      expect(page).to have_selector(
+        'h1.title',
+        text: 'A. Aberle residence, 214 South Peck Street, Fergus Falls, Minnesota'
+      )
+    end
+
     click_link 'Browse the Otter Tail County Historical Society collection'
 
     filters = page.all('.applied-filter', count: 1)

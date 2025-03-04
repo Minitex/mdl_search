@@ -1,5 +1,3 @@
-require_relative './download'
-
 module MDL
   class BorealisPdf < BorealisAsset
      def src

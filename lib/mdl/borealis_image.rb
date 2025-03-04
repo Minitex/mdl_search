@@ -1,6 +1,3 @@
-require_relative './borealis_asset'
-require_relative './download'
-
 module MDL
   class BorealisImage < BorealisAsset
     def src

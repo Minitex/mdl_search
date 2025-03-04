@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  UNFILTERED_SEARCH_PARAMS = ActionController::Parameters.new(
+    'controller' => 'catalog',
+    'action' => 'index'
+  )
+  private_constant :UNFILTERED_SEARCH_PARAMS
+
   before_action :permit_search_parameters, only: [:index, :range_limit, :oai]
   before_action :manage_pagination, only: :index
 
@@ -67,7 +73,7 @@ class CatalogController < ApplicationController
 
   # get search results from the solr index
   def index
-    if params == {"controller"=>"catalog", "action"=>"index"}
+    if params == UNFILTERED_SEARCH_PARAMS
       @response, @document_list = Rails.cache.fetch("home_search", expires_in: 12.hours) do
         run_search!
       end

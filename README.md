@@ -133,8 +133,7 @@ bundle exec rails s
 
 You can login by visiting https://mdl.devlocal/users/sign_in
 
-username: local@example.com
-password: password
+username: local@example.com password: password
 
 ## Interacting with the App on the Command Line
 
@@ -156,34 +155,7 @@ webpacker image. Things like adding a new "pack" (entrypoint), adding or
 removing dependencies, and updating the version of NodeJS all require rebuilding
 the image. Here's how you do it:
 
-1) Find the container ID of the webpacker container
-
-    `docker ps -qa -f name=webpacker`
-
-2) If it's running, stop it
-
-    `docker stop $CONTAINER_ID`
-
-3) remove the container:
-
-    `docker rm $CONTAINER_ID`
-
-4) Find the image(s)
-
-    `docker images mdl_search_webpacker -q`
-
-5) Remove the images
-
-    `docker rmi $IMAGE_ID`
-
-6) Build the new image (assuming you're done making changes for now)
-
-    `docker-compose build webpacker`
-
-7) Run the container
-
-    `docker-compose up -d webpacker`
-
+`./script/rebuild_webpacker_image.sh`
 
 # Testing
 
@@ -225,9 +197,6 @@ you can run tests without worrying about affecting your local development data.
 ## Some aliases for your shell
 
 ```bash
-# Note: you might consider adding aliases (shortcuts) in your shell env to make it easier to run these commands. e.g.:
-# alias dps='docker ps -a'
-
 # Show all docker images
 $ docker ps -a
 

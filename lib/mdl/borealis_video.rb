@@ -1,6 +1,3 @@
-require_relative './borealis_asset'
-require_relative './download'
-
 module MDL
   class BorealisVideo < BorealisAsset
     def src(entry_id = nil)

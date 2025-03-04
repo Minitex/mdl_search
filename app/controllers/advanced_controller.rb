@@ -1,8 +1,14 @@
 class AdvancedController < BlacklightAdvancedSearch::AdvancedController
+  UNFILTERED_SEARCH_PARAMS = ActionController::Parameters.new(
+    'controller' => 'advanced',
+    'action' => 'index'
+  )
+  private_constant :UNFILTERED_SEARCH_PARAMS
+
   include BlacklightRangeLimit::ControllerOverride
 
   def index
-    if params == {"controller"=>"advanced", "action"=>"index"}
+    if params == UNFILTERED_SEARCH_PARAMS
       @response = Rails.cache.fetch("advanced_search", expires_in: 12.hours) do
         get_advanced_search_facets unless request.method == :post
       end
