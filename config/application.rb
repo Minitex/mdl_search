@@ -21,18 +21,19 @@ module MdlSearch
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-
-    config.load_defaults 6.1
+    config.load_defaults 7.0
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
 
-
-    config.enable_dependency_loading = true
-    config.autoload_paths << Rails.root.join('lib')
-    config.eager_load_paths << Rails.root.join('lib')
+    config.add_autoload_paths_to_load_path = false
+    config.autoload_lib(ignore: %w(assets tasks))
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-    config.assets.precompile += %w(catalog_show)
-    
+    config.assets.precompile += [
+      'catalog_show',
+      # Move this to app/assets/config/manifest.js when upgrading to Sprockets 4
+      # https://github.com/projectblacklight/spotlight/releases/tag/v4.0.0
+      'spotlight/manifest.js'
+    ]
+
     # Allow iframe embedding in Tableau
     config.action_dispatch.default_headers['X-Frame-Options'] = 'ALLOW-FROM https://tableau.umn.edu/'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_010326) do
+ActiveRecord::Schema[6.1].define(version: 2022_09_30_010326) do
 
   create_table "archive_download_requests", charset: "latin1", force: :cascade do |t|
     t.integer "status", default: 0, null: false

@@ -1,10 +1,3 @@
-require_relative './borealis_asset'
-require_relative './borealis_image'
-require_relative './borealis_audio'
-require_relative './borealis_video'
-require_relative './borealis_pdf'
-require_relative './borealis_ppt'
-
 module MDL
   class BorealisAssetMap
     MAPPING = {

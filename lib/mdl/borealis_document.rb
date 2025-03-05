@@ -1,5 +1,4 @@
 require 'json'
-require_relative './borealis_asset_map'
 
 ###
 # Wraps a Solr document hash. Accessing values of the document
