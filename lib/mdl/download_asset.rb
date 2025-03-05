@@ -1,5 +1,3 @@
-require_relative './download'
-
 module MDL
   class DownloadAsset
     FULL_PATH = %r{/full/full}.freeze

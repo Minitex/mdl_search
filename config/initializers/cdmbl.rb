@@ -1,6 +1,5 @@
 require 'net/http'
 require 'uri'
-require 'mdl/etl_auditing'
 
 module CDMBL
   class CompletedCallback
@@ -40,8 +39,6 @@ module CDMBL
       Sentry.capture_message('Batch delete job complete')
     end
   end
-
-  LoadWorker.prepend(MDL::EtlAuditing)
 end
 
 ###
@@ -76,4 +73,8 @@ module CONTENTdmAPI
       end
     end
   end
+end
+
+Rails.application.config.after_initialize do
+  CDMBL::LoadWorker.prepend(MDL::EtlAuditing)
 end
