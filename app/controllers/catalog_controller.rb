@@ -209,7 +209,8 @@ class CatalogController < ApplicationController
       default: false,
       partials: [:index],
       icon_class: 'glyphicon-th',
-      classes: []
+      classes: [],
+      document_component: GalleryDocumentComponent
     )
 
     ###

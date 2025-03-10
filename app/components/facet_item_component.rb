@@ -50,22 +50,14 @@ class FacetItemComponent < Blacklight::FacetItemComponent
 
   def label_class(label)
     case label
-    when 'Still Image'
-      'icon-image'
-    when 'Moving Image'
-      'icon-video'
-    when 'Text'
-      'icon-text'
-    when 'Sound Recording Nonmusical'
-      'icon-sound'
-    when 'Three Dimensional Object'
-      'icon-object'
-    when 'Notated Music'
-      'icon-sheet-music'
-    when 'Mixed Material'
-      'icon-archive'
-    when 'Cartographic'
-      'icon-map'
+    when 'Still Image' then 'icon-image'
+    when 'Moving Image' then 'icon-video'
+    when 'Text' then 'icon-text'
+    when 'Sound Recording Nonmusical' then 'icon-sound'
+    when 'Three Dimensional Object' then 'icon-object'
+    when 'Notated Music' then 'icon-sheet-music'
+    when 'Mixed Material' then 'icon-archive'
+    when 'Cartographic' then 'icon-map'
     end
   end
 end
