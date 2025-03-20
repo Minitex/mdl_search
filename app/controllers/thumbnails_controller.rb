@@ -3,6 +3,6 @@ class ThumbnailsController < ApplicationController
     collection, id = params[:id].split(':')
     thumbnail = MDL::Thumbnail.new(collection:, id:, type: params[:type])
 
-    redirect_to thumbnail.thumbnail_url
+    redirect_to thumbnail.thumbnail_url, allow_other_host: true
   end
 end
