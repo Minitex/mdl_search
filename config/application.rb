@@ -21,7 +21,8 @@ module MdlSearch
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.load_defaults 7.0
+    config.load_defaults 7.1
+    config.active_support.cache_format_version = 7.1
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess, Symbol]
 
     config.add_autoload_paths_to_load_path = false
