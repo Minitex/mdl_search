@@ -8,8 +8,10 @@ module MDL
       # @return [Array<MDL::DownloadAsset>]
       def assets_from_manifest_v2(manifest)
         Array(manifest.dig('sequences', 0, 'canvases'))
-          .map do |canvas|
+          .filter_map do |canvas|
             url = canvas.dig('images', 0, 'resource', '@id')
+            next if url.nil?
+
             label = canvas['label']
             new(
               label: label,
