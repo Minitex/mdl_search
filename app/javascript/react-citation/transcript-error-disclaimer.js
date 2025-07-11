@@ -9,7 +9,7 @@ const TranscriptErrorDisclaimer = () => {
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h5 className="modal-title">Optical Character Recognition Text</h5>
+            <h5 className="modal-title">Machine Generated Text</h5>
           </div>
           <div className="modal-body">
             <p>Why are there errors in the transcript?</p>
