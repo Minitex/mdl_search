@@ -380,12 +380,16 @@ class CatalogController < ApplicationController
       SolrDocument::OAI_FIELDS.join(',') +
       ',' +
       config.index_fields.keys.join(',')
+    hl_field_list = 'id,title_tesi,identifier_ssim,' +
+      SolrDocument::OAI_FIELDS.join(',') +
+      ',' +
+      config.index_fields.keys.join(',')
     # Default parameters to send to solr for all search-like requests.
     config.default_solr_params = {
       rows: 20,
       fl: field_list,
       hl: 'on',
-      'hl.fl': field_list,
+      'hl.fl': hl_field_list,
       'hl.fragsize': 0
     }
 
