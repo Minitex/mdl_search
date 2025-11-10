@@ -2,7 +2,7 @@
   <span class="mlt_title">
     <%=
       link_to(
-        image_tag(more_like_this_thumbnail_path(doc)),
+        image_tag(more_like_this_thumbnail_path(doc), alt: doc[:title]),
         url_for(
           controller: 'catalog',
           action: 'show',
@@ -10,7 +10,6 @@
           pn: false,
           anchor: doc[:borealis_fragment]
         ),
-        alt: doc[:title],
         title: doc[:title]
       )
     %>
