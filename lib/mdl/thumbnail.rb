@@ -6,6 +6,16 @@ module MDL
 
     attr_accessor :collection, :id, :title, :type
 
+    ###
+    # @param doc [Hash]
+    # @return [Thumbnail]
+    def self.from_solr_doc(doc)
+      from_identifier(doc['id']).tap do |thumb|
+        thumb.title = doc['title_ssi'],
+        thumb.type = doc['type_ssi']
+      end
+    end
+
     def self.from_identifier(identifier)
       collection, id = identifier.split(':')
       new(collection:, id:)

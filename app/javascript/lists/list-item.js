@@ -35,7 +35,7 @@ const ListItem = ({ item, listId, onRemoved, onAdded }) => {
         </form>
       </div>
       <div className="col col-2">
-        <img className="list-item-thumbnail" src={item.thumbnailUrl} />
+        <img className="list-item-thumbnail" src={item.thumbnailUrl} alt={item.title} />
       </div>
       <div className="col">
         <h5 className="item-title">

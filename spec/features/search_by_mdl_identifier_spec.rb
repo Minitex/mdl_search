@@ -8,8 +8,10 @@ describe 'searching by MDL identifier' do
       visit '/'
       fill_in 'q', with: 'mhs64801'
       click_on 'Search'
-      result_link = find_link('A Statewide Movement for the Collection and Preservation of Minnesota\'s War Records')
-      result_link.click
+      within('.document-title-heading') do
+        result_link = find_link('A Statewide Movement for the Collection and Preservation of Minnesota\'s War Records')
+        result_link.click
+      end
 
       expect(current_path).to eq('/catalog/spl:3207')
       expect(all('.autocompleteText').size).to eq(1)
