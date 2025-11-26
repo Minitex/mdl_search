@@ -9,11 +9,7 @@ module MapsHelper
   end
 
   def nearbys_with_anchors(coordinates)
-    nearbys(coordinates).map { |nearby| nearby.merge(anchor: nearby_anchor(nearby)) }
-  end
-
-  def nearby_anchor(doc)
-    MDL::DocumentAnchor.new(doc: doc).anchor
+    nearbys(coordinates).map { |nearby| nearby.merge(anchor: '') }
   end
 
   def nearbys(coordinates)
