@@ -6,17 +6,12 @@ class NearbysController < ApplicationController
   end
 
   def nearbys_with_anchors
-    nearbys.map { |nearby| nearby.merge(anchor: doc_anchor(nearby)) }
-  end
-
-  def doc_anchor(doc)
-    MDL::DocumentAnchor.new(doc: doc).anchor
+    nearbys.map { |nearby| nearby.merge(anchor: '') }
   end
 
   def nearbys
     @nearbys ||= Nearby.search(pt: coords, d: distance)
   end
-
 
   def coords
     params[:coordinates].gsub /\+/, '.'
