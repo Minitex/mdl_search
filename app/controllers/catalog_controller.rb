@@ -536,5 +536,9 @@ class CatalogController < ApplicationController
         ]
       }
     }
+
+    ###
+    # Spotlight
+    config.exhibit_navbar_component = Spotlight::ExhibitNavbarComponent
   end
 end

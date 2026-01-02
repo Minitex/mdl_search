@@ -4,9 +4,10 @@ module ThumbnailHelper
     thumbnail = MDL::Thumbnail.new(
       collection:,
       id:,
+      title: document['title_ssi'],
       type: document['type_ssi']
     )
-    image_tag thumbnail.url
+    image_tag thumbnail.url, alt: thumbnail.title
   end
 
   def thumbnail_link(document)
