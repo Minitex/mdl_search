@@ -60,6 +60,10 @@ body {
 		float: none !important;
 		padding-left: 0 !important;
 	}
+
+	.cite-transcript .transcript, .cite-translation .translation {
+		max-width: 390px;
+	}
 }
 
 @media (max-width: 599px) {
@@ -79,6 +83,10 @@ body {
 	.dl-horizontal dd {
 		clear: left !important;
 		margin-left: 0 !important;
+	}
+
+	.cite-transcript .transcript, .cite-translation .translation {
+		max-width: 390px;
 	}
 }
 
@@ -103,6 +111,10 @@ body {
 		text-align: center !important;
 	}
 
+	.cite-transcript .transcript, .cite-translation .translation {
+		max-width: 450px;
+	}
+
 	.footer-links, .footer-social, .footer-contact {
 		text-align: center !important;
 	}
@@ -124,6 +136,10 @@ body {
 
 	.toc-select {
 		display: none !important;
+	}
+
+	.cite-transcript .transcript, .cite-translation .translation {
+		max-width: 450px;
 	}
 }
 
@@ -182,6 +198,10 @@ body {
 		background-color: $white;
 		position: absolute;
 		width: 100%;
+	}
+
+	.cite-transcript .transcript, .cite-translation .translation {
+		max-width: 450px;
 	}
 }
 
@@ -281,6 +301,7 @@ h3.index_title {
 }
 
 .cite-transcript .transcript, .cite-translation .translation {
+	max-width: 600px;
 	white-space: pre-wrap;
 }
 
