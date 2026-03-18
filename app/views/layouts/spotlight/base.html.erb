@@ -41,7 +41,10 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <%= javascript_tag "Spotlight = Spotlight || {}; Spotlight.sirTrevoricon = asset_path('sir-trevor-icons.svg');" %>
+    <%= javascript_tag do %>
+      Spotlight = Spotlight || {};
+      Spotlight.sirTrevoricon = "<%= asset_path('sir-trevor-icons.svg') %>";
+    <% end %>
   </head>
   <body class="<%= render_body_class %>">
   <%= render :partial => 'shared/header_navbar' %>
