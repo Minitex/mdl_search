@@ -4,8 +4,7 @@ describe 'searching by MDL identifier' do
   context 'in a compound document' do
     before { solr_fixtures('spl:3207') }
 
-    # Skipped due to CI timeout
-    xit 'links to the right page in the document' do
+    it 'links to the right page in the document' do
       visit '/'
       fill_in 'q', with: 'mhs64801'
       click_on 'Search'

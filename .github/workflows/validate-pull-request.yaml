@@ -47,6 +47,8 @@ jobs:
         run: yarn install
       - name: Setup DB
         run: bin/rails db:schema:load
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Run Backend Tests
         run: bundle exec rspec --tag ~skip_ci
       - name: Upload Capybara Saved Pages
