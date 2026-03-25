@@ -50,7 +50,7 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
       - name: Run Backend Tests
-        run: bundle exec rspec spec/features --tag ~skip_ci
+        run: bundle exec rspec --tag ~skip_ci
       - name: Upload Capybara Saved Pages
         uses: actions/upload-artifact@v4
         if: failure()
