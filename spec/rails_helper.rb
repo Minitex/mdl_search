@@ -24,6 +24,7 @@ Capybara.register_driver(:selenium_chrome_headless) do |app|
   options.add_argument('--no-sandbox')
   options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--disable-gpu')
+  options.page_load_strategy = :eager
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
 end
