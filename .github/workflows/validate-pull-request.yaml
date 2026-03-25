@@ -23,7 +23,7 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       solr:
-        image: minitex/mdl_solr:latest
+        image: minitex/mdl_solr:version-8
         ports:
           - 8986:8983
     steps:
