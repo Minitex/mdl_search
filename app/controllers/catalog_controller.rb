@@ -424,36 +424,23 @@ class CatalogController < ApplicationController
     # of Solr search fields.
 
     config.add_search_field('title') do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
-
-      # :solr_local_parameters will be sent using Solr LocalParams
-      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-      # Solr parameter de-referencing like $title_qf.
-      # See: http://wiki.apache.org/solr/LocalParams
-      field.solr_local_parameters = {
-        qf: '$title_qf',
-        pf: '$title_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'title',
+        qf: 'title_unstem_search^100000 title_tei'
       }
     end
 
     config.add_search_field('creator') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'creator' }
-      field.solr_local_parameters = {
-        qf: '$creator_qf',
-        pf: '$creator_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'creator',
+        qf: 'creator_unstem_search^100000 creator_teim'
       }
     end
 
-    # Specifying a :qt only to show it's possible, and so our internal automated
-    # tests can test it. In this case it's the same as
-    # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
-      field.qt = 'search'
-      field.solr_local_parameters = {
-        qf: '$subject_qf',
-        pf: '$subject_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'subject',
+        qf: 'formal_subject_unstem_search^150000 formal_subject_teim subject_unstem_search^100000 subject_teim'
       }
     end
 
@@ -466,35 +453,31 @@ class CatalogController < ApplicationController
     #
     # Commenting out transcript until we have a good plan for transcript search results - PKS
     config.add_search_field('transcript') do |field|
-     field.include_in_simple_search = false
-     field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-     field.solr_local_parameters = {
-       qf: '$transcription_qf',
-       pf: '$transcription_pf'
-     }
+      field.include_in_simple_search = false
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'default',
+        qf: 'transcription_tesim'
+      }
     end
     config.add_search_field('description') do |field|
       field.include_in_simple_search = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$description_qf',
-        pf: '$description_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'default',
+        qf: 'description_unstem_search^100000 description_tei'
       }
     end
     config.add_search_field('city_or_township') do |field|
       field.include_in_simple_search = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$city_or_township_qf',
-        pf: '$city_or_township_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'default',
+        qf: 'city_unstem_search^100000 city_ssim'
       }
     end
     config.add_search_field('county') do |field|
       field.include_in_simple_search = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$county_qf',
-        pf: '$county_pf'
+      field.solr_parameters = {
+        :'spellcheck.dictionary' => 'default',
+        qf: 'county_unstem_search^100000 county_ssim'
       }
     end
 

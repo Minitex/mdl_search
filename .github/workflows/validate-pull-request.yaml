@@ -23,7 +23,7 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       solr:
-        image: minitex/mdl_solr:latest
+        image: minitex/mdl_solr:version-8
         ports:
           - 8986:8983
     steps:
@@ -47,6 +47,8 @@ jobs:
         run: yarn install
       - name: Setup DB
         run: bin/rails db:schema:load
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Run Backend Tests
         run: bundle exec rspec --tag ~skip_ci
       - name: Upload Capybara Saved Pages
