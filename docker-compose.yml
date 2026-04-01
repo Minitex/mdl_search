@@ -2,7 +2,7 @@ version: '3'
 services:
   solr: &solr
     platform: linux/x86_64
-    image: minitex/mdl_solr:latest
+    image: minitex/mdl_solr:version-8
     ports:
       - "8983:8983"
     volumes:
@@ -64,19 +64,19 @@ services:
     image: redis:4.0.10
     command: redis-server /usr/local/etc/redis/redis.conf
     volumes:
-        - ./docker/redis-cache.conf:/usr/local/etc/redis/redis.conf
+      - ./docker/redis-cache.conf:/usr/local/etc/redis/redis.conf
     networks:
       - mdl
 
   webpacker:
-      build: .
-      command: ./bin/webpack-dev-server
-      environment:
-        - NODE_OPTIONS=--openssl-legacy-provider
-      volumes:
-        - .:/app
-      ports:
-        - '8080:8080'
+    build: .
+    command: ./bin/webpack-dev-server
+    environment:
+      - NODE_OPTIONS=--openssl-legacy-provider
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
   selenium:
     image: selenium/standalone-chrome-debug:latest
     ports: ['4444:4444', '5900:5900']

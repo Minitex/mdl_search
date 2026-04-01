@@ -16,6 +16,18 @@ Sidekiq::Testing.inline!
 require 'capybara/rails'
 require 'capybara/rspec'
 Capybara.default_driver = :selenium
+Capybara.server_host = '127.0.0.1'
+
+Capybara.register_driver(:selenium_chrome_headless) do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless=new')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--disable-gpu')
+  options.page_load_strategy = :eager
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+end
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"

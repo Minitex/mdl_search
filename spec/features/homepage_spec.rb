@@ -5,8 +5,7 @@ describe 'Some home page sanity checks' do
     solr_fixtures('otter:297')
   end
 
-  # Skipped due to CI timeout
-  xit 'runs a search' do
+  it 'runs a search' do
     visit '/'
     expect(page).to have_content(/Browse all \d+ items from 189 historical societies, libraries, archives, and cultural organizations across Minnesota/)
     find(:xpath, '//*[@id="search"]').click
