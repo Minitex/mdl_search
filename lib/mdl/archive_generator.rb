@@ -54,24 +54,37 @@ module MDL
       end
     end
 
-    def fetch_manifest
+    def fetch_manifest(retries: 3)
       log("Fetching manifest for #{identifier}")
 
-      task = Async do
-        internet = Async::HTTP::Internet.instance
-        url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{identifier}/manifest.json"
-        response = internet.get(url)
-        if response.status == 200
-          JSON.parse(response.read)
-        else
-          log_error("Failed to fetch manifest. Response status: #{response.status}")
-          raise 'Failed to fetch manifest'
+      attempts = 0
+      begin
+        attempts += 1
+        task = Async do
+          internet = Async::HTTP::Internet.instance
+          url = "https://cdm16022.contentdm.oclc.org/iiif/2/#{identifier}/manifest.json"
+          response = internet.get(url)
+          if response.status == 200
+            JSON.parse(response.read)
+          else
+            log_error("Failed to fetch manifest. Response status: #{response.status}")
+            raise 'Failed to fetch manifest'
+          end
+        ensure
+          internet&.close
         end
-      ensure
-        internet&.close
-      end
 
-      task.wait
+        task.wait
+      rescue Errno::ECONNRESET => e
+        if attempts < retries
+          log("Connection reset fetching manifest, retrying (attempt #{attempts})...")
+          sleep(2 ** attempts)
+          retry
+        else
+          log_error("Failed to fetch manifest after #{retries} attempts: #{e.message}")
+          raise
+        end
+      end
     end
 
     def download_images(urls)
@@ -89,15 +102,35 @@ module MDL
             # ordered within the zip
             basename = idx.to_s.rjust(digits, '0')
             filename = File.join(work_dir, "#{basename}.#{ext}")
-            response = internet.get(url)
-            response.save(filename, 'wb') if response.success?
-            response.finish
+            download_image_with_retry(internet, url, filename)
           end
         end
 
         barrier.wait
       ensure
         internet&.close
+      end
+    end
+
+    def download_image_with_retry(internet, url, filename, retries: 3)
+      attempts = 0
+      begin
+        attempts += 1
+        response = internet.get(url)
+        if response.success?
+          response.save(filename, 'wb')
+        else
+          log_error("Failed to download image #{url}. Response status: #{response.status}")
+        end
+        response.finish
+      rescue Errno::ECONNRESET => e
+        if attempts < retries
+          log("Connection reset downloading #{url}, retrying (attempt #{attempts})...")
+          sleep(2 ** attempts)
+          retry
+        else
+          log_error("Failed to download image #{url} after #{retries} attempts: #{e.message}")
+        end
       end
     end
 
