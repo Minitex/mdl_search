@@ -7,7 +7,7 @@ const Transcript = (props) => {
     <>
       <div className="ocr-transcript-info">
         <a data-toggle="modal" data-target="#transcriptModal" href="#">
-          Why are there errors in the transcript?
+          More information about this transcript
         </a>
       </div>
       <div className="transcript">{props.transcript}</div>
